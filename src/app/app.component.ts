@@ -25,7 +25,7 @@ export class AppComponent {
 
   // SETTING
   Debug:Boolean = true;
-  isLog: boolean = true;
+  isLog: boolean = false;
   userConnected: any;
   token: string|any;
   currentDate: Date = new Date();
