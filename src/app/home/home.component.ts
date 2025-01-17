@@ -10,4 +10,5 @@ export class HomeComponent {
 
   constructor(protected app: AppComponent) {
   }
+
 }

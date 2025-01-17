@@ -21,7 +21,7 @@ export class AppComponent {
     const cookieToken = this.cookieService.get('tokenGamenium');
     const cookieUser = this.cookieService.get('userGamenium');
 
-    if (cookieToken != null && cookieUser != null){
+    if (cookieToken && cookieUser){
       this.loginTokenWithCookie(cookieToken, cookieUser);
     } else {
       this.router.navigate(['/']);
@@ -46,7 +46,7 @@ export class AppComponent {
   //%     API - GAMENIUM      %//
 
   // SETTING
-  Debug:Boolean = true;
+  Debug:Boolean = false;
   isLog: boolean = false;
   userConnected: UserInterface|any;
   token: string|any;

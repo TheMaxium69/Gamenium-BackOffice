@@ -3,20 +3,73 @@
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="!(isHandset$ | async)">
-    <mat-toolbar>
-      <img src="assets/logo.png" alt="Logo" width="30" style="margin-right: 8px">
-      Gamenium
+    <mat-toolbar class="md-tall md-hue-2">
+        <div>{{ app.userConnected.displayname_useritium || app.userConnected.username }}</div>
     </mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/">Dashboard</a>
-    </mat-nav-list>
+
+
+    <mat-list>
+      <div mat-subheader>Action</div>
+      <mat-list-item routerLink="/">
+        <mat-icon matListItemIcon>dashboard</mat-icon>
+        <div matListItemTitle>Dashboard</div>
+      </mat-list-item>
+
+      <mat-list-item (click)="toggleUnrolled('administration')">
+        <mat-icon matListItemIcon>shield_person</mat-icon>
+        <div matListItemTitle>Administration</div>
+      </mat-list-item>
+        <ng-container *ngIf="whichUnrolled === 'administration' && isUnrolled">
+          <mat-list-item>
+            <div matListItemTitle>Gestion utilisateurs</div>
+          </mat-list-item>
+        </ng-container>
+
+      <mat-list-item (click)="toggleUnrolled('moderation')">
+        <mat-icon matListItemIcon>rocket_launch</mat-icon>
+        <div matListItemTitle>Modération</div>
+      </mat-list-item>
+        <ng-container *ngIf="whichUnrolled === 'moderation' && isUnrolled">
+          <mat-list-item>
+            <div matListItemTitle>Signalement</div>
+          </mat-list-item>
+        </ng-container>
+
+
+      <mat-list-item>
+        <mat-icon matListItemIcon>edit</mat-icon>
+        <div matListItemTitle>Rédacteur</div>
+
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListItemIcon>sports_esports</mat-icon>
+        <div matListItemTitle>Éditeur</div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+      <div mat-subheader>Personnel</div>
+
+      <mat-list-item >
+        <mat-icon matListItemIcon>settings</mat-icon>
+        <div matListItemTitle>Paramètre</div>
+<!--        <div matListItemLine>{{note.updated | date}}</div>-->
+      </mat-list-item>
+      <mat-list-item (click)="this.app.logout()">
+        <mat-icon matListItemIcon>logout</mat-icon>
+        <div matListItemTitle>Déconnexion</div>
+      </mat-list-item>
+    </mat-list>
+
+
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar>
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon aria-label="Menu">menu</mat-icon>
       </button>
+      <img src="assets/logo.png" alt="Logo" width="30" style="margin-right: 8px">
       <span>Gamenium Panel</span>
+
     </mat-toolbar>
     <div class="router-container">
       <router-outlet></router-outlet>
