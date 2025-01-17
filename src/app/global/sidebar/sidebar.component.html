@@ -1,0 +1,25 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav" fixedInViewport="true"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="!(isHandset$ | async)">
+    <mat-toolbar>
+      <img src="assets/logo.png" alt="Logo" width="30" style="margin-right: 8px">
+      Gamenium
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/">Dashboard</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon aria-label="Menu">menu</mat-icon>
+      </button>
+      <span>Gamenium Panel</span>
+    </mat-toolbar>
+    <div class="router-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
