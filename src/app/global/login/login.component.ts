@@ -16,7 +16,7 @@ export class LoginComponent {
     let email = form.value.email
     let password = form.value.password
 
-    // this.app.login(email, password);
+    this.app.login(email, password)
 
   }
 

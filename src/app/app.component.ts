@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import {HttpHeaders} from "@angular/common/http";
+import {AuthService} from "./-service/auth.service";
+import {ApicallInterface} from "./-interface/apicall.interface";
+import {UserInterface} from "./-interface/user.interface";
+import {CookieService} from "ngx-cookie-service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,6 +12,23 @@ import {HttpHeaders} from "@angular/common/http";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private authService: AuthService,
+              private cookieService: CookieService,
+              private router: Router) {
+
+
+    const cookieToken = this.cookieService.get('tokenGamenium');
+    const cookieUser = this.cookieService.get('userGamenium');
+
+    if (cookieToken != null && cookieUser != null){
+      this.loginTokenWithCookie(cookieToken, cookieUser);
+    } else {
+      this.router.navigate(['/']);
+    }
+
+
+  }
 
   /******************************************************************************************************************
    *
@@ -26,7 +48,7 @@ export class AppComponent {
   // SETTING
   Debug:Boolean = true;
   isLog: boolean = false;
-  userConnected: any;
+  userConnected: UserInterface|any;
   token: string|any;
   currentDate: Date = new Date();
 
@@ -38,8 +60,94 @@ export class AppComponent {
    *
    * ******************************************************************************************************************/
 
+  logout(){
+    this.isLog = false;
+    this.token = null;
+    this.userConnected = null;
+    this.cookieService.delete('tokenGamenium');
+    this.cookieService.delete('userGamenium');
+    this.router.navigate(['/']);
+  }
 
-  /*****************************************************************************************************************
+  /* FORMULAIRE */
+  login(email:string, password:string){
+
+    let bodyNoJson: any = {
+      "email_auth": email,
+      "mdp_auth": password
+    }
+
+    this.authService.postLoginUser(bodyNoJson, this.setURL()).subscribe((resultLogUser:ApicallInterface) => {
+
+      if (resultLogUser.message == "Connected" && resultLogUser.token != null){
+
+          /* CONNECTER PAR LE TOKEN*/
+          this.loginToken(resultLogUser.token);
+      } else {
+        console.error('Erreur');
+        /* TODO : GEREZ LES MSG D'ERR*/
+      }
+
+    }, (error) => console.error())
+
+  }
+
+  /* COOKIE */
+  loginTokenWithCookie(cookieToken:string, cookieUser:string) {
+
+    this.isLog = true;
+    this.userConnected = JSON.parse(cookieUser);
+    this.token = cookieToken;
+
+    this.loginToken(cookieToken);
+
+  }
+
+
+  /* CONNECTER REEL */
+  loginToken(token:string) {
+
+    this.authService.postLoginToken(token, this.setURL()).subscribe((resultLogToken:ApicallInterface) => {
+
+      if(resultLogToken.message == "Connected"){
+
+        /* CONNECTER */
+        this.token = token;
+        this.userConnected = resultLogToken.result
+        this.isLog = true;
+
+        /* LES COOKIE */
+        this.cookieService.set('tokenGamenium', token);
+        this.cookieService.set('userGamenium', JSON.stringify(resultLogToken.result));
+
+      } else {
+
+        /* FORCER LA DECONNEXION*/
+        this.token = null;
+        this.userConnected = null;
+        this.isLog = false;
+        this.cookieService.delete('tokenGamenium');
+        this.cookieService.delete('userGamenium');
+        this.router.navigate(['/']);
+
+
+        console.error('Erreur');
+        /* TODO : GEREZ LES MSG D'ERR*/
+      }
+
+    }, (error) => console.error());
+
+
+  }
+
+
+
+
+
+
+
+
+/*****************************************************************************************************************
    *
    * FUNCTION GLOBAL
    *
