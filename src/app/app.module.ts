@@ -23,6 +23,11 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatTabsModule} from "@angular/material/tabs";
+import { PermsComponent } from './administration/perms/perms.component';
+import { ErrComponent } from './global/err/err.component';
+import { WarnComponent } from './moderation/warn/warn.component';
+import { SettingComponent } from './setting/setting.component';
+import { ProfilComponent } from './provider/profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +36,11 @@ import {MatTabsModule} from "@angular/material/tabs";
     LoginComponent,
     SidebarComponent,
     FilterPipe,
+    PermsComponent,
+    ErrComponent,
+    WarnComponent,
+    SettingComponent,
+    ProfilComponent,
   ],
   imports: [
     BrowserModule,
