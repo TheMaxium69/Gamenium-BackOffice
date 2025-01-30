@@ -6,6 +6,8 @@ import {PermsComponent} from "./administration/perms/perms.component";
 import {WarnComponent} from "./moderation/warn/warn.component";
 import {SettingComponent} from "./setting/setting.component";
 import {ProfilComponent} from "./provider/profil/profil.component";
+import { EditArticleComponent } from './writter/edit-article/edit-article.component';
+import { CreateArticleComponent } from './writter/create-article/create-article.component';
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -19,6 +21,8 @@ const routes: Routes = [
   {path: 'modo/warn', component: WarnComponent},
 
   /*REDAC*/
+  {path: 'writter/edit-article', component: EditArticleComponent},
+  {path: 'writter/create-article', component: CreateArticleComponent},
 
   /* PROVIDER*/
   {path: 'provider/profil', component: ProfilComponent},

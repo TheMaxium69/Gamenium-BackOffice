@@ -44,11 +44,14 @@
         <mat-icon matListItemIcon>edit</mat-icon>
         <div matListItemTitle>Rédacteur</div>
       </mat-list-item>
-<!--        <ng-container *ngIf="whichUnrolled === 'redacteur' && isUnrolled">-->
-<!--          <mat-list-item routerLink="/err">-->
-<!--            <div matListItemTitle>test</div>-->
-<!--          </mat-list-item>-->
-<!--        </ng-container>-->
+       <ng-container *ngIf="whichUnrolled === 'redacteur' && isUnrolled">
+         <mat-list-item routerLink="/writter/create-article">
+           <div matListItemTitle>Créer un Article</div>
+         </mat-list-item>
+         <mat-list-item routerLink="/writter/edit-article">
+          <div matListItemTitle>Modifier un Article</div>
+        </mat-list-item>
+       </ng-container>
 
       <!-- PROVIDER -->
       <mat-list-item (click)="toggleUnrolled('provider')">

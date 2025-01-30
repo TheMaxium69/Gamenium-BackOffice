@@ -28,6 +28,8 @@ import { ErrComponent } from './global/err/err.component';
 import { WarnComponent } from './moderation/warn/warn.component';
 import { SettingComponent } from './setting/setting.component';
 import { ProfilComponent } from './provider/profil/profil.component';
+import { EditArticleComponent } from './writter/edit-article/edit-article.component';
+import { CreateArticleComponent } from './writter/create-article/create-article.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { ProfilComponent } from './provider/profil/profil.component';
     WarnComponent,
     SettingComponent,
     ProfilComponent,
+    EditArticleComponent,
+    CreateArticleComponent,
   ],
   imports: [
     BrowserModule,
