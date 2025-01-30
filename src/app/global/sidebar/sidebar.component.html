@@ -45,6 +45,9 @@
         <div matListItemTitle>Rédacteur</div>
       </mat-list-item>
        <ng-container *ngIf="whichUnrolled === 'redacteur' && isUnrolled">
+         <mat-list-item routerLink="/writter/show-articles">
+           <div matListItemTitle>Voir la listes des Articles</div>
+         </mat-list-item>
          <mat-list-item routerLink="/writter/create-article">
            <div matListItemTitle>Créer un Article</div>
          </mat-list-item>

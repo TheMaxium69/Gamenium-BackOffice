@@ -8,6 +8,7 @@ import {SettingComponent} from "./setting/setting.component";
 import {ProfilComponent} from "./provider/profil/profil.component";
 import { EditArticleComponent } from './writter/edit-article/edit-article.component';
 import { CreateArticleComponent } from './writter/create-article/create-article.component';
+import { ShowArticlesComponent } from './writter/show-articles/show-articles.component';
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -23,6 +24,7 @@ const routes: Routes = [
   /*REDAC*/
   {path: 'writter/edit-article', component: EditArticleComponent},
   {path: 'writter/create-article', component: CreateArticleComponent},
+  {path: 'writter/show-articles', component: ShowArticlesComponent},
 
   /* PROVIDER*/
   {path: 'provider/profil', component: ProfilComponent},
