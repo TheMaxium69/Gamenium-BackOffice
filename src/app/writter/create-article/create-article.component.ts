@@ -15,6 +15,7 @@ picture_id: number = 0;
 game_id: number = 0;
 
 
+
   constructor(
     protected app:AppComponent,
     private actualityService:ActualityService
@@ -31,7 +32,9 @@ game_id: number = 0;
       content:this.content,
       picture_id:this.picture_id,
       game_id:this.game_id,
-      createdAt:new Date(),
+      created_at:new Date(),
+      last_edit: "oui",
+      nb_edit: 1,
     }
 
     this.actualityService.createPostActu(body, url, option).subscribe(response => {

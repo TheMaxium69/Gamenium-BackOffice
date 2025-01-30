@@ -12,7 +12,7 @@ export class ActualityService {
   constructor(private http: HttpClient) { }
 
   createPostActu(body: any, url:string, option: { headers: HttpHeaders}):Observable<ApicallInterface> {
-    return this.http.post<ApicallInterface>(url + '/postactus/', body, option)
+    return this.http.post<ApicallInterface>(url + '/postactus', body, option)
 
   }
 }
