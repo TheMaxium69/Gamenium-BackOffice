@@ -21,7 +21,7 @@ export class WarnComponent implements OnInit, AfterViewInit{
     private warnService: WarnService,
     private app:AppComponent
   ){}
-  
+
   ngOnInit(): void {
     this.getAllWarn()
   }
