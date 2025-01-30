@@ -35,6 +35,7 @@ import {UserSearchComponent} from "./global/user-search/user-search.component";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatChipsModule} from "@angular/material/chips";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import {MatChipsModule} from "@angular/material/chips";
     MatTableModule,
     MatPaginatorModule,
     MatChipsModule,
+    MatMenuModule,
 
   ],
   providers: [],

@@ -25,7 +25,7 @@ export class UserSearchComponent implements OnInit, OnDestroy, AfterViewInit{
   users: UserInterface[] = [];
   dataSource = new MatTableDataSource<UserInterface>(this.users);
 
-  constructor(private app:AppComponent,
+  constructor(protected app:AppComponent,
               private administrationService:AdministrationService,) {}
 
   ngOnInit() {
@@ -66,5 +66,12 @@ export class UserSearchComponent implements OnInit, OnDestroy, AfterViewInit{
     this.searchProfilSubject.next(this.searchValue);
   }
 
+  addRole(role:string){
+    alert("Ajouter le role " + role);
+  }
+
+  removeRole(role:string){
+    alert("Retirer le role " + role);
+  }
 
 }

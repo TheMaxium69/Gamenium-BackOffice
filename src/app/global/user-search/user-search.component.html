@@ -40,8 +40,25 @@
       <th mat-header-cell *matHeaderCellDef> Rôles </th>
       <td mat-cell *matCellDef="let element">
         <ng-container *ngFor="let role of element.roles">
-          <mat-chip style="margin-right: 5px">{{role}}</mat-chip>
+          <mat-chip style="margin-right: 5px" *ngIf="role !== 'ROLE_USER'"
+                    (removed)="removeRole(role)">{{role.substring(5)}}
+            <button matChipRemove [attr.aria-label]="'remove ' + role">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
         </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="addrole">
+      <th mat-header-cell *matHeaderCellDef> Ajouter </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon fontIcon="add" mat-button [matMenuTriggerFor]="menu" *ngIf="app.roleCanAdd().length !== element.roles.length"></mat-icon>
+        <mat-menu #menu="matMenu">
+          <ng-container *ngFor="let roleCan of app.roleCanAdd()">
+            <button mat-menu-item *ngIf="!element.roles.includes(roleCan)" (click)="addRole(roleCan)">{{ roleCan.substring(5) }}</button>
+          </ng-container>
+        </mat-menu>
       </td>
     </ng-container>
 
@@ -54,4 +71,5 @@
                  aria-label="Select page of periodic elements">
   </mat-paginator>
 </div>
+
 
