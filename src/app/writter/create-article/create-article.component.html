@@ -12,13 +12,19 @@
     <input type="number" id="picture" [(ngModel)]="picture_id" name="picture_id" required>
   
     <!-- Game Search -->
-    <label for="game">Game ID:</label>
-    <input type="number" id="game" [(ngModel)]="game_id" name="game_id" required>
-    <!-- <label for="game">Select a Game:</label>
-    <input type="text" id="game" (input)="searchGames()" [(ngModel)]="gameSearch" name="gameSearch" autocomplete="off">
+    <!-- <label for="game">Game ID:</label>
+    <input type="number" id="game" [(ngModel)]="game_id" name="game_id" required> -->
+    <!-- Game Search -->
+    <label for="game">Select a Game:</label>
+    <input type="text" id="gameSearch" (input)="searchGames()" [(ngModel)]="gameSearch" name="gameSearch" autocomplete="off">
+    
+    <!-- Game Results -->
     <ul class="game-list">
-      <li *ngFor="let game of gameResults" (click)="selectGame(game)">{{ game.name }}</li>
-    </ul> -->
+      <li *ngFor="let game of gameResults" (click)="selectGame(game)">
+        <img [src]="game.image?.icon_url" alt="{{ game.name }}" width="30">
+        {{ game.name }}
+      </li>
+    </ul>
   
     <!-- Submit Button -->
     <button type="submit">Create Article</button>
