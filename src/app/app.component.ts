@@ -150,7 +150,7 @@ export class AppComponent {
 
 
 
-/*****************************************************************************************************************
+  /*****************************************************************************************************************
    *
    * FUNCTION GLOBAL
    *
@@ -200,5 +200,42 @@ export class AppComponent {
     }
 
   }
+
+
+  AllRole: string[] = [
+    'ROLE_OWNER',
+    'ROLE_ADMIN',
+    'ROLE_MODO',
+    'ROLE_BETA',
+    'ROLE_USER',
+  ];
+
+  roleCanAdd(){
+
+    let canRole:string[] = [];
+
+    this.userConnected.userRole.forEach((role:string) => {
+
+      if (role == 'ROLE_OWNER'){
+        canRole.push(
+          'ROLE_ADMIN',
+          'ROLE_MODO',
+          'ROLE_BETA'
+        );
+      } else if (role == 'ROLE_ADMIN') {
+        canRole.push(
+          'ROLE_MODO',
+          'ROLE_BETA'
+        );
+      }
+      // TODO : definir toute les role
+
+    })
+
+
+    return canRole;
+
+  }
+
 
 }
