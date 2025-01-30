@@ -1,25 +1,29 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {AppComponent} from "../../app.component";
 import {UserInterface} from "../../-interface/user.interface";
 import {catchError, debounceTime, of, Subject, switchMap, takeUntil} from "rxjs";
 import {AdministrationService} from "../../-service/administration.service";
+import {MatPaginator} from "@angular/material/paginator";
+import {WarnInterface} from "../../-interface/warn.interface";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-user-search',
   templateUrl: './user-search.component.html',
   styleUrls: ['./user-search.component.css']
 })
-export class UserSearchComponent implements OnInit, OnDestroy {
+export class UserSearchComponent implements OnInit, OnDestroy, AfterViewInit{
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
-  /*search*/
+  @Input()
+  public displayedColumns: string[] = ['id'];
+
   private unsubscribe$ = new Subject<void>();
-  searchValue: string = '';
-
-  /*PROFIL*/
   private searchProfilSubject = new Subject<string>();
-  users: UserInterface[] = [];
-  isProfilLoading:boolean = true;
 
+  searchValue: string = '';
+  users: UserInterface[] = [];
+  dataSource = new MatTableDataSource<UserInterface>(this.users);
 
   constructor(private app:AppComponent,
               private administrationService:AdministrationService,) {}
@@ -33,32 +37,15 @@ export class UserSearchComponent implements OnInit, OnDestroy {
       switchMap((searchValue) => {
         return this.administrationService.searchUsersAdmin(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
           catchError((error) => {
-            this.isProfilLoading = false;
             console.error('Une erreur s\'est produite lors de la recherche de jeux :', error);
-            // Swal.fire({
-            //   title: 'Erreur!',
-            //   text: 'Une erreur s\'est produite lors de la recherche',
-            //   icon: 'error',
-            //   confirmButtonText: 'OK',
-            //   confirmButtonColor: this.app.userConnected?.themeColor || this.app.colorDefault
-            // });
             return of([]);
           })
         );
       }),
       takeUntil(this.unsubscribe$)
     ).subscribe((results: any) => {
-      console.log(results);
-      // if (this.isProfilLoading) {
-      //   if (this.app.userConnected) {
-      //     this.users = results.filter((user) => user.id !== this.app.userConnected.id);
-      //   } else {
-      //     this.users = results;
-      //   }
-      // } else {
-      //   this.users = results;
-      // }
-      this.isProfilLoading = false;
+      this.users = results;
+      this.dataSource = new MatTableDataSource<UserInterface>(this.users);
     });
 
 
@@ -70,8 +57,11 @@ export class UserSearchComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
+
   searchUser(): void {
-    this.isProfilLoading = true
     this.users = [];
     this.searchProfilSubject.next(this.searchValue);
   }

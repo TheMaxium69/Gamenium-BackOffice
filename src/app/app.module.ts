@@ -34,6 +34,7 @@ import { ShowArticlesComponent } from './writter/show-articles/show-articles.com
 import {UserSearchComponent} from "./global/user-search/user-search.component";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatChipsModule} from "@angular/material/chips";
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatTabsModule,
     MatTableModule,
     MatPaginatorModule,
+    MatChipsModule,
 
   ],
   providers: [],
