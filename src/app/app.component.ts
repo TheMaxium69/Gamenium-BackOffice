@@ -37,7 +37,7 @@ export class AppComponent {
    * ******************************************************************************************************************/
 
   //%     API - GAMENIUM      %//
-    AppEnv: string = "PROD"; // DEV or PROD or PRODMAX
+    AppEnv: string = "DEVMAX"; // DEV or PROD or PRODMAX
     urlApiDev: string = "http://127.0.0.1:8000";
     urlApiDevMax: string = "https://127.0.0.1:8000";
     urlApiProd: string = "http://vps216.tyrolium.fr:8000";
@@ -52,6 +52,9 @@ export class AppComponent {
   token: string|any;
   currentDate: Date = new Date();
 
+  // LIMIT
+  fetchLimit:number = 50; // Limit search
+  deadlineSearch:number = 300; // Time input search
 
 
   /******************************************************************************************************************
@@ -184,6 +187,8 @@ export class AppComponent {
 
     if (this.AppEnv == "DEV"){
       return this.urlApiDev;
+    } else if (this.AppEnv == "DEVMAX") {
+      return this.urlApiDevMax;
     } else if (this.AppEnv == "PROD") {
       return this.urlApiProd;
     } else if (this.AppEnv == "PRODMAX") {
