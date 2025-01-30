@@ -4,6 +4,7 @@ import { WarnService } from 'src/app/-service/warn.service';
 import { AppComponent } from 'src/app/app.component';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-warn',
@@ -13,13 +14,14 @@ import {MatPaginator} from '@angular/material/paginator';
 export class WarnComponent implements OnInit, AfterViewInit{
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
-  displayedColumns: string[] = ['id', 'warn_by', 'why', 'object', 'date_at', 'content'];
+  displayedColumns: string[] = ['id', 'warn_by', 'why', 'object', 'date_at', 'content', 'manage'];
   allWarns: WarnInterface[] = [];
   dataSource = new MatTableDataSource<WarnInterface>(this.allWarns);
 
   constructor(
     private warnService: WarnService,
-    private app:AppComponent
+    private app:AppComponent,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -40,6 +42,10 @@ export class WarnComponent implements OnInit, AfterViewInit{
          console.log('erreur recupération warns' + response.message);
        }
      })
+  }
+
+  manage(id:number) {
+    this.router.navigateByUrl("/warnedItem/" + id);
   }
 
 }
