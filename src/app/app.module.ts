@@ -36,6 +36,13 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatMenuModule} from "@angular/material/menu";
+import { WarnOneComponent } from './moderation/warn-one/warn-one.component';
+import { ActuPreviewComponent } from './global/actu-preview/actu-preview.component';
+import { CommentPreviewComponent } from './global/comment-preview/comment-preview.component';
+import { CommentReplyPreviewComponent } from './global/comment-reply-preview/comment-reply-preview.component';
+import { ProfilPreviewComponent } from './global/profil-preview/profil-preview.component';
+import { HmgPreviewComponent } from './global/hmg-preview/hmg-preview.component';
+import { HmpPreviewComponent } from './global/hmp-preview/hmp-preview.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +61,13 @@ import {MatMenuModule} from "@angular/material/menu";
     UserSearchComponent,
     UserSearchComponent,
     WarnComponent,
+    WarnOneComponent,
+    ActuPreviewComponent,
+    CommentPreviewComponent,
+    CommentReplyPreviewComponent,
+    ProfilPreviewComponent,
+    HmgPreviewComponent,
+    HmpPreviewComponent,
   ],
   imports: [
     BrowserModule,

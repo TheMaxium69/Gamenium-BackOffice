@@ -9,6 +9,7 @@ import {ProfilComponent} from "./provider/profil/profil.component";
 import { EditArticleComponent } from './writter/edit-article/edit-article.component';
 import { CreateArticleComponent } from './writter/create-article/create-article.component';
 import { ShowArticlesComponent } from './writter/show-articles/show-articles.component';
+import {WarnOneComponent} from "./moderation/warn-one/warn-one.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -20,6 +21,7 @@ const routes: Routes = [
 
   /*MODO*/
   {path: 'modo/warn', component: WarnComponent},
+  {path: 'modo/warn/:id', component: WarnOneComponent},
 
   /*REDAC*/
   {path: 'writter/edit-article', component: EditArticleComponent},
