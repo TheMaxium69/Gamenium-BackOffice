@@ -1,1 +1,17 @@
-<p>warn works!</p>
+<ng-container *ngFor="let warn of allWarns">
+<div>
+    <p>ID {{warn.id}} </p>
+    <p>USER {{warn.user?.displayname ?? "Anonyme"}} </p>
+    <p>MOTIF {{warn.warnType.name}} </p>
+    <p>DATE DU SIGNALEMENT {{warn.warnAt | date:'dd/MM/yyyy'}} </p>
+    <p *ngIf="warn.actu">ACTUALITÉ SIGNALEE {{warn.actu.title}} </p>
+    <p *ngIf="warn.comment">COMMENTAIRE SIGNALEE {{warn.comment.content}}</p>
+    <p *ngIf="warn.commentReply">REPONSE COMMENTAIRE SIGNALEE {{warn.commentReply.content}}</p>
+    <p *ngIf="warn.hmg">HMG SIGNALEE {{warn.hmg.id}}</p>
+    <p *ngIf="warn.hmp">HMP SIGNALEE {{warn.hmp.id}} </p>
+    <p *ngIf="warn.profil">PROFIL SIGNALEE {{warn.profil.displayname}} </p>
+    <p *ngIf="warn.content">CONTENU {{warn.content}} </p>
+</div>
+<hr>
+
+</ng-container>

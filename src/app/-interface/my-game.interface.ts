@@ -3,7 +3,7 @@ import { UserRateInterface } from "./user-rate.interface";
 import {UserInterface} from "./user.interface";
 import {GameInterface} from "./game.interface";
 import {PlateformInterface} from "./plateform.interface";
-import {HmgTagsInterface} from "./hmg-tags.interface";
+import { HmgTagsInterface } from "./hmg-tags.interface";
 
 export interface MyGameInterface {
 
