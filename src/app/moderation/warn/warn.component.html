@@ -28,7 +28,7 @@
     <!-- warn_by Column -->
     <ng-container matColumnDef="warn_by">
       <th mat-header-cell *matHeaderCellDef> Signalé par </th>
-      <td mat-cell *matCellDef="let element"> {{element.user.displayname || 'Annonyme' }} </td>
+      <td mat-cell *matCellDef="let element"> {{element.user?.displayname || 'Anonyme' }} </td>
     </ng-container>
 
     <!-- why Column -->
@@ -38,21 +38,27 @@
     </ng-container>
 
     <!-- object Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.comment?.content || element.commentReply?.content ? 'Commentaire' : element.actu?.title ? 'Actualité' : element.hmg?.id ? 'Hmg' : element.hmp?.id ? 'Hmp' : element.profil?.displayname ? 'Utilisateur' : ''}} </td>
+    </ng-container>
+
+    <!-- object Column -->
     <ng-container matColumnDef="object">
       <th mat-header-cell *matHeaderCellDef> Objet </th>
-      <td mat-cell *matCellDef="let element"> {{element.comment.content || element.commentReply.content || element.actu.title || "Hmg id: " + element.hmg.id || "Hmp id: " + element.hmp.id || element.profil.displayname }} </td>
+      <td mat-cell *matCellDef="let element"> {{element.comment?.content || element.commentReply?.content || element.actu?.title || element.hmg?.id || element.hmp?.id || element.profil?.displayname }} </td>
     </ng-container>
 
     <!-- date_at Column -->
     <ng-container matColumnDef="date_at">
       <th mat-header-cell *matHeaderCellDef> Date du signalement </th>
-      <td mat-cell *matCellDef="let element"> {{element.warnAt}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.warnAt | date:'dd/MM/yyyy'}} </td>
     </ng-container>
 
     <!-- content Column -->
     <ng-container matColumnDef="content">
       <th mat-header-cell *matHeaderCellDef> Description </th>
-      <td mat-cell *matCellDef="let element"> {{element.content}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.content || 'Pas de description'}} </td>
     </ng-container>
 
     <!-- manage Column -->
@@ -66,7 +72,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
   <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                  showFirstLastButtons
                  aria-label="Select page of periodic elements">

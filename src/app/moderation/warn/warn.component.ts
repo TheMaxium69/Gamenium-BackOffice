@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class WarnComponent implements OnInit, AfterViewInit{
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
-  displayedColumns: string[] = ['id', 'warn_by', 'why', 'object', 'date_at', 'content', 'manage'];
+  displayedColumns: string[] = ['id', 'warn_by', 'why', 'type', 'object','date_at', 'content', 'manage'];
   allWarns: WarnInterface[] = [];
   dataSource = new MatTableDataSource<WarnInterface>(this.allWarns);
 
