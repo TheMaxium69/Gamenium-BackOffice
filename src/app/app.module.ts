@@ -32,6 +32,8 @@ import { EditArticleComponent } from './writter/edit-article/edit-article.compon
 import { CreateArticleComponent } from './writter/create-article/create-article.component';
 import { ShowArticlesComponent } from './writter/show-articles/show-articles.component';
 import {UserSearchComponent} from "./global/user-search/user-search.component";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -42,7 +44,6 @@ import {UserSearchComponent} from "./global/user-search/user-search.component";
     FilterPipe,
     PermsComponent,
     ErrComponent,
-    WarnComponent,
     SettingComponent,
     ProfilComponent,
     EditArticleComponent,
@@ -50,6 +51,7 @@ import {UserSearchComponent} from "./global/user-search/user-search.component";
     ShowArticlesComponent,
     UserSearchComponent,
     UserSearchComponent,
+    WarnComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +72,8 @@ import {UserSearchComponent} from "./global/user-search/user-search.component";
     MatRadioModule,
     MatProgressSpinnerModule,
     MatTabsModule,
+    MatTableModule,
+    MatPaginatorModule,
 
   ],
   providers: [],

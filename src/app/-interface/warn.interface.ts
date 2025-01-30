@@ -6,11 +6,11 @@ import { PostActuInterface } from "./post-actu.interface"
 import { UserInterface } from "./user.interface"
 import { WarnTypeInterface } from "./warn-type.interface"
 
-export interface WarnInterface 
+export interface WarnInterface
 {
     id: number,
-    warnType:WarnTypeInterface, 
-    user:UserInterface | null,
+    warnType:WarnTypeInterface,
+    user: UserInterface | null,
     warnAt: Date,
     content: string | null,
     profil:UserInterface | null,
