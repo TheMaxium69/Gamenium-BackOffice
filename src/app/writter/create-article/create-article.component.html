@@ -1,4 +1,17 @@
 <form (ngSubmit)="submitArticle()" class="article-form">
+  <!-- IMAGE -->
+
+  <div class="drop-area"
+  (dragover)="$event.preventDefault()"
+  (drop)="onFileDropped($event)"
+  (click)="triggerFileSelect()">
+      <p>Glisse et dépose ton image ici ou CLICK</p>
+      <input #fileInput type="file" (change)="onFileSelected($event)" hidden>
+    </div>
+
+    <!-- Preview Image -->
+    <img *ngIf="imagePreview" [src]="imagePreview" alt="Image Preview" class="image-preview">
+
     <!-- Title -->
     <label for="title">Title:</label>
     <input type="text" id="title" [(ngModel)]="title" name="title" required>

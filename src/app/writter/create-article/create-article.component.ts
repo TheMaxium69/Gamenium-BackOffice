@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ProviderInterface } from 'src/app/-interface/provider.interface';
 import { ActualityService } from 'src/app/-service/actuality.service';
 import { GameService } from 'src/app/-service/game.service';
 import { ProviderService } from 'src/app/-service/provider.service';
+import { UploadService } from 'src/app/-service/upload.service';
 import { AppComponent } from 'src/app/app.component';
 
 @Component({
@@ -11,6 +12,7 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./create-article.component.css']
 })
 export class CreateArticleComponent {
+  @ViewChild('fileInput') fileInput!: ElementRef; 
 
 title: string = "";
 content: string = "";
@@ -24,18 +26,62 @@ gameResults: any[] = [];
 providerSearch: string = "";
 providerResults: ProviderInterface[] = [];
 
+imagePreview: string | null = null;
+
 
 
   constructor(
     protected app:AppComponent,
     private actualityService:ActualityService,
     private gameService:GameService,
-    private providerService: ProviderService
+    private providerService: ProviderService,
+    private uploadService:UploadService
   ) {
 
   }
-    //Recherche Provider
 
+  // Selection fichier via click
+  triggerFileSelect() {
+    this.fileInput.nativeElement.click(); // ouvre le gestionnaire de fichier
+  }
+
+  // Gere la selection du fichier
+  onFileSelected(event: any) {
+    console.log("File selected event:", event); // debug
+    const file = event.target.files[0];
+    if (file) {
+      this.uploadImage(file);
+    }
+  }
+
+  // gerer drag and drop
+  onFileDropped(event: DragEvent) {
+    event.preventDefault();
+    if (event.dataTransfer && event.dataTransfer.files.length > 0) {
+      console.log("File dropped:", event.dataTransfer.files[0]); // debug
+      const file = event.dataTransfer.files[0];
+      this.uploadImage(file);
+    }
+  }
+
+  // Upload Image
+  uploadImage(file: File) {
+    console.log("Uploading file:", file.name); // debug
+  
+    const url = this.app.setURL();
+    const option = this.app.createCorsToken();
+  
+    this.uploadService.uploadPostActuPhoto(file, url, option).subscribe(response => {
+      console.log("Image uploaded:", response);
+      this.picture_id = response.result.id; // Sauvegarde l'id de la photo upload
+      this.imagePreview = response.result.url; // Montre la preview
+    }, error => {
+      console.error("Upload error:", error);
+    });
+  }
+  
+
+  //Recherche Provider
   searchProviders() {
     if (this.providerSearch.length > 2) {
       const url = this.app.setURL();
@@ -59,13 +105,16 @@ providerResults: ProviderInterface[] = [];
   }
 
   submitArticle(){
-
+    if (!this.picture_id) {
+      console.error("No picture uploaded");
+      return;
+    }
     const url = this.app.setURL();
     const option = this.app.createCorsToken();
     let body:any = {
       title:this.title,
       content:this.content,
-      picture_id:this.picture_id,
+      picture_id: this.picture_id,
       game_id:this.game_id,
       created_at:new Date(),
       last_edit: "oui",
