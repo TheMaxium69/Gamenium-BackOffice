@@ -4,7 +4,7 @@
     <mat-card-content>
       <div class="flex justify-center center-auto column">
         <div class="img mb-12" style= "background-image: url({{profilSelected?.picture}});"></div>
-        <p class="text-center">{{profilSelected?.displayname}}</p>
+        <p class="text-center">{{profilSelected?.displaynameUseritium || profilSelected?.username}}</p>
       </div>
     </mat-card-content>
   </mat-card>
@@ -18,10 +18,6 @@
       </div>
       <div class="flex">
         <p class="w-128">Displayname :</p>
-        <p>{{profilSelected?.displayname}}</p>
-      </div>
-      <div class="flex">
-        <p class="w-128">Displayname Useritium :</p>
         <p>{{profilSelected?.displaynameUseritium}}</p>
       </div>
       <div class="flex">
