@@ -27,6 +27,7 @@ providerSearch: string = "";
 providerResults: ProviderInterface[] = [];
 
 imagePreview: string | null = null;
+imageClass: string = '';
 
 
 
@@ -47,12 +48,42 @@ imagePreview: string | null = null;
 
   // Gere la selection du fichier
   onFileSelected(event: any) {
-    console.log("File selected event:", event); // debug
+    console.log("File selected event:", event); // Debugging
     const file = event.target.files[0];
     if (file) {
-      this.uploadImage(file);
+      const reader = new FileReader();
+  
+      reader.onload = () => {
+        this.imagePreview = reader.result as string;
+  
+        // Create an image object to check its dimensions
+        const img = new Image();
+        img.src = this.imagePreview;
+        img.onload = () => {
+          const aspectRatio = img.width / img.height;
+          console.log("Aspect Ratio:", aspectRatio); // Debugging
+  
+          // Reset class
+          this.imageClass = '';
+  
+          // Apply appropriate class based on aspect ratio
+          if (aspectRatio > 1.3) {
+            this.imageClass = 'horizontal'; // Wide images take full width
+          } else if (aspectRatio >= 0.8 && aspectRatio <= 1.3) {
+            this.imageClass = 'square'; // Square images get moderate max width
+          } else {
+            this.imageClass = 'icon'; // Small icons stay small
+          }
+        };
+  
+        // Continue with image upload
+        this.uploadImage(file);
+      };
+  
+      reader.readAsDataURL(file);
     }
   }
+  
 
   // gerer drag and drop
   onFileDropped(event: DragEvent) {
@@ -107,6 +138,7 @@ imagePreview: string | null = null;
   selectProvider(provider: any) {
     this.provider_id = provider.id;
     this.providerSearch = provider.displayName; 
+    this.providerResults = []; //cache la liste après
   }
 
   submitArticle(){
@@ -155,5 +187,6 @@ imagePreview: string | null = null;
   selectGame(game: any) {
     this.game_id = game.id;
     this.gameSearch = game.name; // montre le nom du jeux
+    this.gameResults = []; // cache la liste apres
   }
 }

@@ -1,51 +1,68 @@
-<form (ngSubmit)="submitArticle()" class="article-form">
-  <!-- IMAGE -->
+<!-- Article Creation Page -->
+<h1 class="page-title">Crée un Article</h1>
 
-  <div class="drop-area"
+<form (ngSubmit)="submitArticle()" class="article-form mat-elevation-z3">
+  
+<!-- IMAGE UPLOAD -->
+<div class="drop-area mat-elevation-z2"
   (dragover)="$event.preventDefault()"
   (drop)="onFileDropped($event)"
   (click)="triggerFileSelect()">
-      <p>Glisse et dépose ton image ici ou CLICK</p>
-      <input #fileInput type="file" (change)="onFileSelected($event)" hidden>
-    </div>
+    <mat-icon class="upload-icon">cloud_upload</mat-icon>
+    <p>Glisse et dépose ton image ici ou <span class="click-text">Clique ici</span></p>
+    <input #fileInput type="file" (change)="onFileSelected($event)" hidden>
+</div>
 
-    <!-- Preview Image -->
-    <img *ngIf="imagePreview" [src]="imagePreview" alt="Image Preview" class="image-preview">
+<!-- Preview Image -->
+<img *ngIf="imagePreview" [src]="imagePreview" [class]="imageClass" alt="Image Preview" class="image-preview">
 
-    <!-- Title -->
-    <label for="title">Title:</label>
-    <input type="text" id="title" [(ngModel)]="title" name="title" required>
-  
-    <!-- Content -->
-    <label for="content">Content:</label>
-    <textarea id="content" [(ngModel)]="content" name="content" required></textarea>
 
-    <!-- Game Search -->
-    <label for="game">Select a Game:</label>
-    <input type="text" id="gameSearch" (input)="searchGames()" [(ngModel)]="gameSearch" name="gameSearch" autocomplete="off">
-    
-    <!-- Game Results -->
-    <ul class="game-list">
-      <li *ngFor="let game of gameResults" (click)="selectGame(game)">
-        <img [src]="game.image?.icon_url" alt="{{ game.name }}" width="30">
-        {{ game.name }}
-      </li>
-    </ul>
+  <!-- Title -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Title</mat-label>
+    <input matInput type="text" id="title" [(ngModel)]="title" name="title" required>
+  </mat-form-field>
 
-  <!-- 🔹 Provider Search Input -->
-  <label for="provider">Select a Provider (Optional):</label>
-  <input type="text" id="providerSearch" (input)="searchProviders()" [(ngModel)]="providerSearch" name="providerSearch" autocomplete="off">
+  <!-- Content -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Content</mat-label>
+    <textarea matInput id="content" [(ngModel)]="content" name="content" rows="4" required></textarea>
+  </mat-form-field>
 
-  <!-- 🔹 Provider Results List -->
-  <ul class="provider-list" *ngIf="providerResults.length > 0">
-    <li *ngFor="let provider of providerResults" (click)="selectProvider(provider)">
-      <img *ngIf="provider.picture?.url" [src]="provider.picture?.url" alt="{{ provider.displayName }}" width="30">
-      {{ provider.displayName || provider.tagName || 'Unknown Provider' }}
-    </li>
-  </ul>
+  <!-- Picture ID -->
+  <mat-form-field appearance="outline" class="full-width hidden">
+    <mat-label>Picture ID</mat-label>
+    <input matInput type="number" id="picture" [(ngModel)]="picture_id" name="picture_id" required>
+  </mat-form-field>
 
-    
-  
-    <!-- Submit Button -->
-    <button type="submit">Create Article</button>
-  </form>
+  <!-- Game Search -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Select a Game</mat-label>
+    <input matInput id="gameSearch" (input)="searchGames()" [(ngModel)]="gameSearch" name="gameSearch" autocomplete="off">
+  </mat-form-field>
+
+  <!-- Game Results -->
+  <mat-list *ngIf="gameResults.length > 0" class="results-list">
+    <mat-list-item *ngFor="let game of gameResults" (click)="selectGame(game)" lines="1">
+        <img matListItemAvatar [src]="game.image?.icon_url" alt="{{ game.name }}">
+      <span matListItemTitle>{{ game.name }}</span>
+    </mat-list-item>
+  </mat-list>
+
+  <!-- Provider Search -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Select a Provider (Optional)</mat-label>
+    <input matInput id="providerSearch" (input)="searchProviders()" [(ngModel)]="providerSearch" name="providerSearch" autocomplete="off">
+  </mat-form-field>
+
+  <!-- Provider Results -->
+  <mat-list *ngIf="providerResults.length > 0" class="results-list">
+    <mat-list-item *ngFor="let provider of providerResults" (click)="selectProvider(provider)" lines="1">
+        <img matListItemAvatar *ngIf="provider.picture?.url" [src]="provider.picture?.url" alt="{{ provider.displayName }}">
+      <span matListItemTitle>{{ provider.displayName || provider.tagName || 'Unknown Provider' }}</span>
+    </mat-list-item>
+  </mat-list>
+
+  <!-- Submit Button -->
+  <button mat-raised-button color="primary" type="submit" class="submit-button">Create Article</button>
+</form>
