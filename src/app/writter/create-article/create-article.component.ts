@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProviderInterface } from 'src/app/-interface/provider.interface';
 import { ActualityService } from 'src/app/-service/actuality.service';
 import { GameService } from 'src/app/-service/game.service';
 import { ProviderService } from 'src/app/-service/provider.service';
@@ -21,7 +22,7 @@ gameSearch: string = "";
 gameResults: any[] = [];
 
 providerSearch: string = "";
-providerResults: any[] = [];
+providerResults: ProviderInterface[] = [];
 
 
 
@@ -35,25 +36,21 @@ providerResults: any[] = [];
   }
     //Recherche Provider
 
-    searchProviders() {
-      if (this.providerSearch.length > 2) { 
-        const url = this.app.setURL();
-        const option = this.app.createCorsToken();
-    
-        this.providerService.searchProviders(this.providerSearch, 10, url, option)
-          .subscribe(response => {
-            console.log("Provider search response:", response); 
-            if (response.message === "good" && response.result) {
-              this.providerResults = response.result; 
-            } else {
-              this.providerResults = []; 
-            }
-          }, error => {
-            console.error("Error fetching providers:", error);
-            this.providerResults = []; 
-          });
-      }
+  searchProviders() {
+    if (this.providerSearch.length > 2) {
+      const url = this.app.setURL();
+      const option = this.app.createCorsToken();
+  
+      this.providerService.searchProviders(this.providerSearch, 10, url, option)
+        .subscribe(response => {
+          this.providerResults = response as ProviderInterface[];
+        }, error => {
+          console.error("Error fetching providers:", error);
+          this.providerResults = [];
+        });
     }
+  }
+    
     
 
   selectProvider(provider: any) {

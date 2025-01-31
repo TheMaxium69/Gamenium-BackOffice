@@ -23,17 +23,19 @@
       </li>
     </ul>
 
-    <!-- Provider Search  -->
-    <label for="provider">Select a Provider (Optional):</label>
-    <input type="text" id="providerSearch" (input)="searchProviders()" [(ngModel)]="providerSearch" name="providerSearch" autocomplete="off">
+  <!-- 🔹 Provider Search Input -->
+  <label for="provider">Select a Provider (Optional):</label>
+  <input type="text" id="providerSearch" (input)="searchProviders()" [(ngModel)]="providerSearch" name="providerSearch" autocomplete="off">
+
+  <!-- 🔹 Provider Results List -->
+  <ul class="provider-list" *ngIf="providerResults.length > 0">
+    <li *ngFor="let provider of providerResults" (click)="selectProvider(provider)">
+      <img *ngIf="provider.picture?.url" [src]="provider.picture?.url" alt="{{ provider.displayName }}" width="30">
+      {{ provider.displayName || provider.tagName || 'Unknown Provider' }}
+    </li>
+  </ul>
+
     
-    <!-- Provider Results -->
-    <ul class="provider-list">
-      <li *ngFor="let provider of providerResults" (click)="selectProvider(provider)">
-        <img *ngIf="provider.picture?.url" [src]="provider.picture.url" alt="{{ provider.displayName }}" width="30">
-        {{ provider.displayName }}
-      </li>
-    </ul>
   
     <!-- Submit Button -->
     <button type="submit">Create Article</button>
