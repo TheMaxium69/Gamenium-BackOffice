@@ -1,1 +1,5 @@
-<p>edit-article works!</p>
+<h1>Modifier un article</h1>
+
+<ng-container *ngIf="app.userConnected.userRole.includes('ROLE_ADMIN') || app.userConnected.userRole.includes('ROLE_OWNER') || app.userConnected.userRole.includes('ROLE_WRITE_RESPONSABLE') || app.userConnected.userRole.includes('ROLE_WRITE_SUPER') || app.userConnected.userRole.includes('ROLE_WRITE')">
+  <app-user-search [displayedColumns]="['id', 'displayname', 'username', 'email', 'roles', 'addrole']"></app-user-search>
+</ng-container>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-show-articles',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./show-articles.component.css']
 })
 export class ShowArticlesComponent {
+
+  constructor(protected app: AppComponent) { }
 
 }

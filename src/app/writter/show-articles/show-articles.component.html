@@ -1,1 +1,9 @@
-<p>show-articles works!</p>
+<h1> Liste des Actualités </h1>
+
+<ng-container *ngIf="app.userConnected.userRole.includes('ROLE_ADMIN') || app.userConnected.userRole.includes('ROLE_OWNER')">
+  <app-post-search [displayedColumns]="['id', 'provider_id', 'game_profile_id', 'game_id', 'user_id', 'picture_id', 'created_at', 'content', 'last_edit', 'nb_edit', 'title']"></app-post-search>
+</ng-container>
+
+<ng-container *ngIf="!app.userConnected.userRole.includes('ROLE_ADMIN') && !app.userConnected.userRole.includes('ROLE_OWNER')">
+  <app-post-search [displayedColumns]="['id', 'provider_id', 'game_profile_id', 'game_id', 'user_id', 'picture_id', 'created_at', 'content', 'title']"></app-post-search>
+</ng-container>

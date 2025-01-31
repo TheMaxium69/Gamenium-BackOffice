@@ -19,4 +19,9 @@ export class ActualityService {
   getPostActu(url: string, id: number, option: { headers: HttpHeaders}): Observable<ApicallInterface> {
     return this.http.get<ApicallInterface>(url + "/postactu/" + id, option);
   }
+
+  searchPostActu(searchValue: string, limit:number, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
+    return this.http.post<ApicallInterface>(url + '/postactus/search',  { searchValue, limit}, options);
+  }
 }
+  
