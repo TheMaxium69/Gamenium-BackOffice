@@ -69,16 +69,21 @@ imagePreview: string | null = null;
     console.log("Uploading file:", file.name); // debug
   
     const url = this.app.setURL();
-    const option = this.app.createCorsToken();
+    const option = this.app.createCorsToken(true); 
+  
+    const formData = new FormData();
+    formData.append('photo', file);
   
     this.uploadService.uploadPostActuPhoto(file, url, option).subscribe(response => {
       console.log("Image uploaded:", response);
-      this.picture_id = response.result.id; // Sauvegarde l'id de la photo upload
-      this.imagePreview = response.result.url; // Montre la preview
+      this.picture_id = response.result.id;
+      this.imagePreview = response.result.url;
     }, error => {
       console.error("Upload error:", error);
     });
   }
+  
+  
   
 
   //Recherche Provider
