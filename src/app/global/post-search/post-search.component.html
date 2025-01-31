@@ -20,7 +20,13 @@
       <!-- provider_id Column -->
       <ng-container matColumnDef="provider_id">
         <th mat-header-cell *matHeaderCellDef> Provider </th>
-        <td mat-cell *matCellDef="let element"> {{element.Provider?.displayName }} </td>
+        <td mat-cell *matCellDef="let element">
+            <mat-chip>
+                <img matChipAvatar [src]="element.Provider?.picture.url">
+                {{element.Provider?.displayName }} 
+            </mat-chip>
+
+        </td>
       </ng-container>
 
       <!-- game_id Column -->
@@ -38,7 +44,9 @@
       <!-- picture_id Column -->
       <ng-container matColumnDef="picture_id">
         <th mat-header-cell *matHeaderCellDef> picture_id </th>
-        <td mat-cell *matCellDef="let element"> {{element.picture.url}} </td>
+        <td mat-cell *matCellDef="let element">
+             <img src="{{element.picture.url}}" class="preview-image">
+        </td>
       </ng-container>
 
       <!-- created_at Column -->

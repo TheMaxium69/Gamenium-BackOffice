@@ -1,0 +1,6 @@
+.preview-image {
+    width: 50px;
+    border-radius: 4px;
+    margin: 0, auto;
+    object-fit: cover;
+}
