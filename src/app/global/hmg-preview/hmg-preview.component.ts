@@ -6,7 +6,7 @@ import { AppComponent } from 'src/app/app.component';
 @Component({
   selector: 'app-hmg-preview',
   templateUrl: './hmg-preview.component.html',
-  styleUrls: ['./hmg-preview.component.css']
+  styleUrls: ['./hmg-preview.component.css'],
 })
 export class HmgPreviewComponent implements OnInit, OnChanges{
 
