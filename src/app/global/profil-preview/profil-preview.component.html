@@ -1,3 +1,15 @@
 <section *ngIf="id">
-  <p>Titre : exemple </p>
+  <p>User name : {{profilSelected?.username}} </p>
+  <p>Display name : {{profilSelected?.displayname}} </p>
+  <p>Display name Useritium : {{profilSelected?.displaynameUseritium}} </p>
+  <p>Inscrit depuis le : {{profilSelected?.joinAt}} </p>
+  <div>
+    <p>Image de profil : {{profilSelected?.picture ? '' : 'Aucune image de profil'}} </p>
+    <div style=
+    "background-image: url({{profilSelected?.picture}});
+    width: 500px;
+    height: 350px;
+    background-size: contain;
+    background-repeat: no-repeat;"></div>
+  </div>
 </section>
