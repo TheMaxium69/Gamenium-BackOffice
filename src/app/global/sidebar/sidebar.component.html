@@ -116,6 +116,9 @@
         <div matListItemTitle>Testeur</div>
       </mat-list-item>
        <ng-container *ngIf="whichUnrolled === 'test' && isUnrolled">
+         <mat-list-item routerLink="/test/view">
+           <div matListItemTitle>Chercher un test</div>
+         </mat-list-item>
          <mat-list-item routerLink="/test/create">
            <div matListItemTitle>Créer un test</div>
          </mat-list-item>

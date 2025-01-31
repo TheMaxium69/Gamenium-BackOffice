@@ -14,7 +14,6 @@ import {ApicallInterface} from "../../-interface/apicall.interface";
   styleUrls: ['./create-test.component.css']
 })
 export class CreateTestComponent {
-  @ViewChild('fileInput') fileInput!: ElementRef;
 
   note: number = 0;
   content: string = "";

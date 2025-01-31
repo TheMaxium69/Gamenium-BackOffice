@@ -48,6 +48,7 @@ import { PostSearchComponent } from './global/post-search/post-search.component'
 import { LogComponent } from './administration/log/log.component';
 import { UserOneComponent } from './other/user-one/user-one.component';
 import { CreateTestComponent } from './test/create-test/create-test.component';
+import { ViewTestComponent } from './test/view-test/view-test.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { CreateTestComponent } from './test/create-test/create-test.component';
     LogComponent,
     UserOneComponent,
     CreateTestComponent,
+    ViewTestComponent,
   ],
   imports: [
     BrowserModule,
