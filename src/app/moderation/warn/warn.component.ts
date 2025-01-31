@@ -19,9 +19,9 @@ export class WarnComponent implements OnInit, AfterViewInit{
   dataSource = new MatTableDataSource<WarnInterface>(this.allWarns);
 
   constructor(
-    private warnService: WarnService,
-    private app:AppComponent,
-    private router: Router
+      private warnService: WarnService,
+      protected app:AppComponent,
+      private router: Router
   ){}
 
   ngOnInit(): void {
