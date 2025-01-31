@@ -6,12 +6,56 @@
     margin-bottom: 0px;
 }
 
-.mb-12{
-    margin-bottom: 12px;
+.mb-40{
+    margin-bottom: 40px;
+}
+
+.m-40{
+    margin: 15px;
 }
 
 .d-flex {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+}
+
+.w-128{
+    width:128px;
+}
+
+.banner-image{
+    min-width: 300px;
+    height: 160px;
+    margin: auto 0;
+    border-radius: 10px;
+
+    .banner{
+      position: absolute;
+      width: 300px;
+      height: 160px;
+      z-index: 10;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .blur{
+      position: absolute;
+      width: 300px;
+      height: 160px;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      z-index: 1;
+      background-color: #00000038;
+    }
+
+    .back{
+      width: 300px;
+      height: 100%;
+      border-radius: 15px;
+    }
+}
+
+.justify-center{
+    justify-content: center;
 }
