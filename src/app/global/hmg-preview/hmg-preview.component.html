@@ -1,4 +1,4 @@
-<section *ngIf="id">
+<section *ngIf="id && MyGame">
 
   <mat-card>
     <mat-card-content>
@@ -10,7 +10,7 @@
       <h2 class="d-flex justify-center m-40">{{MyGame?.myGame?.game?.name}}</h2>
       </mat-card-content>
   </mat-card>
-  <br><br> 
+  <br><br>
   <mat-card>
     <mat-card-content>
       <h1>Informations Générales:</h1>
@@ -19,25 +19,33 @@
           <div class="d-flex">
             <p class="w-128">Plateforme:</p>
             <mat-chip>
-              <img matChipAvatar [src]="MyGame?.myGame?.plateform?.image?.icon_url" alt="Photo of a Shiba Inu"/>
+              <img matChipAvatar [src]="MyGame?.myGame?.plateform?.image?.icon_url" alt="platform icon"/>
               {{MyGame?.myGame?.plateform?.name}}
             </mat-chip>
           </div>
           <div class="d-flex">
             <p class="w-128">Ajoutée le:</p>
-            <p>{{MyGame?.myGame?.added_at | date:'dd/MM/yyyy'}}</p>
+            <p>{{ MyGame?.myGame?.added_at | date:'dd/MM/yyyy, HH:mm' }}</p>
           </div>
           <div class="d-flex">
             <p class="w-128">Description:</p>
-            <p>{{MyGame?.rate?.content}}</p>
+            <p>{{MyGame?.rate?.content ?? 'Non renseigné' }}</p>
           </div>
           <div class="d-flex">
             <p class="w-128">Tag:</p>
-            <div *ngFor="let tag of MyGame?.myGame?.hmgTags" class="d-inline">
-              <mat-chip [style.background-color]="tag.color">
-                {{tag.name}}
-              </mat-chip>
-            </div>
+            <ng-container *ngIf="MyGame.myGame?.hmgTags">
+              <ng-container *ngIf="MyGame.myGame.hmgTags.length === 0">
+                <p>Aucun tag</p>
+              </ng-container>
+
+              <ng-container *ngIf="MyGame.myGame.hmgTags.length > 0">
+                <div *ngFor="let tag of MyGame?.myGame?.hmgTags" class="d-inline">
+                  <mat-chip [style.background-color]="tag.color">
+                    {{tag.name}}
+                  </mat-chip>
+                </div>
+              </ng-container>
+            </ng-container>
           </div>
         </mat-card-content>
       </mat-card>
@@ -79,51 +87,54 @@
         <br>
       </div>
     </mat-card-content>
-  </mat-card> 
-  <br>
-  <mat-card>
-    <mat-card-content>
-      <h1>Gestion des speedrun</h1>
-      <div *ngFor="let oneSpeed of MyGame?.speedrun; let i = index">
-        <mat-card>
-          <mat-card-content>
-            <h2>Speedrun #{{i + 1}}</h2>
-            <div class="d-flex">
-              <p class="w-128">Categorie:</p>
-              <p>{{oneSpeed.category}}</p>
-            </div>
-            <div class="d-flex">
-              <p class="w-128">Chrono:</p>
-              <p>{{oneSpeed.chrono }}</p>
-            </div>
-            <div class="d-flex">
-              <p class="w-128">Link:</p>
-              <p>{{oneSpeed.link ?? "Non renseigné"}}</p>
-            </div>
-          </mat-card-content>
-        </mat-card>
-        <br>
-      </div>
-    </mat-card-content>
   </mat-card>
   <br>
 
-  <ng-container *ngIf="MyGame">
-    <ng-container *ngIf="MyGame?.screenshot">
-      <mat-card *ngIf="MyGame.screenshot.length > 0">
-        <mat-card-content>
-          <h1>Gestions des screenshots</h1>
-          <div *ngFor="let oneScreen of MyGame?.screenshot; let i = index">
-            <div>
-              <p>Screenshot #{{i + 1}}</p>
-              <img src="{{oneScreen.picture.url}}">
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </ng-container>
+  <ng-container *ngIf="MyGame?.speedrun">
+    <mat-card *ngIf="MyGame.speedrun.length > 0">
+      <mat-card-content>
+        <h1>Gestion des speedrun</h1>
+        <div *ngFor="let oneSpeed of MyGame?.speedrun; let i = index">
+          <mat-card>
+            <mat-card-content>
+              <h2>Speedrun #{{i + 1}}</h2>
+              <div class="d-flex">
+                <p class="w-128">Categorie:</p>
+                <p>{{oneSpeed.category}}</p>
+              </div>
+              <div class="d-flex">
+                <p class="w-128">Chrono:</p>
+                <p>{{oneSpeed.chrono }}</p>
+              </div>
+              <div class="d-flex">
+                <p class="w-128">Link:</p>
+                <p>{{oneSpeed.link ?? "Non renseigné"}}</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <br>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </ng-container>
 
-  
+
+  <br>
+
+  <ng-container *ngIf="MyGame?.screenshot">
+    <mat-card *ngIf="MyGame.screenshot.length > 0">
+      <mat-card-content>
+        <h1>Gestions des screenshots</h1>
+        <div *ngFor="let oneScreen of MyGame?.screenshot; let i = index">
+          <div>
+            <p>Screenshot #{{i + 1}}</p>
+            <img src="{{oneScreen.picture.url}}">
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+
+
 
 </section>
