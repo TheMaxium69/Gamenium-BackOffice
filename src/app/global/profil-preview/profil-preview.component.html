@@ -1,15 +1,20 @@
 <section *ngIf="id">
-  <p>User name : {{profilSelected?.username}} </p>
-  <p>Display name : {{profilSelected?.displayname}} </p>
-  <p>Display name Useritium : {{profilSelected?.displaynameUseritium}} </p>
-  <p>Inscrit depuis le : {{profilSelected?.joinAt}} </p>
-  <div>
-    <p>Image de profil : {{profilSelected?.picture ? '' : 'Aucune image de profil'}} </p>
-    <div style=
-    "background-image: url({{profilSelected?.picture}});
-    width: 500px;
-    height: 350px;
-    background-size: contain;
-    background-repeat: no-repeat;"></div>
-  </div>
+  <mat-card>
+    <mat-card-content>
+      <p>User name : {{profilSelected?.username}} </p>
+      <p>Display name : {{profilSelected?.displayname}} </p>
+      <p>Display name Useritium : {{profilSelected?.displaynameUseritium}} </p>
+      <p>Inscrit depuis le : {{profilSelected?.joinAt | date:'dd/MM/yyyy'}} </p>
+      <p>Couleur du thème : {{profilSelected?.themeColor}} </p>
+      <div>
+        <p>Image de profil : {{profilSelected?.picture ? '' : 'Aucune image de profil'}} </p>
+        <div style=
+        "background-image: url({{profilSelected?.picture}});
+        width: 500px;
+        height: 350px;
+        background-size: contain;
+        background-repeat: no-repeat;"></div>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </section>
