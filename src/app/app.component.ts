@@ -359,6 +359,6 @@ export class AppComponent {
 
 
   redirectUrl(url: string) {
-    window.location.href = url;
+    window.open(url, '_blank');
   }
 }

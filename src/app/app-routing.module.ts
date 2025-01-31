@@ -12,6 +12,7 @@ import { ShowArticlesComponent } from './writter/show-articles/show-articles.com
 import {WarnOneComponent} from "./moderation/warn-one/warn-one.component";
 import {LogRoleComponent} from "./administration/log-role/log-role.component";
 import {LogComponent} from "./administration/log/log.component";
+import {UserOneComponent} from "./other/user-one/user-one.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path: 'provider/profil', component: ProfilComponent},
 
   /* OTHER*/
+  {path: 'user/:id', component: UserOneComponent},
   {path: 'settings', component: SettingComponent},
   {path: 'err', component: ErrComponent},
   {path: '**', component: ErrComponent},

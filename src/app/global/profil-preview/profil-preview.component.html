@@ -3,7 +3,7 @@
   <mat-card class="mb-38">
     <mat-card-content>
       <div class="flex justify-center center-auto column">
-        <div class="img mb-12" style= "background-image: url({{profilSelected?.picture}});">{{profilSelected?.picture ? "" : "Pas de photo de profil"}}</div>
+        <div class="img mb-12" style= "background-image: url({{app.generatePPUseritium(profilSelected?.picture, profilSelected?.displaynameUseritium || profilSelected?.username,profilSelected?.themeColor || app.colorDefault)}});"></div>
         <h2 class="text-center">{{profilSelected?.displaynameUseritium || profilSelected?.username}}</h2>
       </div>
     </mat-card-content>
@@ -34,7 +34,7 @@
       </div>
       <div class="flex align-items-center g-10 mb-12">
         <p class="m-0">Couleur du thème : {{profilSelected?.themeColor ?? 'Couleur par défaut'}}</p>
-        <div class="color-preview" style="background-color: {{profilSelected?.themeColor || colorDefault}};"></div>
+        <div class="color-preview" style="background-color: {{profilSelected?.themeColor || app.colorDefault}};"></div>
       </div>
     </mat-card-content>
   </mat-card>
