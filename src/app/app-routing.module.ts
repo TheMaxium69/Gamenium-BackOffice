@@ -10,6 +10,7 @@ import { EditArticleComponent } from './writter/edit-article/edit-article.compon
 import { CreateArticleComponent } from './writter/create-article/create-article.component';
 import { ShowArticlesComponent } from './writter/show-articles/show-articles.component';
 import {WarnOneComponent} from "./moderation/warn-one/warn-one.component";
+import {LogRoleComponent} from "./administration/log-role/log-role.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -18,6 +19,7 @@ const routes: Routes = [
 
   /* ADMIN */
   {path: 'admin/perms', component: PermsComponent},
+  {path: 'admin/logrole', component: LogRoleComponent},
 
   /*MODO*/
   {path: 'modo/warn', component: WarnComponent},

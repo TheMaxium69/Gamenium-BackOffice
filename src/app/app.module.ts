@@ -43,6 +43,7 @@ import { CommentReplyPreviewComponent } from './global/comment-reply-preview/com
 import { ProfilPreviewComponent } from './global/profil-preview/profil-preview.component';
 import { HmgPreviewComponent } from './global/hmg-preview/hmg-preview.component';
 import { HmpPreviewComponent } from './global/hmp-preview/hmp-preview.component';
+import { LogRoleComponent } from './administration/log-role/log-role.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { HmpPreviewComponent } from './global/hmp-preview/hmp-preview.component'
     ProfilPreviewComponent,
     HmgPreviewComponent,
     HmpPreviewComponent,
+    LogRoleComponent,
   ],
   imports: [
     BrowserModule,
