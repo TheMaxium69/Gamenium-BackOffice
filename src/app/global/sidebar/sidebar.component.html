@@ -18,17 +18,35 @@
       </mat-list-item>
 
       <!-- ADMIN -->
-      <mat-list-item (click)="toggleUnrolled('administration')">
-        <mat-icon matListItemIcon>shield_person</mat-icon>
-        <div matListItemTitle>Administration</div>
-      </mat-list-item>
-        <ng-container *ngIf="whichUnrolled === 'administration' && isUnrolled">
-          <mat-list-item routerLink="/admin/perms">
-            <div matListItemTitle>Gestion utilisateurs</div>
-          </mat-list-item>
-        </ng-container>
+      <ng-container *ngIf="
+        app.userConnected.userRole.includes('ROLE_OWNER') ||
+        app.userConnected.userRole.includes('ROLE_ADMIN') ||
+        app.userConnected.userRole.includes('ROLE_MODO_RESPONSABLE') ||
+        app.userConnected.userRole.includes('ROLE_WRITE_RESPONSABLE') ||
+        app.userConnected.userRole.includes('ROLE_TEST_RESPONSABLE')
+      ">
+
+        <mat-list-item (click)="toggleUnrolled('administration')">
+          <mat-icon matListItemIcon>shield_person</mat-icon>
+          <div matListItemTitle>Administration</div>
+        </mat-list-item>
+          <ng-container *ngIf="whichUnrolled === 'administration' && isUnrolled">
+            <mat-list-item routerLink="/admin/perms">
+              <div matListItemTitle>Gestion utilisateurs</div>
+            </mat-list-item>
+          </ng-container>
+
+      </ng-container>
 
       <!-- MODO -->
+      <ng-container *ngIf="
+        app.userConnected.userRole.includes('ROLE_OWNER') ||
+        app.userConnected.userRole.includes('ROLE_ADMIN') ||
+        app.userConnected.userRole.includes('ROLE_MODO_RESPONSABLE') ||
+        app.userConnected.userRole.includes('ROLE_MODO_SUPER') ||
+        app.userConnected.userRole.includes('ROLE_MODO')
+      ">
+
       <mat-list-item (click)="toggleUnrolled('moderation')">
         <mat-icon matListItemIcon>rocket_launch</mat-icon>
         <div matListItemTitle>Modération</div>
@@ -39,9 +57,19 @@
           </mat-list-item>
         </ng-container>
 
+      </ng-container>
+
       <!-- REDAC -->
+      <ng-container *ngIf="
+        app.userConnected.userRole.includes('ROLE_OWNER') ||
+        app.userConnected.userRole.includes('ROLE_ADMIN') ||
+        app.userConnected.userRole.includes('ROLE_WRITE_RESPONSABLE') ||
+        app.userConnected.userRole.includes('ROLE_WRITE_SUPER') ||
+        app.userConnected.userRole.includes('ROLE_WRITE')
+      ">
+
       <mat-list-item (click)="toggleUnrolled('redacteur')">
-        <mat-icon matListItemIcon>edit</mat-icon>
+        <mat-icon matListItemIcon>newspaper</mat-icon>
         <div matListItemTitle>Rédacteur</div>
       </mat-list-item>
        <ng-container *ngIf="whichUnrolled === 'redacteur' && isUnrolled">
@@ -56,7 +84,36 @@
         </mat-list-item>
        </ng-container>
 
+      </ng-container>
+
+      <!-- TEST -->
+      <ng-container *ngIf="
+        app.userConnected.userRole.includes('ROLE_OWNER') ||
+        app.userConnected.userRole.includes('ROLE_ADMIN') ||
+        app.userConnected.userRole.includes('ROLE_TEST_RESPONSABLE') ||
+        app.userConnected.userRole.includes('ROLE_TEST')
+      ">
+
+      <mat-list-item (click)="toggleUnrolled('test')">
+        <mat-icon matListItemIcon>edit</mat-icon>
+        <div matListItemTitle>Testeur</div>
+      </mat-list-item>
+       <ng-container *ngIf="whichUnrolled === 'test' && isUnrolled">
+         <mat-list-item routerLink="/test/add">
+           <div matListItemTitle>Noté un jeux</div>
+         </mat-list-item>
+       </ng-container>
+
+      </ng-container>
+
       <!-- PROVIDER -->
+      <ng-container *ngIf="
+        app.userConnected.userRole.includes('ROLE_OWNER') ||
+        app.userConnected.userRole.includes('ROLE_ADMIN') ||
+        app.userConnected.userRole.includes('ROLE_PROVIDER_ADMIN') ||
+        app.userConnected.userRole.includes('ROLE_PROVIDER')
+      ">
+
       <mat-list-item (click)="toggleUnrolled('provider')">
         <mat-icon matListItemIcon>sports_esports</mat-icon>
         <div matListItemTitle>Éditeur</div>
@@ -66,6 +123,8 @@
               <div matListItemTitle>Profil</div>
             </mat-list-item>
           </ng-container>
+
+      </ng-container>
 
       <!-- OTHER -->
       <mat-divider></mat-divider>
