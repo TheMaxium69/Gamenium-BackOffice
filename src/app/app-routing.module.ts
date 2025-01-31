@@ -11,6 +11,7 @@ import { CreateArticleComponent } from './writter/create-article/create-article.
 import { ShowArticlesComponent } from './writter/show-articles/show-articles.component';
 import {WarnOneComponent} from "./moderation/warn-one/warn-one.component";
 import {LogRoleComponent} from "./administration/log-role/log-role.component";
+import {LogComponent} from "./administration/log/log.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -20,6 +21,7 @@ const routes: Routes = [
   /* ADMIN */
   {path: 'admin/perms', component: PermsComponent},
   {path: 'admin/logrole', component: LogRoleComponent},
+  {path: 'admin/log', component: LogComponent},
 
   /*MODO*/
   {path: 'modo/warn', component: WarnComponent},
