@@ -1,13 +1,41 @@
 <section *ngIf="id">
-  <h2>Type du signalement: Commentaire</h2>
-  <p>L'actualité: {{commentSelected?.post?.title}} </p>
-  <p>Commentaire: {{commentSelected?.content}} </p>
-  <p>Écrit par: {{commentSelected?.user?.displayname}}</p>
-  <p>Le: {{commentSelected?.created_at| date:'dd/MM/yyyy'}} </p>
+
+  
+  <mat-card class="mb-38">
+    <mat-card-content>
+      <div class="flex justify-center center-auto column">
+        <div class="img mb-12" style= "background-image: url({{commentSelected?.post?.picture?.url}});">{{commentSelected?.post?.picture?.url ? "" : "Pas de photo d'actualité"}}</div>
+        <h3 class="text-center">{{commentSelected?.post?.title}}</h3>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <h2 class="mb-12">Informations sur le commentaire : </h2>
+      <div class="flex">
+        <p class="w-128">Commentaire signalé :</p>
+        <p>{{commentSelected?.content}}</p>
+      </div>
+
+      <div class="flex">
+        <p class="w-128">Auteur :</p>
+
+        <mat-chip *ngIf="commentSelected?.user">
+          <img matChipAvatar [src]="app.generatePPUseritium(commentSelected?.user?.pp?.url, commentSelected?.user?.displayname_useritium	 || commentSelected?.user?.username,commentSelected?.user?.color || this.app.colorDefault)" alt="user pp"/>
+          {{commentSelected?.user?.displayname_useritium	 ?? commentSelected?.user?.username }}
+        </mat-chip>
+
+        <mat-chip *ngIf="!commentSelected?.user">
+          Anonyme
+        </mat-chip>
+        
+      </div>
+
+      <div class="flex">
+        <p class="w-128">Le :</p>
+        <p>{{commentSelected?.created_at| date:'dd/MM/yyyy'}} </p>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </section>
-
-
-<!-- 
-<p>Actualité Signalé: {{warnSelected?.warnType?.name}}</p>
-<p>Signalé par: {{warnSelected?.user?.displayname}} </p>
-<p>le {{warnSelected?.warnAt| date:'dd/MM/yyyy'}}</p> -->

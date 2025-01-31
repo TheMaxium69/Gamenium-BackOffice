@@ -17,7 +17,7 @@ export class CommentReplyPreviewComponent {
   commentReplySelected: CommentReplyInterface|null = null;
 
   constructor (
-    private app: AppComponent,
+    protected app: AppComponent,
     private commentReplyService: CommentReplyService
   ) {}
 

@@ -1,8 +1,46 @@
 <section *ngIf="id">
-  <h2>Type du signalement: Commentaire réponse</h2>
-  <p>L'actualité: {{commentReplySelected?.comment?.post?.title}} </p>
-  <p>Réponse du Commentaire: {{commentReplySelected?.content}} </p>
-  <p>Commentaire: {{commentReplySelected?.comment?.content}} </p>
-  <p>Écrit par: {{commentReplySelected?.user?.displayname}}</p>
-  <p>Le: {{commentReplySelected?.created_at| date:'dd/MM/yyyy'}} </p>
+
+  
+  <mat-card class="mb-38">
+    <mat-card-content>
+      <div class="flex justify-center center-auto column">
+        <div class="img mb-12" style= "background-image: url({{commentReplySelected?.comment?.post?.picture?.url}});">{{commentReplySelected?.comment?.post?.picture?.url ? "" : "Pas de photo de profil"}}</div>
+        <h3 class="text-center">{{commentReplySelected?.comment?.post?.title}}</h3>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <h2 class="mb-12">Informations sur la réponse au commentaire : </h2>
+      <div class="flex">
+        <p class="w-128">Commentaire signalé :</p>
+        <p>{{commentReplySelected?.content}}</p>
+      </div>
+
+      <div class="flex">
+        <p class="w-128">Commentaire originale :</p>
+        <p>{{commentReplySelected?.comment?.content}} </p>
+      </div>
+
+      <div class="flex">
+        <p class="w-128">Auteur :</p>
+
+        <mat-chip *ngIf="commentReplySelected?.user">
+          <img matChipAvatar [src]="app.generatePPUseritium(commentReplySelected?.user?.pp?.url, commentReplySelected?.user?.displayname_useritium	 || commentReplySelected?.user?.username,commentReplySelected?.user?.color || this.app.colorDefault)" alt="user pp"/>
+          {{commentReplySelected?.user?.displayname_useritium	 ?? commentReplySelected?.user?.username }}
+        </mat-chip>
+
+        <mat-chip *ngIf="!commentReplySelected?.user">
+          Anonyme
+        </mat-chip>
+        
+      </div>
+
+      <div class="flex">
+        <p class="w-128">Le :</p>
+        <p>{{commentReplySelected?.created_at| date:'dd/MM/yyyy'}} </p>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </section>

@@ -1,0 +1,41 @@
+.img {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 150px;
+    border: none;
+    border-radius: 8%;
+}
+
+.mb-38 {
+    margin-bottom: 38px;
+}
+
+.mb-12 {
+    margin-bottom: 12px;
+}
+
+.w-128 {
+    width: 128px;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.center-auto {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.text-center {
+    text-align: center;
+}
