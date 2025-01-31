@@ -43,8 +43,11 @@
     <mat-card-content>
       <h2>Réseaux sociaux :</h2>
         <div class="flex column">
-        <div *ngFor="let social of profilSelected?.reseau">
-            <p>{{social.url}}</p>
+          <div *ngFor="let social of profilSelected?.reseau">
+            <div class="flex g-10 align-items-center mb-12">
+              <mat-icon fontIcon="public"></mat-icon>
+              <p class="m-0">{{social.url}}</p>
+            </div>
           </div>
         </div>
     </mat-card-content>
