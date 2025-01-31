@@ -294,5 +294,17 @@ export class AppComponent {
 
   }
 
+  canRemoveRole(role:string){
+
+    let canManage = this.roleCanManage();
+
+    if (canManage.includes(role)){
+      return true;
+    } else {
+      return false;
+    }
+
+  }
+
 
 }
