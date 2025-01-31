@@ -40,6 +40,7 @@ export class PostSearchComponent implements OnInit {
       takeUntil(this.unsubscribe$)
     ).subscribe((results: any) => {
       this.postactus = results;
+      console.log(results);
       this.dataSource = new MatTableDataSource<PostActuInterface>(this.postactus);
     });
 
