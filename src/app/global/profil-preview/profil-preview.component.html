@@ -13,12 +13,12 @@
     <mat-card-content>
       <h2 class="mb-12">Informations sur le profil : </h2>
       <div class="flex">
-        <p class="w-128">Username :</p>
-        <p>{{profilSelected?.username}}</p>
+        <p class="w-128">Pseudo :</p>
+        <p>{{profilSelected?.displaynameUseritium || profilSelected?.username}}</p>
       </div>
       <div class="flex">
-        <p class="w-128">Displayname :</p>
-        <p>{{profilSelected?.displaynameUseritium}}</p>
+        <p class="w-128">Useritium :</p>
+        <p>{{profilSelected?.username}}</p>
       </div>
       <div class="flex">
         <p class="w-128">Inscrit depuis le :</p>
@@ -29,12 +29,15 @@
         <p>{{profilSelected?.lastConnection | date:'dd/MM/yyyy'}}</p>
       </div>
       <div class="flex align-items-center g-10 mb-12">
-        <p class="m-0">Couleur du thème : {{profilSelected?.themeColor}}</p>
-        <div class="color-preview" style="background-color: {{profilSelected?.themeColor}};"></div>
+        <p class="m-0">Couleur du thème : {{profilSelected?.themeColor ?? 'Couleur par défaut'}}</p>
+        <div class="color-preview" style="background-color: {{profilSelected?.themeColor || colorDefault}};"></div>
       </div>
-      <div>
+      <div class="flex">
+        <p class="w-128">Réseaux sociaux :</p>
+        <div class="flex column">
         <div *ngFor="let social of profilSelected?.reseau">
-          <p>{{social.url}}</p>
+            <p>{{social.url}}</p>
+          </div>
         </div>
       </div>
     </mat-card-content>

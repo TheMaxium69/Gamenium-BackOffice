@@ -15,6 +15,7 @@ export class ProfilPreviewComponent implements OnChanges {
   public id: number|null = null;
 
   profilSelected: ProfilInterface | undefined;
+  colorDefault = this.app.colorDefault;
 
   constructor(
     private app: AppComponent,
