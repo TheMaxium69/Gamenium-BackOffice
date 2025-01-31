@@ -205,12 +205,27 @@ export class AppComponent {
   AllRole: string[] = [
     'ROLE_OWNER',
     'ROLE_ADMIN',
+
+    'ROLE_MODO_RESPONSABLE',
+    'ROLE_MODO_SUPER',
     'ROLE_MODO',
+
+    'ROLE_WRITE_RESPONSABLE',
+    'ROLE_WRITE_SUPER',
+    'ROLE_WRITE',
+
+    'ROLE_TEST_RESPONSABLE',
+    'ROLE_TEST',
+
+    'ROLE_PROVIDER_ADMIN',
+    'ROLE_PROVIDER',
+
     'ROLE_BETA',
     'ROLE_USER',
+    'ROLE_BAN',
   ];
 
-  roleCanAdd(){
+  roleCanManage(){
 
     let canRole:string[] = [];
 
@@ -219,16 +234,58 @@ export class AppComponent {
       if (role == 'ROLE_OWNER'){
         canRole.push(
           'ROLE_ADMIN',
+
+          'ROLE_MODO_RESPONSABLE',
+          'ROLE_MODO_SUPER',
           'ROLE_MODO',
-          'ROLE_BETA'
+
+          'ROLE_WRITE_RESPONSABLE',
+          'ROLE_WRITE_SUPER',
+          'ROLE_WRITE',
+
+          'ROLE_TEST_RESPONSABLE',
+          'ROLE_TEST',
+
+          'ROLE_PROVIDER_ADMIN',
+          'ROLE_PROVIDER',
+
+          'ROLE_BETA',
+          'ROLE_BAN',
         );
       } else if (role == 'ROLE_ADMIN') {
         canRole.push(
+          'ROLE_MODO_RESPONSABLE',
+          'ROLE_MODO_SUPER',
           'ROLE_MODO',
-          'ROLE_BETA'
+
+          'ROLE_WRITE_RESPONSABLE',
+          'ROLE_WRITE_SUPER',
+          'ROLE_WRITE',
+
+          'ROLE_TEST_RESPONSABLE',
+          'ROLE_TEST',
+
+          'ROLE_PROVIDER_ADMIN',
+          'ROLE_PROVIDER',
+
+          'ROLE_BETA',
+          'ROLE_BAN',
         );
+      } else if (role == 'ROLE_MODO_RESPONSABLE') {
+        canRole.push(
+          'ROLE_MODO_SUPER',
+          'ROLE_MODO',
+        )
+      } else if (role == 'ROLE_WRITE_RESPONSABLE') {
+        canRole.push(
+          'ROLE_WRITE_SUPER',
+          'ROLE_WRITE',
+        )
+      } else if (role == 'ROLE_TEST_RESPONSABLE') {
+        canRole.push(
+          'ROLE_TEST',
+        )
       }
-      // TODO : definir toute les role
 
     })
 
