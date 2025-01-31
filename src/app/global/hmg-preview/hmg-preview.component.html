@@ -1,18 +1,23 @@
 <section *ngIf="id">
   <mat-card>
     <mat-card-content>
-      <h1>{{MyGame?.myGame?.game?.name}}</h1>
-      <p>Plateforme: {{MyGame?.myGame?.plateform?.name}}</p>
-      <small>Ajoutée le: {{MyGame?.myGame?.added_at | date:'dd/MM/yyyy'}}</small>
-      <br><h2>Informations Générales:</h2>
+      <h2>Informations Générales:</h2>
+      <h2 class="mb-0">{{MyGame?.myGame?.game?.name}}</h2>
+      <p class="mb-0">Plateforme: {{MyGame?.myGame?.plateform?.name}}</p>
+      <p class="mb-12">Ajoutée le: {{MyGame?.myGame?.added_at | date:'dd/MM/yyyy'}}</p>
       <p>Description: {{MyGame?.rate?.content}}</p>
       <div class="d-inline">Tag:
         <div *ngFor="let tag of MyGame?.myGame?.hmgTags" class="d-inline">
           <div class="d-inline">{{tag.name}} </div>
         </div>
       </div>
-    
-      <div *ngFor=" let copy of MyGame?.copyGame; let i = index">
+    </mat-card-content>
+  </mat-card>
+  <br><br>  
+  <!-- <div class="d-flex"> -->
+  <div *ngFor=" let copy of MyGame?.copyGame; let i = index">
+    <mat-card>
+      <mat-card-content>
         <h2>Information sur l'exemplaire numero  {{i + 1}}</h2>
         <p>Edition: {{copy.edition ?? "Non renseigné"}}</p>
         <p>Barcode: {{copy.barcode ?? "Non renseigné"}}</p>
@@ -20,23 +25,31 @@
         <!-- <h3> - Information sur le lieu d'achat </h3> -->
         <p>Lieu d'achat: {{copy.purchase.buy_where?.name ?? "Non renseigné"}}</p>
         <p>Descrition de l'achat: {{copy.purchase.content ?? "Non renseigné"}}</p>
-      </div>
-    
-      <div *ngFor="let oneSpeed of MyGame?.speedrun; let i = index">
+        </mat-card-content>
+    </mat-card>
+    <br>
+  </div>
+  <!-- </div> -->
+  <br>
+  <div *ngFor="let oneSpeed of MyGame?.speedrun; let i = index">
+    <mat-card>
+      <mat-card-content>
         <h2>Information sur le speedrun numero {{i + 1}}</h2>
         <p>Categorie : {{oneSpeed.category}}</p>
         <p>Chrono: {{oneSpeed.chrono }}</p>
         <p>Link: {{oneSpeed.link ?? "Non renseigné"}}</p>
-      </div>
-    
-      <div *ngFor="let oneScreen of MyGame?.screenshot; let i = index">
-        <div>
-          <p>Image {{i + 1}}</p>
-          <img src="{{oneScreen.picture.url}}">
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
+      </mat-card-content>
+    </mat-card>
+    <br>
+  </div>
+  <br>
+  <div *ngFor="let oneScreen of MyGame?.screenshot; let i = index">
+    <div>
+      <p>Image {{i + 1}}</p>
+      <img src="{{oneScreen.picture.url}}">
+    </div>
+  </div>
+
   
 
 </section>
