@@ -7,7 +7,7 @@ export interface HmgCopyPurchaseInterface {
   year_buy_at:number,
   month_buy_at:number,
   day_buy_at:number,
-  buy_where:BuyWhereInterface,
-  content:string,
+  buy_where:BuyWhereInterface | null,
+  content:string | null,
   devise:DeviseInterface,
 }
