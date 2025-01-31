@@ -37,7 +37,7 @@ export class AppComponent {
    * ******************************************************************************************************************/
 
   //%     API - GAMENIUM      %//
-    AppEnv: string = "DEV"; // DEV or PROD or PRODMAX
+    AppEnv: string = "DEV"; // DEV or PROD or PRODMAX or DEVMAX
     urlApiDev: string = "http://127.0.0.1:8000";
     urlApiDevMax: string = "https://127.0.0.1:8000";
     urlApiProd: string = "http://vps216.tyrolium.fr:8000";
@@ -202,28 +202,28 @@ export class AppComponent {
   }
 
 
-  AllRole: string[] = [
-    'ROLE_OWNER',
-    'ROLE_ADMIN',
+  AllRole: { [key: string]: string } = {
+    'ROLE_OWNER': "#ff1605",
+    'ROLE_ADMIN': "#ff6257",
 
-    'ROLE_MODO_RESPONSABLE',
-    'ROLE_MODO_SUPER',
-    'ROLE_MODO',
+    'ROLE_MODO_RESPONSABLE': "#3126ff",
+    'ROLE_MODO_SUPER': "#7069ff",
+    'ROLE_MODO': "#b6b3ff",
 
-    'ROLE_WRITE_RESPONSABLE',
-    'ROLE_WRITE_SUPER',
-    'ROLE_WRITE',
+    'ROLE_WRITE_RESPONSABLE': "#18d100",
+    'ROLE_WRITE_SUPER': "#3dff24",
+    'ROLE_WRITE': "#7aff69",
 
-    'ROLE_TEST_RESPONSABLE',
-    'ROLE_TEST',
+    'ROLE_TEST_RESPONSABLE': "#fff200",
+    'ROLE_TEST': "#fff761",
 
-    'ROLE_PROVIDER_ADMIN',
-    'ROLE_PROVIDER',
+    'ROLE_PROVIDER_ADMIN': "#9100eb",
+    'ROLE_PROVIDER': "#c261ff",
 
-    'ROLE_BETA',
-    'ROLE_USER',
-    'ROLE_BAN',
-  ];
+    'ROLE_BETA': "#d7d7d7",
+    'ROLE_USER': "#d7d7d7",
+    'ROLE_BAN': "#8a8a8a"
+  };
 
   roleCanManage(){
 
@@ -290,7 +290,7 @@ export class AppComponent {
     })
 
 
-    return canRole;
+    return Array.from(new Set(canRole));
 
   }
 
