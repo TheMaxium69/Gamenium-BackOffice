@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './warn.component.html',
   styleUrls: ['./warn.component.css'],
 })
-export class WarnComponent implements OnInit, AfterViewInit{
+export class WarnComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   displayedColumns: string[] = ['id', 'warn_by', 'why', 'type', 'object','date_at', 'content', 'manage'];
@@ -28,16 +28,13 @@ export class WarnComponent implements OnInit, AfterViewInit{
     this.getAllWarn()
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-  }
-
   getAllWarn(){
    this.warnService.getAllWarn(this.app.setURL(), this.app.createCorsToken()).subscribe((response: {
      message: string, result:WarnInterface[]}) => {
        if(response.message === "good"){
          this.allWarns = response.result;
          this.dataSource = new MatTableDataSource<WarnInterface>(this.allWarns);
+         this.dataSource.paginator = this.paginator;
        } else {
          console.log('erreur recupération warns' + response.message);
        }

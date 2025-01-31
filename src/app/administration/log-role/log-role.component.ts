@@ -14,7 +14,7 @@ import {LogRoleService} from "../../-service/log-role.service";
   templateUrl: './log-role.component.html',
   styleUrls: ['./log-role.component.css']
 })
-export class LogRoleComponent implements OnInit, OnDestroy, AfterViewInit{
+export class LogRoleComponent implements OnInit, OnDestroy{
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   private unsubscribe$ = new Subject<void>();
@@ -46,6 +46,7 @@ export class LogRoleComponent implements OnInit, OnDestroy, AfterViewInit{
     ).subscribe((results: any) => {
       this.logs = results;
       this.dataSource = new MatTableDataSource<LogRoleInterface>(this.logs);
+      this.dataSource.paginator = this.paginator;
     });
 
 
@@ -55,10 +56,6 @@ export class LogRoleComponent implements OnInit, OnDestroy, AfterViewInit{
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  }
-
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
   }
 
   searchLog(): void {

@@ -13,7 +13,7 @@ import {ApicallInterface} from "../../-interface/apicall.interface";
   templateUrl: './user-search.component.html',
   styleUrls: ['./user-search.component.css']
 })
-export class UserSearchComponent implements OnInit, OnDestroy, AfterViewInit{
+export class UserSearchComponent implements OnInit, OnDestroy{
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   @Input()
@@ -47,6 +47,7 @@ export class UserSearchComponent implements OnInit, OnDestroy, AfterViewInit{
     ).subscribe((results: any) => {
       this.users = results;
       this.dataSource = new MatTableDataSource<UserInterface>(this.users);
+      this.dataSource.paginator = this.paginator;
     });
 
 
@@ -56,10 +57,6 @@ export class UserSearchComponent implements OnInit, OnDestroy, AfterViewInit{
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  }
-
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
   }
 
   searchUser(): void {
