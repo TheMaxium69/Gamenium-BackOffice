@@ -58,7 +58,7 @@
     <!-- content Column -->
     <ng-container matColumnDef="content">
       <th mat-header-cell *matHeaderCellDef> Description </th>
-      <td mat-cell *matCellDef="let element"> {{element.content || 'Pas de description'}} </td>
+      <td mat-cell *matCellDef="let element" > <p class="content-lock">{{element.content || 'Pas de description'}}</p> </td>
     </ng-container>
 
     <!-- manage Column -->
