@@ -139,6 +139,24 @@
 
       </ng-container>
 
+      <!-- STATS -->
+      <ng-container *ngIf="
+        app.userConnected.userRole.includes('ROLE_OWNER') ||
+        app.userConnected.userRole.includes('ROLE_ADMIN')
+      ">
+
+      <mat-list-item (click)="toggleUnrolled('stat')">
+        <mat-icon matListItemIcon>trending_up</mat-icon>
+        <div matListItemTitle>Statistiques</div>
+      </mat-list-item>
+          <ng-container *ngIf="whichUnrolled === 'stat' && isUnrolled">
+<!--            <mat-list-item routerLink="/provider/profil">-->
+<!--              <div matListItemTitle>Profil</div>-->
+<!--            </mat-list-item>-->
+          </ng-container>
+
+      </ng-container>
+
       <!-- OTHER -->
       <mat-divider></mat-divider>
       <div mat-subheader>Personnel</div>
