@@ -24,6 +24,10 @@
         <p class="w-128">Inscrit depuis le :</p>
         <p>{{profilSelected?.joinAt | date:'dd/MM/yyyy'}}</p>
       </div>
+      <div class="flex">
+        <p class="w-128">Dernière connexion le :</p>
+        <p>{{profilSelected?.lastConnection | date:'dd/MM/yyyy'}}</p>
+      </div>
       <div class="flex align-items-center g-10 mb-12">
         <p class="m-0">Couleur du thème : {{profilSelected?.themeColor}}</p>
         <div class="color-preview" style="background-color: {{profilSelected?.themeColor}};"></div>
