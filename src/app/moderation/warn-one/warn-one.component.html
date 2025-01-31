@@ -1,5 +1,6 @@
 <h2>Selected warn : {{warnSelected?.id}}</h2>
-
+<p>Motif du signalement: {{warnSelected?.warnType}}</p>
+<p>Signalé par: {{warnSelected?.user?.displayname}} le {{warnSelected?.warnAt| date:'dd/MM/yyyy'}}</p>
 
 
 <app-actu-preview [id]="warnSelected?.actu?.id"></app-actu-preview>
