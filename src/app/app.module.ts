@@ -47,6 +47,7 @@ import { LogRoleComponent } from './administration/log-role/log-role.component';
 import { PostSearchComponent } from './global/post-search/post-search.component';
 import { LogComponent } from './administration/log/log.component';
 import { UserOneComponent } from './other/user-one/user-one.component';
+import { CreateTestComponent } from './test/create-test/create-test.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { UserOneComponent } from './other/user-one/user-one.component';
     PostSearchComponent,
     LogComponent,
     UserOneComponent,
+    CreateTestComponent,
   ],
   imports: [
     BrowserModule,

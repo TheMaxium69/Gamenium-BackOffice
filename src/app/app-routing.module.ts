@@ -13,6 +13,7 @@ import {WarnOneComponent} from "./moderation/warn-one/warn-one.component";
 import {LogRoleComponent} from "./administration/log-role/log-role.component";
 import {LogComponent} from "./administration/log/log.component";
 import {UserOneComponent} from "./other/user-one/user-one.component";
+import {CreateTestComponent} from "./test/create-test/create-test.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -32,6 +33,9 @@ const routes: Routes = [
   {path: 'writter/edit-article', component: EditArticleComponent},
   {path: 'writter/create-article', component: CreateArticleComponent},
   {path: 'writter/show-articles', component: ShowArticlesComponent},
+
+  /*TEST*/
+  {path: 'test/create', component: CreateTestComponent},
 
   /* PROVIDER*/
   {path: 'provider/profil', component: ProfilComponent},
