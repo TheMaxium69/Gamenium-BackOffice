@@ -68,10 +68,20 @@ export class UserSearchComponent implements OnInit, OnDestroy, AfterViewInit{
   }
 
   addRole(id_user:number, role:string){
-    // alert("Ajouter le role " + role + " a l'utilisateur " + id_user);
 
     this.administrationService.addRoleAdmin(id_user, role, this.app.setURL(), this.app.createCorsToken()).subscribe((response:ApicallInterface) => {
-      console.log(response);
+
+      if (response.message == "Role added successfully"){
+        const user = this.users.find(user => user.id === id_user);
+        if (user) {
+          user.roles.push(role);
+        }
+
+      } else {
+        console.error(response);
+      }
+
+
     })
   }
 
@@ -79,7 +89,15 @@ export class UserSearchComponent implements OnInit, OnDestroy, AfterViewInit{
     // alert("Retirer le role " + role + " a l'utilisateur " + id_user);
 
     this.administrationService.removeRoleAdmin(id_user, role, this.app.setURL(), this.app.createCorsToken()).subscribe((response:ApicallInterface) => {
-      console.log(response);
+      if (response.message == "Role remove successfully"){
+        const user = this.users.find(user => user.id === id_user);
+        if (user) {
+          user.roles = user.roles.filter(r => r !== role);
+        }
+
+      } else {
+        console.error(response);
+      }
     })
   }
 
