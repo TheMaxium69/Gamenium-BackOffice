@@ -1,3 +1,7 @@
 <section *ngIf="id">
-  <p>Titre : {{actuSelected?.title}}</p>
+  <div style="background-image: url({{actuSelected?.picture?.url}}); background-size: cover; background-repeat: no-repeat;  width: 500px; height: 350px;"></div>
+  <h2>Titre : {{actuSelected?.title}}</h2>
+  <h3>Editeur : {{actuSelected?.Provider?.displayName}}</h3>
+  <p>Posté le : {{actuSelected?.created_at}}</p>
+  <p>Contenu de l'article : {{actuSelected?.content}}</p>
 </section>
