@@ -24,6 +24,10 @@ export class WarnOneComponent implements OnInit {
   ngOnInit() {
   //   Recupere l'id de warn dans la route
   this.warnId = this.activatedRoute.snapshot.params['id'];
+  if(this.warnId){
+    this.getWarnSelected(this.warnId);
+  }
+
   
   //   envoyé a l'api une demande pour un get one de warn (a codé)
   //   une fois fait faut simplement l'affiché
