@@ -1,0 +1,16 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApicallInterface } from '../-interface/apicall.interface';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProviderService {
+
+  constructor(private http : HttpClient) { }
+
+  searchProviders(searchValue: string, limit: number, url: string, options: { headers: HttpHeaders }): Observable<ApicallInterface> {
+    return this.http.post<ApicallInterface>(url + '/providers/search', { searchValue, limit }, options);
+  }
+}
