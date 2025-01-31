@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class WarnService {
 
-  constructor(private http: HttpClient)                                                                                                                       {}
+  constructor(private http: HttpClient) {}
 
   getAllWarn(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
     return this.http.get<ApicallInterface>(url + '/warns', options);
