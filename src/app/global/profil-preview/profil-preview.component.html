@@ -3,7 +3,7 @@
   <mat-card class="mb-38">
     <mat-card-content>
       <div class="flex justify-center center-auto column">
-        <div class="img mb-12" style= "background-image: url({{app.generatePPUseritium(profilSelected?.picture, profilSelected?.displaynameUseritium || profilSelected?.username,profilSelected?.themeColor || app.colorDefault)}});"></div>
+        <div id="pp" class="img mb-12" style= "background-image: url({{app.generatePPUseritium(profilSelected?.picture, profilSelected?.displaynameUseritium || profilSelected?.username,profilSelected?.themeColor || app.colorDefault)}});"></div>
         <h2 class="text-center">{{profilSelected?.displaynameUseritium || profilSelected?.username}}</h2>
       </div>
     </mat-card-content>
@@ -45,7 +45,7 @@
         <div class="flex column">
           <div *ngFor="let social of profilSelected?.reseau">
             <div class="flex g-10 align-items-center mb-12">
-              <mat-icon fontIcon="public"></mat-icon>
+              <i class="{{ social.socialnetwork.icon_class }}"></i>
               <p class="m-0">{{social.url}}</p>
             </div>
           </div>
