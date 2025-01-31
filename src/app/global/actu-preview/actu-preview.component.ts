@@ -24,7 +24,7 @@ export class ActuPreviewComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['id'] && changes['id']) {
+    if (changes['id']) {
       this.id = changes['id'].currentValue;
       if (this.id) {
         this.getActu(this.id);
