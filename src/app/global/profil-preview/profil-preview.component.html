@@ -3,7 +3,7 @@
   <mat-card class="mb-38">
     <mat-card-content>
       <div class="flex justify-center center-auto column">
-        <div class="img mb-12" style= "background-image: url({{profilSelected?.picture}});"></div>
+        <div class="img mb-12" style= "background-image: url({{profilSelected?.picture}});">{{profilSelected?.picture ? "" : "Pas de photo de profil"}}</div>
         <p class="text-center">{{profilSelected?.displaynameUseritium || profilSelected?.username}}</p>
       </div>
     </mat-card-content>
@@ -31,6 +31,11 @@
       <div class="flex align-items-center g-10 mb-12">
         <p class="m-0">Couleur du thème : {{profilSelected?.themeColor}}</p>
         <div class="color-preview" style="background-color: {{profilSelected?.themeColor}};"></div>
+      </div>
+      <div>
+        <div *ngFor="let social of profilSelected?.reseau">
+          <p>{{social.url}}</p>
+        </div>
       </div>
     </mat-card-content>
   </mat-card>
