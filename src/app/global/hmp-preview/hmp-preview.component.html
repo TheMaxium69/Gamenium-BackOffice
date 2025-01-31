@@ -1,3 +1,20 @@
 <section *ngIf="id">
-  <p>Titre : exemple </p>
+  <hr>
+  <h1>{{MyPlatform?.myPlateform?.plateform?.name}}</h1>
+  <small>Ajoutée le: {{MyPlatform?.myPlateform?.added_at | date:'dd/MM/yyyy'}}</small>
+  <!-- <p>Description: {{MyPlatform?.rate?.content}}</p>
+  <div class="d-inline">Tag:
+    <div *ngFor="let tag of MyPlatform?.MyPlatform?.hmgTags" class="d-inline">
+      <div class="d-inline">{{tag.name}} </div>
+    </div>
+  </div> -->
+
+  <div *ngFor=" let copy of MyPlatform?.copyPlateform; let i = index">
+    <h2>Information sur l'exemplaire numero  {{i + 1}}</h2>
+    <p>Edition: {{copy.edition ?? "Non renseigné"}}</p>
+    <p>Barcode: {{copy.barcode ?? "Non renseigné"}}</p>
+    <p>Description de l'exemplaire: {{copy.content ?? "Non renseigné"}}</p>
+    <p>Lieu d'achat: {{copy.purchase.buy_where?.name ?? "Non renseigné"}}</p>
+    <p>Descrition de l'achat: {{copy.purchase.content ?? "Non renseigné"}}</p>
+  </div>
 </section>
