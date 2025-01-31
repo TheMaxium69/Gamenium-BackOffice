@@ -38,7 +38,7 @@ export class UserSearchComponent implements OnInit, OnDestroy, AfterViewInit{
       switchMap((searchValue) => {
         return this.administrationService.searchUsersAdmin(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
           catchError((error) => {
-            console.error('Une erreur s\'est produite lors de la recherche de jeux :', error);
+            console.error('Une erreur s\'est produite lors de la recherche : ', error);
             return of([]);
           })
         );

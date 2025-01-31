@@ -45,6 +45,10 @@ export class AppComponent {
     urlApiV1: string = "https://vps209.tyrolium.fr";
   //%     API - GAMENIUM      %//
 
+  //%     API - TYROLIUM      %//
+  urlGeneratePP:string = "https://tyrolium.fr/generate-pp/"
+  //%     API - TYROLIUM      %//
+
   // SETTING
   Debug:Boolean = false;
   isLog: boolean = false;
@@ -56,6 +60,9 @@ export class AppComponent {
   fetchLimit:number = 50; // Limit search
   deadlineSearch:number = 300; // Time input search
 
+
+  // DEFAULT
+  colorDefault = "#d2001e";
 
   /******************************************************************************************************************
    *
@@ -198,6 +205,30 @@ export class AppComponent {
     } else {
       return this.urlApiV1;
     }
+
+  }
+
+  // PP
+  generatePPUseritium(pp:string|undefined|null, username:string|undefined, colorSelected:string|undefined):string {
+
+    let result:string = this.urlGeneratePP;
+
+    let color = this.colorDefault
+    if (colorSelected){
+      if (Array.isArray(colorSelected)) {
+        color = colorSelected[0];
+      } else {
+        color = colorSelected;
+      }
+    }
+
+    if (pp){
+      result = pp
+    } else if (username) {
+      result = this.urlGeneratePP + '?l=' + username[0] + '&c='+ color.substring(1);
+    }
+
+    return result ;
 
   }
 
