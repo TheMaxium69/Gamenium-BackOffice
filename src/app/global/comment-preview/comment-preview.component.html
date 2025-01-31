@@ -1,3 +1,13 @@
 <section *ngIf="id">
-  <p>Titre : exemple </p>
+  <h2>Type du signalement: Commentaire</h2>
+  <p>L'actualité: {{commentSelected?.post?.title}} </p>
+  <p>Commentaire: {{commentSelected?.content}} </p>
+  <p>Écrit par: {{commentSelected?.user?.displayname}}</p>
+  <p>Le: {{commentSelected?.created_at| date:'dd/MM/yyyy'}} </p>
 </section>
+
+
+<!-- 
+<p>Actualité Signalé: {{warnSelected?.warnType?.name}}</p>
+<p>Signalé par: {{warnSelected?.user?.displayname}} </p>
+<p>le {{warnSelected?.warnAt| date:'dd/MM/yyyy'}}</p> -->

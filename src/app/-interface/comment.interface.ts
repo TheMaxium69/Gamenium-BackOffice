@@ -8,7 +8,7 @@ export interface CommentInterface {
   lastEdit: string,
   nbEdit: number,
   content: string,
-  Post: PostActuInterface,
+  post: PostActuInterface,
   user: UserInterface,
 }
 
