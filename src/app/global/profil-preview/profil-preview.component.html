@@ -9,7 +9,7 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card>
+  <mat-card class="mb-38">
     <mat-card-content>
       <h2 class="mb-12">Informations sur le profil : </h2>
       <div class="flex">
@@ -28,18 +28,25 @@
         <p class="w-128">Dernière connexion le :</p>
         <p>{{profilSelected?.lastConnection | date:'dd/MM/yyyy'}}</p>
       </div>
+      <div class="flex">
+        <p class="w-128">S'est connecté :</p>
+        <p>{{ profilSelected?.nbConnection ? profilSelected?.nbConnection + ' fois' : 'Jamais' }}</p>
+      </div>
       <div class="flex align-items-center g-10 mb-12">
         <p class="m-0">Couleur du thème : {{profilSelected?.themeColor ?? 'Couleur par défaut'}}</p>
         <div class="color-preview" style="background-color: {{profilSelected?.themeColor || colorDefault}};"></div>
       </div>
-      <div class="flex">
-        <p class="w-128">Réseaux sociaux :</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <h2>Réseaux sociaux :</h2>
         <div class="flex column">
         <div *ngFor="let social of profilSelected?.reseau">
             <p>{{social.url}}</p>
           </div>
         </div>
-      </div>
     </mat-card-content>
   </mat-card>
 </section>

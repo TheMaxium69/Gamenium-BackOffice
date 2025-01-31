@@ -9,6 +9,7 @@ export interface ProfilInterface {
   displaynameUseritium:string,
   joinAt:Date,
   lastConnection: Date,
+  nbConnection: number,
   themeColor:string|undefined,
   picture:string|undefined,
   nbGame:number,

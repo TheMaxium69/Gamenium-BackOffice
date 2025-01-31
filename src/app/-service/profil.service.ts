@@ -11,7 +11,7 @@ export class ProfilService {
   constructor(private http: HttpClient) {}
 
   getProfilByUserId(id_user: number, url:string, option: {headers: HttpHeaders}): Observable<ApicallInterface> {
-    return this.http.get<ApicallInterface>(url + '/profil/' + id_user, option);
+    return this.http.get<ApicallInterface>(url + '/admin-profil/' + id_user, option);
   }
 
 }
