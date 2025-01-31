@@ -1,19 +1,15 @@
 <section *ngIf="id">
   <mat-card>
     <mat-card-content>
+      <h2 class="mb-12">Informations générales : </h2>
       <p>User name : {{profilSelected?.username}} </p>
       <p>Display name : {{profilSelected?.displayname}} </p>
       <p>Display name Useritium : {{profilSelected?.displaynameUseritium}} </p>
       <p>Inscrit depuis le : {{profilSelected?.joinAt | date:'dd/MM/yyyy'}} </p>
       <p>Couleur du thème : {{profilSelected?.themeColor}} </p>
-      <div>
+      <div class="flex">
         <p>Image de profil : {{profilSelected?.picture ? '' : 'Aucune image de profil'}} </p>
-        <div style=
-        "background-image: url({{profilSelected?.picture}});
-        width: 500px;
-        height: 350px;
-        background-size: contain;
-        background-repeat: no-repeat;"></div>
+        <div class="img" style= "background-image: url({{profilSelected?.picture}});"></div>
       </div>
     </mat-card-content>
   </mat-card>

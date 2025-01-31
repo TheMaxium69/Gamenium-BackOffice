@@ -1,0 +1,18 @@
+.mb-12 {
+    margin-bottom: 12px;
+}
+
+.img {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 640px;
+    height: 360px;
+}
+
+.shadow {
+    box-shadow: 1px 2px 11px rgba(0, 0, 0, 0.45);
+}
+
+.flex {
+    display: flex;
+}
