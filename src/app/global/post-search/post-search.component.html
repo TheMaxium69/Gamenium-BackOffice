@@ -20,25 +20,25 @@
       <!-- provider_id Column -->
       <ng-container matColumnDef="provider_id">
         <th mat-header-cell *matHeaderCellDef> Provider </th>
-        <td mat-cell *matCellDef="let element"> {{element.provider?.displayName }} </td>
+        <td mat-cell *matCellDef="let element"> {{element.Provider?.displayName }} </td>
       </ng-container>
 
       <!-- game_id Column -->
       <ng-container matColumnDef="game_id">
         <th mat-header-cell *matHeaderCellDef> game_id </th>
-        <td mat-cell *matCellDef="let element"> {{element.game_id}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.Game?.name}} </td>
       </ng-container>
 
       <!-- user_id Column -->
       <ng-container matColumnDef="user_id">
         <th mat-header-cell *matHeaderCellDef> user_id </th>
-        <td mat-cell *matCellDef="let element"> {{element.user_id}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.user.displayname_useritium}} </td>
       </ng-container>
 
       <!-- picture_id Column -->
       <ng-container matColumnDef="picture_id">
         <th mat-header-cell *matHeaderCellDef> picture_id </th>
-        <td mat-cell *matCellDef="let element"> {{element.picture_id}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.picture.url}} </td>
       </ng-container>
 
       <!-- created_at Column -->

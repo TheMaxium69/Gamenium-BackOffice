@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject, catchError, debounceTime, of, switchMap, takeUntil } from 'rxjs';
-import { PostActuInterface } from 'src/app/-interface/postActu.interface';
+import { PostActuInterface } from 'src/app/-interface/post-actu.interface';
 import { ActualityService } from 'src/app/-service/actuality.service';
 import { AppComponent } from 'src/app/app.component';
 
