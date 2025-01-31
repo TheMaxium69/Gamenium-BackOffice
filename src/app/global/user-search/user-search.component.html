@@ -41,7 +41,7 @@
       <td mat-cell *matCellDef="let element">
         <ng-container *ngFor="let role of element.roles">
           <mat-chip style="margin-right: 5px" *ngIf="role !== 'ROLE_USER'"
-                    (removed)="removeRole(role)">{{role.substring(5)}}
+                    (removed)="removeRole(element.id, role)">{{role.substring(5)}}
             <button matChipRemove [attr.aria-label]="'remove ' + role">
               <mat-icon>cancel</mat-icon>
             </button>
@@ -56,7 +56,7 @@
         <mat-icon fontIcon="add" mat-button [matMenuTriggerFor]="menu" *ngIf="app.roleCanManage().length !== element.roles.length"></mat-icon>
         <mat-menu #menu="matMenu">
           <ng-container *ngFor="let roleCan of app.roleCanManage()">
-            <button mat-menu-item *ngIf="!element.roles.includes(roleCan)" (click)="addRole(roleCan)">{{ roleCan.substring(5) }}</button>
+            <button mat-menu-item *ngIf="!element.roles.includes(roleCan)" (click)="addRole(element.id, roleCan)">{{ roleCan.substring(5) }}</button>
           </ng-container>
         </mat-menu>
       </td>

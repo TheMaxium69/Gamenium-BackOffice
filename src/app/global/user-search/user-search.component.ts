@@ -6,6 +6,7 @@ import {AdministrationService} from "../../-service/administration.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {WarnInterface} from "../../-interface/warn.interface";
 import {MatTableDataSource} from "@angular/material/table";
+import {ApicallInterface} from "../../-interface/apicall.interface";
 
 @Component({
   selector: 'app-user-search',
@@ -66,12 +67,20 @@ export class UserSearchComponent implements OnInit, OnDestroy, AfterViewInit{
     this.searchProfilSubject.next(this.searchValue);
   }
 
-  addRole(role:string){
-    alert("Ajouter le role " + role);
+  addRole(id_user:number, role:string){
+    // alert("Ajouter le role " + role + " a l'utilisateur " + id_user);
+
+    this.administrationService.addRoleAdmin(id_user, role, this.app.setURL(), this.app.createCorsToken()).subscribe((response:ApicallInterface) => {
+      console.log(response);
+    })
   }
 
-  removeRole(role:string){
-    alert("Retirer le role " + role);
+  removeRole(id_user:number, role:string){
+    // alert("Retirer le role " + role + " a l'utilisateur " + id_user);
+
+    this.administrationService.removeRoleAdmin(id_user, role, this.app.setURL(), this.app.createCorsToken()).subscribe((response:ApicallInterface) => {
+      console.log(response);
+    })
   }
 
 }

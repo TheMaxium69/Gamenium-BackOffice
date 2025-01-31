@@ -14,5 +14,12 @@ export class AdministrationService {
     return this.http.post<ApicallInterface>(url + '/admin-users-search',  { searchValue, limit}, options);
   }
 
+  addRoleAdmin(id_user:number, new_role:string, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
+    return this.http.post<ApicallInterface>(url + '/admin-add-role', {id_user, new_role}, options);
+  }
+
+  removeRoleAdmin(id_user:number, remove_role:string, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
+    return this.http.post<ApicallInterface>(url + '/admin-remove-role', {id_user, remove_role}, options);
+  }
 
 }
