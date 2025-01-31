@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-perms',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./perms.component.css']
 })
 export class PermsComponent {
+
+  constructor(protected app: AppComponent) { }
 
 }

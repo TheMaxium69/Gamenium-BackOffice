@@ -1,3 +1,9 @@
 <h1> Gestion des permissions </h1>
 
-<app-user-search [displayedColumns]="['id', 'displayname', 'username', 'email', 'roles', 'addrole']"></app-user-search>
+<ng-container *ngIf="app.userConnected.userRole.includes('ROLE_ADMIN') || app.userConnected.userRole.includes('ROLE_OWNER')">
+  <app-user-search [displayedColumns]="['id', 'displayname', 'username', 'email', 'roles', 'addrole']"></app-user-search>
+</ng-container>
+
+<ng-container *ngIf="!app.userConnected.userRole.includes('ROLE_ADMIN') && !app.userConnected.userRole.includes('ROLE_OWNER')">
+  <app-user-search [displayedColumns]="['id', 'displayname', 'username', 'roles', 'addrole']"></app-user-search>
+</ng-container>
