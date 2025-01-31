@@ -1,15 +1,36 @@
 <section *ngIf="id">
+
+  <mat-card class="mb-38">
+    <mat-card-content>
+      <div class="flex justify-center center-auto column">
+        <div class="img mb-12" style= "background-image: url({{profilSelected?.picture}});"></div>
+        <p class="text-center">{{profilSelected?.displayname}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
   <mat-card>
     <mat-card-content>
-      <h2 class="mb-12">Informations générales : </h2>
-      <p>User name : {{profilSelected?.username}} </p>
-      <p>Display name : {{profilSelected?.displayname}} </p>
-      <p>Display name Useritium : {{profilSelected?.displaynameUseritium}} </p>
-      <p>Inscrit depuis le : {{profilSelected?.joinAt | date:'dd/MM/yyyy'}} </p>
-      <p>Couleur du thème : {{profilSelected?.themeColor}} </p>
+      <h2 class="mb-12">Informations sur le profil : </h2>
       <div class="flex">
-        <p>Image de profil : {{profilSelected?.picture ? '' : 'Aucune image de profil'}} </p>
-        <div class="img" style= "background-image: url({{profilSelected?.picture}});"></div>
+        <p class="w-128">Username :</p>
+        <p>{{profilSelected?.username}}</p>
+      </div>
+      <div class="flex">
+        <p class="w-128">Displayname :</p>
+        <p>{{profilSelected?.displayname}}</p>
+      </div>
+      <div class="flex">
+        <p class="w-128">Displayname Useritium :</p>
+        <p>{{profilSelected?.displaynameUseritium}}</p>
+      </div>
+      <div class="flex">
+        <p class="w-128">Inscrit depuis le :</p>
+        <p>{{profilSelected?.joinAt | date:'dd/MM/yyyy'}}</p>
+      </div>
+      <div class="flex align-items-center g-10 mb-12">
+        <p class="m-0">Couleur du thème : {{profilSelected?.themeColor}}</p>
+        <div class="color-preview" style="background-color: {{profilSelected?.themeColor}};"></div>
       </div>
     </mat-card-content>
   </mat-card>
