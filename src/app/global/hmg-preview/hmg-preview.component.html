@@ -13,22 +13,20 @@
   <br><br>
   <mat-card>
     <mat-card-content>
-      <h1>Informations Générales:</h1>
-      <mat-card>
-        <mat-card-content>
+      <h2>Informations Générales</h2>
           <div class="d-flex">
-            <p class="w-128">Plateforme:</p>
-            <mat-chip>
+            <p class="w-128">Plateforme :</p>
+            <mat-chip (click)="app.redirectUrl(app.setURLFront() + '/profil/' + MyGame.myGame.user.id + '/' + MyGame.myGame.plateform.id )" style="cursor: pointer">
               <img matChipAvatar [src]="MyGame?.myGame?.plateform?.image?.icon_url" alt="platform icon"/>
               {{MyGame?.myGame?.plateform?.name}}
             </mat-chip>
           </div>
           <div class="d-flex">
-            <p class="w-128">Ajoutée le:</p>
+            <p class="w-128">Ajoutée le :</p>
             <p>{{ MyGame?.myGame?.added_at | date:'dd/MM/yyyy, HH:mm' }}</p>
           </div>
           <div class="d-flex">
-            <p class="w-128">Description:</p>
+            <p class="w-128">Description :</p>
             <p>{{MyGame?.rate?.content ?? 'Non renseigné' }}</p>
           </div>
           <div class="d-flex">
@@ -47,39 +45,37 @@
               </ng-container>
             </ng-container>
           </div>
-        </mat-card-content>
-      </mat-card>
     </mat-card-content>
   </mat-card>
   <br><br>
 
   <mat-card>
     <mat-card-content>
-      <h1>Gestion des exemplaires</h1>
+      <h2>Gestion des exemplaires</h2>
       <div *ngFor=" let copy of MyGame?.copyGame; let i = index">
         <mat-card>
           <mat-card-content>
             <h2>Exemplaire #{{i + 1}}</h2>
             <div class="d-flex">
-              <p class="w-128">Edition:</p>
+              <p class="w-128">Edition :</p>
               <p> {{copy.edition ?? "Non renseigné"}}</p>
             </div>
             <div class="d-flex">
-              <p class="w-128">Barcode:</p>
+              <p class="w-128">Barcode :</p>
               <p>{{copy.barcode ?? "Non renseigné"}}</p>
             </div>
             <div class="d-flex">
-              <p class="w-128">Description:</p>
+              <p class="w-128">Description :</p>
               <p>{{copy.content ?? "Non renseigné"}}</p>
             </div>
             <div class="d-flex">
-              <p class="w-128">Lieu d'achat:</p>
+              <p class="w-128">Lieu d'achat :</p>
               <mat-chip>
                 {{copy.purchase.buy_where?.name ?? "Non renseigné"}}
               </mat-chip>
             </div>
             <div class="d-flex">
-              <p class="w-128">Descrition de l'achat:</p>
+              <p class="w-128">Descrition de l'achat :</p>
               <p>{{copy.purchase.content ?? "Non renseigné"}}</p>
             </div>
             </mat-card-content>
@@ -93,21 +89,21 @@
   <ng-container *ngIf="MyGame?.speedrun">
     <mat-card *ngIf="MyGame.speedrun.length > 0">
       <mat-card-content>
-        <h1>Gestion des speedrun</h1>
+        <h2>Gestion des speedrun</h2>
         <div *ngFor="let oneSpeed of MyGame?.speedrun; let i = index">
           <mat-card>
             <mat-card-content>
               <h2>Speedrun #{{i + 1}}</h2>
               <div class="d-flex">
-                <p class="w-128">Categorie:</p>
+                <p class="w-128">Categorie :</p>
                 <p>{{oneSpeed.category}}</p>
               </div>
               <div class="d-flex">
-                <p class="w-128">Chrono:</p>
+                <p class="w-128">Chrono :</p>
                 <p>{{oneSpeed.chrono }}</p>
               </div>
               <div class="d-flex">
-                <p class="w-128">Link:</p>
+                <p class="w-128">Link :</p>
                 <p>{{oneSpeed.link ?? "Non renseigné"}}</p>
               </div>
             </mat-card-content>

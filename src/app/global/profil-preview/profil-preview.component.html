@@ -4,14 +4,14 @@
     <mat-card-content>
       <div class="flex justify-center center-auto column">
         <div class="img mb-12" style= "background-image: url({{profilSelected?.picture}});">{{profilSelected?.picture ? "" : "Pas de photo de profil"}}</div>
-        <p class="text-center">{{profilSelected?.displaynameUseritium || profilSelected?.username}}</p>
+        <h2 class="text-center">{{profilSelected?.displaynameUseritium || profilSelected?.username}}</h2>
       </div>
     </mat-card-content>
   </mat-card>
 
   <mat-card class="mb-38">
     <mat-card-content>
-      <h2 class="mb-12">Informations sur le profil : </h2>
+      <h2 class="mb-12">Informations sur le profil</h2>
       <div class="flex">
         <p class="w-128">Pseudo :</p>
         <p>{{profilSelected?.displaynameUseritium || profilSelected?.username}}</p>

@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject, catchError, debounceTime, of, switchMap, takeUntil } from 'rxjs';
 import { PostActuInterface } from 'src/app/-interface/post-actu.interface';
 import { ActualityService } from 'src/app/-service/actuality.service';
 import { AppComponent } from 'src/app/app.component';
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-post-search',
@@ -11,9 +12,11 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./post-search.component.css']
 })
 export class PostSearchComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
+
   @Input()
   public displayedColumns: string[] = ['id'];
-  
+
   private unsubscribe$ = new Subject<void>();
   private searchPostSubject = new Subject<string>();
 
@@ -24,7 +27,7 @@ export class PostSearchComponent implements OnInit {
   constructor(protected app:AppComponent, private actualityService:ActualityService){}
 
   ngOnInit() {
-    
+
     /* SET SEARCH POSTACTUS */
     this.searchPostSubject.pipe(
       debounceTime(this.app.deadlineSearch),
@@ -42,6 +45,7 @@ export class PostSearchComponent implements OnInit {
       this.postactus = results;
       console.log(results);
       this.dataSource = new MatTableDataSource<PostActuInterface>(this.postactus);
+      this.dataSource.paginator = this.paginator;
     });
 
 

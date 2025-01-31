@@ -37,13 +37,20 @@ export class AppComponent {
    * ******************************************************************************************************************/
 
   //%     API - GAMENIUM      %//
-    AppEnv: string = "DEV"; // DEV or PROD or PRODMAX or DEVMAX
+    AppEnv: string = "DEV"; // DEV or PROD or PRODMAX or DEVMAX or V1
     urlApiDev: string = "http://127.0.0.1:8000";
     urlApiDevMax: string = "https://127.0.0.1:8000";
     urlApiProd: string = "http://vps216.tyrolium.fr:8000";
     urlApiProdMax: string = "http://home.vps216.tyrolium.fr:8000";
     urlApiV1: string = "https://vps209.tyrolium.fr";
   //%     API - GAMENIUM      %//
+
+
+  //%     FRONT - GAMENIUM      %//
+    AppEnvFront: string = "DEV"; // DEV or V1
+    urlFrontDev: string = "http://localhost:4201";
+    urlFrontV1: string = "https://gamenium.fr";
+  //%     FRONT - GAMENIUM      %//
 
   //%     API - TYROLIUM      %//
   urlGeneratePP:string = "https://tyrolium.fr/generate-pp/"
@@ -208,6 +215,19 @@ export class AppComponent {
 
   }
 
+  //SET URL FRONT
+  setURLFront():string {
+
+    if (this.AppEnvFront == "DEV"){
+      return this.urlFrontDev;
+    } else if (this.AppEnv == "V1") {
+      return this.urlFrontV1;
+    } else {
+      return this.urlFrontV1;
+    }
+
+  }
+
   // PP
   generatePPUseritium(pp:string|undefined|null, username:string|undefined, colorSelected:string|undefined):string {
 
@@ -338,4 +358,7 @@ export class AppComponent {
   }
 
 
+  redirectUrl(url: string) {
+    window.location.href = url;
+  }
 }

@@ -18,7 +18,7 @@ export class HmgPreviewComponent implements OnInit, OnChanges{
 
   constructor(
     private historyMyGameService: HistoryMyGameService,
-    private app: AppComponent
+    protected app: AppComponent
   ){}
 
   ngOnInit(): void {}

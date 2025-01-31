@@ -46,6 +46,7 @@ import { HmpPreviewComponent } from './global/hmp-preview/hmp-preview.component'
 import { LogRoleComponent } from './administration/log-role/log-role.component';
 import { PostSearchComponent } from './global/post-search/post-search.component';
 import { LogComponent } from './administration/log/log.component';
+import { UserOneComponent } from './other/user-one/user-one.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { LogComponent } from './administration/log/log.component';
     LogRoleComponent,
     PostSearchComponent,
     LogComponent,
+    UserOneComponent,
   ],
   imports: [
     BrowserModule,
