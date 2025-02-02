@@ -15,6 +15,7 @@ import {LogComponent} from "./administration/log/log.component";
 import {UserOneComponent} from "./other/user-one/user-one.component";
 import {CreateTestComponent} from "./test/create-test/create-test.component";
 import {ViewTestComponent} from "./test/view-test/view-test.component";
+import {StatViewComponent} from "./stat/stat-view/stat-view.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -39,8 +40,11 @@ const routes: Routes = [
   {path: 'test/view', component: ViewTestComponent},
   {path: 'test/create', component: CreateTestComponent},
 
-  /* PROVIDER*/
+  /*PROVIDER*/
   {path: 'provider/profil', component: ProfilComponent},
+
+  /*STAT*/
+  {path: 'stat/view', component: StatViewComponent},
 
   /* OTHER*/
   {path: 'user/:id', component: UserOneComponent},

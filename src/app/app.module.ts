@@ -49,6 +49,7 @@ import { LogComponent } from './administration/log/log.component';
 import { UserOneComponent } from './other/user-one/user-one.component';
 import { CreateTestComponent } from './test/create-test/create-test.component';
 import { ViewTestComponent } from './test/view-test/view-test.component';
+import { StatViewComponent } from './stat/stat-view/stat-view.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { ViewTestComponent } from './test/view-test/view-test.component';
     UserOneComponent,
     CreateTestComponent,
     ViewTestComponent,
+    StatViewComponent,
   ],
   imports: [
     BrowserModule,
