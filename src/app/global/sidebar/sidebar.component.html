@@ -164,6 +164,30 @@
 
       </ng-container>
 
+      <!-- LOG -->
+      <ng-container *ngIf="
+        app.userConnected.userRole.includes('ROLE_OWNER') ||
+        app.userConnected.userRole.includes('ROLE_ADMIN')
+      ">
+
+        <mat-list-item (click)="toggleUnrolled('log')">
+          <mat-icon matListItemIcon>event_repeat</mat-icon>
+          <div matListItemTitle>Log</div>
+        </mat-list-item>
+        <ng-container *ngIf="whichUnrolled === 'log' && isUnrolled">
+
+          <mat-list-item routerLink="/log/role">
+            <div matListItemTitle>Log des rôles</div>
+          </mat-list-item>
+
+          <mat-list-item routerLink="/log/sanction">
+            <div matListItemTitle>Log de la modération</div>
+          </mat-list-item>
+
+        </ng-container>
+
+      </ng-container>
+
       <!-- OTHER -->
       <mat-divider></mat-divider>
       <div mat-subheader>Personnel</div>

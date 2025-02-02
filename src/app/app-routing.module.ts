@@ -24,8 +24,6 @@ const routes: Routes = [
 
   /* ADMIN */
   {path: 'admin/perms', component: PermsComponent},
-  {path: 'admin/logrole', component: LogRoleComponent},
-  {path: 'admin/log', component: LogComponent},
 
   /*MODO*/
   {path: 'modo/warn', component: WarnComponent},
@@ -45,6 +43,10 @@ const routes: Routes = [
 
   /*STAT*/
   {path: 'stat/view', component: StatViewComponent},
+
+  /*LOG*/
+  {path: 'log/role', component: LogRoleComponent},
+  {path: 'log/sanction', component: LogComponent},
 
   /* OTHER*/
   {path: 'user/:id', component: UserOneComponent},
