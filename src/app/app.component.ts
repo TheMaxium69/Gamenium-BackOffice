@@ -301,7 +301,7 @@ export class AppComponent {
           'ROLE_PROVIDER',
 
           'ROLE_BETA',
-          'ROLE_BAN',
+          // 'ROLE_BAN',
         );
       } else if (role == 'ROLE_ADMIN') {
         canRole.push(
@@ -320,7 +320,7 @@ export class AppComponent {
           'ROLE_PROVIDER',
 
           'ROLE_BETA',
-          'ROLE_BAN',
+          // 'ROLE_BAN',
         );
       } else if (role == 'ROLE_MODO_RESPONSABLE') {
         canRole.push(
