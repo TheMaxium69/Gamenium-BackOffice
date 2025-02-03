@@ -18,6 +18,7 @@ export class PostSearchComponent implements OnInit {
 
   @Input()
   public displayedColumns: string[] = ['id'];
+  @Input() pageSize: number = 5;
   @Output() 
   articleSelected = new EventEmitter<PostActuInterface>();
 

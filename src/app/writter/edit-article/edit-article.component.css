@@ -1,6 +1,133 @@
-.image-preview {
+.edit-article-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    background: #f4f6f8; 
+    min-height: 100vh;
+  }
+  
+  .page-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .post-search-wrapper {
     width: 100%;
-    max-width: 400px; 
+    max-width: 1000px;
+    margin-bottom: 24px;
+  }
+  
+
+  .info-message {
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 24px;
+  }
+  .info-card {
+    text-align: center;
+  }
+  
+
+  .edit-form-wrapper {
+    width: 100%;
+    max-width: 650px; 
+    margin: auto;
+  }
+  
+
+  .edit-article-card {
+    width: 100%;
+    padding: 24px;
+    border-radius: 8px;
+    background: white;
+  }
+
+  .article-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 650px;
+    margin: auto;
+    padding: 24px;
+    border-radius: 8px;
+    background: white;
+  }
+  
+
+  .full-width {
+    width: 100%;
+  }
+  
+
+  .form-field {
+    margin-bottom: 16px;
+  }
+  
+
+  .split-fields {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .half-field {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .results-list {
+    max-height: 300px;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 8px;
+  }
+  
+
+  .selected-item {
+    margin-top: 8px;
+    font-style: italic;
+  }
+  
+  
+  .image-upload-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .drop-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px dashed rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background: rgba(0, 0, 0, 0.05);
+  }
+  .drop-area:hover,
+  .drop-area:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  .upload-icon {
+    color: rgba(0, 0, 0, 0.3);
+  }
+  .click-text {
+    font-weight: bold;
+    color: #1976d2;
+  }
+  
+  .image-preview {
+    width: 100%;
     height: auto; 
     display: block;
     margin: 10px auto;
@@ -21,7 +148,12 @@
     width: auto;
     max-width: 200px; /* gère la width pour image carée */
   }
-
-  .hidden {
-    display: none;
+  
+  .button-container {
+    text-align: center;
   }
+  
+  .custom-card-title {
+    padding-bottom: 16px;
+  }
+  

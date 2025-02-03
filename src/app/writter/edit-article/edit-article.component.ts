@@ -62,16 +62,15 @@ export class EditArticleComponent implements OnInit {
     this.actualityService.getPostActu(url, id, option).subscribe(response => {
         if (response.result) {
             this.selectedArticle = response.result;
-
-            // Ensure selectedArticle and picture exist before accessing url
             this.imagePreview = this.selectedArticle?.picture?.url ?? null;
         } else {
             this.selectedArticle = null;
-            this.imagePreview = null; // Reset preview if no article exists
+            this.imagePreview = null; 
         }
     }, error => {
         console.error("Erreur lors de la récupération de l'article :", error);
     });
+
 }
 
 
@@ -158,7 +157,7 @@ export class EditArticleComponent implements OnInit {
     const option = this.app.createCorsToken();
 
     const body = {
-      picture_id: pictureId // ✅ Link the new image to the article
+      picture_id: pictureId // link l'image au bon article
     };
 
     this.actualityService.updatePostActu(this.selectedArticle.id, body, url, option).subscribe(response => {

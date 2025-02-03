@@ -103,7 +103,7 @@ import { ProviderOneComponent } from './other/provider-one/provider-one.componen
     GlobalStatComponent,
     SanctionStatComponent,
     ProviderComponent,
-    ProviderOneComponent,
+    ProviderOneComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,28 @@
+.full-width {
+    width: 100%;
+}
+
+.search-bar {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin-bottom: 10px; /* Adjust spacing between input and table */
+}
+
 .preview-image {
     width: 50px;
     border-radius: 4px;
-    margin: 0, auto;
+    margin: 0 auto;
     object-fit: cover;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+    .responsive-table {
+        font-size: 12px;
+    }
 }
