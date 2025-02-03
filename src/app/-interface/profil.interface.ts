@@ -18,6 +18,7 @@ export interface ProfilInterface {
   roles: any,
   badges: any,
   ipUsed: any,
-  nbSignal: number
+  nbSanction: number
+  nbView: number
 
 }

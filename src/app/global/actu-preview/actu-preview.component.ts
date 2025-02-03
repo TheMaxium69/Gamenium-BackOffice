@@ -3,6 +3,7 @@ import { ApicallInterface } from 'src/app/-interface/apicall.interface';
 import { PostActuInterface } from 'src/app/-interface/post-actu.interface';
 import { ActualityService } from 'src/app/-service/actuality.service';
 import { AppComponent } from 'src/app/app.component';
+import {ViewService} from "../../-service/view.service";
 
 @Component({
   selector: 'app-actu-preview',
@@ -15,10 +16,12 @@ export class ActuPreviewComponent implements OnInit, OnChanges {
   public id: number|null = null;
 
   actuSelected: PostActuInterface | undefined;
+  viewActu: number = 0;
 
   constructor(
     protected app: AppComponent,
-    private actualityServcice: ActualityService
+    private actualityServcice: ActualityService,
+    private viewService: ViewService,
   ) {}
 
   ngOnInit(): void {}
@@ -40,6 +43,11 @@ export class ActuPreviewComponent implements OnInit, OnChanges {
           this.actuSelected = response.result;
         }
       })
-  
+      this.viewService.getPostActuViews(id, this.app.setURL(), this.app.createCorsToken()).subscribe((response: ApicallInterface) => {
+        if (response.message === 'good') {
+          this.viewActu = response.result;
+        }
+      })
+
   }
 }
