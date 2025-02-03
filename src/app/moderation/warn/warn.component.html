@@ -57,7 +57,7 @@
     <!-- object Column -->
     <ng-container matColumnDef="object">
       <th mat-header-cell *matHeaderCellDef> Objet </th>
-      <td mat-cell *matCellDef="let element"> <p class="content-lock">{{element.comment?.content || element.commentReply?.content || element.actu?.title || element.hmg?.id || element.hmp?.id || element.profil?.displayname_useritium || element.profil?.username }}</p></td>
+      <td mat-cell *matCellDef="let element"> <p class="content-lock m-5">{{element.comment?.content || element.commentReply?.content || element.actu?.title || element.hmg?.id || element.hmp?.id || element.profil?.displayname_useritium || element.profil?.username }}</p></td>
     </ng-container>
 
     <!-- date_at Column -->
@@ -69,7 +69,7 @@
     <!-- content Column -->
     <ng-container matColumnDef="content">
       <th mat-header-cell *matHeaderCellDef> Description </th>
-      <td mat-cell *matCellDef="let element" > <p class="content-lock">{{element.content || 'Pas de description'}}</p> </td>
+      <td mat-cell *matCellDef="let element" > <p class="content-lock m-5">{{element.content || 'Pas de description'}}</p> </td>
     </ng-container>
 
     <!-- manage Column -->

@@ -1,8 +1,12 @@
 .content-lock {
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 40vh;
+}
+
+.m-5 {
+    margin: 5px;
 }
