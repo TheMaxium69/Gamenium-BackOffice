@@ -1,27 +1,27 @@
 <div class="edit-article-container">
   <h1 class="page-title">Modifier un Article</h1>
 
-  <div class="post-search-wrapper">
-    <ng-container
-      *ngIf="app.userConnected.userRole.includes('ROLE_ADMIN') || app.userConnected.userRole.includes('ROLE_OWNER')"
-    >
-      <app-post-search 
-        [displayedColumns]="['id', 'provider_id', 'game_id', 'user_id', 'picture_id', 'created_at', 'content', 'last_edit', 'nb_edit', 'title']"
-        [pageSize]="5"
-        (articleSelected)="onArticleSelected($event)">
-      </app-post-search>
-    </ng-container>
+<!--  <div class="post-search-wrapper">-->
+<!--    <ng-container-->
+<!--      *ngIf="app.userConnected.userRole.includes('ROLE_ADMIN') || app.userConnected.userRole.includes('ROLE_OWNER')"-->
+<!--    >-->
+<!--      <app-post-search -->
+<!--        [displayedColumns]="['id', 'provider_id', 'game_id', 'user_id', 'picture_id', 'created_at', 'content', 'last_edit', 'nb_edit', 'title']"-->
+<!--        [pageSize]="5"-->
+<!--        (articleSelected)="onArticleSelected($event)">-->
+<!--      </app-post-search>-->
+<!--    </ng-container>-->
 
-    <ng-container
-      *ngIf="!app.userConnected.userRole.includes('ROLE_ADMIN') && !app.userConnected.userRole.includes('ROLE_OWNER')"
-    >
-      <app-post-search 
-        [displayedColumns]="['id', 'provider_id', 'game_id', 'user_id', 'picture_id', 'created_at', 'content', 'title']"
-        [pageSize]="5"
-        (articleSelected)="onArticleSelected($event)">
-      </app-post-search>
-    </ng-container>
-  </div>
+<!--    <ng-container-->
+<!--      *ngIf="!app.userConnected.userRole.includes('ROLE_ADMIN') && !app.userConnected.userRole.includes('ROLE_OWNER')"-->
+<!--    >-->
+<!--      <app-post-search -->
+<!--        [displayedColumns]="['id', 'provider_id', 'game_id', 'user_id', 'picture_id', 'created_at', 'content', 'title']"-->
+<!--        [pageSize]="5"-->
+<!--        (articleSelected)="onArticleSelected($event)">-->
+<!--      </app-post-search>-->
+<!--    </ng-container>-->
+<!--  </div>-->
 
   <!-- Info Message When No Article is Selected -->
   <div *ngIf="!selectedArticle" class="info-message">
@@ -53,16 +53,16 @@
                  (click)="triggerFileSelect()">
               <mat-icon class="upload-icon">cloud_upload</mat-icon>
               <p>
-                Glissez et déposez votre image ici ou 
+                Glissez et déposez votre image ici ou
                 <span class="click-text">Cliquez ici</span>
               </p>
               <input #fileInput type="file" (change)="onFileSelected($event)" hidden>
             </div>
             <!-- Image Preview -->
-            <img *ngIf="imagePreview" 
-                 [src]="imagePreview" 
-                 [class]="imageClass" 
-                 alt="Image Preview" 
+            <img *ngIf="imagePreview"
+                 [src]="imagePreview"
+                 [class]="imageClass"
+                 alt="Image Preview"
                  class="image-preview">
             <!-- Hidden Input to Store Picture ID -->
             <input type="hidden" [(ngModel)]="selectedArticle.picture.id" name="picture_id">
@@ -80,14 +80,14 @@
             <div class="half-field">
               <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Rechercher un Jeu</mat-label>
-                <input matInput id="gameSearch" 
-                       (input)="searchGames()" 
-                       [(ngModel)]="gameSearch" 
-                       name="gameSearch" 
+                <input matInput id="gameSearch"
+                       (input)="searchGames()"
+                       [(ngModel)]="gameSearch"
+                       name="gameSearch"
                        autocomplete="off">
               </mat-form-field>
               <mat-list *ngIf="gameResults.length > 0" class="results-list">
-                <mat-list-item *ngFor="let game of gameResults" 
+                <mat-list-item *ngFor="let game of gameResults"
                                (click)="selectGame(game)" lines="1">
                   <img matListItemAvatar [src]="game.image?.icon_url" alt="{{ game.name }}">
                   <span matListItemTitle>{{ game.name }}</span>
@@ -101,18 +101,18 @@
             <div class="half-field">
               <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Rechercher un Provider</mat-label>
-                <input matInput id="providerSearch" 
-                       (input)="searchProviders()" 
-                       [(ngModel)]="providerSearch" 
-                       name="providerSearch" 
+                <input matInput id="providerSearch"
+                       (input)="searchProviders()"
+                       [(ngModel)]="providerSearch"
+                       name="providerSearch"
                        autocomplete="off">
               </mat-form-field>
               <mat-list *ngIf="providerResults.length > 0" class="results-list">
-                <mat-list-item *ngFor="let provider of providerResults" 
+                <mat-list-item *ngFor="let provider of providerResults"
                                (click)="selectProvider(provider)" lines="1">
-                  <img matListItemAvatar 
-                       *ngIf="provider.picture?.url" 
-                       [src]="provider.picture?.url" 
+                  <img matListItemAvatar
+                       *ngIf="provider.picture?.url"
+                       [src]="provider.picture?.url"
                        alt="{{ provider.displayName }}">
                   <span matListItemTitle>
                     {{ provider.displayName || provider.tagName || 'Unknown Provider' }}
