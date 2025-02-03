@@ -105,7 +105,7 @@ imageClass: string = '';
     const formData = new FormData();
     formData.append('photo', file);
   
-    this.uploadService.uploadPostActuPhoto(file, url, option).subscribe(response => {
+    this.uploadService.uploadPostActuPhoto(formData, url, option).subscribe(response => {
       console.log("Image uploaded:", response);
       this.picture_id = response.result.id;
       this.imagePreview = response.result.url;
