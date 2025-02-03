@@ -20,11 +20,14 @@
         <p class="w-128">Useritium :</p>
         <p>{{profilSelected?.username}}</p>
       </div>
-      <div class="flex g-10">
+      <div class="flex g-10" style="gap: 0px;">
         <p class="w-128">Roles :</p>
         <div *ngFor="let role of profilSelected?.roles">
-          <mat-chip class="role mb-12">
-            {{role.replace('ROLE_', '')}}
+          <mat-chip
+            style="margin-right: 10px; margin-bottom: 12px;"
+            *ngIf="role !== 'ROLE_USER'"
+            [style.background-color]="app.AllRole[role]">
+            {{ role.substring(5) }}
           </mat-chip>
         </div>
       </div>
@@ -85,7 +88,7 @@
   </mat-card>
 
   <!-- UNIQUEMENT POUR ADMIN ET OWNER -->
-  <mat-card 
+  <mat-card
   *ngIf="this.app.userConnected.userRole.includes('ROLE_ADMIN') ||
   this.app.userConnected.userRole.includes('ROLE_OWNER')">
     <mat-card-content>
