@@ -9,7 +9,7 @@
       <div class="flex justify-center center-auto column align-center">
         <div class="img mb-12" style= "background-image: url({{commentReplySelected?.comment?.post?.picture?.url}});">{{commentReplySelected?.comment?.post?.picture?.url ? "" : "Pas de photo de Provider"}}</div>
         <h3 class="text-center">{{commentReplySelected?.comment?.post?.title}}</h3>
-        <mat-chip>
+        <mat-chip routerLink="/provider/{{commentReplySelected?.comment?.post?.Provider?.id}}">
           <img matChipAvatar [src]="commentReplySelected?.comment?.post?.Provider?.picture?.url" alt="provider pp" class="displayname">
           {{ commentReplySelected?.comment?.post?.Provider?.displayName }}
         </mat-chip>

@@ -25,6 +25,7 @@ import {ViewUserComponent} from "./stat/view-user/view-user.component";
 import {ViewGameComponent} from "./stat/view-game/view-game.component";
 import {SanctionStatComponent} from "./stat/sanction-stat/sanction-stat.component";
 import {GlobalStatComponent} from "./stat/global-stat/global-stat.component";
+import {ProviderOneComponent} from "./other/provider-one/provider-one.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -68,6 +69,8 @@ const routes: Routes = [
 
   /* OTHER*/
   {path: 'user/:id', component: UserOneComponent},
+  {path: 'provider/:id', component: ProviderOneComponent},
+
   {path: 'settings', component: SettingComponent},
   {path: 'err', component: ErrComponent},
   {path: '**', component: ErrComponent},
