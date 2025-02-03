@@ -28,6 +28,29 @@
 
   <hr style="margin: 25px 0">
 
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- role Column -->
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef> Rôle </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-chip [style.background-color]="app.AllRole[element]">
+          {{ element.substring(5) }}
+        </mat-chip>
+      </td>
+    </ng-container>
+
+    <!-- nb Column -->
+    <ng-container matColumnDef="nb">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element">
+        {{ AllStat.roles[element] }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 
 
 </section>

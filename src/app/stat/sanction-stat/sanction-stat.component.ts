@@ -22,7 +22,6 @@ export class SanctionStatComponent implements OnInit {
     this.statService.getStatSanction(this.app.setURL(), this.app.createCorsToken()).subscribe((response: { message:string, result:resultSanctionStat}) => {
       if (response.message === "good") {
         this.SanctionStat = response.result;
-        console.log(this.SanctionStat);
         this.dataSource = this.SanctionStat.nb_types;
       } else {
         console.log("une erreur est survenue");

@@ -9,10 +9,12 @@ import {AppComponent} from "../../app.component";
 })
 export class GlobalStatComponent implements OnInit {
 
+  displayedColumns: string[] = ['role', 'nb'];
   AllStat: resultGlobalStat | null = null;
+  dataSource: string[] = roles;
 
   constructor(private statService: StatService,
-              private app: AppComponent) {
+              protected app: AppComponent) {
   }
 
   ngOnInit() {
@@ -33,22 +35,34 @@ export class GlobalStatComponent implements OnInit {
 
 export interface resultGlobalStat {
   nb_user: number;
-  roles: {
-    nb_owner: number;
-    nb_admin: number;
-    nb_modo_red: number;
-    nb_modo_super: number;
-    nb_modo: number;
-    nb_write_res: number;
-    nb_write_super: number;
-    nb_write: number;
-    nb_test_res: number;
-    nb_test: number;
-    nb_provider_admin: number;
-    nb_provider: number;
-    nb_beta: number;
-    nb_ban: number;
-  };
+  roles: RoleStats;
   nb_game: number;
   nb_actu: number;
 }
+
+
+export interface RoleStats {
+  [role: string]: number;
+}
+
+export const roles: string[] = [
+  'ROLE_OWNER',
+  'ROLE_ADMIN',
+
+  'ROLE_MODO_RESPONSABLE',
+  'ROLE_MODO_SUPER',
+  'ROLE_MODO',
+
+  'ROLE_WRITE_RESPONSABLE',
+  'ROLE_WRITE_SUPER',
+  'ROLE_WRITE',
+
+  'ROLE_TEST_RESPONSABLE',
+  'ROLE_TEST',
+
+  'ROLE_PROVIDER_ADMIN',
+  'ROLE_PROVIDER',
+
+  'ROLE_BETA',
+  'ROLE_BAN'
+];
