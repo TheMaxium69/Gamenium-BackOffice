@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AppComponent} from "../../app.component";
 import {GameService} from "../../-service/game.service";
 import {TestService} from "../../-service/test.service";
@@ -11,7 +11,7 @@ import {MatPaginator} from "@angular/material/paginator";
   templateUrl: './view-test.component.html',
   styleUrls: ['./view-test.component.css']
 })
-export class ViewTestComponent {
+export class ViewTestComponent implements OnInit{
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
@@ -27,10 +27,18 @@ export class ViewTestComponent {
   gameResults: any[] = [];
 
 
-  displayedColumns: string[] = ['id', 'note', 'content', 'test_at', 'user'];
+  displayedColumns: string[] = ['id', 'game', 'note', 'content', 'test_at', 'user'];
   tests: TestInterface[] = [];
   dataSource = new MatTableDataSource<TestInterface>(this.tests);
 
+
+  ngOnInit(): void {
+    this.testService.getTestAll(this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).subscribe(testsAll => {
+      this.tests = testsAll;
+      this.dataSource = new MatTableDataSource<TestInterface>(this.tests);
+      this.dataSource.paginator = this.paginator;
+    });
+  }
 
 
   getTests(id:number){

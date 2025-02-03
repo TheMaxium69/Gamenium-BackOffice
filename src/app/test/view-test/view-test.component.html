@@ -1,3 +1,5 @@
+<h1> Liste de Tests </h1>
+
 <mat-form-field style="width: 100%;">
   <mat-label>Chercher un jeu</mat-label>
   <input
@@ -17,13 +19,24 @@
 </mat-list>
 
 
-<div class="mat-elevation-z8" *ngIf="game_id !== null && tests.length > 0">
+<div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
 
     <!-- Id Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- game Column -->
+    <ng-container matColumnDef="game">
+      <th mat-header-cell *matHeaderCellDef> Jeu </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-chip>
+          <img matChipAvatar [src]="element.game.image.icon_url" alt="game pp"/>
+          {{ element.game.name }}
+        </mat-chip>
+      </td>
     </ng-container>
 
     <!-- note Column -->

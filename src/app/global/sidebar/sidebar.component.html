@@ -32,9 +32,13 @@
         </mat-list-item>
           <ng-container *ngIf="whichUnrolled === 'administration' && isUnrolled">
 
+            <mat-divider></mat-divider>
+
             <mat-list-item routerLink="/admin/perms">
               <div matListItemTitle>Gestion utilisateurs</div>
             </mat-list-item>
+
+            <mat-divider></mat-divider>
 
           </ng-container>
 
@@ -55,6 +59,8 @@
       </mat-list-item>
         <ng-container *ngIf="whichUnrolled === 'moderation' && isUnrolled">
 
+          <mat-divider></mat-divider>
+
           <mat-list-item routerLink="/modo/ban">
             <div matListItemTitle>Bannissement</div>
           </mat-list-item>
@@ -62,6 +68,8 @@
           <mat-list-item routerLink="/modo/warn">
             <div matListItemTitle>Signalement</div>
           </mat-list-item>
+
+          <mat-divider></mat-divider>
 
         </ng-container>
 
@@ -81,15 +89,18 @@
         <div matListItemTitle>Rédacteur</div>
       </mat-list-item>
        <ng-container *ngIf="whichUnrolled === 'redacteur' && isUnrolled">
+
+         <mat-divider></mat-divider>
+
          <mat-list-item routerLink="/writter/show-articles">
            <div matListItemTitle>Voir la listes des Articles</div>
          </mat-list-item>
          <mat-list-item routerLink="/writter/create-article">
            <div matListItemTitle>Créer un Article</div>
          </mat-list-item>
-<!--         <mat-list-item routerLink="/writter/edit-article">-->
-<!--          <div matListItemTitle>Modifier un Article</div>-->
-<!--        </mat-list-item>-->
+
+         <mat-divider></mat-divider>
+
        </ng-container>
 
       </ng-container>
@@ -107,12 +118,18 @@
         <div matListItemTitle>Testeur</div>
       </mat-list-item>
        <ng-container *ngIf="whichUnrolled === 'test' && isUnrolled">
+
+         <mat-divider></mat-divider>
+
          <mat-list-item routerLink="/test/view">
            <div matListItemTitle>Chercher un test</div>
          </mat-list-item>
          <mat-list-item routerLink="/test/create">
            <div matListItemTitle>Créer un test</div>
          </mat-list-item>
+
+         <mat-divider></mat-divider>
+
        </ng-container>
 
       </ng-container>
@@ -128,9 +145,15 @@
         <div matListItemTitle>Éditeur</div>
       </mat-list-item>
           <ng-container *ngIf="whichUnrolled === 'provider' && isUnrolled">
+
+            <mat-divider></mat-divider>
+
             <mat-list-item routerLink="/provider/profil">
               <div matListItemTitle>Profil</div>
             </mat-list-item>
+
+            <mat-divider></mat-divider>
+
           </ng-container>
 
       </ng-container>
@@ -146,6 +169,9 @@
         <div matListItemTitle>Statistiques</div>
       </mat-list-item>
           <ng-container *ngIf="whichUnrolled === 'stat' && isUnrolled">
+
+
+            <mat-divider></mat-divider>
 
             <mat-list-item routerLink="/stat/global">
               <div matListItemTitle>Global</div>
@@ -187,6 +213,7 @@
               <div matListItemTitle>Vue d'un Profile</div>
             </mat-list-item>
 
+            <mat-divider></mat-divider>
 
           </ng-container>
 
@@ -203,6 +230,8 @@
           <div matListItemTitle>Log</div>
         </mat-list-item>
         <ng-container *ngIf="whichUnrolled === 'log' && isUnrolled">
+
+          <mat-divider></mat-divider>
 
           <mat-list-item routerLink="/log/role">
             <div matListItemTitle>Log des rôles</div>
