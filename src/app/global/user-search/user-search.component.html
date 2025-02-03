@@ -105,11 +105,11 @@
     <ng-container matColumnDef="addban">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let element">
-        <ng-container *ngIf="this.app.userConnected.id !== element.id">
+        <ng-container *ngIf="this.app.userConnected.id !== element.id && canBan(element.roles)">
           <mat-icon fontIcon="gavel" mat-button *ngIf="!isBan(element.roles)" (click)="toggleBan(element.id, true)"></mat-icon>
           <mat-icon fontIcon="undo" mat-button *ngIf="isBan(element.roles)" (click)="toggleBan(element.id, false)"></mat-icon>
         </ng-container>
-        <ng-container *ngIf="this.app.userConnected.id === element.id">
+        <ng-container *ngIf="this.app.userConnected.id === element.id || !canBan(element.roles)">
           <mat-icon fontIcon="cancel"></mat-icon>
         </ng-container>
       </td>

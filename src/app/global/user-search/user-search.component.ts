@@ -171,4 +171,16 @@ export class UserSearchComponent implements OnInit, OnDestroy{
   }
 
 
+  canBan(roles: string[]) {
+
+    let canManageRole = this.app.roleCanManage();
+
+    for (const role of roles) {
+      if (!canManageRole.includes(role) && role !== 'ROLE_BAN' && role !== 'ROLE_USER') {
+        return false;
+      }
+    }
+    return true;
+
+  }
 }
