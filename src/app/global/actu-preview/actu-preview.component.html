@@ -25,11 +25,15 @@
       </div>
       <div class="d-flex">
         <p class="w-128">Derniere modification le :</p>
-        <p>{{actuSelected?.last_edit| date:'dd/MM/yyyy, HH:mm'}}</p>
+        <p *ngIf="actuSelected?.last_edit">{{actuSelected?.last_edit| date:'dd/MM/yyyy, HH:mm'}}</p>
+        <p *ngIf="!actuSelected?.last_edit">Aucune modification</p>
       </div>
       <div class="d-flex">
         <p class="w-128">Ecrit par :</p>
-        <p>{{actuSelected?.user?.displayname_useritium}}</p>
+        <mat-chip routerLink="/user/{{actuSelected?.user?.id}}">
+          <img matChipAvatar [src]="app.generatePPUseritium(actuSelected?.user?.pp?.url, actuSelected?.user?.displayname_useritium	 || actuSelected?.user?.username,actuSelected?.user?.color || this.app.colorDefault)" alt="user pp"/>
+            {{actuSelected?.user?.displayname_useritium	 ?? actuSelected?.user?.username }}
+        </mat-chip>
       </div>
       <div class="d-flex">
         <p class="w-128">Contenu de l'article :</p>
