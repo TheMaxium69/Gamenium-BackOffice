@@ -3,9 +3,16 @@
   
   <mat-card class="mb-38">
     <mat-card-content>
-      <div class="flex justify-center center-auto column">
+      <div class="flex justify-end">
+        <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/provider/' + commentSelected?.post?.Provider?.picture?.id)"></mat-icon>
+      </div>
+      <div class="flex justify-center center-auto column align-center">
         <div class="img mb-12" style= "background-image: url({{commentSelected?.post?.picture?.url}});">{{commentSelected?.post?.picture?.url ? "" : "Pas de photo d'actualité"}}</div>
         <h3 class="text-center">{{commentSelected?.post?.title}}</h3>
+        <mat-chip>
+          <img matChipAvatar [src]="commentSelected?.post?.Provider?.picture?.url" alt="provider pp" class="displayname">
+          {{ commentSelected?.post?.Provider?.displayName }}
+        </mat-chip>
       </div>
     </mat-card-content>
   </mat-card>
@@ -13,13 +20,13 @@
   <mat-card>
     <mat-card-content>
       <h2 class="mb-12">Informations sur le commentaire : </h2>
-      <div class="flex">
-        <p class="w-128">Commentaire signalé :</p>
-        <p>{{commentSelected?.content}}</p>
+      <div class="flex align-center mx-20">
+        <div class="w-128">Commentaire signalé :</div>
+        <div class="w-50vh">{{commentSelected?.content}}</div>
       </div>
 
-      <div class="flex">
-        <p class="w-128">Auteur :</p>
+      <div class="flex align-center mx-20">
+        <div class="w-128">Auteur :</div>
 
         <mat-chip *ngIf="commentSelected?.user">
           <img matChipAvatar [src]="app.generatePPUseritium(commentSelected?.user?.pp?.url, commentSelected?.user?.displayname_useritium	 || commentSelected?.user?.username,commentSelected?.user?.color || this.app.colorDefault)" alt="user pp"/>
@@ -32,9 +39,9 @@
         
       </div>
 
-      <div class="flex">
-        <p class="w-128">Le :</p>
-        <p>{{commentSelected?.created_at| date:'dd/MM/yyyy'}} </p>
+      <div class="flex align-center mx-20">
+        <div class="w-128">Le :</div>
+        <div>{{commentSelected?.created_at| date:'dd/MM/yyyy'}} </div>
       </div>
     </mat-card-content>
   </mat-card>

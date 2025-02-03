@@ -15,8 +15,25 @@
     margin-bottom: 12px;
 }
 
+.mx-20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.m-0 {
+    margin: 0px;
+}
+
 .w-128 {
     width: 128px;
+}
+
+.w-50vh {
+    width: 50vh;
+}
+
+.h-40{
+    height: 40px;
 }
 
 .flex {
@@ -25,6 +42,10 @@
 
 .justify-center {
     justify-content: center;
+}
+
+.justify-end {
+    justify-content: end;
 }
 
 .center-auto {
@@ -38,4 +59,8 @@
 
 .text-center {
     text-align: center;
+}
+
+.align-center {
+    align-items: center;
 }

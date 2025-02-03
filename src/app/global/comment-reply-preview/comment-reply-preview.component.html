@@ -3,30 +3,33 @@
   
   <mat-card class="mb-38">
     <mat-card-content>
-      <div class="flex justify-center center-auto column">
-        <div class="img mb-12" style= "background-image: url({{commentReplySelected?.comment?.post?.picture?.url}});">{{commentReplySelected?.comment?.post?.picture?.url ? "" : "Pas de photo de profil"}}</div>
+      <div class="flex justify-end">
+        <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/provider/' + commentReplySelected?.comment?.post?.Provider?.picture?.id)"></mat-icon>
+      </div>
+      <div class="flex justify-center center-auto column align-center">
+        <div class="img mb-12" style= "background-image: url({{commentReplySelected?.comment?.post?.picture?.url}});">{{commentReplySelected?.comment?.post?.picture?.url ? "" : "Pas de photo de Provider"}}</div>
         <h3 class="text-center">{{commentReplySelected?.comment?.post?.title}}</h3>
+        <mat-chip>
+          <img matChipAvatar [src]="commentReplySelected?.comment?.post?.Provider?.picture?.url" alt="provider pp" class="displayname">
+          {{ commentReplySelected?.comment?.post?.Provider?.displayName }}
+        </mat-chip>
       </div>
     </mat-card-content>
   </mat-card>
 
-  <mat-card>
+<!-- commentaire réponse signalé -->
+  <mat-card class="mb-38">
     <mat-card-content>
       <h2 class="mb-12">Informations sur la réponse au commentaire : </h2>
-      <div class="flex">
-        <p class="w-128">Commentaire signalé :</p>
-        <p>{{commentReplySelected?.content}}</p>
+      <div class="flex align-center mx-20">
+        <div class="w-128">Commentaire signalé :</div>
+        <div class="w-50vh">{{commentReplySelected?.content}}</div>
       </div>
 
-      <div class="flex">
-        <p class="w-128">Commentaire originale :</p>
-        <p>{{commentReplySelected?.comment?.content}} </p>
-      </div>
+      <div class="flex align-center mx-20">
+        <div class="w-128">Auteur :</div>
 
-      <div class="flex">
-        <p class="w-128">Auteur :</p>
-
-        <mat-chip *ngIf="commentReplySelected?.user">
+        <mat-chip *ngIf="commentReplySelected?.user" class="displayname">
           <img matChipAvatar [src]="app.generatePPUseritium(commentReplySelected?.user?.pp?.url, commentReplySelected?.user?.displayname_useritium	 || commentReplySelected?.user?.username,commentReplySelected?.user?.color || this.app.colorDefault)" alt="user pp"/>
           {{commentReplySelected?.user?.displayname_useritium	 ?? commentReplySelected?.user?.username }}
         </mat-chip>
@@ -37,9 +40,39 @@
         
       </div>
 
-      <div class="flex">
-        <p class="w-128">Le :</p>
-        <p>{{commentReplySelected?.created_at| date:'dd/MM/yyyy'}} </p>
+      <div class="flex align-center mx-20">
+        <div class="w-128">Le :</div>
+        <div>{{commentReplySelected?.created_at| date:'dd/MM/yyyy'}} </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+<!-- commentaire originale -->
+  <mat-card  class="mb-38">
+    <mat-card-content>
+      <h2 class="mb-12">Informations sur le commentaire originale : </h2>
+      <div class="flex align-center mx-20">
+        <div class="w-128">Commentaire originale :</div>
+        <div class="w-50vh">{{commentReplySelected?.comment?.content}} </div>
+      </div>
+
+      <div class="flex align-center mx-20">
+        <div class="w-128">Auteur :</div>
+
+        <mat-chip *ngIf="commentReplySelected?.comment?.user">
+          <img matChipAvatar [src]="app.generatePPUseritium(commentReplySelected?.comment?.user?.pp?.url, commentReplySelected?.comment?.user?.displayname_useritium	 || commentReplySelected?.comment?.user?.username,commentReplySelected?.user?.color || this.app.colorDefault)" alt="user pp" class="displayname"/>
+          {{commentReplySelected?.comment?.user?.displayname_useritium	 ?? commentReplySelected?.comment?.user?.username }}
+        </mat-chip>
+
+        <mat-chip *ngIf="!commentReplySelected?.comment?.user">
+          Anonyme
+        </mat-chip>
+        
+      </div>
+
+      <div class="flex align-center mx-20">
+        <div class="w-128">Le :</div>
+        <div>{{commentReplySelected?.comment?.created_at| date:'dd/MM/yyyy'}} </div>
       </div>
     </mat-card-content>
   </mat-card>
