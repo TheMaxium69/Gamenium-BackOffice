@@ -31,25 +31,10 @@
           <div matListItemTitle>Administration</div>
         </mat-list-item>
           <ng-container *ngIf="whichUnrolled === 'administration' && isUnrolled">
+
             <mat-list-item routerLink="/admin/perms">
               <div matListItemTitle>Gestion utilisateurs</div>
             </mat-list-item>
-
-            <ng-container *ngIf="
-              app.userConnected.userRole.includes('ROLE_OWNER') ||
-              app.userConnected.userRole.includes('ROLE_ADMIN')
-            ">
-
-              <mat-list-item routerLink="/admin/logrole">
-                <div matListItemTitle>Log des rôles</div>
-              </mat-list-item>
-
-              <mat-list-item routerLink="/admin/log">
-                <div matListItemTitle>Log de la modération</div>
-              </mat-list-item>
-
-            </ng-container>
-
 
           </ng-container>
 
