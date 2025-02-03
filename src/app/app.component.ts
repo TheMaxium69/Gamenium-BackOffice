@@ -357,8 +357,34 @@ export class AppComponent {
 
   }
 
-
   redirectUrl(url: string) {
     window.open(url, '_blank');
   }
+
+  plateformeNameFormatage(plateform:string): string{
+
+    if (plateform == 'Super Nintendo Entertainment System'){
+      return 'SNES'
+    }
+
+    if (plateform == 'Nintendo Entertainment System'){
+      return 'NES'
+    }
+
+    if (plateform == 'Genesis'){
+      return 'Mega Drive'
+    }
+
+    if (plateform == 'Browser'){
+      return 'Navigateur'
+    }
+
+    if (plateform == 'Other'){
+      return 'Autre'
+    }
+
+    return plateform;
+
+  }
+
 }
