@@ -43,6 +43,10 @@
     justify-content: center;
 }
 
+.justify-end {
+    justify-content: end;
+}
+
 .text-center {
     text-align: center;
 }
