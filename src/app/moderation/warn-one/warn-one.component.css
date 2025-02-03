@@ -1,0 +1,13 @@
+.d-flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.w-128{
+    width:256px;
+}
+
+p, h2{
+    margin-bottom: 0px;
+}

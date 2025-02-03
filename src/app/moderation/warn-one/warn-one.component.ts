@@ -16,7 +16,7 @@ export class WarnOneComponent implements OnInit {
   warnId: number | undefined;
 
   constructor(
-    private app: AppComponent,
+    protected app: AppComponent,
     private activatedRoute: ActivatedRoute,
     private warnService: WarnService
   ) {}

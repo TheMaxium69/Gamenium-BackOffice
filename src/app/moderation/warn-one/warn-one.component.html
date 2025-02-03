@@ -1,11 +1,38 @@
 
 <mat-card>
     <mat-card-content>
-        <h2>Selected warn : {{warnSelected?.id}}</h2>
-    <p>Motif du signalement: {{warnSelected?.warnType?.name}}</p>
-    <p *ngIf="warnSelected?.content">Description du signalement: "{{warnSelected?.content}}"</p>
-    <p>Signalé par: {{warnSelected?.user?.displayname || 'Anonyme' }} </p>
-    <p>Le: {{warnSelected?.warnAt| date:'dd/MM/yyyy'}}</p>
+    <div class="d-flex">
+        <h2 class="w-128">Id du signalement : </h2>
+        <h2>{{warnSelected?.id}}</h2>
+    </div>
+    <div class="d-flex">
+        <p class="w-128">Motif du signalement :</p>
+        <p>{{warnSelected?.warnType?.name}}</p>
+    </div>
+    <div class="d-flex">
+        <p class="w-128">Type d'objet :</p>
+        <p>{{warnSelected?.comment?.content || warnSelected?.commentReply?.content ? 'Commentaire' : warnSelected?.actu?.title ? 'Actualité' : warnSelected?.hmg?.id ? 'Hmg' : warnSelected?.hmp?.id ? 'Hmp' : warnSelected?.profil?.displayname ? 'Utilisateur' : ''}}</p>
+    </div>
+    <div class="d-flex">
+        <p class="w-128">Description du signalement :</p>
+        <p *ngIf="warnSelected?.comment">"{{warnSelected?.content}}"</p>
+        <p *ngIf="!warnSelected?.comment">Non renseigné</p>
+    </div>
+    <div class="d-flex">
+        <p class="w-128">Signalé par :</p>
+        <mat-chip class="displayname" *ngIf="warnSelected?.user" routerLink="/user/{{warnSelected?.user?.id}}">
+            <img matChipAvatar [src]="app.generatePPUseritium(warnSelected?.user?.pp?.url, warnSelected?.user?.displayname_useritium	 || warnSelected?.user?.username,warnSelected?.user?.color || this.app.colorDefault)" alt="user pp"/>
+            {{warnSelected?.user?.displayname_useritium	 ?? warnSelected?.user?.username }}
+          </mat-chip>
+  
+          <mat-chip *ngIf="!warnSelected?.user">
+            Anonyme
+          </mat-chip>
+    </div>
+    <div class="d-flex">
+        <p class="w-128">Signalé le :</p>
+        <p>{{warnSelected?.warnAt| date:'dd/MM/yyyy'}}</p>
+    </div>
     </mat-card-content>
 </mat-card>
 <br><br>
