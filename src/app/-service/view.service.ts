@@ -19,4 +19,8 @@ export class ViewService {
     return this.http.get<ApicallInterface>(url + '/view-provider-show/' + idProvider, option);
   }
 
+  getGameViews(idGame: number, url: string, option: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(url + '/view-game-show/' + idGame, option);
+  }
+
 }

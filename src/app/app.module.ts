@@ -59,6 +59,9 @@ import { ProviderOneComponent } from './other/provider-one/provider-one.componen
 import { BanComponent } from './moderation/ban/ban.component';
 import { CopyComponent } from './stat/copy/copy.component';
 import {ProviderPreviewComponent} from "./global/provider-preview/provider-preview.component";
+import { GamePreviewComponent } from './global/game-preview/game-preview.component';
+import { GameOneComponent } from './other/game-one/game-one.component';
+import { ActuOneComponent } from './other/actu-one/actu-one.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +102,10 @@ import {ProviderPreviewComponent} from "./global/provider-preview/provider-previ
     ProviderPreviewComponent,
     ProviderOneComponent,
     BanComponent,
-    CopyComponent
+    CopyComponent,
+    GamePreviewComponent,
+    GameOneComponent,
+    ActuOneComponent
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,8 @@ import {GlobalStatComponent} from "./stat/global-stat/global-stat.component";
 import {ProviderOneComponent} from "./other/provider-one/provider-one.component";
 import {BanComponent} from "./moderation/ban/ban.component";
 import {CopyComponent} from "./stat/copy/copy.component";
+import {ActuOneComponent} from "./other/actu-one/actu-one.component";
+import {GameOneComponent} from "./other/game-one/game-one.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -66,6 +68,8 @@ const routes: Routes = [
   /* OTHER*/
   {path: 'user/:id', component: UserOneComponent},
   {path: 'provider/:id', component: ProviderOneComponent},
+  {path: 'actu/:id', component: ActuOneComponent},
+  {path: 'game/:id', component: GameOneComponent},
 
   {path: 'settings', component: SettingComponent},
   {path: 'err', component: ErrComponent},
