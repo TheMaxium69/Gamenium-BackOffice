@@ -6,7 +6,7 @@
         <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/actuality/' + actuSelected?.id)"></mat-icon>
       </div>
       <div class="flex justify-center">
-        <div class="mb-12 img shadow" style="background-image: url({{actuSelected?.picture?.url}});"></div>
+        <img src="{{ actuSelected?.picture?.url }}" class="card-img-top" alt="..." />
       </div>
       <h2 class="text-center">{{actuSelected?.title}}</h2>
     </mat-card-content>
@@ -15,9 +15,27 @@
   <mat-card>
     <mat-card-content>
       <h2>Informations générales : </h2>
-      <p>Editeur : {{actuSelected?.Provider?.displayName}}</p>
-      <p>Posté le : {{actuSelected?.created_at | date:'dd/MM/yyyy'}}</p>
-      <p>Contenu de l'article : {{actuSelected?.content}}</p>
+      <div class="d-flex">
+        <p class="w-128">Editeur :</p>
+        <p>{{actuSelected?.Provider?.displayName}}</p>
+      </div>
+      <div class="d-flex">
+        <p class="w-128">Posté le :</p>
+        <p>{{actuSelected?.created_at | date:'dd/MM/yyyy, HH:mm'}}</p>
+      </div>
+      <div class="d-flex">
+        <p class="w-128">Derniere modification le :</p>
+        <p>{{actuSelected?.last_edit| date:'dd/MM/yyyy, HH:mm'}}</p>
+      </div>
+      <div class="d-flex">
+        <p class="w-128">Ecrit par :</p>
+        <p>{{actuSelected?.user?.displayname_useritium}}</p>
+      </div>
+      <div class="d-flex">
+        <p class="w-128">Contenu de l'article :</p>
+        <p>{{actuSelected?.content}}</p>
+      </div>
+
     </mat-card-content>
   </mat-card>
 </section>
