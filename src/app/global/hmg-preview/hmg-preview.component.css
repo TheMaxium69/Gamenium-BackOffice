@@ -14,8 +14,14 @@
     margin: 15px;
 }
 
+p {
+    margin: 0px;
+}
+
 .d-flex {
     display: flex;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
 .w-128{

@@ -17,7 +17,7 @@ MyPlatform : HistoryMyPlatformInterface | undefined;
 
   constructor(
     private historyMyPlatformService: HistoryMyPlatformService,
-    private app: AppComponent
+    protected app: AppComponent
   ){}
 
   ngOnInit(): void {}

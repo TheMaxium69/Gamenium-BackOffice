@@ -1,13 +1,7 @@
-<section *ngIf="id">
+<!-- <section *ngIf="id">
   <hr>
   <h1>{{MyPlatform?.myPlateform?.plateform?.name}}</h1>
   <small>Ajoutée le: {{MyPlatform?.myPlateform?.added_at | date:'dd/MM/yyyy'}}</small>
-  <!-- <p>Description: {{MyPlatform?.rate?.content}}</p>
-  <div class="d-inline">Tag:
-    <div *ngFor="let tag of MyPlatform?.MyPlatform?.hmgTags" class="d-inline">
-      <div class="d-inline">{{tag.name}} </div>
-    </div>
-  </div> -->
 
   <div *ngFor=" let copy of MyPlatform?.copyPlateform; let i = index">
     <h2>Information sur l'exemplaire numero  {{i + 1}}</h2>
@@ -17,4 +11,91 @@
     <p>Lieu d'achat: {{copy.purchase.buy_where?.name ?? "Non renseigné"}}</p>
     <p>Descrition de l'achat: {{copy.purchase.content ?? "Non renseigné"}}</p>
   </div>
+</section> -->
+
+<section *ngIf="id && MyPlatform">
+
+  <mat-card>
+    <mat-card-content>
+      <div class="banner-image d-flex justify-center">
+        <div class="banner" style="background-image: url({{MyPlatform.myPlateform.plateform.image?.small_url}});"></div>
+        <div class="blur"></div>
+        <img class="back" src="{{ MyPlatform?.myPlateform?.plateform?.image?.small_url }}" alt="blur">
+      </div>
+      <h2 class="d-flex justify-center m-40">{{MyPlatform.myPlateform.plateform.name}}</h2>
+      </mat-card-content>
+  </mat-card>
+  <br><br>
+  <mat-card>
+    <mat-card-content>
+      <h2>Informations Générales</h2>
+      <div class="d-flex">
+        <p class="w-128">Plateforme :</p>
+        <mat-chip style="cursor: pointer" *ngIf="MyPlatform.myPlateform.plateform.image?.icon_url"> <!-- (click)="app.redirectUrl(app.setURLFront() + '/profil/' + MyPlatform.myGame.user.id + '/' + MyGame.myGame.plateform.id )"-->
+          <img matChipAvatar [src]="MyPlatform.myPlateform.plateform.image?.icon_url" alt="platform icon"/>
+          {{MyPlatform.myPlateform.plateform.name}}
+        </mat-chip>
+        <mat-chip style="cursor: pointer" *ngIf="!MyPlatform.myPlateform.plateform.image?.icon_url">
+          <p>{{MyPlatform.myPlateform.plateform.name}}</p>
+        </mat-chip>
+      </div>
+      <div class="d-flex">
+        <p class="w-128">Ajoutée le :</p>
+        <p>{{ MyPlatform.myPlateform.added_at | date:'dd/MM/yyyy, HH:mm' }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <br><br>
+
+  <mat-card>
+    <mat-card-content>
+      <h2>Gestion des exemplaires</h2>
+      <div *ngFor=" let copy of MyPlatform.copyPlateform; let i = index">
+        <mat-card>
+          <mat-card-content>
+            <h2>Exemplaire #{{i + 1}}</h2>
+            <div class="d-flex">
+              <p class="w-128">Edition :</p>
+              <p> {{copy.edition ?? "Non renseigné"}}</p>
+            </div>
+            <div class="d-flex">
+              <p class="w-128">Barcode :</p>
+              <p>{{copy.barcode ?? "Non renseigné"}}</p>
+            </div>
+            <div class="d-flex">
+              <p class="w-128">Description :</p>
+              <p>{{copy.content ?? "Non renseigné"}}</p>
+            </div>
+            <div class="d-flex">
+              <p class="w-128">Lieu d'achat :</p>
+              <mat-chip>
+                {{copy.purchase.buy_where?.name ?? "Non renseigné"}}
+              </mat-chip>
+            </div>
+            <div class="d-flex">
+              <p class="w-128">Descrition de l'achat :</p>
+              <p>{{copy.purchase.content ?? "Non renseigné"}}</p>
+            </div>
+            </mat-card-content>
+        </mat-card>
+        <br>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <br><br>
+
+  <!-- <ng-container *ngIf="MyGame?.screenshot">
+    <mat-card *ngIf="MyGame.screenshot.length > 0">
+      <mat-card-content>
+        <h1>Gestions des screenshots</h1>
+        <div *ngFor="let oneScreen of MyGame?.screenshot; let i = index">
+          <div>
+            <p>Screenshot #{{i + 1}}</p>
+            <img src="{{oneScreen.picture.url}}">
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </ng-container> -->
+
 </section>

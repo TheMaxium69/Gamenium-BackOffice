@@ -12,7 +12,7 @@ export interface PlateformInterface {
   date_last_updated:Date|undefined,
   deck:string|undefined,
   description:string|undefined,
-  image:{'icon_url':string}|undefined,
+  image:{'icon_url':string, 'small_url':string}|undefined,
   image_tags:JSON|undefined,
   install_base:string|undefined,
   online_support:string|undefined,
