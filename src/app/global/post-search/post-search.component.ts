@@ -6,6 +6,7 @@ import { ActualityService } from 'src/app/-service/actuality.service';
 import { AppComponent } from 'src/app/app.component';
 import {MatPaginator} from "@angular/material/paginator";
 import { Router } from '@angular/router';
+import { SelectedArticleService } from 'src/app/-service/selected-article.service';
 
 @Component({
   selector: 'app-post-search',
@@ -29,6 +30,7 @@ export class PostSearchComponent implements OnInit {
 
   constructor(protected app:AppComponent,
               private actualityService:ActualityService,
+              private selectedArticleService: SelectedArticleService,
               private router: Router,
             ){}
 
@@ -64,14 +66,16 @@ export class PostSearchComponent implements OnInit {
   }
 
     /* Sélectionne un article et redirige */
-  selectArticle(article: PostActuInterface) {
-    this.articleSelected.emit(article); // Émettre l'article sélectionné
-
-    if (!this.router.url.includes('/writter/edit-article')) {
-      // Rediriger vers la page d'édition SANS ID
-      this.router.navigate(['/writter/edit-article']);
+    selectArticle(article: PostActuInterface) {
+      this.selectedArticleService.setSelectedArticle(article); // on save l'article global
+      this.articleSelected.emit(article); // update immediate sur la page
+    
+      if (!this.router.url.includes('/writter/edit-article')) {
+        this.router.navigate(['/writter/edit-article']); // redirige si necessaire
+      }
     }
-  }
+    
+    
 
 
     

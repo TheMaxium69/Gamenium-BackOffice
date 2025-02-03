@@ -1,5 +1,89 @@
 <h1>Modifier un article</h1>
 
-<ng-container *ngIf="app.userConnected.userRole.includes('ROLE_ADMIN') || app.userConnected.userRole.includes('ROLE_OWNER') || app.userConnected.userRole.includes('ROLE_WRITE_RESPONSABLE') || app.userConnected.userRole.includes('ROLE_WRITE_SUPER') || app.userConnected.userRole.includes('ROLE_WRITE')">
-  <app-user-search [displayedColumns]="['id', 'displayname', 'username', 'email', 'roles', 'addrole']"></app-user-search>
+<!-- Affichage de la liste des articles en fonction du rôle -->
+<ng-container *ngIf="app.userConnected.userRole.includes('ROLE_ADMIN') || app.userConnected.userRole.includes('ROLE_OWNER')">
+  <app-post-search 
+    [displayedColumns]="['id', 'provider_id', 'game_id', 'user_id', 'picture_id', 'created_at', 'content', 'last_edit', 'nb_edit', 'title']"
+    (articleSelected)="onArticleSelected($event)">
+  </app-post-search>
 </ng-container>
+
+<ng-container *ngIf="!app.userConnected.userRole.includes('ROLE_ADMIN') && !app.userConnected.userRole.includes('ROLE_OWNER')">
+  <app-post-search 
+    [displayedColumns]="['id', 'provider_id', 'game_id', 'user_id', 'picture_id', 'created_at', 'content', 'title']"
+    (articleSelected)="onArticleSelected($event)">
+  </app-post-search>
+</ng-container>
+
+<div *ngIf="displaySelectMessage">
+  <h2>Veuillez sélectionner un article à modifier</h2>
+</div>
+
+
+<!-- Formulaire de modification -->
+<div *ngIf="selectedArticle">
+  <h2>Modifier l'article</h2>
+  <form>
+
+    <!-- Champ Titre -->
+    <mat-form-field style="width: 100%;" appearance="outline">
+      <mat-label>Titre</mat-label>
+      <input matInput [(ngModel)]="selectedArticle.title" name="title">
+    </mat-form-field>
+
+    <!-- Champ Contenu -->
+    <mat-form-field style="width: 100%;" appearance="outline">
+      <mat-label>Contenu</mat-label>
+      <textarea matInput [(ngModel)]="selectedArticle.content" name="content"></textarea>
+    </mat-form-field>
+
+    <!-- Recherche et Sélection du Jeu -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Rechercher un Jeu</mat-label>
+      <input matInput id="gameSearch" (input)="searchGames()" [(ngModel)]="gameSearch" name="gameSearch" autocomplete="off">
+    </mat-form-field>
+
+    <!-- Liste des jeux -->
+    <mat-list *ngIf="gameResults.length > 0" class="results-list">
+      <mat-list-item *ngFor="let game of gameResults" (click)="selectGame(game)" lines="1">
+        <img matListItemAvatar [src]="game.image?.icon_url" alt="{{ game.name }}">
+        <span matListItemTitle>{{ game.name }}</span>
+      </mat-list-item>
+    </mat-list>
+
+    <!-- Affichage du jeu sélectionné -->
+    <div *ngIf="selectedArticle.game">
+      <p><strong>Jeu sélectionné :</strong> {{ selectedArticle.game?.name }}</p>
+    </div>
+
+    <!-- Recherche et Sélection du Provider -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Rechercher un Provider</mat-label>
+      <input matInput id="providerSearch" (input)="searchProviders()" [(ngModel)]="providerSearch" name="providerSearch" autocomplete="off">
+    </mat-form-field>
+
+    <!-- Liste des Providers -->
+    <mat-list *ngIf="providerResults.length > 0" class="results-list">
+      <mat-list-item *ngFor="let provider of providerResults" (click)="selectProvider(provider)" lines="1">
+        <img matListItemAvatar *ngIf="provider.picture?.url" [src]="provider.picture?.url" alt="{{ provider.displayName }}">
+        <span matListItemTitle>{{ provider.displayName || provider.tagName || 'Unknown Provider' }}</span>
+      </mat-list-item>
+    </mat-list>
+
+    <!-- Affichage du provider sélectionné -->
+    <div *ngIf="selectedArticle.Provider">
+      <p><strong>Provider sélectionné :</strong> {{ selectedArticle.Provider?.displayName }}</p>
+    </div>
+
+    <!-- Upload et Modification d'Image -->
+    <div class="image-upload">
+      <input type="file" #fileInput (change)="onFileSelected($event)" hidden>
+      <button mat-button (click)="triggerFileSelect()">Changer l'image</button>
+      <img *ngIf="selectedArticle.picture?.url" [src]="selectedArticle.picture.url" class="preview-image">
+    </div>
+
+    <!-- Bouton de mise à jour -->
+    <button mat-raised-button color="primary" (click)="updateArticle()">Modifier</button>
+
+  </form>
+</div>
