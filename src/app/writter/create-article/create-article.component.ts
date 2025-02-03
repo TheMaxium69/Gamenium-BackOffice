@@ -12,7 +12,7 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./create-article.component.css']
 })
 export class CreateArticleComponent {
-  @ViewChild('fileInput') fileInput!: ElementRef; 
+  @ViewChild('fileInput') fileInput!: ElementRef;
 
 title: string = "";
 content: string = "";
@@ -52,20 +52,20 @@ imageClass: string = '';
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
-  
+
       reader.onload = () => {
         this.imagePreview = reader.result as string;
-  
-        // crée une image pour recup le ratio 
+
+        // crée une image pour recup le ratio
         const img = new Image();
         img.src = this.imagePreview;
         img.onload = () => {
           const aspectRatio = img.width / img.height;
           console.log("Aspect Ratio:", aspectRatio); // debug
-  
+
           // reset la class
           this.imageClass = '';
-  
+
           // applique la bonne classe selon le ratio
           if (aspectRatio > 1.3) {
             this.imageClass = 'horizontal'; // image horizontal = largeur total
@@ -75,15 +75,15 @@ imageClass: string = '';
             this.imageClass = 'icon'; // petite icon reste petite
           }
         };
-  
+
         // ensuite on continue l'upload de l'image
         this.uploadImage(file);
       };
-  
+
       reader.readAsDataURL(file);
     }
   }
-  
+
 
   // gerer drag and drop
   onFileDropped(event: DragEvent) {
@@ -98,14 +98,14 @@ imageClass: string = '';
   // Upload Image
   uploadImage(file: File) {
     console.log("Uploading file:", file.name); // debug
-  
+
     const url = this.app.setURL();
-    const option = this.app.createCorsToken(true); 
-  
+    const option = this.app.createCorsToken(true);
+
     const formData = new FormData();
     formData.append('photo', file);
-  
-    this.uploadService.uploadPostActuPhoto(formData, url, option).subscribe(response => {
+
+    this.uploadService.uploadProviderPhoto(formData, url, option).subscribe(response => {
       console.log("Image uploaded:", response);
       this.picture_id = response.result.id;
       this.imagePreview = response.result.url;
@@ -113,16 +113,16 @@ imageClass: string = '';
       console.error("Upload error:", error);
     });
   }
-  
-  
-  
+
+
+
 
   //Recherche Provider
   searchProviders() {
     if (this.providerSearch.length > 2) {
       const url = this.app.setURL();
       const option = this.app.createCorsToken();
-  
+
       this.providerService.searchProviders(this.providerSearch, 10, url, option)
         .subscribe(response => {
           this.providerResults = response as ProviderInterface[];
@@ -132,12 +132,12 @@ imageClass: string = '';
         });
     }
   }
-    
-    
+
+
 
   selectProvider(provider: any) {
     this.provider_id = provider.id;
-    this.providerSearch = provider.displayName; 
+    this.providerSearch = provider.displayName;
     this.providerResults = []; //cache la liste après
   }
 
@@ -168,7 +168,7 @@ imageClass: string = '';
   }
 
 
-  // Recherche de jeux 
+  // Recherche de jeux
   searchGames() {
     if (this.gameSearch.length > 2) { // Démarre recherche après 3 caractère
       const url = this.app.setURL();

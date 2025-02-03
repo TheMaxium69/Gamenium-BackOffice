@@ -65,7 +65,7 @@ export class EditArticleComponent implements OnInit {
             this.imagePreview = this.selectedArticle?.picture?.url ?? null;
         } else {
             this.selectedArticle = null;
-            this.imagePreview = null; 
+            this.imagePreview = null;
         }
     }, error => {
         console.error("Erreur lors de la récupération de l'article :", error);
@@ -129,7 +129,7 @@ export class EditArticleComponent implements OnInit {
     const formData = new FormData();
     formData.append('photo', file);
 
-    this.uploadService.uploadPostActuPhoto(formData, url, option).subscribe(
+    this.uploadService.uploadProviderPhoto(formData, url, option).subscribe(
       response => {
         if (this.selectedArticle) {
           this.selectedArticle.picture = response.result;

@@ -63,7 +63,7 @@ export class ProfilComponent implements OnInit {
       const option = this.app.createCorsToken(true);
       const formdata = new FormData();
       formdata.append('photo', file);
-      this.uploadService.uploadPostActuPhoto(formdata, url, option).subscribe(response => {
+      this.uploadService.uploadProviderPhoto(formdata, url, option).subscribe(response => {
         this.providerSelected!.picture = response.result; // Mise à jour de l'image
       });
     }

@@ -9,9 +9,9 @@ import { ApicallInterface } from '../-interface/apicall.interface';
 export class UploadService {
   constructor(private http: HttpClient) {}
 
-  uploadPostActuPhoto(formData: FormData, url: string, option: { headers: HttpHeaders }): Observable<ApicallInterface> {
-    return this.http.post<ApicallInterface>(`${url}/postactus/upload`, formData, {
-      headers: option.headers, 
+  uploadProviderPhoto(formData: FormData, url: string, option: { headers: HttpHeaders }): Observable<ApicallInterface> {
+    return this.http.post<ApicallInterface>(`${url}/upload/provider`, formData, {
+      headers: option.headers,
     });
   }
 }
