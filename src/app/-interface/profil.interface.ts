@@ -14,6 +14,8 @@ export interface ProfilInterface {
   picture:string|undefined,
   nbGame:number,
   nbNote:number,
-  reseau:ProfilSocialNetworkInterface[];
+  reseau:ProfilSocialNetworkInterface[],
+  roles: any,
+  badges: any
 
 }

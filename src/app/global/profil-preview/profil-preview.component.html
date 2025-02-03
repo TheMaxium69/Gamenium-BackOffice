@@ -21,6 +21,21 @@
         <p>{{profilSelected?.username}}</p>
       </div>
       <div class="flex">
+        <p class="w-128">Roles :</p>
+        <p>{{profilSelected?.roles}}</p>
+      </div>
+      <div class="flex">
+        <p class="w-128">Badges :</p>
+        <div class="flex column">
+          <div *ngFor="let badge of profilSelected?.badges">
+            <div class="flex mb-12 g-10">
+              <div class="badge-preview" style="background-image: url({{badge.pictureUrl}});"></div>
+              <p class="m-0 align-content-center">{{badge.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex">
         <p class="w-128">Inscrit depuis le :</p>
         <p>{{profilSelected?.joinAt | date:'dd/MM/yyyy'}}</p>
       </div>
@@ -36,6 +51,10 @@
         <p class="m-0">Couleur du thème : {{profilSelected?.themeColor ?? 'Couleur par défaut'}}</p>
         <div class="color-preview" style="background-color: {{profilSelected?.themeColor || app.colorDefault}};"></div>
       </div>
+      <div class="flex">
+        <p class="w-128">Nombre de jeux dans la collection :</p>
+        <p>{{ profilSelected?.nbGame}}</p>
+      </div>
     </mat-card-content>
   </mat-card>
 
@@ -43,6 +62,7 @@
     <mat-card-content>
       <h2>Réseaux sociaux :</h2>
         <div class="flex column">
+          <p *ngIf="profilSelected?.reseau?.length == 0">L'utilisateur n'a pas renseigné de réseaux sociaux.</p>
           <div *ngFor="let social of profilSelected?.reseau">
             <div class="flex g-10 align-items-center mb-12">
               <i class="{{ social.socialnetwork.icon_class }}"></i>
