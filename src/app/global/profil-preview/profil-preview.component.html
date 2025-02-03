@@ -20,22 +20,25 @@
         <p class="w-128">Useritium :</p>
         <p>{{profilSelected?.username}}</p>
       </div>
-      <div class="flex">
+      <div class="flex g-10">
         <p class="w-128">Roles :</p>
-        <div class="flex column">
-          <div *ngFor="let role of profilSelected?.roles">
-            <p>{{role}}</p>
-          </div>
+        <div *ngFor="let role of profilSelected?.roles">
+          <mat-chip class="role mb-12">
+            {{role.replace('ROLE_', '')}}
+          </mat-chip>
         </div>
       </div>
       <div class="flex">
         <p class="w-128">Badges :</p>
-        <div class="flex column">
+        <div class="flex mb-12 g-10">
+          <p *ngIf="profilSelected?.badges.length == 0">
+            Cet utilisateur n'a pas de badge.
+          </p>
           <div *ngFor="let badge of profilSelected?.badges">
-            <div class="flex mb-12 g-10">
-              <div class="badge-preview" style="background-image: url({{badge.pictureUrl}});"></div>
-              <p class="m-0 align-content-center">{{badge.name}}</p>
-            </div>
+              <mat-chip>
+                <img matChipAvatar [src]="badge.pictureUrl" alt="badge picture"/>
+                {{badge.name}}
+              </mat-chip>
           </div>
         </div>
       </div>
