@@ -49,7 +49,16 @@ import { LogComponent } from './administration/log/log.component';
 import { UserOneComponent } from './other/user-one/user-one.component';
 import { CreateTestComponent } from './test/create-test/create-test.component';
 import { ViewTestComponent } from './test/view-test/view-test.component';
-import { StatViewComponent } from './stat/stat-view/stat-view.component';
+import { LeaderGameComponent } from './stat/leader-game/leader-game.component';
+import { LeaderActuComponent } from './stat/leader-actu/leader-actu.component';
+import { LeaderProviderComponent } from './stat/leader-provider/leader-provider.component';
+import { LeaderUserComponent } from './stat/leader-user/leader-user.component';
+import { ViewGameComponent } from './stat/view-game/view-game.component';
+import { ViewActuComponent } from './stat/view-actu/view-actu.component';
+import { ViewProviderComponent } from './stat/view-provider/view-provider.component';
+import { ViewUserComponent } from './stat/view-user/view-user.component';
+import { GlobalStatComponent } from './stat/global-stat/global-stat.component';
+import { SanctionStatComponent } from './stat/sanction-stat/sanction-stat.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +90,16 @@ import { StatViewComponent } from './stat/stat-view/stat-view.component';
     UserOneComponent,
     CreateTestComponent,
     ViewTestComponent,
-    StatViewComponent,
+    LeaderGameComponent,
+    LeaderActuComponent,
+    LeaderProviderComponent,
+    LeaderUserComponent,
+    ViewGameComponent,
+    ViewActuComponent,
+    ViewProviderComponent,
+    ViewUserComponent,
+    GlobalStatComponent,
+    SanctionStatComponent,
   ],
   imports: [
     BrowserModule,

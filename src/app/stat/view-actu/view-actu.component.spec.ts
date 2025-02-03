@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatViewComponent } from './stat-view.component';
+import { ViewActuComponent } from './view-actu.component';
 
-describe('StatViewComponent', () => {
-  let component: StatViewComponent;
-  let fixture: ComponentFixture<StatViewComponent>;
+describe('ViewActuComponent', () => {
+  let component: ViewActuComponent;
+  let fixture: ComponentFixture<ViewActuComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [StatViewComponent]
+      declarations: [ViewActuComponent]
     });
-    fixture = TestBed.createComponent(StatViewComponent);
+    fixture = TestBed.createComponent(ViewActuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -142,9 +142,48 @@
         <div matListItemTitle>Statistiques</div>
       </mat-list-item>
           <ng-container *ngIf="whichUnrolled === 'stat' && isUnrolled">
-            <mat-list-item routerLink="/stat/view">
-              <div matListItemTitle>Par vue</div>
+
+            <mat-list-item routerLink="/stat/global">
+              <div matListItemTitle>Global</div>
             </mat-list-item>
+
+            <mat-list-item routerLink="/stat/sanction">
+              <div matListItemTitle>Sanction</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="/stat/leader-game">
+              <div matListItemTitle>Classements - Jeux</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="/stat/view-game">
+              <div matListItemTitle>Vue d'un Jeux</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="/stat/leader-actu">
+              <div matListItemTitle>Classements - Actu</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="/stat/view-actu">
+              <div matListItemTitle>Vue d'une Actu</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="/stat/leader-provider">
+              <div matListItemTitle>Classements - Éditeurs</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="/stat/view-provider">
+              <div matListItemTitle>Vue d'un Éditeurs</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="/stat/leader-user">
+              <div matListItemTitle>Classements - Profile</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="/stat/view-user">
+              <div matListItemTitle>Vue d'un Profile</div>
+            </mat-list-item>
+
+
           </ng-container>
 
       </ng-container>
