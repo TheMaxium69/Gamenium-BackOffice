@@ -11,6 +11,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     overflow: hidden !important;
 }
 
-.mat-mdc-standard-chip .mdc-evolution-chip__cell--primary, .mat-mdc-standard-chip .mdc-evolution-chip__action--primary, .mat-mdc-standard-chip .mat-mdc-chip-action-label {    
+.flag-shadow{
+  box-shadow: 0px 0px 3px #a6a6a6;
+  border-radius: 5px;
+}
+
+.mat-mdc-standard-chip .mdc-evolution-chip__cell--primary, .mat-mdc-standard-chip .mdc-evolution-chip__action--primary, .mat-mdc-standard-chip .mat-mdc-chip-action-label {
     overflow: hidden !important;
 }
