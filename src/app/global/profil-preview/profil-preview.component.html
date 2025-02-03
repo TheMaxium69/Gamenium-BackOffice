@@ -22,7 +22,11 @@
       </div>
       <div class="flex">
         <p class="w-128">Roles :</p>
-        <p>{{profilSelected?.roles}}</p>
+        <div class="flex column">
+          <div *ngFor="let role of profilSelected?.roles">
+            <p>{{role}}</p>
+          </div>
+        </div>
       </div>
       <div class="flex">
         <p class="w-128">Badges :</p>
@@ -37,11 +41,11 @@
       </div>
       <div class="flex">
         <p class="w-128">Inscrit depuis le :</p>
-        <p>{{profilSelected?.joinAt | date:'dd/MM/yyyy'}}</p>
+        <p>{{profilSelected?.joinAt | date:'d/MM/y à h:mm:ss'}}</p>
       </div>
       <div class="flex">
         <p class="w-128">Dernière connexion le :</p>
-        <p>{{profilSelected?.lastConnection | date:'dd/MM/yyyy'}}</p>
+        <p>{{profilSelected?.lastConnection | date:'d/MM/y à h:mm:ss'}}</p>
       </div>
       <div class="flex">
         <p class="w-128">S'est connecté :</p>
@@ -55,10 +59,14 @@
         <p class="w-128">Nombre de jeux dans la collection :</p>
         <p>{{ profilSelected?.nbGame}}</p>
       </div>
+      <div class="flex">
+        <p class="w-128">Nombre de jeux notés :</p>
+        <p>{{ profilSelected?.nbNote}}</p>
+      </div>
     </mat-card-content>
   </mat-card>
 
-  <mat-card>
+  <mat-card class="mb-38">
     <mat-card-content>
       <h2>Réseaux sociaux :</h2>
         <div class="flex column">
@@ -70,6 +78,20 @@
             </div>
           </div>
         </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- UNIQUEMENT POUR ADMIN ET OWNER -->
+  <mat-card 
+  *ngIf="this.app.userConnected.userRole.includes('ROLE_ADMIN') ||
+  this.app.userConnected.userRole.includes('ROLE_OWNER')">
+    <mat-card-content>
+      <h2>IP utilisées :</h2>
+      <div class="flex column">
+        <div *ngFor="let item of profilSelected?.ipUsed.filter(filterIpArray)">
+          <p>{{item}}</p>
+        </div>
+      </div>
     </mat-card-content>
   </mat-card>
 </section>
