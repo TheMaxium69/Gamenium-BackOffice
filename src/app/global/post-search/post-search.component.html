@@ -1,95 +1,83 @@
 <mat-form-field style="width: 100%;">
-    <mat-label>Chercher une Actualitée</mat-label>
-    <input
-      matInput
-      placeholder="Tapez votre recherche ..."
-      [(ngModel)]="searchValue"
-      (keyup)="searchPostactus()"
-    >
-  </mat-form-field>
+  <mat-label>Rechercher une Actualité</mat-label>
+  <input matInput placeholder="Tapez votre recherche..." [(ngModel)]="searchValue" (keyup)="searchPostactus()">
+</mat-form-field>
 
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
 
-      <!-- Id Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-      </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+    </ng-container>
 
-      <!-- provider_id Column -->
-      <ng-container matColumnDef="provider_id">
-        <th mat-header-cell *matHeaderCellDef> Provider </th>
-        <td mat-cell *matCellDef="let element">
-            <mat-chip>
-                <img matChipAvatar [src]="element.Provider?.picture.url">
-                {{element.Provider?.displayName }}
-            </mat-chip>
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Titre</th>
+      <td mat-cell *matCellDef="let element"> {{ element.title }} </td>
+    </ng-container>
 
-        </td>
-      </ng-container>
+    <!-- Provider Column -->
+    <ng-container matColumnDef="provider_id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Provider</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-chip>
+          <img matChipAvatar [src]="element.Provider?.picture.url">
+          {{ element.Provider?.displayName }}
+        </mat-chip>
+      </td>
+    </ng-container>
 
-      <!-- game_id Column -->
-      <ng-container matColumnDef="game_id">
-        <th mat-header-cell *matHeaderCellDef> game_id </th>
-        <td mat-cell *matCellDef="let element"> {{element.Game?.name}} </td>
-      </ng-container>
+    <!-- Game Column -->
+    <ng-container matColumnDef="game_id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Jeu</th>
+      <td mat-cell *matCellDef="let element"> {{ element.Game?.name }} </td>
+    </ng-container>
 
-      <!-- user_id Column -->
-      <ng-container matColumnDef="user_id">
-        <th mat-header-cell *matHeaderCellDef> user_id </th>
-        <td mat-cell *matCellDef="let element"> {{element.user.displayname_useritium}} </td>
-      </ng-container>
+    <!-- User Column -->
+    <ng-container matColumnDef="user_id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Utilisateur</th>
+      <td mat-cell *matCellDef="let element"> {{ element.user.displayname_useritium }} </td>
+    </ng-container>
 
-      <!-- picture_id Column -->
-      <ng-container matColumnDef="picture_id">
-        <th mat-header-cell *matHeaderCellDef> picture_id </th>
-        <td mat-cell *matCellDef="let element">
-             <img src="{{element.picture.url}}" class="preview-image">
-        </td>
-      </ng-container>
+    <!-- Content Column -->
+    <ng-container matColumnDef="content">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Contenu</th>
+      <td mat-cell *matCellDef="let element"> {{ element.content | slice:0:50 }}...</td>
+    </ng-container>
 
-      <!-- created_at Column -->
-      <ng-container matColumnDef="created_at">
-        <th mat-header-cell *matHeaderCellDef> created_at </th>
-        <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
-      </ng-container>
+    <!-- Picture Column -->
+    <ng-container matColumnDef="picture_id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
+      <td mat-cell *matCellDef="let element">
+        <img src="{{ element.picture.url }}" class="preview-image">
+      </td>
+    </ng-container>
 
-      <!-- content Column -->
-      <ng-container matColumnDef="content">
-        <th mat-header-cell *matHeaderCellDef> content </th>
-        <td mat-cell *matCellDef="let element"> {{element.content}} </td>
-      </ng-container>
+    <!-- Created At Column -->
+    <ng-container matColumnDef="created_at">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date de Création</th>
+      <td mat-cell *matCellDef="let element"> {{ element.created_at | date: 'dd/MM/yyyy' }} </td>
+    </ng-container>
 
-      <!-- last_edit Column -->
-      <ng-container matColumnDef="last_edit">
-        <th mat-header-cell *matHeaderCellDef> last_edit </th>
-        <td mat-cell *matCellDef="let element"> {{element.last_edit}} </td>
-      </ng-container>
+    <!-- Last Edit Column -->
+    <ng-container matColumnDef="last_edit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Dernière Modification</th>
+      <td mat-cell *matCellDef="let element"> {{ element.last_edit | date: 'dd/MM/yyyy' }} </td>
+    </ng-container>
 
-      <!-- nb_edit Column -->
-      <ng-container matColumnDef="nb_edit">
-        <th mat-header-cell *matHeaderCellDef> nb_edit </th>
-        <td mat-cell *matCellDef="let element"> {{element.nb_edit}} </td>
-      </ng-container>
+    <!-- Number of Edits Column -->
+    <ng-container matColumnDef="nb_edit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Modifications</th>
+      <td mat-cell *matCellDef="let element"> {{ element.nb_edit }} </td>
+    </ng-container>
 
-      <!-- title Column -->
-      <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef> title </th>
-        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectArticle(row)" class="clickable-row">
+    </tr>
+  </table>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
-    <mat-paginator
-
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 20]"
-                   showFirstLastButtons
-                   aria-label="Select page of periodic elements">
-    </mat-paginator>
-  </div>
-
-
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Pagination des articles">
+  </mat-paginator>
+</div>

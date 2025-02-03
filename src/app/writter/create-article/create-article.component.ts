@@ -56,27 +56,27 @@ imageClass: string = '';
       reader.onload = () => {
         this.imagePreview = reader.result as string;
   
-        // Create an image object to check its dimensions
+        // crée une image pour recup le ratio 
         const img = new Image();
         img.src = this.imagePreview;
         img.onload = () => {
           const aspectRatio = img.width / img.height;
-          console.log("Aspect Ratio:", aspectRatio); // Debugging
+          console.log("Aspect Ratio:", aspectRatio); // debug
   
-          // Reset class
+          // reset la class
           this.imageClass = '';
   
-          // Apply appropriate class based on aspect ratio
+          // applique la bonne classe selon le ratio
           if (aspectRatio > 1.3) {
-            this.imageClass = 'horizontal'; // Wide images take full width
+            this.imageClass = 'horizontal'; // image horizontal = largeur total
           } else if (aspectRatio >= 0.8 && aspectRatio <= 1.3) {
-            this.imageClass = 'square'; // Square images get moderate max width
+            this.imageClass = 'square'; // image carre = max width
           } else {
-            this.imageClass = 'icon'; // Small icons stay small
+            this.imageClass = 'icon'; // petite icon reste petite
           }
         };
   
-        // Continue with image upload
+        // ensuite on continue l'upload de l'image
         this.uploadImage(file);
       };
   

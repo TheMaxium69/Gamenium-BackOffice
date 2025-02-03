@@ -1,10 +1,11 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject, catchError, debounceTime, of, switchMap, takeUntil } from 'rxjs';
 import { PostActuInterface } from 'src/app/-interface/post-actu.interface';
 import { ActualityService } from 'src/app/-service/actuality.service';
 import { AppComponent } from 'src/app/app.component';
 import {MatPaginator} from "@angular/material/paginator";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-search',
@@ -16,6 +17,8 @@ export class PostSearchComponent implements OnInit {
 
   @Input()
   public displayedColumns: string[] = ['id'];
+  @Output() 
+  articleSelected = new EventEmitter<PostActuInterface>();
 
   private unsubscribe$ = new Subject<void>();
   private searchPostSubject = new Subject<string>();
@@ -24,7 +27,10 @@ export class PostSearchComponent implements OnInit {
   postactus: PostActuInterface[] = [];
   dataSource = new MatTableDataSource<PostActuInterface>(this.postactus);
 
-  constructor(protected app:AppComponent, private actualityService:ActualityService){}
+  constructor(protected app:AppComponent,
+              private actualityService:ActualityService,
+              private router: Router,
+            ){}
 
   ngOnInit() {
 
@@ -56,4 +62,17 @@ export class PostSearchComponent implements OnInit {
     this.postactus = [];
     this.searchPostSubject.next(this.searchValue);
   }
+
+    /* Sélectionne un article dans la liste */
+    selectArticle(article: PostActuInterface) {
+      if (this.router.url.includes('edit-article')) {
+        // Si on est déjà sur la page d'édition, on met à jour l'article sans rediriger
+        this.articleSelected.emit(article);
+      } else {
+        // Sinon, on redirige vers la page d'édition avec l'ID de l'article
+        this.router.navigate(['/edit-article', article.id]);
+      }
+    }
+
+    
 }

@@ -23,5 +23,10 @@ export class ActualityService {
   searchPostActu(searchValue: string, limit:number, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
     return this.http.post<ApicallInterface>(url + '/postactus/search',  { searchValue, limit}, options);
   }
+
+  updatePostActu(id: number, body: any, url: string, option: { headers: HttpHeaders }): Observable<ApicallInterface> {
+    return this.http.put<ApicallInterface>(`${url}/postactus/${id}`, body, option);
+  }
+  
 }
   
