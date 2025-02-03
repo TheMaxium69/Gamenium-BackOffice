@@ -54,9 +54,15 @@
         <div matListItemTitle>Modération</div>
       </mat-list-item>
         <ng-container *ngIf="whichUnrolled === 'moderation' && isUnrolled">
+
+          <mat-list-item routerLink="/modo/ban">
+            <div matListItemTitle>Bannissement</div>
+          </mat-list-item>
+
           <mat-list-item routerLink="/modo/warn">
             <div matListItemTitle>Signalement</div>
           </mat-list-item>
+
         </ng-container>
 
       </ng-container>

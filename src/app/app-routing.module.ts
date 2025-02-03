@@ -26,6 +26,7 @@ import {ViewGameComponent} from "./stat/view-game/view-game.component";
 import {SanctionStatComponent} from "./stat/sanction-stat/sanction-stat.component";
 import {GlobalStatComponent} from "./stat/global-stat/global-stat.component";
 import {ProviderOneComponent} from "./other/provider-one/provider-one.component";
+import {BanComponent} from "./moderation/ban/ban.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path: 'admin/perms', component: PermsComponent},
 
   /*MODO*/
+  {path: 'modo/ban', component: BanComponent},
   {path: 'modo/warn', component: WarnComponent},
   {path: 'modo/warn/:id', component: WarnOneComponent},
 

@@ -14,6 +14,10 @@ export class AdministrationService {
     return this.http.post<ApicallInterface>(url + '/admin-users-search',  { searchValue, limit}, options);
   }
 
+  toggleBanAdmin(id_user:number, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
+    return this.http.get<ApicallInterface>(url + '/admin-ban/' + id_user, options);
+  }
+
   addRoleAdmin(id_user:number, new_role:string, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
     return this.http.post<ApicallInterface>(url + '/admin-add-role', {id_user, new_role}, options);
   }
