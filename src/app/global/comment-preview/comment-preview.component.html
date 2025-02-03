@@ -1,6 +1,6 @@
 <section *ngIf="id">
 
-  
+
   <mat-card class="mb-38">
     <mat-card-content>
       <div class="flex justify-end">
@@ -28,7 +28,7 @@
       <div class="flex align-center mx-20">
         <div class="w-128">Auteur :</div>
 
-        <mat-chip *ngIf="commentSelected?.user">
+        <mat-chip *ngIf="commentSelected?.user" routerLink="/user/{{commentSelected?.user?.id}}">
           <img matChipAvatar [src]="app.generatePPUseritium(commentSelected?.user?.pp?.url, commentSelected?.user?.displayname_useritium	 || commentSelected?.user?.username,commentSelected?.user?.color || this.app.colorDefault)" alt="user pp"/>
           {{commentSelected?.user?.displayname_useritium	 ?? commentSelected?.user?.username }}
         </mat-chip>
@@ -36,7 +36,7 @@
         <mat-chip *ngIf="!commentSelected?.user">
           Anonyme
         </mat-chip>
-        
+
       </div>
 
       <div class="flex align-center mx-20">

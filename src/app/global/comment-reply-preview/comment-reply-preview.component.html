@@ -1,10 +1,10 @@
 <section *ngIf="id">
 
-  
+
   <mat-card class="mb-38">
     <mat-card-content>
       <div class="flex justify-end">
-        <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/provider/' + commentReplySelected?.comment?.post?.Provider?.picture?.id)"></mat-icon>
+        <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/provider/' + commentReplySelected?.comment?.post?.Provider?.id)"></mat-icon>
       </div>
       <div class="flex justify-center center-auto column align-center">
         <div class="img mb-12" style= "background-image: url({{commentReplySelected?.comment?.post?.picture?.url}});">{{commentReplySelected?.comment?.post?.picture?.url ? "" : "Pas de photo de Provider"}}</div>
@@ -29,7 +29,7 @@
       <div class="flex align-center mx-20">
         <div class="w-128">Auteur :</div>
 
-        <mat-chip *ngIf="commentReplySelected?.user" class="displayname">
+        <mat-chip *ngIf="commentReplySelected?.user" class="displayname" routerLink="/user/{{commentReplySelected?.user?.id}}">
           <img matChipAvatar [src]="app.generatePPUseritium(commentReplySelected?.user?.pp?.url, commentReplySelected?.user?.displayname_useritium	 || commentReplySelected?.user?.username,commentReplySelected?.user?.color || this.app.colorDefault)" alt="user pp"/>
           {{commentReplySelected?.user?.displayname_useritium	 ?? commentReplySelected?.user?.username }}
         </mat-chip>
@@ -37,7 +37,7 @@
         <mat-chip *ngIf="!commentReplySelected?.user">
           Anonyme
         </mat-chip>
-        
+
       </div>
 
       <div class="flex align-center mx-20">
@@ -59,7 +59,7 @@
       <div class="flex align-center mx-20">
         <div class="w-128">Auteur :</div>
 
-        <mat-chip *ngIf="commentReplySelected?.comment?.user">
+        <mat-chip *ngIf="commentReplySelected?.comment?.user" routerLink="/user/{{commentReplySelected?.comment?.user?.id}}">
           <img matChipAvatar [src]="app.generatePPUseritium(commentReplySelected?.comment?.user?.pp?.url, commentReplySelected?.comment?.user?.displayname_useritium	 || commentReplySelected?.comment?.user?.username,commentReplySelected?.user?.color || this.app.colorDefault)" alt="user pp" class="displayname"/>
           {{commentReplySelected?.comment?.user?.displayname_useritium	 ?? commentReplySelected?.comment?.user?.username }}
         </mat-chip>
@@ -67,7 +67,7 @@
         <mat-chip *ngIf="!commentReplySelected?.comment?.user">
           Anonyme
         </mat-chip>
-        
+
       </div>
 
       <div class="flex align-center mx-20">
