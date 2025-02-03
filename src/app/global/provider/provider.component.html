@@ -27,12 +27,15 @@
         <div class="flex">
             <p class="w-128">Pays d'origine :</p>
             <p>{{providerSelected?.country}}</p>
-          </div>
+        </div>
+        <div class="flex">
+            <p class="w-128">Contenu :</p>
+            <p>{{providerSelected?.content}}</p>
+        </div>
         <div class="flex align-items-center g-10 mb-12">
           <p class="m-0">Couleur du thème : {{providerSelected?.color ?? 'Couleur par défaut'}}</p>
           <div class="color-preview" style="background-color: {{providerSelected?.color || app.colorDefault}};"></div>
         </div>
       </mat-card-content>
     </mat-card>
-
 </section>
