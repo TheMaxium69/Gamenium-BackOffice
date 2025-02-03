@@ -59,6 +59,7 @@ import { ViewProviderComponent } from './stat/view-provider/view-provider.compon
 import { ViewUserComponent } from './stat/view-user/view-user.component';
 import { GlobalStatComponent } from './stat/global-stat/global-stat.component';
 import { SanctionStatComponent } from './stat/sanction-stat/sanction-stat.component';
+import { ProviderComponent } from './global/provider/provider.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { SanctionStatComponent } from './stat/sanction-stat/sanction-stat.compon
     ViewUserComponent,
     GlobalStatComponent,
     SanctionStatComponent,
+    ProviderComponent,
   ],
   imports: [
     BrowserModule,
