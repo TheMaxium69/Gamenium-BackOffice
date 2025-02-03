@@ -32,6 +32,14 @@ mat-chip {
     margin-left: -3px;
 }
 
+.justify-end {
+    justify-content: end;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
 .banner-image{
     min-width: 300px;
     height: 160px;
@@ -66,6 +74,3 @@ mat-chip {
     }
 }
 
-.justify-center{
-    justify-content: center;
-}

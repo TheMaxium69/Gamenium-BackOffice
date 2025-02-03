@@ -17,6 +17,9 @@
 
   <mat-card>
     <mat-card-content>
+      <div class="d-flex justify-end">
+        <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront())"></mat-icon>
+      </div>
       <div class="banner-image d-flex justify-center">
         <div class="banner" style="background-image: url({{MyPlatform.myPlateform.plateform.image?.small_url}});"></div>
         <div class="blur"></div>
@@ -31,7 +34,7 @@
       <h2>Informations Générales</h2>
       <div class="d-flex">
         <p class="w-128">Plateforme :</p>
-        <mat-chip style="cursor: pointer" *ngIf="MyPlatform.myPlateform.plateform.image?.icon_url"> <!-- (click)="app.redirectUrl(app.setURLFront() + '/profil/' + MyPlatform.myGame.user.id + '/' + MyGame.myGame.plateform.id )"-->
+        <mat-chip style="cursor: pointer" (click)="app.redirectUrl(app.setURLFront() + '/profil/' + MyPlatform.myPlateform.user.id + '/' + MyPlatform.myPlateform.plateform.id )" *ngIf="MyPlatform.myPlateform.plateform.image?.icon_url"> 
           <img matChipAvatar [src]="MyPlatform.myPlateform.plateform.image?.icon_url" alt="platform icon"/>
           {{MyPlatform.myPlateform.plateform.name}}
         </mat-chip>
