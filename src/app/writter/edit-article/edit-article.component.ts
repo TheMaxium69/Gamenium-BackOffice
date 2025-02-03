@@ -16,7 +16,7 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./edit-article.component.css']
 })
 export class EditArticleComponent implements OnInit {
-  
+
   selectedArticle: PostActuInterface | null = null;
   gameSearch: string = '';
   gameResults: any[] = [];
@@ -26,7 +26,7 @@ export class EditArticleComponent implements OnInit {
   imagePreview: string | null = null;
   imageClass: string = '';
 
-  @ViewChild('fileInput') fileInput!: ElementRef; 
+  @ViewChild('fileInput') fileInput!: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
@@ -53,7 +53,7 @@ export class EditArticleComponent implements OnInit {
       }
     }
   }
-  
+
   /* Charger un article en fonction de son ID */
   fetchArticle(id: number) {
     const url = this.app.setURL();
@@ -126,18 +126,18 @@ export class EditArticleComponent implements OnInit {
   /* Upload Image */
   uploadImage(file: File) {
     const url = this.app.setURL();
-    const option = this.app.createCorsToken();
+    const option = this.app.createCorsToken(true);
     const formData = new FormData();
-    formData.append('photo', file); 
-  
+    formData.append('photo', file);
+
     this.uploadService.uploadPostActuPhoto(formData, url, option).subscribe(
       response => {
         if (this.selectedArticle) {
           this.selectedArticle.picture = response.result;
-          this.selectedArticle.picture.id = response.result.id; 
+          this.selectedArticle.picture.id = response.result.id;
           this.imagePreview = response.result.url;
-  
-          
+
+
           this.updateArticlePicture(response.result.id);
         }
       },
@@ -146,29 +146,29 @@ export class EditArticleComponent implements OnInit {
       }
     );
   }
- 
+
 
   updateArticlePicture(pictureId: number) {
     if (!this.selectedArticle) {
       console.error("Aucun article sélectionné pour mettre à jour l'image");
       return;
     }
-  
+
     const url = this.app.setURL();
     const option = this.app.createCorsToken();
-  
+
     const body = {
       picture_id: pictureId // ✅ Link the new image to the article
     };
-  
+
     this.actualityService.updatePostActu(this.selectedArticle.id, body, url, option).subscribe(response => {
       console.log("Image liée à l'article", response);
     }, error => {
       console.error("Erreur lors de la mise à jour de l'image dans l'article :", error);
     });
   }
-  
-  
+
+
 
   /* Mettre à jour l'article */
   updateArticle() {
@@ -176,33 +176,33 @@ export class EditArticleComponent implements OnInit {
       console.error("Aucun article sélectionné");
       return;
     }
-  
+
     const url = this.app.setURL();
     const option = this.app.createCorsToken();
-  
+
     const body = {
       title: this.selectedArticle.title,
       content: this.selectedArticle.content,
       game_id: this.selectedArticle.game?.id,
       provider_id: this.selectedArticle.Provider?.id,
-      picture_id: this.selectedArticle.picture?.id, 
+      picture_id: this.selectedArticle.picture?.id,
       last_edit: new Date(),
       nb_edit: (this.selectedArticle.nb_edit ?? 0) + 1,
     };
-  
+
     this.actualityService.updatePostActu(this.selectedArticle.id, body, url, option).subscribe(response => {
       console.log("Article mis à jour", response);
     });
   }
-  
+
 
    /* Sélectionner un article sans rechargement */
    onArticleSelected(article: PostActuInterface) {
     this.selectedArticle = article;
-    
+
     this.imagePreview = article.picture?.url ?? null;
   }
-  
+
 
     /* Recherche de jeux */
     searchGames() {
@@ -214,16 +214,16 @@ export class EditArticleComponent implements OnInit {
         });
       }
     }
-  
-  
+
+
   /* Sélectionner un jeu */
     selectGame(game: GameInterface) {
-      this.selectedArticle!.game = game; 
-      this.gameSearch = game.name; 
-      this.gameResults = []; 
+      this.selectedArticle!.game = game;
+      this.gameSearch = game.name;
+      this.gameResults = [];
     }
-  
-  
+
+
     /* Recherche de providers */
     searchProviders() {
       if (this.providerSearch.length > 2) {
@@ -234,12 +234,12 @@ export class EditArticleComponent implements OnInit {
         });
       }
     }
-  
-  
+
+
     /* Sélectionner un provider */
   selectProvider(provider: ProviderInterface) {
-    this.selectedArticle!.Provider = provider; 
-    this.providerSearch = provider.displayName; 
+    this.selectedArticle!.Provider = provider;
+    this.providerSearch = provider.displayName;
     this.providerResults = [];
   }
 }
