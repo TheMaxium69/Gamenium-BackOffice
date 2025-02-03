@@ -14,5 +14,9 @@ export class ProviderService {
   searchProviders(searchValue: string, limit: number, url: string, options: { headers: HttpHeaders }): Observable<any> {
     return this.http.post<any>(url + '/providers/search', { searchValue, limit }, options);
   }
+
+  getProviderById(id: number, url:string, option: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(url + '/provider/' + id, option);
+  }
   
 }

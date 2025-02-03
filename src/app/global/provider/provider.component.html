@@ -1,1 +1,37 @@
-<p>provider works!</p>
+<section *ngIf="id">
+
+    <mat-card class="mb-38">
+      <mat-card-content>
+        <div class="flex justify-center center-auto column">
+          <div id="pp" class="img mb-12" style= "background-image: url({{providerSelected?.picture?.url}});"></div>
+          <h2 class="text-center">{{providerSelected?.displayName}}</h2>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card class="mb-38">
+      <mat-card-content>
+        <h2 class="mb-12">Informations sur le profil</h2>
+        <div class="flex">
+          <p class="w-128">Nom :</p>
+          <p>{{providerSelected?.displayName}}</p>
+        </div>
+        <div class="flex">
+            <p class="w-128">Créer depuis le :</p>
+            <p>{{providerSelected?.founded_at | date:'d/MM/y à h:mm:ss'}}</p>
+          </div>
+        <div class="flex">
+          <p class="w-128">Inscrit depuis le :</p>
+          <p>{{providerSelected?.joindeAt | date:'d/MM/y à h:mm:ss'}}</p>
+        </div>
+        <div class="flex">
+            <p class="w-128">Pays d'origine :</p>
+            <p>{{providerSelected?.country}}</p>
+          </div>
+        <div class="flex align-items-center g-10 mb-12">
+          <p class="m-0">Couleur du thème : {{providerSelected?.color ?? 'Couleur par défaut'}}</p>
+          <div class="color-preview" style="background-color: {{providerSelected?.color || app.colorDefault}};"></div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
