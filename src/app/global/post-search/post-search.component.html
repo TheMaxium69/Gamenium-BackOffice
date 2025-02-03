@@ -36,10 +36,23 @@
     </ng-container>
 
     <!-- User Column -->
-    <ng-container matColumnDef="user_id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Utilisateur</th>
-      <td mat-cell *matCellDef="let element"> {{ element.user.displayname_useritium }} </td>
-    </ng-container>
+    <!-- User Column -->
+<ng-container matColumnDef="user_id">
+  <th mat-header-cell *matHeaderCellDef>Utilisateur</th>
+  <td mat-cell *matCellDef="let element">
+    <mat-chip routerLink="/user/{{element.user.id}}" class="clickable-chip">
+      <img matChipAvatar 
+           [src]="app.generatePPUseritium(
+             element.user.pp?.url, 
+             element.user.displayname_useritium || element.user.username, 
+             element.user.color || app.colorDefault
+           )" 
+           alt="User Profile Picture" />
+      {{ element.user.displayname_useritium ?? element.user.username }}
+    </mat-chip>
+  </td>
+</ng-container>
+
 
     <!-- Content Column -->
     <ng-container matColumnDef="content">

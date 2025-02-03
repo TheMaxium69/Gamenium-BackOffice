@@ -63,16 +63,16 @@ export class PostSearchComponent implements OnInit {
     this.searchPostSubject.next(this.searchValue);
   }
 
-    /* Sélectionne un article dans la liste */
-    selectArticle(article: PostActuInterface) {
-      if (this.router.url.includes('edit-article')) {
-        // Si on est déjà sur la page d'édition, on met à jour l'article sans rediriger
-        this.articleSelected.emit(article);
-      } else {
-        // Sinon, on redirige vers la page d'édition avec l'ID de l'article
-        this.router.navigate(['/edit-article', article.id]);
-      }
+    /* Sélectionne un article et redirige */
+  selectArticle(article: PostActuInterface) {
+    this.articleSelected.emit(article); // Émettre l'article sélectionné
+
+    if (!this.router.url.includes('/writter/edit-article')) {
+      // Rediriger vers la page d'édition SANS ID
+      this.router.navigate(['/writter/edit-article']);
     }
+  }
+
 
     
 }

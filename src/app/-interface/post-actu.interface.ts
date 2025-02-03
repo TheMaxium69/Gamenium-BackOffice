@@ -17,6 +17,7 @@ export interface PostActuInterface {
   user: UserInterface|undefined,
   title: string,
   picture: PictureInterface,
+  nb_edit?: number; 
 
 
 }
