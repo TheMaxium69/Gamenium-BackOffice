@@ -25,7 +25,7 @@
         <div class="blur"></div>
         <img class="back" src="{{ MyPlatform?.myPlateform?.plateform?.image?.small_url }}" alt="blur">
       </div>
-      <h2 class="d-flex justify-center m-40">{{MyPlatform.myPlateform.plateform.name}}</h2>
+      <h2 class="d-flex justify-center m-40">{{MyPlatform.myPlateform.plateform.name + ' (' +app.plateformeNameFormatage(MyPlatform.myPlateform.plateform.name) + ')'}}</h2>
       </mat-card-content>
   </mat-card>
   <br><br>
@@ -36,10 +36,10 @@
         <p class="w-128">Plateforme :</p>
         <mat-chip style="cursor: pointer" (click)="app.redirectUrl(app.setURLFront() + '/profil/' + MyPlatform.myPlateform.user.id + '/' + MyPlatform.myPlateform.plateform.id )" *ngIf="MyPlatform.myPlateform.plateform.image?.icon_url"> 
           <img matChipAvatar [src]="MyPlatform.myPlateform.plateform.image?.icon_url" alt="platform icon"/>
-          {{MyPlatform.myPlateform.plateform.name}}
+          {{app.plateformeNameFormatage(MyPlatform.myPlateform.plateform.name)}}
         </mat-chip>
         <mat-chip style="cursor: pointer" *ngIf="!MyPlatform.myPlateform.plateform.image?.icon_url">
-          <p>{{MyPlatform.myPlateform.plateform.name}}</p>
+          <p>{{app.plateformeNameFormatage(MyPlatform.myPlateform.plateform.name)}}</p>
         </mat-chip>
       </div>
       <div class="d-flex">
