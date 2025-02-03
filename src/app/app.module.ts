@@ -36,7 +36,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatMenuModule} from "@angular/material/menu";
-import { WarnOneComponent } from './moderation/warn-one/warn-one.component';
+import { WarnOneComponent } from './other/warn-one/warn-one.component';
 import { ActuPreviewComponent } from './global/actu-preview/actu-preview.component';
 import { CommentPreviewComponent } from './global/comment-preview/comment-preview.component';
 import { CommentReplyPreviewComponent } from './global/comment-reply-preview/comment-reply-preview.component';
@@ -62,6 +62,11 @@ import {ProviderPreviewComponent} from "./global/provider-preview/provider-previ
 import { GamePreviewComponent } from './global/game-preview/game-preview.component';
 import { GameOneComponent } from './other/game-one/game-one.component';
 import { ActuOneComponent } from './other/actu-one/actu-one.component';
+import { UserProviderComponent } from './administration/user-provider/user-provider.component';
+import { ModoProfilComponent } from './moderation/modo-profil/modo-profil.component';
+import { ModoCommentComponent } from './moderation/modo-comment/modo-comment.component';
+import { ModoCopyComponent } from './moderation/modo-copy/modo-copy.component';
+import { LogActuComponent } from './log/log-actu/log-actu.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +110,12 @@ import { ActuOneComponent } from './other/actu-one/actu-one.component';
     CopyComponent,
     GamePreviewComponent,
     GameOneComponent,
-    ActuOneComponent
+    ActuOneComponent,
+    UserProviderComponent,
+    ModoProfilComponent,
+    ModoCommentComponent,
+    ModoCopyComponent,
+    LogActuComponent,
   ],
   imports: [
     BrowserModule,

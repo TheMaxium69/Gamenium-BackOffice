@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WarnComponent } from './warn.component';
+import { ModoCopyComponent } from './modo-copy.component';
 
-describe('WarnComponent', () => {
-  let component: WarnComponent;
-  let fixture: ComponentFixture<WarnComponent>;
+describe('ModoCopyComponent', () => {
+  let component: ModoCopyComponent;
+  let fixture: ComponentFixture<ModoCopyComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [WarnComponent]
+      declarations: [ModoCopyComponent]
     });
-    fixture = TestBed.createComponent(WarnComponent);
+    fixture = TestBed.createComponent(ModoCopyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

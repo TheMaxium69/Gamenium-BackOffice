@@ -9,7 +9,7 @@ import {ProfilComponent} from "./provider/profil/profil.component";
 import { EditArticleComponent } from './writter/edit-article/edit-article.component';
 import { CreateArticleComponent } from './writter/create-article/create-article.component';
 import { ShowArticlesComponent } from './writter/show-articles/show-articles.component';
-import {WarnOneComponent} from "./moderation/warn-one/warn-one.component";
+import {WarnOneComponent} from "./other/warn-one/warn-one.component";
 import {LogRoleComponent} from "./log/log-role/log-role.component";
 import {LogComponent} from "./log/log/log.component";
 import {UserOneComponent} from "./other/user-one/user-one.component";
@@ -26,6 +26,11 @@ import {BanComponent} from "./moderation/ban/ban.component";
 import {CopyComponent} from "./stat/copy/copy.component";
 import {ActuOneComponent} from "./other/actu-one/actu-one.component";
 import {GameOneComponent} from "./other/game-one/game-one.component";
+import {UserProviderComponent} from "./administration/user-provider/user-provider.component";
+import {ModoCommentComponent} from "./moderation/modo-comment/modo-comment.component";
+import {ModoProfilComponent} from "./moderation/modo-profil/modo-profil.component";
+import {ModoCopyComponent} from "./moderation/modo-copy/modo-copy.component";
+import {LogActuComponent} from "./log/log-actu/log-actu.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -34,11 +39,14 @@ const routes: Routes = [
 
   /* ADMIN */
   {path: 'admin/perms', component: PermsComponent},
+  {path: 'admin/provider', component: UserProviderComponent},
 
   /*MODO*/
   {path: 'modo/ban', component: BanComponent},
   {path: 'modo/warn', component: WarnComponent},
-  {path: 'modo/warn/:id', component: WarnOneComponent},
+  {path: 'modo/profil', component: ModoProfilComponent},
+  {path: 'modo/comment', component: ModoCommentComponent},
+  {path: 'modo/copy', component: ModoCopyComponent},
 
   /*REDAC*/
   {path: 'writter/edit-article', component: EditArticleComponent},
@@ -64,12 +72,14 @@ const routes: Routes = [
   /*LOG*/
   {path: 'log/role', component: LogRoleComponent},
   {path: 'log/sanction', component: LogComponent},
+  {path: 'log/actu', component: LogActuComponent},
 
   /* OTHER*/
   {path: 'user/:id', component: UserOneComponent},
   {path: 'provider/:id', component: ProviderOneComponent},
   {path: 'actu/:id', component: ActuOneComponent},
   {path: 'game/:id', component: GameOneComponent},
+  {path: 'warn/:id', component: WarnOneComponent},
 
   {path: 'settings', component: SettingComponent},
   {path: 'err', component: ErrComponent},

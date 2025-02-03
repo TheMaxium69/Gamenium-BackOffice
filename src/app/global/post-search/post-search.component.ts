@@ -19,7 +19,7 @@ export class PostSearchComponent implements OnInit {
   @Input()
   public displayedColumns: string[] = ['id'];
   @Input() pageSize: number = 5;
-  @Output() 
+  @Output()
   articleSelected = new EventEmitter<PostActuInterface>();
 
   private unsubscribe$ = new Subject<void>();
@@ -66,18 +66,18 @@ export class PostSearchComponent implements OnInit {
     this.searchPostSubject.next(this.searchValue);
   }
 
-    /* Sélectionne un article et redirige */
-    selectArticle(article: PostActuInterface) {
-      this.selectedArticleService.setSelectedArticle(article); // on save l'article global
-      this.articleSelected.emit(article); // update immediate sur la page
-    
-      if (!this.router.url.includes('/writter/edit-article')) {
-        this.router.navigate(['/writter/edit-article']); // redirige si necessaire
-      }
+  /* Sélectionne un article et redirige */
+  selectArticle(article: PostActuInterface) {
+    this.selectedArticleService.setSelectedArticle(article); // on save l'article global
+    this.articleSelected.emit(article); // update immediate sur la page
+
+    if (!this.router.url.includes('/writter/edit-article')) {
+      this.router.navigate(['/writter/edit-article']); // redirige si necessaire
     }
-    
-    
+  }
 
 
-    
+
+
+
 }
