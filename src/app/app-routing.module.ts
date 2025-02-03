@@ -31,6 +31,7 @@ import {ModoCommentComponent} from "./moderation/modo-comment/modo-comment.compo
 import {ModoProfilComponent} from "./moderation/modo-profil/modo-profil.component";
 import {ModoCopyComponent} from "./moderation/modo-copy/modo-copy.component";
 import {LogActuComponent} from "./log/log-actu/log-actu.component";
+import {AddBadgeComponent} from "./admin/add-badge/add-badge.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -40,6 +41,7 @@ const routes: Routes = [
   /* ADMIN */
   {path: 'admin/perms', component: PermsComponent},
   {path: 'admin/provider', component: UserProviderComponent},
+  {path: 'admin/add-badge', component: AddBadgeComponent},
 
   /*MODO*/
   {path: 'modo/ban', component: BanComponent},

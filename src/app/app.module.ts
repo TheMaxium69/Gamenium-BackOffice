@@ -67,6 +67,7 @@ import { ModoProfilComponent } from './moderation/modo-profil/modo-profil.compon
 import { ModoCommentComponent } from './moderation/modo-comment/modo-comment.component';
 import { ModoCopyComponent } from './moderation/modo-copy/modo-copy.component';
 import { LogActuComponent } from './log/log-actu/log-actu.component';
+import { AddBadgeComponent } from './admin/add-badge/add-badge.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +117,7 @@ import { LogActuComponent } from './log/log-actu/log-actu.component';
     ModoCommentComponent,
     ModoCopyComponent,
     LogActuComponent,
+    AddBadgeComponent,
   ],
   imports: [
     BrowserModule,
