@@ -43,9 +43,9 @@ import { CommentReplyPreviewComponent } from './global/comment-reply-preview/com
 import { ProfilPreviewComponent } from './global/profil-preview/profil-preview.component';
 import { HmgPreviewComponent } from './global/hmg-preview/hmg-preview.component';
 import { HmpPreviewComponent } from './global/hmp-preview/hmp-preview.component';
-import { LogRoleComponent } from './administration/log-role/log-role.component';
+import { LogRoleComponent } from './log/log-role/log-role.component';
 import { PostSearchComponent } from './global/post-search/post-search.component';
-import { LogComponent } from './administration/log/log.component';
+import { LogComponent } from './log/log/log.component';
 import { UserOneComponent } from './other/user-one/user-one.component';
 import { CreateTestComponent } from './test/create-test/create-test.component';
 import { ViewTestComponent } from './test/view-test/view-test.component';

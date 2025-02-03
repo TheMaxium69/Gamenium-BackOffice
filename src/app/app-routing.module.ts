@@ -10,8 +10,8 @@ import { EditArticleComponent } from './writter/edit-article/edit-article.compon
 import { CreateArticleComponent } from './writter/create-article/create-article.component';
 import { ShowArticlesComponent } from './writter/show-articles/show-articles.component';
 import {WarnOneComponent} from "./moderation/warn-one/warn-one.component";
-import {LogRoleComponent} from "./administration/log-role/log-role.component";
-import {LogComponent} from "./administration/log/log.component";
+import {LogRoleComponent} from "./log/log-role/log-role.component";
+import {LogComponent} from "./log/log/log.component";
 import {UserOneComponent} from "./other/user-one/user-one.component";
 import {CreateTestComponent} from "./test/create-test/create-test.component";
 import {ViewTestComponent} from "./test/view-test/view-test.component";

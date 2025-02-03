@@ -98,4 +98,7 @@ export class UserSearchComponent implements OnInit, OnDestroy{
     })
   }
 
+  isBan(roles: string[]) {
+    return roles.includes("ROLE_BAN");
+  }
 }
