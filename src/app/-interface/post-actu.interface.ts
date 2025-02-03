@@ -13,7 +13,7 @@ export interface PostActuInterface {
   last_edit: string,
   Provider: ProviderInterface|undefined,
   GameProfile: GameProfileInterface|undefined,
-  game: GameInterface|undefined,
+  Game: GameInterface|undefined,
   user: UserInterface|undefined,
   title: string,
   picture: PictureInterface,

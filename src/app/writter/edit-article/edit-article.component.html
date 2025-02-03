@@ -40,11 +40,6 @@
       </mat-card-header>
       <mat-card-content>
         <form class="edit-article-form article-form">
-          <mat-form-field appearance="outline" class="full-width form-field">
-            <mat-label>Titre</mat-label>
-            <input matInput [(ngModel)]="selectedArticle.title" name="title" />
-          </mat-form-field>
-
           <!-- Image Upload / Preview -->
           <div class="form-field image-upload-section">
             <div class="image-upload drop-area mat-elevation-z2"
@@ -52,8 +47,7 @@
                  (drop)="onFileDropped($event)"
                  (click)="triggerFileSelect()">
               <mat-icon class="upload-icon">cloud_upload</mat-icon>
-              <p>
-                Glissez et déposez votre image ici ou
+              <p>Glissez et déposez votre image ici ou
                 <span class="click-text">Cliquez ici</span>
               </p>
               <input #fileInput type="file" (change)="onFileSelected($event)" hidden>
@@ -67,37 +61,23 @@
             <!-- Hidden Input to Store Picture ID -->
             <input type="hidden" [(ngModel)]="selectedArticle.picture.id" name="picture_id">
           </div>
-
+        
+          <!-- Title -->
+          <mat-form-field appearance="outline" class="full-width form-field">
+            <mat-label>Titre</mat-label>
+            <input matInput [(ngModel)]="selectedArticle.title" name="title" />
+          </mat-form-field>
+        
           <!-- Content Field -->
           <mat-form-field appearance="outline" class="full-width form-field">
             <mat-label>Contenu</mat-label>
             <textarea matInput [(ngModel)]="selectedArticle.content" name="content"></textarea>
           </mat-form-field>
-
+        
           <!-- Game & Provider Search and Selection -->
           <div class="form-field split-fields">
-            <!-- Game Search -->
-            <div class="half-field">
-              <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Rechercher un Jeu</mat-label>
-                <input matInput id="gameSearch"
-                       (input)="searchGames()"
-                       [(ngModel)]="gameSearch"
-                       name="gameSearch"
-                       autocomplete="off">
-              </mat-form-field>
-              <mat-list *ngIf="gameResults.length > 0" class="results-list">
-                <mat-list-item *ngFor="let game of gameResults"
-                               (click)="selectGame(game)" lines="1">
-                  <img matListItemAvatar [src]="game.image?.icon_url" alt="{{ game.name }}">
-                  <span matListItemTitle>{{ game.name }}</span>
-                </mat-list-item>
-              </mat-list>
-              <div *ngIf="selectedArticle.game" class="selected-item">
-                <p><strong>Jeu sélectionné :</strong> {{ selectedArticle.game?.name }}</p>
-              </div>
-            </div>
-            <!-- Provider Search -->
+            
+            <!-- ✅ Provider Search (Always Visible) -->
             <div class="half-field">
               <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Rechercher un Provider</mat-label>
@@ -107,6 +87,8 @@
                        name="providerSearch"
                        autocomplete="off">
               </mat-form-field>
+              
+              <!-- Display provider search results -->
               <mat-list *ngIf="providerResults.length > 0" class="results-list">
                 <mat-list-item *ngFor="let provider of providerResults"
                                (click)="selectProvider(provider)" lines="1">
@@ -119,17 +101,48 @@
                   </span>
                 </mat-list-item>
               </mat-list>
-              <div *ngIf="selectedArticle.Provider" class="selected-item">
-                <p><strong>Provider sélectionné :</strong> {{ selectedArticle.Provider?.displayName }}</p>
+        
+              <!-- ✅ Ensure provider is always displayed -->
+              <div class="selected-item">
+                <p><strong>Provider sélectionné :</strong> {{ providerSearch || 'Aucun' }}</p>
               </div>
             </div>
+        
+            <!-- ✅ Game Search (Always Visible) -->
+            <div class="half-field">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Rechercher un Jeu</mat-label>
+                <input matInput id="gameSearch"
+                       (input)="searchGames()"
+                       [(ngModel)]="gameSearch"
+                       name="gameSearch"
+                       autocomplete="off">
+              </mat-form-field>
+        
+              <!-- Display game search results -->
+              <mat-list *ngIf="gameResults.length > 0" class="results-list">
+                <mat-list-item *ngFor="let game of gameResults"
+                               (click)="selectGame(game)" lines="1">
+                  <img matListItemAvatar [src]="game.image?.icon_url" alt="{{ game.name }}">
+                  <span matListItemTitle>{{ game.name }}</span>
+                </mat-list-item>
+              </mat-list>
+        
+              <!-- ✅ Ensure game is always displayed -->
+              <div class="selected-item">
+                <p><strong>Jeu sélectionné :</strong> {{ gameSearch || 'Aucun' }}</p>
+              </div>
+            </div>
+        
           </div>
-
+        
           <!-- Update Button -->
           <div class="form-field button-container">
             <button mat-raised-button color="primary" (click)="updateArticle()">Modifier</button>
           </div>
+        
         </form>
+        
       </mat-card-content>
     </mat-card>
   </div>

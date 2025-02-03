@@ -19,13 +19,13 @@
 
   <!-- Title -->
   <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Title</mat-label>
+    <mat-label>Titre</mat-label>
     <input matInput type="text" id="title" [(ngModel)]="title" name="title" required>
   </mat-form-field>
 
   <!-- Content -->
   <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Content</mat-label>
+    <mat-label>Contenu de l'article</mat-label>
     <textarea matInput id="content" [(ngModel)]="content" name="content" rows="4" required></textarea>
   </mat-form-field>
 
@@ -35,23 +35,9 @@
     <input matInput type="number" id="picture" [(ngModel)]="picture_id" name="picture_id" required>
   </mat-form-field>
 
-  <!-- Game Search -->
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Select a Game</mat-label>
-    <input matInput id="gameSearch" (input)="searchGames()" [(ngModel)]="gameSearch" name="gameSearch" autocomplete="off">
-  </mat-form-field>
-
-  <!-- Game Results -->
-  <mat-list *ngIf="gameResults.length > 0" class="results-list">
-    <mat-list-item *ngFor="let game of gameResults" (click)="selectGame(game)" lines="1">
-        <img matListItemAvatar [src]="game.image?.icon_url" alt="{{ game.name }}">
-      <span matListItemTitle>{{ game.name }}</span>
-    </mat-list-item>
-  </mat-list>
-
   <!-- Provider Search -->
   <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Select a Provider (Optional)</mat-label>
+    <mat-label>Sélectionner un Éditeur </mat-label>
     <input matInput id="providerSearch" (input)="searchProviders()" [(ngModel)]="providerSearch" name="providerSearch" autocomplete="off">
   </mat-form-field>
 
@@ -60,6 +46,20 @@
     <mat-list-item *ngFor="let provider of providerResults" (click)="selectProvider(provider)" lines="1">
         <img matListItemAvatar *ngIf="provider.picture?.url" [src]="provider.picture?.url" alt="{{ provider.displayName }}">
       <span matListItemTitle>{{ provider.displayName || provider.tagName || 'Unknown Provider' }}</span>
+    </mat-list-item>
+  </mat-list>
+
+  <!-- Game Search -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Sélectionner un Jeux (Optional)</mat-label>
+    <input matInput id="gameSearch" (input)="searchGames()" [(ngModel)]="gameSearch" name="gameSearch" autocomplete="off">
+  </mat-form-field>
+
+  <!-- Game Results -->
+  <mat-list *ngIf="gameResults.length > 0" class="results-list">
+    <mat-list-item *ngFor="let game of gameResults" (click)="selectGame(game)" lines="1">
+        <img matListItemAvatar [src]="game.image?.icon_url" alt="{{ game.name }}">
+      <span matListItemTitle>{{ game.name }}</span>
     </mat-list-item>
   </mat-list>
 

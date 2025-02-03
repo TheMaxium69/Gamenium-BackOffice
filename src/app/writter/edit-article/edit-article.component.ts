@@ -39,47 +39,54 @@ export class EditArticleComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Récupère l'article depuis le service
     this.selectedArticle = this.selectedArticleService.getSelectedArticle();
 
     if (!this.selectedArticle) {
       this.displaySelectMessage = true;
     } else {
       this.displaySelectMessage = false;
+      this.fetchArticle(this.selectedArticle.id);
 
-      // Précharger l'image actuelle si disponible
       if (this.selectedArticle.picture?.url) {
         this.imagePreview = this.selectedArticle.picture.url;
+        this.applyImageClass(this.imagePreview);
       }
     }
   }
 
-  /* Charger un article en fonction de son ID */
+  /* fetch l'article par l'id */
   fetchArticle(id: number) {
     const url = this.app.setURL();
     const option = this.app.createCorsToken();
 
     this.actualityService.getPostActu(url, id, option).subscribe(response => {
-        if (response.result) {
-            this.selectedArticle = response.result;
-            this.imagePreview = this.selectedArticle?.picture?.url ?? null;
-        } else {
-            this.selectedArticle = null;
-            this.imagePreview = null;
-        }
+      if (response.result) {
+
+        this.selectedArticle = response.result;
+ 
+        this.imagePreview = this.selectedArticle?.picture?.url ?? null;
+        this.applyImageClass(this.imagePreview);
+
+        this.providerSearch = this.selectedArticle?.Provider?.displayName ?? "";
+        this.gameSearch = this.selectedArticle?.Game?.name ?? "";
+
+
+      } else {
+        this.selectedArticle = null;
+        this.imagePreview = null;
+      }
     }, error => {
-        console.error("Erreur lors de la récupération de l'article :", error);
+      console.error("Erreur lors de la récupération de l'article :", error);
     });
 
-}
+  }
 
-
-  /* Ouvrir le sélecteur de fichier */
+  /* Ouvre selecteur d'image */
   triggerFileSelect() {
     this.fileInput.nativeElement.click();
   }
 
-  /* Gérer la sélection de l'image */
+  /* gère la selection de l'image */
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -87,33 +94,15 @@ export class EditArticleComponent implements OnInit {
 
       reader.onload = () => {
         this.imagePreview = reader.result as string;
-
-        // Vérifier les dimensions de l'image
-        const img = new Image();
-        img.src = this.imagePreview;
-        img.onload = () => {
-          const aspectRatio = img.width / img.height;
-          this.imageClass = '';
-
-          // Appliquer la bonne classe CSS
-          if (aspectRatio > 1.3) {
-            this.imageClass = 'horizontal';
-          } else if (aspectRatio >= 0.8 && aspectRatio <= 1.3) {
-            this.imageClass = 'square';
-          } else {
-            this.imageClass = 'icon';
-          }
-        };
-
-        // Ensuite, uploader l'image
-        this.uploadImage(file);
+        this.applyImageClass(this.imagePreview);
       };
 
       reader.readAsDataURL(file);
+      this.uploadImage(file);
     }
   }
 
-  /* Gérer le Drag & Drop */
+  /* gère drag & drop */
   onFileDropped(event: DragEvent) {
     event.preventDefault();
     if (event.dataTransfer && event.dataTransfer.files.length > 0) {
@@ -122,7 +111,7 @@ export class EditArticleComponent implements OnInit {
     }
   }
 
-  /* Upload Image */
+  /* Upload image */
   uploadImage(file: File) {
     const url = this.app.setURL();
     const option = this.app.createCorsToken(true);
@@ -135,8 +124,7 @@ export class EditArticleComponent implements OnInit {
           this.selectedArticle.picture = response.result;
           this.selectedArticle.picture.id = response.result.id;
           this.imagePreview = response.result.url;
-
-
+          this.applyImageClass(this.imagePreview);
           this.updateArticlePicture(response.result.id);
         }
       },
@@ -146,7 +134,27 @@ export class EditArticleComponent implements OnInit {
     );
   }
 
+  /* changement dynamique classe CSS  */
+  applyImageClass(imageUrl: string | null) {
+    if (!imageUrl) return;
 
+    const img = new Image();
+    img.src = imageUrl;
+    img.onload = () => {
+      const aspectRatio = img.width / img.height;
+      this.imageClass = '';
+
+      if (aspectRatio > 1.3) {
+        this.imageClass = 'horizontal';
+      } else if (aspectRatio >= 0.8 && aspectRatio <= 1.3) {
+        this.imageClass = 'square';
+      } else {
+        this.imageClass = 'icon';
+      }
+    };
+  }
+
+  /* Maj la photo de l'article avec le bon id */
   updateArticlePicture(pictureId: number) {
     if (!this.selectedArticle) {
       console.error("Aucun article sélectionné pour mettre à jour l'image");
@@ -156,20 +164,19 @@ export class EditArticleComponent implements OnInit {
     const url = this.app.setURL();
     const option = this.app.createCorsToken();
 
-    const body = {
-      picture_id: pictureId // link l'image au bon article
-    };
+    const body = { picture_id: pictureId };
 
-    this.actualityService.updatePostActu(this.selectedArticle.id, body, url, option).subscribe(response => {
-      console.log("Image liée à l'article", response);
-    }, error => {
-      console.error("Erreur lors de la mise à jour de l'image dans l'article :", error);
-    });
+    this.actualityService.updatePostActu(this.selectedArticle.id, body, url, option).subscribe(
+      response => {
+        console.log("Image liée à l'article", response);
+      },
+      error => {
+        console.error("Erreur lors de la mise à jour de l'image dans l'article :", error);
+      }
+    );
   }
 
-
-
-  /* Mettre à jour l'article */
+  /* MAJ article */
   updateArticle() {
     if (!this.selectedArticle) {
       console.error("Aucun article sélectionné");
@@ -182,7 +189,7 @@ export class EditArticleComponent implements OnInit {
     const body = {
       title: this.selectedArticle.title,
       content: this.selectedArticle.content,
-      game_id: this.selectedArticle.game?.id,
+      game_id: this.selectedArticle.Game?.id,
       provider_id: this.selectedArticle.Provider?.id,
       picture_id: this.selectedArticle.picture?.id,
       last_edit: new Date(),
@@ -194,51 +201,55 @@ export class EditArticleComponent implements OnInit {
     });
   }
 
-
-   /* Sélectionner un article sans rechargement */
-   onArticleSelected(article: PostActuInterface) {
+  /* Selectionne l'article dynamiquement */
+  onArticleSelected(article: PostActuInterface) {
     this.selectedArticle = article;
-
+  
+    // Ensure the provider and game fields are pre-filled
+    this.providerSearch = article.Provider?.displayName ?? '';
+    this.gameSearch = article.Game?.name ?? '';
+  
     this.imagePreview = article.picture?.url ?? null;
+    this.applyImageClass(this.imagePreview);
   }
 
-
-    /* Recherche de jeux */
-    searchGames() {
-      if (this.gameSearch.length > 2) {
-        const url = this.app.setURL();
-        const option = this.app.createCorsToken();
-        this.gameService.searchGames({ searchValue: this.gameSearch, limit: 10 }, url, option).subscribe(response => {
-          this.gameResults = response;
-        });
-      }
+  /* Cherche le jeux */
+  searchGames() {
+    if (this.gameSearch.length > 2) {
+      const url = this.app.setURL();
+      const option = this.app.createCorsToken();
+      this.gameService.searchGames({ searchValue: this.gameSearch, limit: 10 }, url, option).subscribe(response => {
+        this.gameResults = response;
+      });
     }
+  }
 
-
-  /* Sélectionner un jeu */
-    selectGame(game: GameInterface) {
-      this.selectedArticle!.game = game;
-      this.gameSearch = game.name;
-      this.gameResults = [];
+  /* Selectionne le jeux */
+  selectGame(game: GameInterface) {
+    if (this.selectedArticle) {
+      this.selectedArticle.Game = game;
+      this.gameSearch = game.name; 
     }
+    this.gameResults = [];
+  }
 
-
-    /* Recherche de providers */
-    searchProviders() {
-      if (this.providerSearch.length > 2) {
-        const url = this.app.setURL();
-        const option = this.app.createCorsToken();
-        this.providerService.searchProviders(this.providerSearch, 10, url, option).subscribe(response => {
-          this.providerResults = response;
-        });
-      }
+  /* Cherche le provider */
+  searchProviders() {
+    if (this.providerSearch.length > 2) {
+      const url = this.app.setURL();
+      const option = this.app.createCorsToken();
+      this.providerService.searchProviders(this.providerSearch, 10, url, option).subscribe(response => {
+        this.providerResults = response;
+      });
     }
+  }
 
-
-    /* Sélectionner un provider */
+  /* Selectionne le provider */
   selectProvider(provider: ProviderInterface) {
-    this.selectedArticle!.Provider = provider;
-    this.providerSearch = provider.displayName;
+    if (this.selectedArticle) {
+      this.selectedArticle.Provider = provider;
+      this.providerSearch = provider.displayName; 
+    }
     this.providerResults = [];
   }
 }
