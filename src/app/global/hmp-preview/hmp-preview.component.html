@@ -68,9 +68,14 @@
             </div>
             <div class="d-flex">
               <p class="w-128">Lieu d'achat :</p>
-              <mat-chip>
-                {{copy.purchase.buy_where?.name ?? "Non renseigné"}}
-              </mat-chip>
+              <ng-container *ngIf="copy.purchase.buy_where?.name">
+                <mat-chip>
+                  {{copy.purchase.buy_where?.name}}
+                </mat-chip>
+              </ng-container>
+              <ng-container *ngIf="!copy.purchase.buy_where?.name">
+                <p>Non renseigné</p>
+              </ng-container>
             </div>
             <div class="d-flex">
               <p class="w-128">Descrition de l'achat :</p>
