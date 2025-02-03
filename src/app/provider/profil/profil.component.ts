@@ -1,28 +1,54 @@
-import { Component, ElementRef, Input, numberAttribute, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  numberAttribute,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import { ApicallInterface } from 'src/app/-interface/apicall.interface';
 import { ProviderInterface } from 'src/app/-interface/provider.interface';
-import { ProviderService } from 'src/app/-service/provider.service';
 import { UploadService } from 'src/app/-service/upload.service';
 import { AppComponent } from 'src/app/app.component';
+import {UserProviderService} from "../../-service/user-provider.service";
 
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.css']
 })
-export class ProfilComponent {
+export class ProfilComponent implements OnInit {
 
-  @Input({transform: numberAttribute})
-  public id: number|null = null;
   public providerSelected: ProviderInterface | undefined;
 
   constructor(
     protected app: AppComponent,
-    private providerService: ProviderService,
+    private userProviderService: UserProviderService,
     private uploadService: UploadService,
+
   ) {}
 
-  @ViewChild('fileInput') fileInput!: ElementRef; 
+  @ViewChild('fileInput') fileInput!: ElementRef;
+
+  ngOnInit() {
+
+
+    this.userProviderService.getProviderByUser(this.app.setURL(), this.app.createCorsToken()).subscribe((response: {message:string, result:ProviderInterface}) => {
+      if (response.message === "good") {
+        this.providerSelected = response.result;
+      } else if (response.message === "no provider") {
+        console.log("Tu n'a pas encore de provider atitré");
+      } else {
+        console.log("une erreur est survenue");
+      }
+    });
+
+
+
+  }
+
 
   /* Ouvrir le sélecteur de fichier */
   triggerFileSelect() {
@@ -34,19 +60,21 @@ export class ProfilComponent {
     const file = event.target.files[0];
     if (file) {
       const url = this.app.setURL();
-      const option = this.app.createCorsToken();
-      this.uploadService.uploadPostActuPhoto(file, url, option).subscribe(response => {
+      const option = this.app.createCorsToken(true);
+      const formdata = new FormData();
+      formdata.append('photo', file);
+      this.uploadService.uploadPostActuPhoto(formdata, url, option).subscribe(response => {
         this.providerSelected!.picture = response.result; // Mise à jour de l'image
       });
     }
   }
 
-  updateProfil() {  
+  updateProfil() {
     if (!this.providerSelected) {
       console.error("Aucun provider sélectionné");
       return;
     }
-    
+
     const url = this.app.setURL();
     const option = this.app.createCorsToken();
 
@@ -58,7 +86,7 @@ export class ProfilComponent {
     };
 
 
-    this.providerService.updateProvider(this.providerSelected.id, body, url, option).subscribe(response => {
+    this.userProviderService.updateProvider(this.providerSelected.id, body, url, option).subscribe(response => {
       console.log("Éditeur mis à jour", response);
     });
   }

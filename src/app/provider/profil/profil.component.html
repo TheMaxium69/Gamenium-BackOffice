@@ -1,38 +1,39 @@
-<app-provider [id]="1"></app-provider>
-<section>
-    <div *ngIf="providerSelected">
-        <h2>Modifier le profil</h2>
-        <form> 
+<section *ngIf="providerSelected">
+  <app-provider [providerSelected]="providerSelected"></app-provider>
 
-          <!-- Upload et Modification d'Image -->
-          <div class="image-upload">
-            <input type="file" #fileInput (change)="onFileSelected($event)" hidden>
-            <button mat-button (click)="triggerFileSelect()">Changer l'image</button>
-            <img *ngIf="providerSelected.picture?.url" [src]="providerSelected.picture?.url" class="preview-image">
-          </div>
+  <div>
+      <h2>Modifier le profil</h2>
+      <form>
 
-          <!-- Champ Name -->
-          <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Nom</mat-label>
-            <input matInput [(ngModel)]="providerSelected.displayName" name="title">
-          </mat-form-field>
-      
-          <!-- Champ Contenu -->
-          <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Contenu</mat-label>
-            <textarea matInput [(ngModel)]="providerSelected.content" name="content"></textarea>
-          </mat-form-field>
+        <!-- Upload et Modification d'Image -->
+        <div class="image-upload">
+          <input type="file" #fileInput (change)="onFileSelected($event)" hidden>
+          <button mat-button (click)="triggerFileSelect()">Changer l'image</button>
+          <img *ngIf="providerSelected.picture?.url" [src]="providerSelected.picture?.url" class="preview-image">
+        </div>
 
-          <!-- Champ Founded at -->
-          <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Date de Création</mat-label>
-            <textarea matInput [(ngModel)]="providerSelected.founded_at" name="content"></textarea>
-          </mat-form-field>
+        <!-- Champ Name -->
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput [(ngModel)]="providerSelected.displayName" name="title">
+        </mat-form-field>
 
-          <!-- Bouton de mise à jour -->
-          <button mat-raised-button color="primary" (click)="updateProfil()">Modifier</button>
-      
-        </form>
-      </div>
+        <!-- Champ Contenu -->
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Contenu</mat-label>
+          <textarea matInput [(ngModel)]="providerSelected.content" name="content"></textarea>
+        </mat-form-field>
+
+        <!-- Champ Founded at -->
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Date de Création</mat-label>
+          <textarea matInput [(ngModel)]="providerSelected.founded_at" name="content"></textarea>
+        </mat-form-field>
+
+        <!-- Bouton de mise à jour -->
+        <button mat-raised-button color="primary" (click)="updateProfil()">Modifier</button>
+
+      </form>
+    </div>
 
 </section>

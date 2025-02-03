@@ -18,8 +18,6 @@ export class ProviderService {
   getProviderById(id: number, url:string, option: {headers: HttpHeaders}): Observable<ApicallInterface> {
     return this.http.get<ApicallInterface>(url + '/provider/' + id, option);
   }
-  updateProvider(id: number, body: any, url: string, option: { headers: HttpHeaders }): Observable<ApicallInterface> {
-    return this.http.put<ApicallInterface>( url + '/provider/' + id, body, option);
-  }
+
 
 }

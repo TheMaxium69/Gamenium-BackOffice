@@ -113,8 +113,6 @@
 
       <!-- PROVIDER -->
       <ng-container *ngIf="
-        app.userConnected.userRole.includes('ROLE_OWNER') ||
-        app.userConnected.userRole.includes('ROLE_ADMIN') ||
         app.userConnected.userRole.includes('ROLE_PROVIDER_ADMIN') ||
         app.userConnected.userRole.includes('ROLE_PROVIDER')
       ">
