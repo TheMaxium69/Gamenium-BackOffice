@@ -15,4 +15,8 @@ export class ViewService {
     return this.http.get<ApicallInterface>(url + '/view-actu-show/' + idPostActu, option);
   }
 
+  getProviderViews(idProvider: number, url: string, option: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(url + '/view-provider-show/' + idProvider, option);
+  }
+
 }

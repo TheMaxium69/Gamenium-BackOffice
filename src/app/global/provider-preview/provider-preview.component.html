@@ -2,6 +2,16 @@
 
     <mat-card class="mb-38">
       <mat-card-content>
+        <div class="flex" style="justify-content: space-between;">
+
+          <div style="display: flex; align-items: center;">
+            <p style="margin: unset">{{ viewProvider }}</p>
+            <mat-icon class="mr-8" fontIcon="visibility"></mat-icon>
+          </div>
+          <div>
+            <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/provider/' + providerSelected?.id)"></mat-icon>
+          </div>
+        </div>
         <div class="flex justify-center center-auto column">
           <div id="pp" class="img mb-12" style= "background-image: url({{providerSelected?.picture?.url}});"></div>
           <h2 class="text-center">{{providerSelected?.displayName}}</h2>
@@ -26,7 +36,12 @@
         </div>
         <div class="flex">
             <p class="w-128">Pays d'origine :</p>
-            <p>{{providerSelected?.country}}</p>
+            <p>
+              {{ this.app.getVariableCountryLang(providerSelected?.country) }}
+              <ng-container *ngIf="providerSelected?.country?.icon">
+                <span class="flag-shadow {{ providerSelected?.country?.icon }}"></span>
+              </ng-container>
+            </p>
         </div>
         <div class="flex">
             <p class="w-128">Contenu :</p>

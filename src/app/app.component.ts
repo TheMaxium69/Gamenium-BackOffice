@@ -5,6 +5,7 @@ import {ApicallInterface} from "./-interface/apicall.interface";
 import {UserInterface} from "./-interface/user.interface";
 import {CookieService} from "ngx-cookie-service";
 import {Router} from "@angular/router";
+import {CountryInterface} from "./-interface/country.interface";
 
 @Component({
   selector: 'app-root',
@@ -37,7 +38,7 @@ export class AppComponent {
    * ******************************************************************************************************************/
 
   //%     API - GAMENIUM      %//
-    AppEnv: string = "DEVMAX"; // DEV or PROD or PRODMAX or DEVMAX or V1
+    AppEnv: string = "DEV"; // DEV or PROD or PRODMAX or DEVMAX or V1
     urlApiDev: string = "http://127.0.0.1:8000";
     urlApiDevMax: string = "https://127.0.0.1:8000";
     urlApiProd: string = "http://vps216.tyrolium.fr:8000";
@@ -69,7 +70,8 @@ export class AppComponent {
 
 
   // DEFAULT
-  colorDefault = "#d2001e";
+  colorDefault:string = "#d2001e";
+  lang:string = "fr";
 
   /******************************************************************************************************************
    *
@@ -384,6 +386,19 @@ export class AppComponent {
     }
 
     return plateform;
+
+  }
+
+  getVariableCountryLang(country:CountryInterface|undefined):string {
+
+    if (!country) {
+      return "";
+    }
+    if (this.lang == "fr"){
+      return country.name_fr;
+    } else {
+      return country.name_en;
+    }
 
   }
 
