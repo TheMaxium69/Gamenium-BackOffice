@@ -1,4 +1,4 @@
-import {Component, Input, numberAttribute, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, numberAttribute, OnChanges, SimpleChanges} from '@angular/core';
 import { ApicallInterface } from 'src/app/-interface/apicall.interface';
 import { ProfilInterface } from 'src/app/-interface/profil.interface';
 import { ProfilService } from 'src/app/-service/profil.service';

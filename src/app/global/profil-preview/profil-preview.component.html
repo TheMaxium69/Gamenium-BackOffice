@@ -8,13 +8,16 @@
       <div class="flex justify-center center-auto column">
         <div id="pp" class="img mb-12" style= "background-image: url({{app.generatePPUseritium(profilSelected?.picture, profilSelected?.displaynameUseritium || profilSelected?.username,profilSelected?.themeColor || app.colorDefault)}});"></div>
       </div>
-      <h2 class="text-center">{{profilSelected?.displaynameUseritium || profilSelected?.username}}</h2>
+      <div class="text-center">
+        <h2>{{profilSelected?.displaynameUseritium || profilSelected?.username}}</h2>
+        <h3>A été signalé : {{profilSelected?.nbSignal}} fois</h3>
+      </div>
     </mat-card-content>
   </mat-card>
 
   <mat-card class="mb-38">
     <mat-card-content>
-      <h2 class="mb-12">Informations sur le profil</h2>
+      <h2 class="mb-12">Informations sur le profil :</h2>
       <div class="flex">
         <p class="w-128">Pseudo :</p>
         <p>{{profilSelected?.displaynameUseritium || profilSelected?.username}}</p>
@@ -50,11 +53,11 @@
       </div>
       <div class="flex">
         <p class="w-128">Inscrit depuis le :</p>
-        <p>{{profilSelected?.joinAt | date:'d/MM/y à h:mm:ss'}}</p>
+        <p>{{profilSelected?.joinAt | date:'d/MM/y à h:mm'}}</p>
       </div>
       <div class="flex">
         <p class="w-128">Dernière connexion le :</p>
-        <p>{{profilSelected?.lastConnection | date:'d/MM/y à h:mm:ss'}}</p>
+        <p>{{profilSelected?.lastConnection | date:'d/MM/y à h:mm'}}</p>
       </div>
       <div class="flex">
         <p class="w-128">S'est connecté :</p>

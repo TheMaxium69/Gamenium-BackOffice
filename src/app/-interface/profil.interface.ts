@@ -17,6 +17,7 @@ export interface ProfilInterface {
   reseau:ProfilSocialNetworkInterface[],
   roles: any,
   badges: any,
-  ipUsed: any
+  ipUsed: any,
+  nbSignal: number
 
 }
