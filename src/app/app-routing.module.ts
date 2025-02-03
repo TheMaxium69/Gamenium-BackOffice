@@ -16,17 +16,14 @@ import {UserOneComponent} from "./other/user-one/user-one.component";
 import {CreateTestComponent} from "./test/create-test/create-test.component";
 import {ViewTestComponent} from "./test/view-test/view-test.component";
 import {LeaderGameComponent} from "./stat/leader-game/leader-game.component";
-import {ViewActuComponent} from "./stat/view-actu/view-actu.component";
 import {LeaderProviderComponent} from "./stat/leader-provider/leader-provider.component";
 import {LeaderActuComponent} from "./stat/leader-actu/leader-actu.component";
-import {ViewProviderComponent} from "./stat/view-provider/view-provider.component";
 import {LeaderUserComponent} from "./stat/leader-user/leader-user.component";
-import {ViewUserComponent} from "./stat/view-user/view-user.component";
-import {ViewGameComponent} from "./stat/view-game/view-game.component";
 import {SanctionStatComponent} from "./stat/sanction-stat/sanction-stat.component";
 import {GlobalStatComponent} from "./stat/global-stat/global-stat.component";
 import {ProviderOneComponent} from "./other/provider-one/provider-one.component";
 import {BanComponent} from "./moderation/ban/ban.component";
+import {CopyComponent} from "./stat/copy/copy.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -56,14 +53,11 @@ const routes: Routes = [
   /*STAT*/
   {path: 'stat/global', component: GlobalStatComponent},
   {path: 'stat/sanction', component: SanctionStatComponent},
+  {path: 'stat/copy', component: CopyComponent},
   {path: 'stat/leader-game', component: LeaderGameComponent},
-  {path: 'stat/view-game', component: ViewGameComponent},
   {path: 'stat/leader-actu', component: LeaderActuComponent},
-  {path: 'stat/view-actu', component: ViewActuComponent},
   {path: 'stat/leader-provider', component: LeaderProviderComponent},
-  {path: 'stat/view-provider', component: ViewProviderComponent},
   {path: 'stat/leader-user', component: LeaderUserComponent},
-  {path: 'stat/view-user', component: ViewUserComponent},
 
   /*LOG*/
   {path: 'log/role', component: LogRoleComponent},

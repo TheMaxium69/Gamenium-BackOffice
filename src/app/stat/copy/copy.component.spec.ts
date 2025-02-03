@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewActuComponent } from './view-actu.component';
+import { CopyComponent } from './copy.component';
 
-describe('ViewActuComponent', () => {
-  let component: ViewActuComponent;
-  let fixture: ComponentFixture<ViewActuComponent>;
+describe('CopyComponent', () => {
+  let component: CopyComponent;
+  let fixture: ComponentFixture<CopyComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ViewActuComponent]
+      declarations: [CopyComponent]
     });
-    fixture = TestBed.createComponent(ViewActuComponent);
+    fixture = TestBed.createComponent(CopyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
