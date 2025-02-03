@@ -7,6 +7,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {WarnInterface} from "../../-interface/warn.interface";
 import {MatTableDataSource} from "@angular/material/table";
 import {ApicallInterface} from "../../-interface/apicall.interface";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-user-search',
@@ -101,4 +102,73 @@ export class UserSearchComponent implements OnInit, OnDestroy{
   isBan(roles: string[]) {
     return roles.includes("ROLE_BAN");
   }
+
+  toggleBan(user_id:number, ban:boolean) {
+
+    if (ban) {
+
+
+      Swal.fire({
+        title: "Êtes-vous sûr?",
+        text: "Souhaitez-vous vraiment bannire cette utilisateur ?",
+        icon: "question",
+        showConfirmButton: false,
+        showDenyButton: true,
+        showCancelButton: true,
+        denyButtonText: `Bannire`,
+        cancelButtonText: `Annuler`,
+      }).then((result) => {
+        if (result.isDenied) {
+          this.toggleBanConfirm(user_id, true);
+        }
+      });
+
+    } else {
+
+      Swal.fire({
+        title: "Êtes-vous sûr?",
+        text: "Souhaitez-vous vraiment debannire cette utilisateur ?",
+        icon: "question",
+        showConfirmButton: false,
+        showDenyButton: true,
+        showCancelButton: true,
+        denyButtonText: `Debannire`,
+        cancelButtonText: `Annuler`,
+      }).then((result) => {
+        if (result.isDenied) {
+          this.toggleBanConfirm(user_id, false);
+        }
+      });
+
+
+    }
+
+
+  }
+
+  toggleBanConfirm(user_id:number, ban:boolean) {
+    this.administrationService.toggleBanAdmin(user_id, this.app.setURL(), this.app.createCorsToken()).subscribe((response:ApicallInterface) => {
+
+      if (response.message == "toggle ban successfully"){
+        if (ban) {
+          Swal.fire("Bannie!", "Utilisateur Bannie", "success");
+        } else {
+          Swal.fire("Debannie!", "Utilisateur Debannie", "success");
+        }
+        const user = this.users.find(user => user.id === user_id);
+        if (user) {
+          if (!user.roles.includes("ROLE_BAN")) {
+            user.roles.push("ROLE_BAN");
+          } else {
+            user.roles = user.roles.filter(r => r !== "ROLE_BAN");
+          }
+        }
+
+        this.dataSource = new MatTableDataSource<UserInterface>(this.users);
+      }
+
+    });
+  }
+
+
 }
