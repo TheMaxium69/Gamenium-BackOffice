@@ -17,7 +17,7 @@ export class ActuPreviewComponent implements OnInit, OnChanges {
   actuSelected: PostActuInterface | undefined;
 
   constructor(
-    private app: AppComponent,
+    protected app: AppComponent,
     private actualityServcice: ActualityService
   ) {}
 

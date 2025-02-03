@@ -1,12 +1,20 @@
 <section *ngIf="id">
+
+  <mat-card class="mb-12">
+    <mat-card-content>
+      <div class="flex justify-end">
+        <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/actuality/' + actuSelected?.id)"></mat-icon>
+      </div>
+      <div class="flex justify-center">
+        <div class="mb-12 img shadow" style="background-image: url({{actuSelected?.picture?.url}});"></div>
+      </div>
+      <h2 class="text-center">{{actuSelected?.title}}</h2>
+    </mat-card-content>
+  </mat-card>
+
   <mat-card>
     <mat-card-content>
       <h2>Informations générales : </h2>
-      <div class="flex">
-        <p>Image de couverture de l'article : </p>
-        <div class="mb-12 img shadow" style="background-image: url({{actuSelected?.picture?.url}});"></div>
-      </div>
-      <p>Titre : {{actuSelected?.title}}</p>
       <p>Editeur : {{actuSelected?.Provider?.displayName}}</p>
       <p>Posté le : {{actuSelected?.created_at | date:'dd/MM/yyyy'}}</p>
       <p>Contenu de l'article : {{actuSelected?.content}}</p>
