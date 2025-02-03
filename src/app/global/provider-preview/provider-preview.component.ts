@@ -6,10 +6,10 @@ import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-provider',
-  templateUrl: './provider.component.html',
-  styleUrls: ['./provider.component.css']
+  templateUrl: './provider-preview.component.html',
+  styleUrls: ['./provider-preview.component.css']
 })
-export class ProviderComponent {
+export class ProviderPreviewComponent {
 
   @Input()
   public providerSelected: ProviderInterface|null = null;

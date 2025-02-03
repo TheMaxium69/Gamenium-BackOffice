@@ -55,10 +55,10 @@ import { LeaderProviderComponent } from './stat/leader-provider/leader-provider.
 import { LeaderUserComponent } from './stat/leader-user/leader-user.component';
 import { GlobalStatComponent } from './stat/global-stat/global-stat.component';
 import { SanctionStatComponent } from './stat/sanction-stat/sanction-stat.component';
-import { ProviderComponent } from './global/provider/provider.component';
 import { ProviderOneComponent } from './other/provider-one/provider-one.component';
 import { BanComponent } from './moderation/ban/ban.component';
 import { CopyComponent } from './stat/copy/copy.component';
+import {ProviderPreviewComponent} from "./global/provider-preview/provider-preview.component";
 
 @NgModule({
   declarations: [
@@ -96,7 +96,7 @@ import { CopyComponent } from './stat/copy/copy.component';
     LeaderUserComponent,
     GlobalStatComponent,
     SanctionStatComponent,
-    ProviderComponent,
+    ProviderPreviewComponent,
     ProviderOneComponent,
     BanComponent,
     CopyComponent
