@@ -33,7 +33,7 @@ import {ModoCopyComponent} from "./moderation/modo-copy/modo-copy.component";
 import {LogActuComponent} from "./log/log-actu/log-actu.component";
 import {AddBadgeComponent} from "./admin/add-badge/add-badge.component";
 import { ShowArticleComponent } from './provider/show-article/show-article.component';
-import { CreateArticlesComponent } from './provider/create-article/create-article.component';
+import { ProviderCreateArticleComponent } from './provider/provider-create-article/provider-create-article.component';
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -64,7 +64,7 @@ const routes: Routes = [
   /*PROVIDER*/
   {path: 'provider/profil', component: ProfilComponent},
   {path: 'provider/show-articles', component: ShowArticleComponent},
-  {path: 'provider/create-article', component: CreateArticlesComponent},
+  {path: 'provider/create-article', component: ProviderCreateArticleComponent},
 
   /*STAT*/
   {path: 'stat/global', component: GlobalStatComponent},
