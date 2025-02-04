@@ -14,6 +14,10 @@ export class WarnService {
     return this.http.get<ApicallInterface>(url + '/warns', options);
   }
 
+  getAllWarnAdmin(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
+    return this.http.get<ApicallInterface>(url + '/warns-admin', options);
+  }
+
   getOneWarn(url: string, options: {headers: HttpHeaders}, id: number): Observable<ApicallInterface> {
     return this.http.get<ApicallInterface>(url + "/onewarn/" + id, options);
   }

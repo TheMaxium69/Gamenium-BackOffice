@@ -35,6 +35,7 @@ import {AddBadgeComponent} from "./admin/add-badge/add-badge.component";
 import { ShowArticleComponent } from './provider/show-article/show-article.component';
 import { ProviderCreateArticleComponent } from './provider/provider-create-article/provider-create-article.component';
 import { ProviderEditArticleComponent } from './provider/provider-edit-article/provider-edit-article.component';
+import {WarnAdminComponent} from "./administration/warn-admin/warn-admin.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -45,6 +46,7 @@ const routes: Routes = [
   {path: 'admin/perms', component: PermsComponent},
   {path: 'admin/provider', component: UserProviderComponent},
   {path: 'admin/add-badge', component: AddBadgeComponent},
+  {path: 'admin/warn', component: WarnAdminComponent},
 
   /*MODO*/
   {path: 'modo/ban', component: BanComponent},

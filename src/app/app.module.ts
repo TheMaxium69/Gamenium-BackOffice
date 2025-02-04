@@ -73,6 +73,7 @@ import { ShowArticleComponent } from './provider/show-article/show-article.compo
 import { ProviderCreateArticleComponent } from './provider/provider-create-article/provider-create-article.component';
 import { ProviderEditArticleComponent } from './provider/provider-edit-article/provider-edit-article.component';
 import { WarnAdminComponent } from './administration/warn-admin/warn-admin.component';
+import { WarnSearchComponent } from './global/warn-search/warn-search.component';
 
 @NgModule({
   declarations: [
@@ -128,6 +129,7 @@ import { WarnAdminComponent } from './administration/warn-admin/warn-admin.compo
     ProviderCreateArticleComponent,
     ProviderEditArticleComponent,
     WarnAdminComponent,
+    WarnSearchComponent,
   ],
   imports: [
     BrowserModule,
