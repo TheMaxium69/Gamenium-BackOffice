@@ -71,6 +71,7 @@ import { AddBadgeComponent } from './admin/add-badge/add-badge.component';
 import { GameSearchComponent } from './global/game-search/game-search.component';
 import { ShowArticleComponent } from './provider/show-article/show-article.component';
 import { ProviderCreateArticleComponent } from './provider/provider-create-article/provider-create-article.component';
+import { ProviderEditArticleComponent } from './provider/provider-edit-article/provider-edit-article.component';
 
 @NgModule({
   declarations: [
@@ -124,6 +125,7 @@ import { ProviderCreateArticleComponent } from './provider/provider-create-artic
     GameSearchComponent,
     ShowArticleComponent,
     ProviderCreateArticleComponent,
+    ProviderEditArticleComponent,
   ],
   imports: [
     BrowserModule,

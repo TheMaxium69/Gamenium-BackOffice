@@ -34,6 +34,7 @@ import {LogActuComponent} from "./log/log-actu/log-actu.component";
 import {AddBadgeComponent} from "./admin/add-badge/add-badge.component";
 import { ShowArticleComponent } from './provider/show-article/show-article.component';
 import { ProviderCreateArticleComponent } from './provider/provider-create-article/provider-create-article.component';
+import { ProviderEditArticleComponent } from './provider/provider-edit-article/provider-edit-article.component';
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -65,6 +66,7 @@ const routes: Routes = [
   {path: 'provider/profil', component: ProfilComponent},
   {path: 'provider/show-articles', component: ShowArticleComponent},
   {path: 'provider/create-article', component: ProviderCreateArticleComponent},
+  {path: 'provider/edit-article', component: ProviderEditArticleComponent},
 
   /*STAT*/
   {path: 'stat/global', component: GlobalStatComponent},
