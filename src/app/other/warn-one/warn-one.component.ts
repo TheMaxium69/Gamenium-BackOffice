@@ -28,10 +28,10 @@ export class WarnOneComponent implements OnInit {
     this.getWarnSelected(this.warnId);
   }
 
-  
+
   //   envoyé a l'api une demande pour un get one de warn (a codé)
   //   une fois fait faut simplement l'affiché
-  
+
 }
   getWarnSelected(id: number) {
 
@@ -42,7 +42,25 @@ export class WarnOneComponent implements OnInit {
       console.log('Pas de warn');
     }
   })
-      
+
+  }
+
+  toggleManage(id: number) {
+
+    this.warnService.updateWarn(id, this.app.setURL(), this.app.createCorsToken()).subscribe((response: {message:string, result:WarnInterface}) => {
+
+      if (response.message === "good") {
+        this.warnSelected = response.result;
+      } else {
+        console.log("une erreur est survenue");
+      }
+
+
+    })
+
+
+
+
   }
 }
 

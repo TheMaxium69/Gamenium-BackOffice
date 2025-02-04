@@ -17,4 +17,8 @@ export class WarnService {
   getOneWarn(url: string, options: {headers: HttpHeaders}, id: number): Observable<ApicallInterface> {
     return this.http.get<ApicallInterface>(url + "/onewarn/" + id, options);
   }
+
+  updateWarn(id: number, url: string, option: { headers: HttpHeaders }): Observable<ApicallInterface> {
+    return this.http.put<ApicallInterface>(url + "/updatewarn", { id }, option);
+  }
 }
