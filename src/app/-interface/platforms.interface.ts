@@ -7,4 +7,3 @@ export interface PlatformsInterface {
     api_detail_url: string;
     site_detail_url: string;
   }
-  

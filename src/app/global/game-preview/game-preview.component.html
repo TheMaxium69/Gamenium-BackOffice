@@ -1,1 +1,62 @@
-<p>game-preview works!</p>
+<section *ngIf="id">
+
+  <mat-card class="mb-12">
+    <mat-card-content>
+      <div class="flex" style="justify-content: space-between;">
+
+        <div style="display: flex; align-items: center;">
+          <p style="margin: unset">{{ viewGame }}</p>
+          <mat-icon class="mr-8" fontIcon="visibility"></mat-icon>
+        </div>
+        <div>
+          <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/game/' + gameSelected?.id)"></mat-icon>
+        </div>
+      </div>
+
+      <div class="flex justify-center center-auto column align-center">
+
+        <div class="card-left">
+          <div class="image" style="background-image: url('{{ gameSelected?.image?.small_url }}')"></div>
+          <div class="blur"></div>
+          <img src="{{ gameSelected?.image?.small_url }}" alt="...">
+        </div>
+
+        <h2 class="text-center">{{gameSelected?.name}}</h2>
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <h2>Informations générales : </h2>
+      <div class="d-flex">
+        <p class="w-128">Aliases :</p>
+        <p>{{ gameSelected?.aliases }}</p>
+      </div>
+      <div class="d-flex">
+        <p class="w-128">GUID :</p>
+        <p>{{ gameSelected?.guid }}</p>
+      </div>
+      <div class="d-flex">
+        <p class="w-128">Platformes :</p>
+        <div style="display: flex; flex-wrap: wrap;">
+          <ng-container *ngFor="let platform of gameSelected?.platforms">
+            <mat-chip style="margin-right: 5px; margin-bottom: 5px">
+              {{ platform?.name }}
+            </mat-chip>
+          </ng-container>
+        </div>
+      </div>
+      <div class="d-flex">
+        <p class="w-128">Nombre d'Hmg :</p>
+        <p></p>
+      </div>
+      <div class="d-flex">
+        <p class="w-128">Nombre d'exemplaire :</p>
+        <p></p>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</section>
