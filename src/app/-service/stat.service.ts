@@ -21,4 +21,8 @@ export class StatService {
   getStatCopy(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
     return this.http.get<ApicallInterface>(url + '/stats/copy', options);
   }
+
+  getStatOneGame(id: number, url: string, options: { headers: HttpHeaders }) {
+    return this.http.get<ApicallInterface>(url + '/stats/gameOne/' + id, options);
+  }
 }

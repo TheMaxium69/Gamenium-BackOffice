@@ -2,7 +2,8 @@
 
   <mat-card class="mb-12">
     <mat-card-content>
-      <div class="flex" style="justify-content: space-between;">
+      <div class="flex" style="{{ this.app.userConnected.userRole.includes('ROLE_ADMIN') ||
+  this.app.userConnected.userRole.includes('ROLE_OWNER') ? 'justify-content: space-between;' : 'justify-content: end;' }}">
 
         <div style="display: flex; align-items: center;">
           <p style="margin: unset">{{ viewActu }}</p>

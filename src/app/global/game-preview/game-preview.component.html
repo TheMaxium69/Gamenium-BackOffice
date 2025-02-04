@@ -2,9 +2,10 @@
 
   <mat-card class="mb-12">
     <mat-card-content>
-      <div class="flex" style="justify-content: space-between;">
+      <div class="flex" style="{{ this.app.userConnected.userRole.includes('ROLE_ADMIN') ||
+  this.app.userConnected.userRole.includes('ROLE_OWNER') ? 'justify-content: space-between;' : 'justify-content: end;' }}">
 
-        <div style="display: flex; align-items: center;">
+        <div style="display: flex; align-items: center;" *ngIf="app.userConnected.userRole.includes('ROLE_ADMIN') || app.userConnected.userRole.includes('ROLE_OWNER')">
           <p style="margin: unset">{{ viewGame }}</p>
           <mat-icon class="mr-8" fontIcon="visibility"></mat-icon>
         </div>
@@ -48,14 +49,16 @@
           </ng-container>
         </div>
       </div>
-      <div class="d-flex">
-        <p class="w-128">Nombre d'Hmg :</p>
-        <p></p>
-      </div>
-      <div class="d-flex">
-        <p class="w-128">Nombre d'exemplaire :</p>
-        <p></p>
-      </div>
+      <ng-container *ngIf="app.userConnected.userRole.includes('ROLE_ADMIN') || app.userConnected.userRole.includes('ROLE_OWNER')">
+        <div class="d-flex">
+          <p class="w-128">Nombre d'Hmg :</p>
+          <p>{{ hmg }}</p>
+        </div>
+        <div class="d-flex">
+          <p class="w-128">Nombre d'exemplaire :</p>
+          <p>{{ hmgCopy }}</p>
+        </div>
+      </ng-container>
 
     </mat-card-content>
   </mat-card>

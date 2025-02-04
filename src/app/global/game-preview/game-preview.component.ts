@@ -6,6 +6,7 @@ import {ViewService} from "../../-service/view.service";
 import {ApicallInterface} from "../../-interface/apicall.interface";
 import {GameInterface} from "../../-interface/game.interface";
 import {GameService} from "../../-service/game.service";
+import {StatService} from "../../-service/stat.service";
 
 @Component({
   selector: 'app-game-preview',
@@ -20,9 +21,13 @@ export class GamePreviewComponent  implements OnInit, OnChanges {
   gameSelected: GameInterface | undefined;
   viewGame: number = 0;
 
+  hmg: number = 0;
+  hmgCopy: number = 0;
+
   constructor(
     protected app: AppComponent,
     private gameServcice: GameService,
+    private statServcice: StatService,
     private viewService: ViewService,
   ) {
   }
@@ -51,6 +56,18 @@ export class GamePreviewComponent  implements OnInit, OnChanges {
         this.viewGame = response.result;
       }
     })
+
+    if (this.app.userConnected.userRole.includes('ROLE_ADMIN') || this.app.userConnected.userRole.includes('ROLE_OWNER')){
+      this.statServcice.getStatOneGame(id, this.app.setURL(), this.app.createCorsToken()).subscribe((response: {
+        message: string,
+        result: {hmg: number, hmgCopy: number}
+      }) => {
+        if (response.message === 'good') {
+          this.hmg = response.result.hmg;
+          this.hmgCopy = response.result.hmgCopy;
+        }
+      })
+    }
 
   }
 }
