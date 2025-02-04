@@ -79,9 +79,10 @@ p {
   will-change: transform;
 }
 .card-left{
-  width: 326px;
+  width: 300px;
   height: 160px;
   border-radius: 15px;
+  margin: auto;
 }
 
 .card-left .image{
