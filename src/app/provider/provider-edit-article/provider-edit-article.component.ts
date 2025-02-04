@@ -233,23 +233,4 @@ export class ProviderEditArticleComponent implements OnInit{
     this.gameResults = [];
   }
 
-  /* Cherche le provider */
-  searchProviders() {
-    if (this.providerSearch.length > 2) {
-      const url = this.app.setURL();
-      const option = this.app.createCorsToken();
-      this.providerService.searchProviders(this.providerSearch, 10, url, option).subscribe(response => {
-        this.providerResults = response;
-      });
-    }
-  }
-
-  /* Selectionne le provider */
-  selectProvider(provider: ProviderInterface) {
-    if (this.selectedArticle) {
-      this.selectedArticle.Provider = provider;
-      this.providerSearch = provider.displayName; 
-    }
-    this.providerResults = [];
-  }
 }
