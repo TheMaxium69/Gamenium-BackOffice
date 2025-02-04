@@ -95,10 +95,9 @@ export class PostSearchComponent implements OnInit {
 
     // si provider alors redirige vers l'edition
     if(this.haveProvider) {
+      console.log('ca marche pas')
       this.router.navigate(['provider/edit-article']);
-    }
-  
-    if (!this.router.url.includes('/writter/edit-article')) {
+    } else {
       this.router.navigate(['/writter/edit-article']); // redirige si necessaire
     }
   }
