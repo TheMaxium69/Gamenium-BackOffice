@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './create-article.component.html',
   styleUrls: ['./create-article.component.css']
 })
-export class CreateArticleComponent {
+export class CreateArticlesComponent {
 
 }
