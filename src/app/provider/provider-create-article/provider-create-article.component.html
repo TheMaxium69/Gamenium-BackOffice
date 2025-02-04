@@ -2,7 +2,7 @@
 <h1 class="page-title">Crée un Article</h1>
 
 <form (ngSubmit)="submitArticle()" class="article-form mat-elevation-z3">
-  
+
 <!-- IMAGE UPLOAD -->
 <div class="drop-area mat-elevation-z2"
   (dragover)="$event.preventDefault()"
@@ -11,6 +11,7 @@
     <mat-icon class="upload-icon">cloud_upload</mat-icon>
     <p>Glisse et dépose ton image ici ou <span class="click-text">Clique ici</span></p>
     <input #fileInput type="file" (change)="onFileSelected($event)" hidden>
+  <small> Taille recommandé: 336 / 189</small>
 </div>
 
 <!-- Preview Image -->

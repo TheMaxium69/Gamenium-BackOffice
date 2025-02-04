@@ -69,8 +69,11 @@
 
 
 .image-preview.horizontal {
+  max-width: 336px;
+  max-height: 189px;
   width: 100%;
-  max-width: none;
+  min-width: 336px;
+  min-height: 189px;
 }
 
 .image-preview.square, .image-preview.icon {

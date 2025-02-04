@@ -8,12 +8,12 @@
     font-weight: bold;
     text-transform: uppercase;
   }
-  
+
   .title-text {
     font-size: 22px;
     font-weight: bold;
   }
-  
+
   /* Form Styling */
   .article-form {
     display: flex;
@@ -25,7 +25,7 @@
     border-radius: 8px;
     background: white;
   }
-  
+
   /* Upload Box */
   .drop-area {
     display: flex;
@@ -40,47 +40,50 @@
     transition: all 0.3s ease-in-out;
     background: rgba(0, 0, 0, 0.05);
   }
-  
+
   .drop-area:hover, .drop-area:active {
     background: rgba(0, 0, 0, 0.1);
   }
-  
+
   .upload-icon {
     color: rgba(0, 0, 0, 0.3);
   }
-  
+
   .click-text {
     font-weight: bold;
     color: #1976d2;
   }
-  
+
   .image-preview {
     width: 100%;
-    max-width: 400px; 
-    height: auto; 
+    max-width: 400px;
+    height: auto;
     display: block;
     margin: 10px auto;
     border-radius: 8px;
-    object-fit: contain; 
-    background: #f5f5f5; 
-    padding: 5px; 
+    object-fit: contain;
+    background: #f5f5f5;
+    padding: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   }
-  
+
 
   .image-preview.horizontal {
-    width: 100%; 
-    max-width: none; 
+    max-width: 336px;
+    max-height: 189px;
+    width: 100%;
+    min-width: 336px;
+    min-height: 189px;
   }
-  
+
   .image-preview.square, .image-preview.icon {
     width: auto;
     max-width: 200px; /* gère la width pour image carée */
   }
-  
-  
-  
-  
+
+
+
+
   /* Search Results */
   .search-results {
     max-height: 300px;
@@ -90,7 +93,7 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     padding: 8px;
   }
-  
+
   /* List Items (Game & Provider) */
   .search-item {
     display: flex;
@@ -100,20 +103,20 @@
     cursor: pointer;
     transition: background 0.2s;
   }
-  
+
   .search-item:hover {
     background: #f5f5f5;
   }
-  
+
   /* List Images */
   .list-image {
-    width: 60px; 
+    width: 60px;
     height: 60px;
     border-radius: 4px;
     margin-right: 12px;
     object-fit: cover;
   }
-  
+
   /* Text in List */
   .list-text {
     display: flex;
@@ -121,18 +124,18 @@
     justify-content: center;
     font-size: 16px;
   }
-  
+
   .game-title, .provider-title {
     font-size: 18px;
     font-weight: 500;
   }
-  
+
   /* Button */
   .button-container {
     text-align: center;
     margin-top: 16px;
   }
-  
+
   .hidden {
     display: none;
   }

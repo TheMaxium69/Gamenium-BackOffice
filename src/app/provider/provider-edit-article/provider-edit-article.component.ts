@@ -63,7 +63,7 @@ export class ProviderEditArticleComponent implements OnInit{
       if (response.result) {
 
         this.selectedArticle = response.result;
- 
+
         this.imagePreview = this.selectedArticle?.picture?.url ?? null;
         this.applyImageClass(this.imagePreview);
 
@@ -147,9 +147,9 @@ export class ProviderEditArticleComponent implements OnInit{
       if (aspectRatio > 1.3) {
         this.imageClass = 'horizontal';
       } else if (aspectRatio >= 0.8 && aspectRatio <= 1.3) {
-        this.imageClass = 'square';
+        this.imageClass = 'horizontal';
       } else {
-        this.imageClass = 'icon';
+        this.imageClass = 'horizontal';
       }
     };
   }
@@ -204,11 +204,11 @@ export class ProviderEditArticleComponent implements OnInit{
   /* Selectionne l'article dynamiquement */
   onArticleSelected(article: PostActuInterface) {
     this.selectedArticle = article;
-  
+
     // Ensure the provider and game fields are pre-filled
     this.providerSearch = article.Provider?.displayName ?? '';
     this.gameSearch = article.Game?.name ?? '';
-  
+
     this.imagePreview = article.picture?.url ?? null;
     this.applyImageClass(this.imagePreview);
   }
@@ -228,7 +228,7 @@ export class ProviderEditArticleComponent implements OnInit{
   selectGame(game: GameInterface) {
     if (this.selectedArticle) {
       this.selectedArticle.Game = game;
-      this.gameSearch = game.name; 
+      this.gameSearch = game.name;
     }
     this.gameResults = [];
   }

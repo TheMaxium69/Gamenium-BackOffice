@@ -19,3 +19,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-mdc-standard-chip .mdc-evolution-chip__cell--primary, .mat-mdc-standard-chip .mdc-evolution-chip__action--primary, .mat-mdc-standard-chip .mat-mdc-chip-action-label {
     overflow: hidden !important;
 }
+
+.actu-img{
+  object-fit: cover;
+  max-width: 336px;
+  max-height: 189px;
+  width: 100%;
+  min-width: 336px;
+  min-height: 189px;
+  border-radius: 14px;
+}

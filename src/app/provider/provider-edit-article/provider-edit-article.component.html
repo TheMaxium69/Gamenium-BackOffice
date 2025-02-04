@@ -29,13 +29,14 @@
                 <span class="click-text">Cliquez ici</span>
               </p>
               <input #fileInput type="file" (change)="onFileSelected($event)" hidden>
+              <small> Taille recommandé: 336 / 189</small>
             </div>
             <!-- Image Preview -->
             <img *ngIf="imagePreview"
                  [src]="imagePreview"
                  [class]="imageClass"
                  alt="Image Preview"
-                 class="image-preview">
+                 class="image-preview actu-img">
             <!-- Hidden Input to Store Picture ID -->
             <input type="hidden" [(ngModel)]="selectedArticle.picture.id" name="picture_id">
           </div>

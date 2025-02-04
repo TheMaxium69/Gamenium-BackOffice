@@ -12,10 +12,18 @@
           <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/actuality/' + actuSelected?.id)"></mat-icon>
         </div>
       </div>
-      <div class="flex justify-center">
-        <img src="{{ actuSelected?.picture?.url }}" class="card-img-top" alt="..." />
+
+      <div class="flex justify-center center-auto column align-center">
+        <img src="{{ actuSelected?.picture?.url }}" class="actu-img" alt="..." />
+
+        <h2 class="text-center">{{actuSelected?.title}}</h2>
+
+        <mat-chip routerLink="/provider/{{actuSelected?.Provider?.id}}">
+          <img matChipAvatar [src]="actuSelected?.Provider?.picture?.url" alt="provider pp" class="displayname">
+          {{ actuSelected?.Provider?.displayName }}
+        </mat-chip>
+
       </div>
-      <h2 class="text-center">{{actuSelected?.title}}</h2>
     </mat-card-content>
   </mat-card>
 

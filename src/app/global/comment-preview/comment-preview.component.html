@@ -13,8 +13,9 @@
           <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/actuality/' + commentSelected?.post?.id)"></mat-icon>
         </div>
       </div>
+
       <div class="flex justify-center center-auto column align-center">
-        <img src="{{ commentSelected?.post?.picture?.url }}" class="card-img-top" alt="..." />
+        <img src="{{ commentSelected?.post?.picture?.url }}" class="actu-img" alt="..." />
 
         <h2 class="text-center">{{commentSelected?.post?.title}}</h2>
 
@@ -22,6 +23,7 @@
           <img matChipAvatar [src]="commentSelected?.post?.Provider?.picture?.url" alt="provider pp" class="displayname">
           {{ commentSelected?.post?.Provider?.displayName }}
         </mat-chip>
+
       </div>
     </mat-card-content>
   </mat-card>

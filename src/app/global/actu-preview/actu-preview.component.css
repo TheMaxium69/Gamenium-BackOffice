@@ -30,6 +30,32 @@
     text-align: center;
 }
 
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.center-auto {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
 p {
     margin: 0px;
 }
@@ -42,10 +68,6 @@ p {
 
 .w-128{
     width:200px;
-}
-
-mat-chip {
-    margin-left: -3px;
 }
 
 .card-img-top{

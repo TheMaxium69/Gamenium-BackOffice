@@ -10,7 +10,10 @@
 }
 
 .preview-image {
-    width: 50px;
+  max-width: 50px;
+  min-width: 50px;
+  min-height: 29px;
+  max-height: 29px;
     border-radius: 4px;
     margin: 0 auto;
     object-fit: cover;

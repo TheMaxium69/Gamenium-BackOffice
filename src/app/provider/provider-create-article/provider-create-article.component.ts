@@ -60,9 +60,9 @@ export class ProviderCreateArticleComponent {
           if (aspectRatio > 1.3) {
             this.imageClass = 'horizontal'; // image horizontal = largeur total
           } else if (aspectRatio >= 0.8 && aspectRatio <= 1.3) {
-            this.imageClass = 'square'; // image carre = max width
+            this.imageClass = 'horizontal'; // image carre = max width
           } else {
-            this.imageClass = 'icon'; // petite icon reste petite
+            this.imageClass = 'horizontal'; // petite icon reste petite
           }
         };
 
