@@ -41,6 +41,20 @@
         <p class="w-128">Signalé le :</p>
         <p>{{warnSelected?.warnAt| date:'dd/MM/yyyy, HH:mm'}}</p>
     </div>
+    <ng-container *ngIf="warnSelected?.is_manage">
+      <div class="d-flex">
+        <p class="w-128">Modéré par :</p>
+        <mat-chip class="displayname" *ngIf="warnSelected?.moderated_by" routerLink="/user/{{warnSelected?.moderated_by?.id}}">
+          <img matChipAvatar [src]="app.generatePPUseritium(warnSelected?.moderated_by?.pp?.url, warnSelected?.moderated_by?.displayname_useritium	 || warnSelected?.moderated_by?.username,warnSelected?.moderated_by?.color || this.app.colorDefault)" alt="user pp"/>
+          {{warnSelected?.moderated_by?.displayname_useritium	 ?? warnSelected?.moderated_by?.username }}
+        </mat-chip>
+
+        <mat-chip *ngIf="!warnSelected?.user">
+          Anonyme
+        </mat-chip>
+      </div>
+    </ng-container>
+
     </mat-card-content>
 </mat-card>
 <br><br>

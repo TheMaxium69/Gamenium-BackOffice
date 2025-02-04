@@ -19,6 +19,7 @@ export interface WarnInterface
     commentReply: CommentReplyInterface | null,
     hmg: HistoryMyGameInterface | null,
     hmp: HistoryMyPlatformInterface | null,
-    is_manage: boolean
+    is_manage: boolean,
+    moderated_by: UserInterface | null,
 
 }
