@@ -45,4 +45,25 @@ export class WarnComponent implements OnInit{
     this.router.navigateByUrl("/warnedItem/" + id);
   }
 
+  toggleManage(id: number) {
+
+    this.warnService.updateWarn(id, this.app.setURL(), this.app.createCorsToken()).subscribe((response: {message:string, result:WarnInterface}) => {
+
+      if (response.message === "good") {
+        let warnSelected: WarnInterface = response.result;
+
+        let warnSelectedItem = this.allWarns.find(warn => warn.id === id);
+        if (warnSelectedItem) {
+          warnSelectedItem.is_manage = warnSelected.is_manage;
+        }
+
+      } else {
+        console.log("une erreur est survenue");
+      }
+
+
+    })
+
+  }
+
 }

@@ -58,9 +58,6 @@ export class WarnOneComponent implements OnInit {
 
     })
 
-
-
-
   }
 }
 

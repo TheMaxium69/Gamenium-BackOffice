@@ -72,6 +72,7 @@ import { GameSearchComponent } from './global/game-search/game-search.component'
 import { ShowArticleComponent } from './provider/show-article/show-article.component';
 import { ProviderCreateArticleComponent } from './provider/provider-create-article/provider-create-article.component';
 import { ProviderEditArticleComponent } from './provider/provider-edit-article/provider-edit-article.component';
+import { WarnAdminComponent } from './administration/warn-admin/warn-admin.component';
 
 @NgModule({
   declarations: [
@@ -126,6 +127,7 @@ import { ProviderEditArticleComponent } from './provider/provider-edit-article/p
     ShowArticleComponent,
     ProviderCreateArticleComponent,
     ProviderEditArticleComponent,
+    WarnAdminComponent,
   ],
   imports: [
     BrowserModule,
