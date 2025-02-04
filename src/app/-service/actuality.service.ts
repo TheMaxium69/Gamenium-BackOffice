@@ -27,6 +27,10 @@ export class ActualityService {
   updatePostActu(id: number, body: any, url: string, option: { headers: HttpHeaders }): Observable<ApicallInterface> {
     return this.http.put<ApicallInterface>(`${url}/postactus/${id}`, body, option);
   }
+
+  getPostActuByProvider(providerId: number, url: string, options: { headers: HttpHeaders }): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(`${url}/postByProvider/${providerId}`, options);
+  }
   
 }
   
