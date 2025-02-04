@@ -55,7 +55,7 @@ export class PostSearchComponent implements OnInit {
               return of([]);
             })
           );
-        } else if (this.haveProvider){
+        } else if (this.haveProvider && this.app.userConnected.providerGestionId !== null){
           return this.userProviderService.searchPostActuByProvider(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
             catchError((error) => {
               console.error('Une erreur s\'est produite lors de la recherche :', error);
@@ -74,12 +74,7 @@ export class PostSearchComponent implements OnInit {
       }),
       takeUntil(this.unsubscribe$)
     ).subscribe((results: any) => {
-      if (results.message) {
-        this.postactus = results.result;
-      } else {
-        this.postactus = results;
-      }
-      console.log(results);
+      this.postactus = results;
       this.dataSource = new MatTableDataSource<PostActuInterface>(this.postactus);
       this.dataSource.paginator = this.paginator;
     });

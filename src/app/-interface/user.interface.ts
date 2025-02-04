@@ -13,4 +13,5 @@ export interface UserInterface {
   themeColor: string;
   color: string;
   roles:string[],
+  providerGestionId:number|null,
 }
