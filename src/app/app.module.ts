@@ -69,6 +69,7 @@ import { ModoCopyComponent } from './moderation/modo-copy/modo-copy.component';
 import { LogActuComponent } from './log/log-actu/log-actu.component';
 import { AddBadgeComponent } from './admin/add-badge/add-badge.component';
 import { GameSearchComponent } from './global/game-search/game-search.component';
+import { ShowArticleComponent } from './provider/show-article/show-article.component';
 
 @NgModule({
   declarations: [
@@ -120,6 +121,7 @@ import { GameSearchComponent } from './global/game-search/game-search.component'
     LogActuComponent,
     AddBadgeComponent,
     GameSearchComponent,
+    ShowArticleComponent,
   ],
   imports: [
     BrowserModule,
