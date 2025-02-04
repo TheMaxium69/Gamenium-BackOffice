@@ -7,6 +7,7 @@ import { GameService } from 'src/app/-service/game.service';
 import { ProviderService } from 'src/app/-service/provider.service';
 import { SelectedArticleService } from 'src/app/-service/selected-article.service';
 import { UploadService } from 'src/app/-service/upload.service';
+import { UserProviderService } from 'src/app/-service/user-provider.service';
 import { AppComponent } from 'src/app/app.component';
 
 @Component({
@@ -29,6 +30,7 @@ export class ProviderEditArticleComponent implements OnInit{
 
   constructor(
     private actualityService: ActualityService,
+    private userProviderService: UserProviderService,
     private gameService: GameService,
     private providerService: ProviderService,
     private uploadService: UploadService,
@@ -194,7 +196,7 @@ export class ProviderEditArticleComponent implements OnInit{
       nb_edit: (this.selectedArticle.nb_edit ?? 0) + 1,
     };
 
-    this.actualityService.updatePostActu(this.selectedArticle.id, body, url, option).subscribe(response => {
+    this.userProviderService.updatePostActuByProvider(this.selectedArticle.id, body, url, option).subscribe(response => {
       console.log("Article mis à jour", response);
     });
   }

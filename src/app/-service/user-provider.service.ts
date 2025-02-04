@@ -25,6 +25,10 @@ export class UserProviderService {
   createPostActuByProvider(body: any, url: string, options: { headers: HttpHeaders }): Observable<ApicallInterface> {
     return this.http.post<ApicallInterface>(url + '/provider/createPostActu', body, options);
   }
-  
+
+  updatePostActuByProvider(id: number, body: any, url: string, option: { headers: HttpHeaders }): Observable<ApicallInterface> {
+    return this.http.put<ApicallInterface>(`${url}/provider/edit-article/${id}`, body, option);
+  }
+
 
 }
