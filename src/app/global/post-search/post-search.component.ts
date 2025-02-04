@@ -55,8 +55,8 @@ export class PostSearchComponent implements OnInit {
               return of([]);
             })
           );
-        } else if (this.haveProvider && this.searchValue){
-          return this.userProviderService.searchPostActuByProvider(this.searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
+        } else if (this.haveProvider){
+          return this.userProviderService.searchPostActuByProvider(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
             catchError((error) => {
               console.error('Une erreur s\'est produite lors de la recherche :', error);
               return of([]);
