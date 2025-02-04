@@ -8,6 +8,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import { Router } from '@angular/router';
 import { SelectedArticleService } from 'src/app/-service/selected-article.service';
 import {AdministrationService} from "../../-service/administration.service";
+import { UserProviderService } from 'src/app/-service/user-provider.service';
 
 @Component({
   selector: 'app-post-search',
@@ -34,6 +35,7 @@ export class PostSearchComponent implements OnInit {
 
   constructor(protected app:AppComponent,
               private actualityService:ActualityService,
+              private userProviderService:UserProviderService,
               private administrationService:AdministrationService,
               private selectedArticleService: SelectedArticleService,
               private router: Router,
@@ -53,8 +55,8 @@ export class PostSearchComponent implements OnInit {
               return of([]);
             })
           );
-        } else if (this.haveProvider){
-          return this.actualityService.getPostActuByProvider(1, this.app.setURL(), this.app.createCorsToken()).pipe(
+        } else if (this.haveProvider && this.searchValue){
+          return this.userProviderService.searchPostActuByProvider(this.searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
             catchError((error) => {
               console.error('Une erreur s\'est produite lors de la recherche :', error);
               return of([]);

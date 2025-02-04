@@ -18,4 +18,8 @@ export class UserProviderService {
     return this.http.put<ApicallInterface>( url + '/provider/' + id, body, option);
   }
 
+  searchPostActuByProvider(searchValue: string, limit:number, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
+    return this.http.post<ApicallInterface>(url + '/provider/search-postactus', { searchValue, limit}, options);
+  }
+
 }
