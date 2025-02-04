@@ -34,7 +34,7 @@ export class GameSearchComponent implements OnInit, OnDestroy{
       debounceTime(this.app.deadlineSearch),
       // distinctUntilChanged(),
       switchMap((searchValue) => {
-        return this.administrationService.searchUsersAdmin(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
+        return this.administrationService.searchGamesAdmin(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
           catchError((error) => {
             console.error('Une erreur s\'est produite lors de la recherche : ', error);
             return of([]);
