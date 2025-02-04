@@ -57,53 +57,59 @@ export class PostSearchComponent implements OnInit {
   fetchProviderAndLoadArticles(): void {
     const url = this.app.setURL();
     const options = this.app.createCorsToken();
-
+  
     this.userProviderService.getProviderByUser(url, options).subscribe(response => {
       if (response.result) {
         this.providerId = response.result.id;
         console.log("Provider ID trouvé :", this.providerId);
         this.searchPostactus(); 
       } else {
-        console.warn("Aucun provider trouvé pour cet utilisateur.");
+        console.warn("⚠️ Aucun provider trouvé pour cet utilisateur.");
       }
     }, error => {
-      console.error("Erreur lors de la récupération du provider :", error);
+      console.error("❌ Erreur lors de la récupération du provider :", error);
     });
   }
+  
 
   /* Fetch Articles */
   searchPostactus(): void {
-    this.searchPostSubject.next(this.searchValue);
+    console.log("Searching articles...");
   
-    this.searchPostSubject.pipe(
-      debounceTime(this.app.deadlineSearch),
-      switchMap((searchValue) => {
-        if (this.haveProvider && this.providerId) {
-          return this.actualityService.getPostActuByProvider(this.providerId, this.app.setURL(), this.app.createCorsToken()).pipe(
-            catchError((error) => {
-              console.error("Erreur lors de la récupération des articles pour le provider :", error);
-              return of([]);
-            })
-          );
-        } else {
-          return this.actualityService.searchPostActu(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
-            catchError((error) => {
-              console.error("Erreur lors de la recherche :", error);
-              return of([]);
-            })
-          );
-        }
-      }),
-      takeUntil(this.unsubscribe$)
+    let apiCall;
+    if (this.haveProvider && this.providerId) {
+      console.log("Fetching articles for Provider ID:", this.providerId);
+      apiCall = this.actualityService.getPostActuByProvider(
+        this.providerId, 
+        this.app.setURL(), 
+        this.app.createCorsToken()
+      );
+    } else {
+      console.log(" Fetching all articles...");
+      apiCall = this.actualityService.searchPostActu(
+        this.searchValue, 
+        this.app.fetchLimit, 
+        this.app.setURL(), 
+        this.app.createCorsToken()
+      );
+    }
+  
+    apiCall.pipe(
+      catchError((error) => {
+        console.error("API Error:", error);
+        return of([]);
+      })
     ).subscribe((results: any) => {
-      console.log("Fetched Articles:", results); 
-      this.postactus = results;
+      console.log("Articles fetched:", results.result); 
+      this.postactus = results.result;
   
-      
+   
       this.dataSource = new MatTableDataSource<PostActuInterface>(this.postactus);
       this.dataSource.paginator = this.paginator;
     });
   }
+  
+  
   
 
   /* Sélectionne un article et redirige */
