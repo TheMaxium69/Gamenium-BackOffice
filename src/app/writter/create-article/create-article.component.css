@@ -74,6 +74,7 @@
     width: 100%;
     min-width: 336px;
     min-height: 189px;
+    object-fit: cover;
   }
 
   .image-preview.square, .image-preview.icon {
