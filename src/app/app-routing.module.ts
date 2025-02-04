@@ -36,6 +36,7 @@ import { ShowArticleComponent } from './provider/show-article/show-article.compo
 import { ProviderCreateArticleComponent } from './provider/provider-create-article/provider-create-article.component';
 import { ProviderEditArticleComponent } from './provider/provider-edit-article/provider-edit-article.component';
 import {WarnAdminComponent} from "./administration/warn-admin/warn-admin.component";
+import {ModoActuComponent} from "./moderation/modo-actu/modo-actu.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -54,6 +55,7 @@ const routes: Routes = [
   {path: 'modo/profil', component: ModoProfilComponent},
   {path: 'modo/comment', component: ModoCommentComponent},
   {path: 'modo/copy', component: ModoCopyComponent},
+  {path: 'modo/actu', component: ModoActuComponent},
 
   /*REDAC*/
   {path: 'writter/edit-article', component: EditArticleComponent},

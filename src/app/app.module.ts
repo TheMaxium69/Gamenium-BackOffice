@@ -74,6 +74,7 @@ import { ProviderCreateArticleComponent } from './provider/provider-create-artic
 import { ProviderEditArticleComponent } from './provider/provider-edit-article/provider-edit-article.component';
 import { WarnAdminComponent } from './administration/warn-admin/warn-admin.component';
 import { WarnSearchComponent } from './global/warn-search/warn-search.component';
+import { ModoActuComponent } from './moderation/modo-actu/modo-actu.component';
 
 @NgModule({
   declarations: [
@@ -130,6 +131,7 @@ import { WarnSearchComponent } from './global/warn-search/warn-search.component'
     ProviderEditArticleComponent,
     WarnAdminComponent,
     WarnSearchComponent,
+    ModoActuComponent,
   ],
   imports: [
     BrowserModule,
