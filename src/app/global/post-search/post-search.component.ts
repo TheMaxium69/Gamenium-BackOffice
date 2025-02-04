@@ -93,6 +93,11 @@ export class PostSearchComponent implements OnInit {
     this.selectedArticleService.setSelectedArticle(article); // on save l'article global
     this.articleSelected.emit(article); // update immediate sur la page
 
+    // si provider alors redirige vers l'edition
+    if(this.haveProvider) {
+      this.router.navigate(['provider/edit-article']);
+    }
+  
     if (!this.router.url.includes('/writter/edit-article')) {
       this.router.navigate(['/writter/edit-article']); // redirige si necessaire
     }
