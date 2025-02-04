@@ -17,4 +17,8 @@ export class StatService {
   getStatSanction(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
     return this.http.get<ApicallInterface>(url + '/stats/sanction', options);
   }
+
+  getStatCopy(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(url + '/stats/copy', options);
+  }
 }
