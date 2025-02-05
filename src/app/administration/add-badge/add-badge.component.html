@@ -1,3 +1,11 @@
-<h1>Adjout de badge</h1>
+
+<div style="display: flex;justify-content: space-between;">
+  <h1>Gestion des badges</h1>
+
+  <button mat-raised-button color="primary" routerLink="/admin/create-badge">
+    <mat-icon>add</mat-icon>
+    Créé un badge
+  </button>
+</div>
 
 <app-user-search [profilRequest]="true" [displayedColumns]="['id', 'displayname', 'badge', 'addbadge']"></app-user-search>

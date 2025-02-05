@@ -79,6 +79,7 @@ import { CommentOneComponent } from './other/comment-one/comment-one.component';
 import { CommentReplyOneComponent } from './other/comment-reply-one/comment-reply-one.component';
 import { BadgeOneComponent } from './other/badge-one/badge-one.component';
 import { BadgePreviewComponent } from './global/badge-preview/badge-preview.component';
+import { CreateBadgeComponent } from './administration/create-badge/create-badge.component';
 
 @NgModule({
   declarations: [
@@ -140,6 +141,7 @@ import { BadgePreviewComponent } from './global/badge-preview/badge-preview.comp
     CommentReplyOneComponent,
     BadgeOneComponent,
     BadgePreviewComponent,
+    CreateBadgeComponent,
   ],
   imports: [
     BrowserModule,

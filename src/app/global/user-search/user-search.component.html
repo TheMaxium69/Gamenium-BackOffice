@@ -132,8 +132,8 @@
         <ng-container *ngIf="element.badges.length > 0">
           <ng-container *ngFor="let badge of element.badges">
             <mat-chip routerLink="/badge/{{badge.id}}"
-            (removed)="removeBadge(element.id, badge)">
-              <img matChipAvatar [src]="badge.pictureUrl" alt="badge img"/>
+              (removed)="toggleBadge(element.id, badge)">
+              <img matChipAvatar [src]="badge.pictureUrl || badge.picture.url" alt="badge img"/>
               {{ badge.name }}
               <button matChipRemove [attr.aria-label]="'remove ' + badge">
                 <mat-icon>cancel</mat-icon>
@@ -150,7 +150,7 @@
         <mat-icon fontIcon="add" mat-button [matMenuTriggerFor]="menu2"></mat-icon>
         <mat-menu #menu2="matMenu">
           <ng-container *ngFor="let badge of badgeAll">
-            <button mat-menu-item  (click)="addBadge(element.id, badge)">
+            <button mat-menu-item  (click)="toggleBadge(element.id, badge)" *ngIf="haveBadge(element.badges, badge)">
               <mat-chip>
                 <img matChipAvatar [src]="badge.picture?.url" alt="badge img"/>
                 {{ badge.name }}

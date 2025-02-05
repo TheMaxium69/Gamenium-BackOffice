@@ -217,11 +217,41 @@ export class UserSearchComponent implements OnInit, OnDestroy{
 
   }
 
-  removeBadge(id_user:number, badge: {id:number, name:string, pictureUrl:string}) {
-    console.log(id_user, badge);
+  toggleBadge(id_user:number, badge: any) {
+    this.badgeService.toggleBadge(badge.id, id_user, this.app.setURL(), this.app.createCorsToken()).subscribe((response:ApicallInterface) => {
+      if (response.message === "add success") {
+
+        const user = this.users.find(user => user.id === id_user);
+        if (user && user.badges) {
+          user.badges.push(badge);
+        }
+
+      } else if (response.message === "delete success") {
+
+        const user = this.users.find(user => user.id === id_user);
+        if (user && user.badges) {
+          user.badges = user.badges.filter(b => b.id !== badge.id);
+        }
+
+
+      } else {
+        console.error(response);
+      }
+
+
+
+    })
   }
 
-  addBadge(id_user:number, badge: BadgeInterface) {
-    console.log(id_user, badge);
+
+  haveBadge(badgeAllUser: { id:number }[], oneBadge: BadgeInterface): boolean {
+
+    for (const badge of badgeAllUser) {
+      if (badge.id === oneBadge.id) {
+        return false; // Le badge est présent
+      }
+    }
+    return true;
+
   }
 }
