@@ -14,4 +14,5 @@ export interface UserInterface {
   color: string;
   roles:string[],
   providerGestionId:number|null,
+  badges:{id:number,name:string,pictureUrl:string}[]|null,
 }

@@ -14,6 +14,10 @@ export class AdministrationService {
     return this.http.post<ApicallInterface>(url + '/admin-users-search',  { searchValue, limit}, options);
   }
 
+  searchProfilsAdmin(searchValue: string, limit:number, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
+    return this.http.post<ApicallInterface>(url + '/admin-profils-search',  { searchValue, limit}, options);
+  }
+
   searchGamesAdmin(searchValue: string, limit:number, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
     return this.http.post<ApicallInterface>(url + '/admin-games-search',  { searchValue, limit}, options);
   }

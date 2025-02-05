@@ -19,6 +19,8 @@ export class UserSearchComponent implements OnInit, OnDestroy{
 
   @Input()
   public displayedColumns: string[] = ['id'];
+  @Input()
+  public profilRequest!: boolean;
 
   private unsubscribe$ = new Subject<void>();
   private searchProfilSubject = new Subject<string>();
@@ -37,12 +39,21 @@ export class UserSearchComponent implements OnInit, OnDestroy{
       debounceTime(this.app.deadlineSearch),
       // distinctUntilChanged(),
       switchMap((searchValue) => {
-        return this.administrationService.searchUsersAdmin(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
-          catchError((error) => {
-            console.error('Une erreur s\'est produite lors de la recherche : ', error);
-            return of([]);
-          })
-        );
+        if (this.profilRequest){
+          return this.administrationService.searchProfilsAdmin(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
+            catchError((error) => {
+              console.error('Une erreur s\'est produite lors de la recherche : ', error);
+              return of([]);
+            })
+          );
+        } else {
+          return this.administrationService.searchUsersAdmin(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
+            catchError((error) => {
+              console.error('Une erreur s\'est produite lors de la recherche : ', error);
+              return of([]);
+            })
+          );
+        }
       }),
       takeUntil(this.unsubscribe$)
     ).subscribe((results: any) => {
@@ -182,5 +193,9 @@ export class UserSearchComponent implements OnInit, OnDestroy{
     }
     return true;
 
+  }
+
+  removeBadge(id_user:number, badge: {id:number, name:string, pictureUrl:string}) {
+    console.log(id_user, badge);
   }
 }

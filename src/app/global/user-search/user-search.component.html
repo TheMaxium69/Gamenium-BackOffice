@@ -115,6 +115,40 @@
       </td>
     </ng-container>
 
+    <!-- badge Column -->
+    <ng-container matColumnDef="badge">
+      <th mat-header-cell *matHeaderCellDef> Badge </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.badges.length === 0">
+          <p>Aucun badge</p>
+        </ng-container>
+        <ng-container *ngIf="element.badges.length > 0">
+          <ng-container *ngFor="let badge of element.badges">
+            <mat-chip routerLink="/badge/{{badge.id}}"
+            (removed)="removeBadge(element.id, badge)">
+              <img matChipAvatar [src]="badge.pictureUrl" alt="badge img"/>
+              {{ badge.name }}
+              <button matChipRemove [attr.aria-label]="'remove ' + badge">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+          </ng-container>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="addbadge">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon fontIcon="add" mat-button [matMenuTriggerFor]="menu2" *ngIf="app.roleCanManage().length !== element.roles.length"></mat-icon>
+        <mat-menu #menu2="matMenu">
+          <ng-container *ngFor="let roleCan of app.roleCanManage()">
+            <button mat-menu-item *ngIf="!element.roles.includes(roleCan)" (click)="addRole(element.id, roleCan)">{{ roleCan.substring(5) }}</button>
+          </ng-container>
+        </mat-menu>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
