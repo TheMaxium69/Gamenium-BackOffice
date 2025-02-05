@@ -2,10 +2,10 @@
 
   <mat-card class="mb-12">
     <mat-card-content>
-      <div class="flex" style="justify-content: space-between;">
+      <div class="flex justify-between">
 
-        <div style="display: flex; align-items: center;">
-          <p style="margin: unset">{{ viewActu }}</p>
+        <div class="flex align-center">
+          <p class="m-unset">{{ viewActu }}</p>
           <mat-icon fontIcon="visibility"></mat-icon>
         </div>
         <div>
@@ -28,7 +28,10 @@
 <!-- commentaire réponse signalé -->
   <mat-card class="mb-12">
     <mat-card-content>
-      <h2 class="mb-12">Informations sur la réponse au commentaire : </h2>
+      <div class="flex justify-between g-10">
+        <h2 class="mb-12">Informations sur la réponse au commentaire : </h2>
+        <button mat-raised-button color="warn" (click)="moderateDeleteCommentReply()">Supprimer</button>
+      </div>
       <div class="flex align-center mx-20">
         <div class="w-128">Commentaire signalé :</div>
         <div class="w-50vh">{{commentReplySelected?.content}}</div>
