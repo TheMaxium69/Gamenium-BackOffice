@@ -37,6 +37,8 @@ import { ProviderCreateArticleComponent } from './provider/provider-create-artic
 import { ProviderEditArticleComponent } from './provider/provider-edit-article/provider-edit-article.component';
 import {WarnAdminComponent} from "./administration/warn-admin/warn-admin.component";
 import {ModoActuComponent} from "./moderation/modo-actu/modo-actu.component";
+import {CommentOneComponent} from "./other/comment-one/comment-one.component";
+import {CommentReplyOneComponent} from "./other/comment-reply-one/comment-reply-one.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -92,6 +94,8 @@ const routes: Routes = [
   {path: 'actu/:id', component: ActuOneComponent},
   {path: 'game/:id', component: GameOneComponent},
   {path: 'warn/:id', component: WarnOneComponent},
+  {path: 'comment/:id', component: CommentOneComponent},
+  {path: 'comment-reply/:id', component: CommentReplyOneComponent},
 
   {path: 'settings', component: SettingComponent},
   {path: 'err', component: ErrComponent},
