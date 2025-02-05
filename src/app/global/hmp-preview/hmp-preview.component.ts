@@ -9,7 +9,7 @@ export interface preBodyHmp {
   barcode: boolean 
   buy_where: boolean
   content : boolean
-  copyPlateform_id:number
+  copyPlateform_id:number|undefined
   edition: boolean
   purchase_content: boolean
 }
@@ -26,12 +26,13 @@ MyPlatform : HistoryMyPlatformInterface | undefined;
   @Input({transform: numberAttribute})
   public id: number|null = null;
 
-  moderationState = {
+  moderationState: preBodyHmp = {
     edition: false,
     barcode: false,
     content: false,
     buy_where: false,
-    purchase_content: false
+    purchase_content: false,
+    copyPlateform_id : undefined,
   }
 
 
@@ -63,12 +64,10 @@ MyPlatform : HistoryMyPlatformInterface | undefined;
     })
   }
 
-  OnClickDelete(champ: keyof typeof this.moderationState, id: number){
-    Object.keys(this.moderationState).forEach(key => {
-        this.moderationState[key as keyof typeof this.moderationState] = false;
-    });
-
-    this.moderationState[champ] = true;
+  OnClickDelete(champ:string, id: number){
+    
+    (this.moderationState as any)[champ] = true; // Set le bon champ
+    this.moderationState.copyPlateform_id = id; // Set l íd de la copy
 
     Swal.fire({
           icon: "question",
@@ -81,15 +80,16 @@ MyPlatform : HistoryMyPlatformInterface | undefined;
           cancelButtonText: "Annuler"
         }).then((result) => {
           if (result.isDenied) {
-            this.updateHmp({...this.moderationState, copyPlateform_id: id}, champ)
+            this.updateHmp(this.moderationState, champ)
+          } else {
+            // remet tout à zero
+            (this.moderationState as any)[champ] = false;
+            this.moderationState.copyPlateform_id = undefined;
           }})
   }
 
   updateHmp(prebody:preBodyHmp, champ:string){
-
-    console.log(prebody);
-    console.log(champ);
-
+    
     let body = JSON.stringify(prebody);
 
     this.moderationService.moderateHmp(body, this.app.setURL(), this.app.createCorsToken()).subscribe(response => {
@@ -103,8 +103,7 @@ MyPlatform : HistoryMyPlatformInterface | undefined;
               copy.purchase.buy_where = null;
             } else if (champ === 'purchase_content') {
               copy.purchase.content = null;
-            }
-            else {
+            } else {
               (copy as any)[champ] = "";
             }
           }
@@ -114,6 +113,10 @@ MyPlatform : HistoryMyPlatformInterface | undefined;
         console.log('erreur modération');
         Swal.fire("Erreur de nos services", "", "error");
       }
+
+      // remet tout à zero
+      (this.moderationState as any)[champ] = false;
+      this.moderationState.copyPlateform_id = undefined;
     })
 
   }  

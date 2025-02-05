@@ -2,37 +2,43 @@
 
   <mat-card>
     <mat-card-content>
-      <div class="d-flex justify-end">
+      <div class="d-flex mb-12 justify-end">
         <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront())"></mat-icon>
       </div>
-      <div class="banner-image d-flex justify-center">
+      <div class="banner-image d-flex mb-12 justify-center">
         <div class="banner" style="background-image: url({{MyGame?.myGame?.game?.image?.small_url}});"></div>
         <div class="blur"></div>
         <img class="back" src="{{ MyGame?.myGame?.game?.image?.small_url }}" alt="blur">
       </div>
-      <h2 class="d-flex justify-center m-40">{{MyGame?.myGame?.game?.name}}</h2>
+      <h2 class="d-flex mb-12 justify-center m-15">{{MyGame?.myGame?.game?.name}}</h2>
       </mat-card-content>
   </mat-card>
   <br><br>
   <mat-card>
     <mat-card-content>
       <h2>Informations Générales</h2>
-          <div class="d-flex">
+          <div class="d-flex mb-12">
             <p class="w-128">Plateforme :</p>
             <mat-chip (click)="app.redirectUrl(app.setURLFront() + '/profil/' + MyGame.myGame.user.id + '/' + MyGame.myGame.plateform.id )" style="cursor: pointer">
               <img matChipAvatar [src]="MyGame?.myGame?.plateform?.image?.icon_url" alt="platform icon"/>
               {{MyGame?.myGame?.plateform?.name}}
             </mat-chip>
           </div>
-          <div class="d-flex">
+          <div class="d-flex mb-12">
             <p class="w-128">Ajoutée le :</p>
             <p>{{ MyGame?.myGame?.added_at | date:'dd/MM/yyyy, HH:mm' }}</p>
           </div>
-          <div class="d-flex">
+          <div class="d-flex mb-12">
             <p class="w-128">Description :</p>
-            <p>{{MyGame?.rate?.content ?? 'Non renseigné' }}</p>
+            <ng-container *ngIf="MyGame?.rate?.content">
+              <p>{{MyGame?.rate?.content}}</p>
+              <mat-icon fontIcon="delete" (click)="OnClickDelete('rate', MyGame.rate.id, 'rate')" ></mat-icon>
+            </ng-container>
+            <ng-container *ngIf="!MyGame?.rate?.content">
+              <p>Non renseigné</p>
+            </ng-container>
           </div>
-          <div class="d-flex">
+          <div class="d-flex mb-12">
             <p class="w-128">Tag :</p>
             <ng-container *ngIf="MyGame.myGame?.hmgTags">
               <ng-container *ngIf="MyGame.myGame.hmgTags.length === 0">
@@ -44,6 +50,7 @@
                   <mat-chip [style.background-color]="tag.color">
                     {{tag.name}}
                   </mat-chip>
+                  <mat-icon fontIcon="delete" (click)="OnClickDelete('tag', tag.id, 'tag')"></mat-icon>
                 </div>
               </ng-container>
             </ng-container>
@@ -59,33 +66,53 @@
         <mat-card>
           <mat-card-content>
             <h2>Exemplaire #{{i + 1}}</h2>
-            <div class="d-flex">
+            <div class="d-flex mb-12">
               <p class="w-128">Edition :</p>
-              <p> {{copy.edition ?? "Non renseigné"}}</p>
+              <ng-container *ngIf="copy.edition">
+                <p id="edition">{{copy.edition}}</p>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('edition', copy.id)"></mat-icon>
+              </ng-container>
+              <ng-container *ngIf="!copy.edition">
+                <p>{{"Non renseigné"}}</p>
+              </ng-container>
             </div>
-            <div class="d-flex">
+            <div class="d-flex mb-12">
               <p class="w-128">Barcode :</p>
-              <p>{{copy.barcode ?? "Non renseigné"}}</p>
+              <ng-container *ngIf="copy.barcode">
+                <p>{{copy.barcode}}</p>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('barcode', copy.id)"></mat-icon>
+              </ng-container>
+              <ng-container *ngIf="!copy.barcode">
+                <p>{{"Non renseigné"}}</p>
+              </ng-container>
             </div>
-            <div class="d-flex">
+            <div class="d-flex mb-12">
               <p class="w-128">Description :</p>
-              <p>{{copy.content ?? "Non renseigné"}}</p>
+              <ng-container *ngIf="copy.content">
+                <p id="content">{{copy.content}}</p>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('content', copy.id)"></mat-icon>
+              </ng-container>
+              <ng-container *ngIf="!copy.content">
+                <p>{{"Non renseigné"}}</p>
+              </ng-container>
             </div>
-            <div class="d-flex">
+            <div class="d-flex mb-12">
               <p class="w-128">Lieu d'achat :</p>
               <ng-container *ngIf="copy.purchase.buy_where?.name">
-                <mat-chip>
+                <mat-chip id="buy_where">
                   {{copy.purchase.buy_where?.name}}
                 </mat-chip>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('buy_where', copy.id)"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.purchase.buy_where?.name">
                 <p>Non renseigné</p>
               </ng-container>
             </div>
-            <div class="d-flex">
+            <div class="d-flex mb-12">
               <p class="w-128">Descrition de l'achat :</p>
               <ng-container *ngIf="copy.purchase.content">
-                  {{copy.purchase.content}}
+                <p id="purchase_content">{{copy.purchase.content}}</p>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('purchase_content', copy.id)"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.purchase.content">
                 <p>Non renseigné</p>
@@ -107,17 +134,35 @@
           <mat-card>
             <mat-card-content>
               <h2>Speedrun #{{i + 1}}</h2>
-              <div class="d-flex">
+              <div class="d-flex mb-12">
                 <p class="w-128">Categorie :</p>
-                <p>{{oneSpeed.category}}</p>
+                <ng-container *ngIf="oneSpeed.category">
+                  <p>{{oneSpeed.category}}</p>
+                  <mat-icon fontIcon="delete" (click)="OnClickDelete('category', oneSpeed.id, 'speedrun')"></mat-icon>
+                </ng-container>
+                <ng-container *ngIf="!oneSpeed.category">
+                  <p>Non renseigné</p>
+                </ng-container>
               </div>
-              <div class="d-flex">
+              <div class="d-flex mb-12">
                 <p class="w-128">Chrono :</p>
-                <p>{{oneSpeed.chrono }}</p>
+                <ng-container *ngIf="oneSpeed.chrono">
+                  <p>{{oneSpeed.chrono }}</p>
+                  <mat-icon fontIcon="delete" (click)="OnClickDelete('chrono', oneSpeed.id, 'speedrun')"></mat-icon>
+                </ng-container>
+                <ng-container *ngIf="!oneSpeed.chrono">
+                  <p>Non renseigné</p>
+                </ng-container>
               </div>
-              <div class="d-flex">
+              <div class="d-flex mb-12">
                 <p class="w-128">Link :</p>
-                <p>{{oneSpeed.link ?? "Non renseigné"}}</p>
+                <ng-container *ngIf="oneSpeed.link">
+                  <p>{{oneSpeed.link}}</p>
+                  <mat-icon fontIcon="delete" (click)="OnClickDelete('link', oneSpeed.id, 'speedrun')"></mat-icon>
+                </ng-container>
+                <ng-container *ngIf="!oneSpeed.link">
+                  <p>Non renseigné</p>
+                </ng-container>
               </div>
             </mat-card-content>
           </mat-card>
@@ -138,6 +183,7 @@
           <div>
             <p>Screenshot #{{i + 1}}</p>
             <img src="{{oneScreen.picture.url}}">
+            <mat-icon fontIcon="delete" (click)="OnClickDelete('screenshot', oneScreen.picture.id, 'screenshot')"></mat-icon>
           </div>
         </div>
       </mat-card-content>

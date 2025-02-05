@@ -36,9 +36,7 @@
               <p class="w-128">Edition :</p>
               <ng-container *ngIf="copy.edition">
                 <p>{{copy.edition}}</p>
-                <div>
-                  <mat-icon fontIcon="delete" (click)="OnClickDelete('edition', copy.id)"></mat-icon>
-                </div>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('edition', copy.id)"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.edition">
                 <p>{{"Non renseigné"}}</p>
