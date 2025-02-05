@@ -25,7 +25,7 @@
         </mat-chip>
 
       </div>
-      <div class="flex justify-end">
+      <div class="flex justify-end" *ngIf="app.canModerated()">
         <button mat-raised-button color="warn" (click)="deleteActu()">Supprimer l'actualité</button>
       </div>
     </mat-card-content>

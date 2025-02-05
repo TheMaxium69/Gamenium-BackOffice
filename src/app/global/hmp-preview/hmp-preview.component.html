@@ -36,7 +36,7 @@
               <p class="w-128">Edition :</p>
               <ng-container *ngIf="copy.edition">
                 <p>{{copy.edition}}</p>
-                <mat-icon fontIcon="delete" (click)="OnClickDelete('edition', copy.id)"></mat-icon>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('edition', copy.id)" *ngIf="app.canModerated()"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.edition">
                 <p>{{"Non renseigné"}}</p>
@@ -46,7 +46,7 @@
               <p class="w-128">Barcode :</p>
               <ng-container *ngIf="copy.barcode">
                 <p>{{copy.barcode}}</p>
-                <mat-icon fontIcon="delete" (click)="OnClickDelete('barcode', copy.id)"></mat-icon>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('barcode', copy.id)" *ngIf="app.canModerated()"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.barcode">
                 <p>{{"Non renseigné"}}</p>
@@ -56,7 +56,7 @@
               <p class="w-128">Description :</p>
               <ng-container *ngIf="copy.content">
                 <p>{{copy.content}}</p>
-                <mat-icon fontIcon="delete" (click)="OnClickDelete('content', copy.id)"></mat-icon>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('content', copy.id)" *ngIf="app.canModerated()"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.content">
                 <p>{{"Non renseigné"}}</p>
@@ -68,7 +68,7 @@
                 <mat-chip>
                   {{copy.purchase.buy_where?.name}}
                 </mat-chip>
-                <mat-icon fontIcon="delete" (click)="OnClickDelete('buy_where', copy.id)"></mat-icon>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('buy_where', copy.id)" *ngIf="app.canModerated()"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.purchase.buy_where?.name">
                 <p>Non renseigné</p>
@@ -78,7 +78,7 @@
               <p class="w-128">Descrition de l'achat :</p>
               <ng-container *ngIf="copy.purchase.content">
                 <p>{{copy.purchase.content}}</p>
-                <mat-icon fontIcon="delete" (click)="OnClickDelete('purchase_content', copy.id)"></mat-icon>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('purchase_content', copy.id)" *ngIf="app.canModerated()"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.purchase.content">
                 <p>Non renseigné</p>

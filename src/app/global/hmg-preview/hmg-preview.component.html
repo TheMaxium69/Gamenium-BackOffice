@@ -32,7 +32,7 @@
             <p class="w-128">Avis :</p>
             <ng-container *ngIf="MyGame?.rate?.content">
               <p>{{MyGame?.rate?.content}}</p>
-              <mat-icon fontIcon="delete" (click)="OnClickDelete('rate', MyGame.rate.id, 'rate')" ></mat-icon>
+              <mat-icon fontIcon="delete" (click)="OnClickDelete('rate', MyGame.rate.id, 'rate')"  *ngIf="app.canModerated()"></mat-icon>
             </ng-container>
             <ng-container *ngIf="!MyGame?.rate?.content">
               <p>Non renseigné</p>
@@ -50,7 +50,7 @@
                   <mat-chip [style.background-color]="tag.color"
                             (removed)="OnClickDelete('tag', tag.id, 'tag')">
                     {{tag.name}}
-                    <button matChipRemove >
+                    <button matChipRemove *ngIf="app.canModerated()">
                       <mat-icon>cancel</mat-icon>
                     </button>
                   </mat-chip>
@@ -73,7 +73,7 @@
               <p class="w-128">Edition :</p>
               <ng-container *ngIf="copy.edition">
                 <p id="edition">{{copy.edition}}</p>
-                <mat-icon fontIcon="delete" (click)="OnClickDelete('edition', copy.id)"></mat-icon>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('edition', copy.id)" *ngIf="app.canModerated()"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.edition">
                 <p>{{"Non renseigné"}}</p>
@@ -83,7 +83,7 @@
               <p class="w-128">Barcode :</p>
               <ng-container *ngIf="copy.barcode">
                 <p>{{copy.barcode}}</p>
-                <mat-icon fontIcon="delete" (click)="OnClickDelete('barcode', copy.id)"></mat-icon>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('barcode', copy.id)" *ngIf="app.canModerated()"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.barcode">
                 <p>{{"Non renseigné"}}</p>
@@ -93,7 +93,7 @@
               <p class="w-128">Description :</p>
               <ng-container *ngIf="copy.content">
                 <p id="content">{{copy.content}}</p>
-                <mat-icon fontIcon="delete" (click)="OnClickDelete('content', copy.id)"></mat-icon>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('content', copy.id)" *ngIf="app.canModerated()"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.content">
                 <p>{{"Non renseigné"}}</p>
@@ -105,7 +105,7 @@
                 <mat-chip id="buy_where">
                   {{copy.purchase.buy_where?.name}}
                 </mat-chip>
-                <mat-icon fontIcon="delete" (click)="OnClickDelete('buy_where', copy.id)"></mat-icon>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('buy_where', copy.id)" *ngIf="app.canModerated()"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.purchase.buy_where?.name">
                 <p>Non renseigné</p>
@@ -115,7 +115,7 @@
               <p class="w-128">Descrition de l'achat :</p>
               <ng-container *ngIf="copy.purchase.content">
                 <p id="purchase_content">{{copy.purchase.content}}</p>
-                <mat-icon fontIcon="delete" (click)="OnClickDelete('purchase_content', copy.id)"></mat-icon>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('purchase_content', copy.id)" *ngIf="app.canModerated()"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.purchase.content">
                 <p>Non renseigné</p>
@@ -141,7 +141,7 @@
                 <p class="w-128">Categorie :</p>
                 <ng-container *ngIf="oneSpeed.category">
                   <p>{{oneSpeed.category}}</p>
-                  <mat-icon fontIcon="delete" (click)="OnClickDelete('category', oneSpeed.id, 'speedrun')"></mat-icon>
+                  <mat-icon fontIcon="delete" (click)="OnClickDelete('category', oneSpeed.id, 'speedrun')" *ngIf="app.canModerated()"></mat-icon>
                 </ng-container>
                 <ng-container *ngIf="!oneSpeed.category">
                   <p>Non renseigné</p>
@@ -151,7 +151,7 @@
                 <p class="w-128">Chrono :</p>
                 <ng-container *ngIf="oneSpeed.chrono">
                   <p>{{oneSpeed.chrono }}</p>
-                  <mat-icon fontIcon="delete" (click)="OnClickDelete('chrono', oneSpeed.id, 'speedrun')"></mat-icon>
+                  <mat-icon fontIcon="delete" (click)="OnClickDelete('chrono', oneSpeed.id, 'speedrun')" *ngIf="app.canModerated()"></mat-icon>
                 </ng-container>
                 <ng-container *ngIf="!oneSpeed.chrono">
                   <p>Non renseigné</p>
@@ -161,7 +161,7 @@
                 <p class="w-128">Link :</p>
                 <ng-container *ngIf="oneSpeed.link">
                   <p>{{oneSpeed.link}}</p>
-                  <mat-icon fontIcon="delete" (click)="OnClickDelete('link', oneSpeed.id, 'speedrun')"></mat-icon>
+                  <mat-icon fontIcon="delete" (click)="OnClickDelete('link', oneSpeed.id, 'speedrun')" *ngIf="app.canModerated()"></mat-icon>
                 </ng-container>
                 <ng-container *ngIf="!oneSpeed.link">
                   <p>Non renseigné</p>
@@ -186,7 +186,7 @@
           <div>
             <p>Screenshot #{{i + 1}}</p>
             <img src="{{oneScreen.picture.url}}">
-            <mat-icon fontIcon="delete" (click)="OnClickDelete('screenshot', oneScreen.id, 'screenshot')"></mat-icon>
+            <mat-icon fontIcon="delete" (click)="OnClickDelete('screenshot', oneScreen.id, 'screenshot')" *ngIf="app.canModerated()"></mat-icon>
           </div>
         </div>
       </mat-card-content>

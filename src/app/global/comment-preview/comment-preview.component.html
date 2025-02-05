@@ -32,7 +32,7 @@
     <mat-card-content>
       <div class="flex justify-between g-10">
         <h2 class="mb-12">Informations sur le commentaire : </h2>
-        <button mat-raised-button color="warn" (click)="moderateDeleteComment()">Supprimer</button>
+        <button mat-raised-button color="warn" (click)="moderateDeleteComment()"  *ngIf="app.canModerated()">Supprimer</button>
       </div>
 
       <div class="flex align-center mx-20">
