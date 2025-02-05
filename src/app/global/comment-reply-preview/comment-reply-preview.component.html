@@ -58,6 +58,9 @@
 <!-- commentaire originale -->
   <mat-card  class="mb-12">
     <mat-card-content>
+      <div class="flex justify-end">
+        <mat-icon fontIcon="open_in_new" routerLink="/comment/{{commentReplySelected?.comment?.id}}"></mat-icon>
+      </div>
       <h2 class="mb-12">Informations sur le commentaire originale : </h2>
       <div class="flex align-center mx-20">
         <div class="w-128">Commentaire originale :</div>
