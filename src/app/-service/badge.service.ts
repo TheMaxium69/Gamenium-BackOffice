@@ -23,4 +23,8 @@ export class BadgeService {
     return this.http.post<ApicallInterface>(url + '/togglebadge', { id_badge, id_user }, options);
   }
 
+  createBadge(name: string, picture_id: number, unlockDescription: string, url: string, options: { headers: HttpHeaders }): Observable<ApicallInterface> {
+    return this.http.post<ApicallInterface>(url + '/create-badge', { name, picture_id, unlockDescription }, options);
+  }
+
 }
