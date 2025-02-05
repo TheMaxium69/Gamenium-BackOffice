@@ -5,7 +5,8 @@
       <div class="flex" style="{{ this.app.userConnected.userRole.includes('ROLE_ADMIN') ||
   this.app.userConnected.userRole.includes('ROLE_OWNER') ? 'justify-content: space-between;' : 'justify-content: end;' }}">
 
-        <div style="display: flex; align-items: center;">
+        <div style="display: flex; align-items: center;" *ngIf="this.app.userConnected.userRole.includes('ROLE_ADMIN') ||
+  this.app.userConnected.userRole.includes('ROLE_OWNER')">
           <p style="margin: unset">{{ viewActu }}</p>
           <mat-icon class="mr-8" fontIcon="visibility"></mat-icon>
         </div>
