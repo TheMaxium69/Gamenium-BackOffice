@@ -1,31 +1,31 @@
 <section *ngIf="providerSelected">
   <app-provider [providerSelected]="providerSelected"></app-provider>
 
-  <div>
+  <div class="mat-elevation-z8 table-container" id="editprofile">
       <h2>Modifier le profil</h2>
-      <form>
+      <form class="article-form">
 
         <!-- Upload et Modification d'Image -->
         <div class="image-upload">
           <input type="file" #fileInput (change)="onFileSelected($event)" hidden>
-          <button mat-button (click)="triggerFileSelect()">Changer l'image</button>
-          <img *ngIf="providerSelected.picture?.url" [src]="providerSelected.picture?.url" class="preview-image">
+          <button mat-button (click)="triggerFileSelect()" class="onleft">Changer l'image</button>
+          <img *ngIf="providerSelected.picture?.url" [src]="providerSelected.picture?.url" class="image-preview">
         </div>
 
         <!-- Champ Name -->
-        <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-form-field style="width: 75%;" appearance="outline">
           <mat-label>Nom</mat-label>
           <input matInput [(ngModel)]="providerSelected.displayName" name="title">
         </mat-form-field>
 
         <!-- Champ Contenu -->
-        <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-form-field style="width: 75%;" appearance="outline">
           <mat-label>Contenu</mat-label>
           <textarea matInput [(ngModel)]="providerSelected.content" name="content"></textarea>
         </mat-form-field>
 
         <!-- Champ Founded at -->
-        <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-form-field style="width: 75%;" appearance="outline">
           <mat-label>Date de Création</mat-label>
           <textarea matInput [(ngModel)]="providerSelected.founded_at" name="content"></textarea>
         </mat-form-field>
