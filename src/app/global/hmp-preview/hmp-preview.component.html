@@ -1,18 +1,3 @@
-<!-- <section *ngIf="id">
-  <hr>
-  <h1>{{MyPlatform?.myPlateform?.plateform?.name}}</h1>
-  <small>Ajoutée le: {{MyPlatform?.myPlateform?.added_at | date:'dd/MM/yyyy'}}</small>
-
-  <div *ngFor=" let copy of MyPlatform?.copyPlateform; let i = index">
-    <h2>Information sur l'exemplaire numero  {{i + 1}}</h2>
-    <p>Edition: {{copy.edition ?? "Non renseigné"}}</p>
-    <p>Barcode: {{copy.barcode ?? "Non renseigné"}}</p>
-    <p>Description de l'exemplaire: {{copy.content ?? "Non renseigné"}}</p>
-    <p>Lieu d'achat: {{copy.purchase.buy_where?.name ?? "Non renseigné"}}</p>
-    <p>Descrition de l'achat: {{copy.purchase.content ?? "Non renseigné"}}</p>
-  </div>
-</section> -->
-
 <section *ngIf="id && MyPlatform">
 
   <mat-card>
@@ -20,29 +5,19 @@
       <div class="d-flex justify-end">
         <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront())"></mat-icon>
       </div>
-      <div class="banner-image d-flex justify-center">
+      <div class="banner-image d-flex justify-center mb-12">
         <div class="banner" style="background-image: url({{MyPlatform.myPlateform.plateform.image?.small_url}});"></div>
         <div class="blur"></div>
         <img class="back" src="{{ MyPlatform?.myPlateform?.plateform?.image?.small_url }}" alt="blur">
       </div>
-      <h2 class="d-flex justify-center m-40">{{app.plateformeNameFormatage(MyPlatform.myPlateform.plateform.name)}}</h2>
+      <h2 class="d-flex justify-center m-15">{{app.plateformeNameFormatage(MyPlatform.myPlateform.plateform.name)}}</h2>
       </mat-card-content>
   </mat-card>
   <br><br>
   <mat-card>
     <mat-card-content>
       <h2>Informations Générales</h2>
-      <div class="d-flex">
-        <p class="w-128">Plateforme :</p>
-        <mat-chip style="cursor: pointer" (click)="app.redirectUrl(app.setURLFront() + '/profil/' + MyPlatform.myPlateform.user.id + '/' + MyPlatform.myPlateform.plateform.id )" *ngIf="MyPlatform.myPlateform.plateform.image?.icon_url"> 
-          <img matChipAvatar [src]="MyPlatform.myPlateform.plateform.image?.icon_url" alt="platform icon"/>
-          {{app.plateformeNameFormatage(MyPlatform.myPlateform.plateform.name)}}
-        </mat-chip>
-        <mat-chip style="cursor: pointer" *ngIf="!MyPlatform.myPlateform.plateform.image?.icon_url">
-          <p>{{app.plateformeNameFormatage(MyPlatform.myPlateform.plateform.name)}}</p>
-        </mat-chip>
-      </div>
-      <div class="d-flex">
+      <div class="d-flex mb-12">
         <p class="w-128">Ajoutée le :</p>
         <p>{{ MyPlatform.myPlateform.added_at | date:'dd/MM/yyyy, HH:mm' }}</p>
       </div>
@@ -57,32 +32,59 @@
         <mat-card>
           <mat-card-content>
             <h2>Exemplaire #{{i + 1}}</h2>
-            <div class="d-flex">
+            <div class="d-flex mb-12">
               <p class="w-128">Edition :</p>
-              <p> {{copy.edition ?? "Non renseigné"}}</p>
+              <ng-container *ngIf="copy.edition">
+                <p id="edition">{{copy.edition}}</p>
+                <div>
+                  <mat-icon fontIcon="delete" (click)="OnClickDelete('edition', copy.id)"></mat-icon>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="!copy.edition">
+                <p>{{"Non renseigné"}}</p>
+              </ng-container>
             </div>
-            <div class="d-flex">
+            <div class="d-flex mb-12">
               <p class="w-128">Barcode :</p>
-              <p>{{copy.barcode ?? "Non renseigné"}}</p>
+              <ng-container *ngIf="copy.barcode">
+                <p>{{copy.barcode}}</p>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('barcode', copy.id)"></mat-icon>
+              </ng-container>
+              <ng-container *ngIf="!copy.barcode">
+                <p>{{"Non renseigné"}}</p>
+              </ng-container>
             </div>
-            <div class="d-flex">
+            <div class="d-flex mb-12">
               <p class="w-128">Description :</p>
-              <p>{{copy.content ?? "Non renseigné"}}</p>
+              <ng-container *ngIf="copy.content">
+                <p id="content">{{copy.content}}</p>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('content', copy.id)"></mat-icon>
+              </ng-container>
+              <ng-container *ngIf="!copy.content">
+                <p>{{"Non renseigné"}}</p>
+              </ng-container>
             </div>
-            <div class="d-flex">
+            <div class="d-flex mb-12">
               <p class="w-128">Lieu d'achat :</p>
               <ng-container *ngIf="copy.purchase.buy_where?.name">
-                <mat-chip>
+                <mat-chip id="buy_where">
                   {{copy.purchase.buy_where?.name}}
                 </mat-chip>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('buy_where', copy.id)"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.purchase.buy_where?.name">
                 <p>Non renseigné</p>
               </ng-container>
             </div>
-            <div class="d-flex">
+            <div class="d-flex mb-12">
               <p class="w-128">Descrition de l'achat :</p>
-              <p>{{copy.purchase.content ?? "Non renseigné"}}</p>
+              <ng-container *ngIf="copy.purchase.content">
+                <p id="purchase_content">{{copy.purchase.content}}</p>
+                <mat-icon fontIcon="delete" (click)="OnClickDelete('purchase_content', copy.id)"></mat-icon>
+              </ng-container>
+              <ng-container *ngIf="!copy.purchase.content">
+                <p>Non renseigné</p>
+              </ng-container>
             </div>
             </mat-card-content>
         </mat-card>
@@ -90,20 +92,5 @@
       </div>
     </mat-card-content>
   </mat-card>
-  <br><br>
-
-  <!-- <ng-container *ngIf="MyGame?.screenshot">
-    <mat-card *ngIf="MyGame.screenshot.length > 0">
-      <mat-card-content>
-        <h1>Gestions des screenshots</h1>
-        <div *ngFor="let oneScreen of MyGame?.screenshot; let i = index">
-          <div>
-            <p>Screenshot #{{i + 1}}</p>
-            <img src="{{oneScreen.picture.url}}">
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </ng-container> -->
 
 </section>

@@ -2,7 +2,11 @@
     margin-bottom: 40px;
 }
 
-.m-40{
+.mb-12{
+    margin-bottom: 12px;
+}
+
+.m-15{
     margin: 15px;
 }
 
@@ -17,7 +21,6 @@ mat-chip {
 .d-flex {
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
 }
 
 .justify-end {
@@ -31,6 +34,8 @@ mat-chip {
 .w-128{
     width:128px;
 }
+
+
 
 .banner-image{
     min-width: 300px;
