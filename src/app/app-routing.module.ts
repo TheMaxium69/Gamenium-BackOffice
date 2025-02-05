@@ -103,7 +103,7 @@ const routes: Routes = [
   {path: 'comment/:id', component: CommentOneComponent},
   {path: 'comment-reply/:id', component: CommentReplyOneComponent},
   {path: 'badge/:id', component: BadgeOneComponent},
-  {path: 'role/:id', component: RoleOneComponent},
+  {path: 'role/:name', component: RoleOneComponent},
 
   {path: 'settings', component: SettingComponent},
   {path: 'err', component: ErrComponent},

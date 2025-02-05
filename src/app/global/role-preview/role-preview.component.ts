@@ -1,4 +1,4 @@
-import {Component, Input, numberAttribute} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-role-preview',
@@ -7,7 +7,7 @@ import {Component, Input, numberAttribute} from '@angular/core';
 })
 export class RolePreviewComponent {
 
-  @Input({transform: numberAttribute})
-  public id: number|null = null;
+  @Input()
+  public ROLE_NAME: string|null = null;
 
 }

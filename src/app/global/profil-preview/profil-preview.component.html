@@ -44,7 +44,8 @@
           <mat-chip
             style="margin-right: 10px; margin-bottom: 12px;"
             *ngIf="role !== 'ROLE_USER'"
-            [style.background-color]="app.AllRole[role]">
+            [style.background-color]="app.AllRole[role]"
+            routerLink="/role/{{role}}">
             {{ role.substring(5) }}
           </mat-chip>
         </div>

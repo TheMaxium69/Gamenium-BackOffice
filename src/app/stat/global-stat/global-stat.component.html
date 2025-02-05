@@ -34,7 +34,7 @@
     <ng-container matColumnDef="role">
       <th mat-header-cell *matHeaderCellDef> Rôle </th>
       <td mat-cell *matCellDef="let element">
-        <mat-chip [style.background-color]="app.AllRole[element]">
+        <mat-chip [style.background-color]="app.AllRole[element]" routerLink="/role/{{element}}">
           {{ element.substring(5) }}
         </mat-chip>
       </td>

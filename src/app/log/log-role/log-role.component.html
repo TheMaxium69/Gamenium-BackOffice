@@ -44,7 +44,7 @@
       <th mat-header-cell *matHeaderCellDef> Rôle </th>
       <td mat-cell *matCellDef="let element">
         <mat-chip style="margin-right: 5px"
-                  [style.background-color]="app.AllRole[element.role]">
+                  [style.background-color]="app.AllRole[element.role]" routerLink="/role/{{element.role}}">
           {{ element.role.substring(5) }}
         </mat-chip>
       </td>

@@ -8,12 +8,12 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class RoleOneComponent implements OnInit {
 
-  id: string | null = null;
+  ROLE_NAME: string | null = null;
 
   constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.ROLE_NAME = this.route.snapshot.paramMap.get('name');
   }
 }

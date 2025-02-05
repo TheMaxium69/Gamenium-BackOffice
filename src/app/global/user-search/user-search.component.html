@@ -62,7 +62,8 @@
           <mat-chip style="margin-right: 5px"
                     *ngIf="role !== 'ROLE_USER'"
                     (removed)="removeRole(element.id, role)"
-                    [style.background-color]="app.AllRole[role]">
+                    [style.background-color]="app.AllRole[role]"
+                    routerLink="/role/{{role}}">
 
             {{ role.substring(5) }}
             <button *ngIf="app.canRemoveRole(role)" matChipRemove [attr.aria-label]="'remove ' + role">
@@ -99,7 +100,8 @@
       <th mat-header-cell *matHeaderCellDef> Rôles </th>
       <td mat-cell *matCellDef="let element">
           <mat-chip *ngIf="isBan(element.roles)"
-                    [style.background-color]="app.AllRole['ROLE_BAN']">
+                    [style.background-color]="app.AllRole['ROLE_BAN']"
+                    routerLink="/role/{{'ROLE_BAN'}}">
             BAN
           </mat-chip>
 

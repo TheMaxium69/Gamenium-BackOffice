@@ -1,3 +1,13 @@
-<h1> Gestion des bannissement </h1>
+<div style="display: flex;justify-content: space-between;">
+  <h1>Gestion des bannissements</h1>
+
+  <div>
+    <button mat-raised-button color="primary" routerLink="/role/ROLE_BAN'" style="margin-right: 10px">
+      <mat-icon>list</mat-icon>
+      Liste des bannies
+    </button>
+  </div>
+
+</div>
 
 <app-user-search [displayedColumns]="['id', 'displayname', 'sanction', 'last', 'ban', 'addban']"></app-user-search>
