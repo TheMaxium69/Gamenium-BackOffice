@@ -27,4 +27,8 @@ export class BadgeService {
     return this.http.post<ApicallInterface>(url + '/create-badge', { name, picture_id, unlockDescription }, options);
   }
 
+  removeBadge(id_badge: number, url: string, options: { headers: HttpHeaders }):Observable<ApicallInterface> {
+    return this.http.delete<ApicallInterface>(url + '/remove-badge/' + id_badge, options);
+  }
+
 }
