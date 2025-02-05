@@ -2,10 +2,17 @@
 <div style="display: flex;justify-content: space-between;">
   <h1>Gestion des badges</h1>
 
-  <button mat-raised-button color="primary" routerLink="/admin/create-badge">
-    <mat-icon>add</mat-icon>
-    Créé un badge
-  </button>
+  <div>
+    <button mat-raised-button routerLink="/admin/list-badge" style="margin-right: 10px">
+      <mat-icon>list</mat-icon>
+      Liste des badges
+    </button>
+    <button mat-raised-button color="primary" routerLink="/admin/create-badge">
+      <mat-icon>add</mat-icon>
+      Créé un badge
+    </button>
+  </div>
+
 </div>
 
 <app-user-search [profilRequest]="true" [displayedColumns]="['id', 'displayname', 'badge', 'addbadge']"></app-user-search>

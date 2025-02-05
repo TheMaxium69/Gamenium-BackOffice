@@ -56,7 +56,7 @@
             Cet utilisateur n'a pas de badge.
           </p>
           <div *ngFor="let badge of profilSelected?.badges">
-              <mat-chip>
+              <mat-chip routerLink="/badge/{{badge.id}}">
                 <img matChipAvatar [src]="badge.pictureUrl" alt="badge picture"/>
                 {{badge.name}}
               </mat-chip>

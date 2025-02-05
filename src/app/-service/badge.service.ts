@@ -15,6 +15,10 @@ export class BadgeService {
     return this.http.get<ApicallInterface>(url + '/badges', options);
   }
 
+  getUserWithBadge(id:number, url:string, options:{headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(url + '/user-with-badge/' + id, options);
+  }
+
   toggleBadge(id_badge: number, id_user:number, url: string, options: { headers: HttpHeaders }): Observable<ApicallInterface> {
     return this.http.post<ApicallInterface>(url + '/togglebadge', { id_badge, id_user }, options);
   }

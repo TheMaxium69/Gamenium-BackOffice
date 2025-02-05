@@ -1,1 +1,66 @@
-<p>badge-preview works!</p>
+<section *ngIf="id">
+
+  <mat-card class="mb-38">
+    <mat-card-content>
+      <div class="flex justify-center center-auto column">
+        <div id="pp" class="img mb-12" style= "background-image: url({{badgeSelected?.picture?.url }});"></div>
+      </div>
+      <div class="text-center">
+        <h2>{{badgeSelected?.name }}</h2>
+        <h3>Nombre d'utilisation : {{ usersHaveBadge.length }}</h3>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- displayname Column -->
+      <ng-container matColumnDef="displayname">
+        <th mat-header-cell *matHeaderCellDef> Utilisateur </th>
+        <td mat-cell *matCellDef="let element">
+
+          <mat-chip routerLink="/user/{{element.id}}">
+            <img matChipAvatar [src]="app.generatePPUseritium(element.pp?.url, element.displayname_useritium	 || element.username,element.color || this.app.colorDefault)" alt="user pp"/>
+            {{element.displayname_useritium	 ?? element.username }}
+          </mat-chip>
+
+        </td>
+      </ng-container>
+
+      <!-- badge Column -->
+      <ng-container matColumnDef="badge">
+        <th mat-header-cell *matHeaderCellDef> Badge </th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container>
+            <mat-chip>
+              <img matChipAvatar [src]="badgeSelected?.picture?.url" alt="badge img"/>
+              {{ badgeSelected?.name }}
+            </mat-chip>
+          </ng-container>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+
+
+
+</section>

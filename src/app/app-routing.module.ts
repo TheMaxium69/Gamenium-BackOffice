@@ -41,6 +41,7 @@ import {CommentOneComponent} from "./other/comment-one/comment-one.component";
 import {CommentReplyOneComponent} from "./other/comment-reply-one/comment-reply-one.component";
 import {BadgeOneComponent} from "./other/badge-one/badge-one.component";
 import {CreateBadgeComponent} from "./administration/create-badge/create-badge.component";
+import {ListBadgeComponent} from "./administration/list-badge/list-badge.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -53,6 +54,7 @@ const routes: Routes = [
   {path: 'admin/add-badge', component: AddBadgeComponent},
   {path: 'admin/warn', component: WarnAdminComponent},
   {path: 'admin/create-badge', component: CreateBadgeComponent},
+  {path: 'admin/list-badge', component: ListBadgeComponent},
 
   /*MODO*/
   {path: 'modo/ban', component: BanComponent},
