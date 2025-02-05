@@ -75,3 +75,8 @@
     border: none;
     border-radius: 50%;
 }
+
+.ban-btn {
+    background-color: rgba(0, 0, 0, 0.45);
+    color: white;
+}
