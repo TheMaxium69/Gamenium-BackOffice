@@ -6,6 +6,7 @@ import { AppComponent } from 'src/app/app.component';
 import {ViewService} from "../../-service/view.service";
 import Swal from 'sweetalert2';
 import { ModerationService } from 'src/app/-service/moderation.service';
+import { Router} from "@angular/router";
 
 @Component({
   selector: 'app-actu-preview',
@@ -25,6 +26,7 @@ export class ActuPreviewComponent implements OnInit, OnChanges {
     private actualityServcice: ActualityService,
     private moderationService: ModerationService,
     private viewService: ViewService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {}
@@ -58,7 +60,7 @@ export class ActuPreviewComponent implements OnInit, OnChanges {
         Swal.fire({
           icon: "question",
           title: "Demande de confirmation",
-          text: "Etes vous sur de vouloir supprimer l'actualité '?",
+          text: "Etes vous sur de vouloir supprimer l'actualité ?",
           showConfirmButton: false,
           showDenyButton: true,
           showCancelButton: true,
@@ -66,16 +68,17 @@ export class ActuPreviewComponent implements OnInit, OnChanges {
           cancelButtonText: "Annuler"
         }).then((result) => {
           if (result.isDenied) {
-    
+
             if (this.actuSelected) {
               const bodyJSON = JSON.stringify({
                 'actu_id': this.actuSelected.id
               });
-              
+
               this.moderationService.moderateDeleteActu(bodyJSON, this.app.setURL(), this.app.createCorsToken()).subscribe((response: ApicallInterface) => {
                 console.log(response);
                 if (response.message == 'good') {
                   Swal.fire("Actu supprimée", "", "success");
+                  this.router.navigate(['/']);
                 } else {
                   Swal.fire("Erreur de nos services", "", "error");
                 }
