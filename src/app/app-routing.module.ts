@@ -39,6 +39,7 @@ import {WarnAdminComponent} from "./administration/warn-admin/warn-admin.compone
 import {ModoActuComponent} from "./moderation/modo-actu/modo-actu.component";
 import {CommentOneComponent} from "./other/comment-one/comment-one.component";
 import {CommentReplyOneComponent} from "./other/comment-reply-one/comment-reply-one.component";
+import {BadgeOneComponent} from "./other/badge-one/badge-one.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -96,6 +97,7 @@ const routes: Routes = [
   {path: 'warn/:id', component: WarnOneComponent},
   {path: 'comment/:id', component: CommentOneComponent},
   {path: 'comment-reply/:id', component: CommentReplyOneComponent},
+  {path: 'badge/:id', component: BadgeOneComponent},
 
   {path: 'settings', component: SettingComponent},
   {path: 'err', component: ErrComponent},
