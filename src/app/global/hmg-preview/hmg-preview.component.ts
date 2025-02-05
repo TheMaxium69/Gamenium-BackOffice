@@ -4,6 +4,8 @@ import { HistoryMyGameService } from 'src/app/-service/history-my-game.service';
 import { ModerationService } from 'src/app/-service/moderation.service';
 import { AppComponent } from 'src/app/app.component';
 import Swal from 'sweetalert2';
+import {HmgTagsInterface} from "../../-interface/hmg-tags.interface";
+import {HmgScreenshotInterface} from "../../-interface/hmg-screenshot.interface";
 
 export interface preBodyHmg {
   copyGame_id:number|null
@@ -11,7 +13,7 @@ export interface preBodyHmg {
   screenshot_id:number|null
   rate_id:number|null
   tag_id:number|null
-  barcode: boolean 
+  barcode: boolean
   buy_where: boolean
   content : boolean
   edition: boolean
@@ -79,8 +81,8 @@ export class HmgPreviewComponent implements OnInit, OnChanges{
   }
 
   OnClickDelete(champ: string, id: number, object: string|undefined = undefined){
-    
-    
+
+
     if (object == "speedrun"){
       (this.moderationState as any)[champ] = true
       this.moderationState.speedrun_id = id
@@ -130,44 +132,33 @@ export class HmgPreviewComponent implements OnInit, OnChanges{
   }
 
   updateHmg(prebody:preBodyHmg, champ:string, object: string|undefined){
-
     let body = JSON.stringify(prebody);
 
     this.moderationService.moderateHmg(body, this.app.setURL(), this.app.createCorsToken()).subscribe(response => {
           if(response.message === "good"){
             console.log('champ modéré');
             Swal.fire("Champ modéré", "", "success");
-  
+
             if (object == "speedrun") {
               (this.MyGame?.speedrun as any)[champ] = "";
             } else if (object == "rate") {
-              // tu fais un autre truc
+              if (this.MyGame?.rate){
+                this.MyGame.rate.content = "";
+              }
             } else if (object == "tag") {
-              // tu fasi un autre truc
+              if (this.moderationState.tag_id && this.MyGame?.myGame.hmgTags){
+                this.MyGame.myGame.hmgTags = this.MyGame.myGame.hmgTags.filter((tag: HmgTagsInterface) => tag.id !== this.moderationState.tag_id);
+              }
             } else if (object == "screenshot") {
-            
-            }else {
+              if (this.moderationState.screenshot_id && this.MyGame?.screenshot){
+                this.MyGame.screenshot = this.MyGame.screenshot.filter((screenshot: HmgScreenshotInterface) => screenshot.id !== this.moderationState.screenshot_id);
+              }
+            } else {
               (this.MyGame?.copyGame as any)[champ] = "";
             }
 
 
 
-
-             
-            /*this.MyGame?.copyPlateform.forEach(copy => {
-              if (copy.id === prebody.copyPlateform_id) {
-                if (champ === 'buy_where') {
-                  copy.purchase.buy_where = null;
-                } else if (champ === 'purchase_content') {
-                  copy.purchase.content = null;
-                } else {
-                  (copy as any)[champ] = "";
-                }
-              }
-            });*/
-
-
-    
           } else {
             console.log('erreur modération');
             Swal.fire("Erreur de nos services", "", "error");
@@ -190,4 +181,6 @@ export class HmgPreviewComponent implements OnInit, OnChanges{
         })
 
   }
+
+
 }

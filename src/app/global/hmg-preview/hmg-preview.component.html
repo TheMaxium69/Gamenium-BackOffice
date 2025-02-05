@@ -29,7 +29,7 @@
             <p>{{ MyGame?.myGame?.added_at | date:'dd/MM/yyyy, HH:mm' }}</p>
           </div>
           <div class="d-flex mb-12">
-            <p class="w-128">Description :</p>
+            <p class="w-128">Avis :</p>
             <ng-container *ngIf="MyGame?.rate?.content">
               <p>{{MyGame?.rate?.content}}</p>
               <mat-icon fontIcon="delete" (click)="OnClickDelete('rate', MyGame.rate.id, 'rate')" ></mat-icon>
@@ -47,10 +47,13 @@
 
               <ng-container *ngIf="MyGame.myGame.hmgTags.length > 0">
                 <div *ngFor="let tag of MyGame?.myGame?.hmgTags" class="d-inline">
-                  <mat-chip [style.background-color]="tag.color">
+                  <mat-chip [style.background-color]="tag.color"
+                            (removed)="OnClickDelete('tag', tag.id, 'tag')">
                     {{tag.name}}
+                    <button matChipRemove >
+                      <mat-icon>cancel</mat-icon>
+                    </button>
                   </mat-chip>
-                  <mat-icon fontIcon="delete" (click)="OnClickDelete('tag', tag.id, 'tag')"></mat-icon>
                 </div>
               </ng-container>
             </ng-container>
@@ -183,7 +186,7 @@
           <div>
             <p>Screenshot #{{i + 1}}</p>
             <img src="{{oneScreen.picture.url}}">
-            <mat-icon fontIcon="delete" (click)="OnClickDelete('screenshot', oneScreen.picture.id, 'screenshot')"></mat-icon>
+            <mat-icon fontIcon="delete" (click)="OnClickDelete('screenshot', oneScreen.id, 'screenshot')"></mat-icon>
           </div>
         </div>
       </mat-card-content>
