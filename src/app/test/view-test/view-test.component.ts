@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {AppComponent} from "../../app.component";
 import {GameService} from "../../-service/game.service";
 import {TestService} from "../../-service/test.service";
@@ -21,6 +21,7 @@ export class ViewTestComponent implements OnInit{
     private testService:TestService,
   ) { }
 
+  @Input() dashboard!: boolean
 
   game_id: number | null = null;
   gameSearch: string = "";
@@ -61,7 +62,7 @@ export class ViewTestComponent implements OnInit{
   }
 
 
-  // Recherche de jeux
+  // Recherche de jeux;
   searchGames() {
     if (this.gameSearch.length > 2) { // Démarre recherche après 3 caractère
       const url = this.app.setURL();

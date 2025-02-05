@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 
 @Component({
@@ -7,6 +7,7 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./show-articles.component.css']
 })
 export class ShowArticlesComponent {
+  @Input() dashboard!: boolean;
 
   constructor(protected app: AppComponent) { }
 

@@ -1,1 +1,8 @@
-<p>home-write works!</p>
+<div style="display: flex;justify-content: center; gap: 15px; margin-bottom: 25px;">
+
+  <button mat-raised-button color="primary" routerLink="/writter/show-articles">Voir les articles</button>
+  <button mat-raised-button color="accent" routerLink="/writter/create-article">Créer un article</button>
+
+</div>
+
+<app-show-articles [dashboard]="true"></app-show-articles>

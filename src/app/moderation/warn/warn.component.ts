@@ -1,4 +1,4 @@
-import { Component, } from '@angular/core';
+import {Component, Input,} from '@angular/core';
 
 @Component({
   selector: 'app-warn',
@@ -6,5 +6,6 @@ import { Component, } from '@angular/core';
   styleUrls: ['./warn.component.css'],
 })
 export class WarnComponent {
+  @Input() dashboard!: boolean;
 
 }

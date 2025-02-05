@@ -1,1 +1,8 @@
-<p>home-test works!</p>
+<div style="display: flex;justify-content: center; gap: 15px; margin-bottom: 25px;">
+
+  <button mat-raised-button color="primary" routerLink="/test/view">Voir les tests</button>
+  <button mat-raised-button color="accent" routerLink="/test/create">Créer un test</button>
+
+</div>
+
+<app-view-test [dashboard]="true"></app-view-test>
