@@ -81,6 +81,8 @@ import { BadgeOneComponent } from './other/badge-one/badge-one.component';
 import { BadgePreviewComponent } from './global/badge-preview/badge-preview.component';
 import { CreateBadgeComponent } from './administration/create-badge/create-badge.component';
 import { ListBadgeComponent } from './administration/list-badge/list-badge.component';
+import { RoleOneComponent } from './other/role-one/role-one.component';
+import { RolePreviewComponent } from './global/role-preview/role-preview.component';
 
 @NgModule({
   declarations: [
@@ -144,6 +146,8 @@ import { ListBadgeComponent } from './administration/list-badge/list-badge.compo
     BadgePreviewComponent,
     CreateBadgeComponent,
     ListBadgeComponent,
+    RoleOneComponent,
+    RolePreviewComponent,
   ],
   imports: [
     BrowserModule,

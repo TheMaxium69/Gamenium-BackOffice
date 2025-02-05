@@ -42,6 +42,7 @@ import {CommentReplyOneComponent} from "./other/comment-reply-one/comment-reply-
 import {BadgeOneComponent} from "./other/badge-one/badge-one.component";
 import {CreateBadgeComponent} from "./administration/create-badge/create-badge.component";
 import {ListBadgeComponent} from "./administration/list-badge/list-badge.component";
+import {RoleOneComponent} from "./other/role-one/role-one.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -102,6 +103,7 @@ const routes: Routes = [
   {path: 'comment/:id', component: CommentOneComponent},
   {path: 'comment-reply/:id', component: CommentReplyOneComponent},
   {path: 'badge/:id', component: BadgeOneComponent},
+  {path: 'role/:id', component: RoleOneComponent},
 
   {path: 'settings', component: SettingComponent},
   {path: 'err', component: ErrComponent},
