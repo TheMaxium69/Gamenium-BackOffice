@@ -30,5 +30,10 @@ export class UserProviderService {
     return this.http.put<ApicallInterface>(`${url}/provider/edit-article/${id}`, body, option);
   }
 
+  deletePostActuByProvider(id: number, url: string, option: { headers: HttpHeaders }): Observable<ApicallInterface> {
+    return this.http.put<ApicallInterface>(`${url}/provider/deletePostActu/${id}`, {}, option);
+  }
+  
+
 
 }

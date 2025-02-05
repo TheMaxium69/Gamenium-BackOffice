@@ -31,6 +31,11 @@ export class ActualityService {
   getPostActuByProvider(providerId: number, url: string, options: { headers: HttpHeaders }): Observable<ApicallInterface> {
     return this.http.get<ApicallInterface>(`${url}/postByProvider/${providerId}`, options);
   }
+
+  deletePostActuIsDelete(id: number, url: string, option: { headers: HttpHeaders }): Observable<ApicallInterface> {
+    return this.http.put<ApicallInterface>(`${url}/postactus/delete/${id}`, {}, option);
+  }
+  
   
 }
   

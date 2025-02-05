@@ -109,6 +109,25 @@
           <mat-icon fontIcon="open_in_new" routerLink="/actu/{{element.id}}"></mat-icon>
 <!--          <mat-icon fontIcon="open_in_new" routerLink="{{element.id}}"></mat-icon>-->
           <mat-icon fontIcon="edit" (click)="selectArticle(element)"></mat-icon>
+
+          <mat-icon *ngIf="
+          app.userConnected.userRole.includes('ROLE_OWNER') ||
+          app.userConnected.userRole.includes('ROLE_ADMIN') ||
+          app.userConnected.userRole.includes('ROLE_MODO_RESPONSABLE') ||
+          app.userConnected.userRole.includes('ROLE_MODO_SUPER') ||
+          app.userConnected.userRole.includes('ROLE_MODO') ||
+          (app.userConnected.userRole.includes('ROLE_WRITE_RESPONSABLE') && element.user.id === app.userConnected.id) ||
+          (app.userConnected.userRole.includes('ROLE_WRITE') && element.user.id === app.userConnected.id) ||
+          (app.userConnected.userRole.includes('ROLE_PROVIDER_ADMIN') && haveProvider) ||
+          (app.userConnected.userRole.includes('ROLE_PROVIDER') &&
+            element.user.id === app.userConnected.id &&
+            element.Provider?.id == app.userConnected.providerGestionId)
+          "
+          fontIcon="delete" class="delete-icon"
+          (click)="confirmDeleteArticle(element)"
+          >
+          </mat-icon>
+
         </div>
       </td>
     </ng-container>

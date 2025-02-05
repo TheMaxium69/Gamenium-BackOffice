@@ -9,6 +9,8 @@ import { SelectedArticleService } from 'src/app/-service/selected-article.servic
 import { UploadService } from 'src/app/-service/upload.service';
 import { UserProviderService } from 'src/app/-service/user-provider.service';
 import { AppComponent } from 'src/app/app.component';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-provider-edit-article',
@@ -232,5 +234,46 @@ export class ProviderEditArticleComponent implements OnInit{
     }
     this.gameResults = [];
   }
+
+  confirmDeleteArticle() {
+    Swal.fire({
+      title: "Êtes-vous sûr?",
+      text: "Cet article sera supprimé définitivement.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Oui, supprimer!",
+      cancelButtonText: "Annuler"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteArticle();
+      }
+    });
+  }
+
+  deleteArticle() {
+    if (!this.selectedArticle) {
+      console.error("❌ Aucun article sélectionné");
+      return;
+    }
+  
+    const url = this.app.setURL();
+    const option = this.app.createCorsToken();
+  
+    this.userProviderService.deletePostActuByProvider(this.selectedArticle.id, url, option)
+      .subscribe(
+        () => {
+          Swal.fire("Supprimé!", "L'article a été supprimé avec succès.", "success");
+          this.selectedArticle = null; // vide l'article une fois supprimé côté vue
+        },
+        (error) => {
+          Swal.fire("Erreur", "Impossible de supprimer l'article.", "error");
+          console.error("❌ Erreur lors de la suppression de l'article :", error);
+        }
+      );
+  }
+  
+  
 
 }

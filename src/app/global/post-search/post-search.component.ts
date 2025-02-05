@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { SelectedArticleService } from 'src/app/-service/selected-article.service';
 import {AdministrationService} from "../../-service/administration.service";
 import { UserProviderService } from 'src/app/-service/user-provider.service';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-post-search',
@@ -101,5 +102,44 @@ export class PostSearchComponent implements OnInit {
       this.router.navigate(['/writter/edit-article']); // redirige si necessaire
     }
   }
+
+  confirmDeleteArticle(article: PostActuInterface) {
+    Swal.fire({
+      title: "Êtes-vous sûr?",
+      text: "Cet article sera supprimé définitivement.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Oui, supprimer!",
+      cancelButtonText: "Annuler"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteArticle(article);
+      }
+    });
+  }
+
+  deleteArticle(article: PostActuInterface) {
+    const url = this.app.setURL();
+    const option = this.app.createCorsToken();
+  
+    let deleteCall = this.haveProvider
+      ? this.userProviderService.deletePostActuByProvider(article.id, url, option)
+      : this.actualityService.deletePostActuIsDelete(article.id, url, option);
+  
+    deleteCall.subscribe(
+      () => {
+        Swal.fire("Supprimé!", "L'article a été supprimé avec succès.", "success");
+        // this.searchPostactus(); // Pour rafraichir la liste plus tard
+      },
+      (error) => {
+        Swal.fire("Erreur", "Impossible de supprimer l'article.", "error");
+        console.error("❌ Erreur lors de la suppression de l'article :", error);
+      }
+    );
+  }
+  
+  
 
 }

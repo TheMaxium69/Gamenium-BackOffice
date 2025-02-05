@@ -129,9 +129,18 @@
 
           </div>
 
-          <!-- Update Button -->
+          <!-- Update & Delete Button -->
           <div class="form-field button-container">
             <button mat-raised-button color="primary" (click)="updateArticle()">Modifier</button>
+
+            <button mat-raised-button color="warn"
+            *ngIf="app.userConnected.userRole.includes('ROLE_OWNER') ||
+            app.userConnected.userRole.includes('ROLE_ADMIN') ||
+            app.userConnected.userRole.includes('ROLE_WRITE_RESPONSABLE') ||
+            (app.userConnected.userRole.includes('ROLE_WRITE') && selectedArticle?.user?.id === app.userConnected.id)"
+            (click)="confirmDeleteArticle()">
+              Supprimer
+            </button>
           </div>
 
         </form>
