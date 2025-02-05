@@ -1,8 +1,48 @@
 <h1> Dashboard </h1>
 
-{{ this.app.userConnected.username }}
+
+<mat-card class="mb-38">
+  <mat-card-content>
+    <h1>Bonjour,</h1>
+    <h2>{{ this.app.userConnected.username }}</h2>
+  </mat-card-content>
+</mat-card>
 
 
 
+<div class="flex">
+  <mat-card class="mb-38">
+    <mat-card-content>
+      <h2>Rôles</h2>
+      <h3>
+        <ng-container *ngFor="let role of this.app.userConnected.userRole">
+
+          <mat-chip style="margin-right: 5px; margin-bottom: 5px"
+                     [style.background-color]="app.AllRole[role]"
+                     routerLink="/role/{{role}}"
+                    *ngIf="role !== 'ROLE_USER' && role !== 'ROLE_BETA'"
+          >
+            {{ role.substring(5) }}
+          </mat-chip>
+
+        </ng-container>
+      </h3>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="mb-38">
+    <mat-card-content>
+      <h2>None</h2>
+      <h3>None</h3>
+    </mat-card-content>
+  </mat-card>
+</div>
 
 
+<hr style="margin: 25px 0">
+
+<app-home-admin *ngIf="app.userConnected.userRole.includes('ROLE_OWNER') || app.userConnected.userRole.includes('ROLE_ADMIN')"></app-home-admin>
+<app-home-modo *ngIf="app.userConnected.userRole.includes('ROLE_MODO_RESPONSABLE') || app.userConnected.userRole.includes('ROLE_MODO_SUPER') || app.userConnected.userRole.includes('ROLE_MODO')"></app-home-modo>
+<app-home-write *ngIf="app.userConnected.userRole.includes('ROLE_WRITE_RESPONSABLE') || app.userConnected.userRole.includes('ROLE_WRITE_SUPER') || app.userConnected.userRole.includes('ROLE_WRITE')"></app-home-write>
+<app-home-test *ngIf="app.userConnected.userRole.includes('ROLE_TEST_RESPONSABLE') || app.userConnected.userRole.includes('ROLE_TEST')"></app-home-test>
+<app-home-provider *ngIf="app.userConnected.userRole.includes('ROLE_PROVIDER_ADMIN') || app.userConnected.userRole.includes('ROLE_PROVIDER')"></app-home-provider>

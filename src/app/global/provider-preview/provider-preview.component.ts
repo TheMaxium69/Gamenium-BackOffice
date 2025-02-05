@@ -15,11 +15,15 @@ export class ProviderPreviewComponent implements OnChanges{
   @Input()
   public providerSelected: ProviderInterface|null = null;
 
+  @Input({transform: numberAttribute})
+  public id: number|null = null;
+
   viewProvider: number = 0;
 
   constructor(
     protected app: AppComponent,
     private viewService: ViewService,
+    private providerService: ProviderService,
   ) {}
 
   getView(id:number): void {
@@ -33,11 +37,26 @@ export class ProviderPreviewComponent implements OnChanges{
     });
   }
 
+  getProvider(id:number): void {
+    this.providerService.getProviderById(id, this.app.setURL(), this.app.createCorsToken()).subscribe((response: ApicallInterface) => {
+      if (response.message === 'good') {
+        this.providerSelected = response.result;
+      } else {
+        console.log("une erreur est survenue");
+      }
+    })
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['providerSelected']) {
       this.providerSelected = changes['providerSelected'].currentValue;
       if (this.providerSelected) {
         this.getView(this.providerSelected.id);
+      }
+    }
+    if (changes['id']) {
+      if (this.id) {
+        this.getProvider(this.id);
       }
     }
   }

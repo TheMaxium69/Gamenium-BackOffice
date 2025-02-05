@@ -83,6 +83,11 @@ import { CreateBadgeComponent } from './administration/create-badge/create-badge
 import { ListBadgeComponent } from './administration/list-badge/list-badge.component';
 import { RoleOneComponent } from './other/role-one/role-one.component';
 import { RolePreviewComponent } from './global/role-preview/role-preview.component';
+import { HomeProviderComponent } from './home/home-provider/home-provider.component';
+import { HomeAdminComponent } from './home/home-admin/home-admin.component';
+import { HomeModoComponent } from './home/home-modo/home-modo.component';
+import { HomeWriteComponent } from './home/home-write/home-write.component';
+import { HomeTestComponent } from './home/home-test/home-test.component';
 
 @NgModule({
   declarations: [
@@ -148,6 +153,11 @@ import { RolePreviewComponent } from './global/role-preview/role-preview.compone
     ListBadgeComponent,
     RoleOneComponent,
     RolePreviewComponent,
+    HomeProviderComponent,
+    HomeAdminComponent,
+    HomeModoComponent,
+    HomeWriteComponent,
+    HomeTestComponent,
   ],
   imports: [
     BrowserModule,

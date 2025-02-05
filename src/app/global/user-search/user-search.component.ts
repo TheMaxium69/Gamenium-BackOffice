@@ -92,6 +92,10 @@ export class UserSearchComponent implements OnInit, OnDestroy{
         const user = this.users.find(user => user.id === id_user);
         if (user) {
           user.roles.push(role);
+
+          if (id_user == this.app.userConnected.id) {
+            this.app.userConnected.userRole.push(role);
+          }
         }
 
       } else {
@@ -109,6 +113,10 @@ export class UserSearchComponent implements OnInit, OnDestroy{
         const user = this.users.find(user => user.id === id_user);
         if (user) {
           user.roles = user.roles.filter(r => r !== role);
+
+          if (id_user == this.app.userConnected.id) {
+            this.app.userConnected.userRole = this.app.userConnected.userRole.filter((r: string) => r !== role);
+          }
         }
 
       } else {
@@ -179,7 +187,7 @@ export class UserSearchComponent implements OnInit, OnDestroy{
           if (!user.roles.includes("ROLE_BAN")) {
             user.roles.push("ROLE_BAN");
           } else {
-            user.roles = user.roles.filter(r => r !== "ROLE_BAN");
+            user.roles = user.roles.filter((r: string) => r !== "ROLE_BAN");
           }
         }
 

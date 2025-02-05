@@ -59,7 +59,7 @@
       <th mat-header-cell *matHeaderCellDef> Rôles </th>
       <td mat-cell *matCellDef="let element">
         <ng-container *ngFor="let role of element.roles">
-          <mat-chip style="margin-right: 5px"
+          <mat-chip style="margin-right: 5px; margin-bottom: 2.5px; margin-top: 2.5px"
                     *ngIf="role !== 'ROLE_USER'"
                     (removed)="removeRole(element.id, role)"
                     [style.background-color]="app.AllRole[role]"
@@ -133,7 +133,8 @@
         </ng-container>
         <ng-container *ngIf="element.badges.length > 0">
           <ng-container *ngFor="let badge of element.badges">
-            <mat-chip routerLink="/badge/{{badge.id}}"
+            <mat-chip style="margin-right: 5px; margin-bottom: 2.5px; margin-top: 2.5px"
+              routerLink="/badge/{{badge.id}}"
               (removed)="toggleBadge(element.id, badge)">
               <img matChipAvatar [src]="badge.pictureUrl || badge.picture.url" alt="badge img"/>
               {{ badge.name }}
