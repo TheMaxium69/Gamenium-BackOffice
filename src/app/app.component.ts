@@ -426,7 +426,22 @@ export class AppComponent {
 
   }
 
+  canBan(roles: string[]) {
 
+    let canManageRole = this.roleCanManage();
+    if (this.userConnected.userRole.includes('ROLE_MODO_SUPER') ||
+        this.userConnected.userRole.includes('ROLE_MODO') ){
+      canManageRole.push('ROLE_BETA');
+    }
+
+    for (const role of roles) {
+      if (!canManageRole.includes(role) && role !== 'ROLE_BAN' && role !== 'ROLE_USER') {
+        return false;
+      }
+    }
+    return true;
+
+  }
 
 
 }

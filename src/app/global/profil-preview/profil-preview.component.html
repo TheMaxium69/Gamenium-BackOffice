@@ -22,7 +22,7 @@
       </div>
       <div class="flex justify-end g-10" *ngIf="app.canModerated()">
         <button mat-raised-button color="warn" (click)="deleteProfil()">Supprimer la photo</button>
-        <button class="ban-btn" mat-raised-button style="background-color: black; color: white">Bannir l'utilisateur</button>
+        <button class="ban-btn" mat-raised-button style="background-color: black; color: white" *ngIf="this.app.userConnected.id !== profilSelected?.id && app.canBan(profilSelected?.roles)">Bannir l'utilisateur</button>
       </div>
     </mat-card-content>
   </mat-card>
