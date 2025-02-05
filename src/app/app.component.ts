@@ -6,6 +6,7 @@ import {UserInterface} from "./-interface/user.interface";
 import {CookieService} from "ngx-cookie-service";
 import {Router} from "@angular/router";
 import {CountryInterface} from "./-interface/country.interface";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-root',
@@ -400,6 +401,15 @@ export class AppComponent {
       return country.name_en;
     }
 
+  }
+
+  erreurSubcribe(){
+    Swal.fire({
+      title: 'Erreur!',
+      text: 'Erreur de notre serveur',
+      icon: 'error',
+      confirmButtonText: 'OK',
+    })
   }
 
 }
