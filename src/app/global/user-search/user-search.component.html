@@ -80,7 +80,14 @@
         <mat-icon fontIcon="add" mat-button [matMenuTriggerFor]="menu" *ngIf="app.roleCanManage().length !== element.roles.length"></mat-icon>
         <mat-menu #menu="matMenu">
           <ng-container *ngFor="let roleCan of app.roleCanManage()">
-            <button mat-menu-item *ngIf="!element.roles.includes(roleCan)" (click)="addRole(element.id, roleCan)">{{ roleCan.substring(5) }}</button>
+            <button mat-menu-item *ngIf="!element.roles.includes(roleCan)" (click)="addRole(element.id, roleCan)">
+
+              <mat-chip style="margin-right: 5px"
+                        [style.background-color]="app.AllRole[roleCan]">
+                {{ roleCan.substring(5) }}
+              </mat-chip>
+
+            </button>
           </ng-container>
         </mat-menu>
       </td>
@@ -140,10 +147,15 @@
     <ng-container matColumnDef="addbadge">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let element">
-        <mat-icon fontIcon="add" mat-button [matMenuTriggerFor]="menu2" *ngIf="app.roleCanManage().length !== element.roles.length"></mat-icon>
+        <mat-icon fontIcon="add" mat-button [matMenuTriggerFor]="menu2"></mat-icon>
         <mat-menu #menu2="matMenu">
-          <ng-container *ngFor="let roleCan of app.roleCanManage()">
-            <button mat-menu-item *ngIf="!element.roles.includes(roleCan)" (click)="addRole(element.id, roleCan)">{{ roleCan.substring(5) }}</button>
+          <ng-container *ngFor="let badge of badgeAll">
+            <button mat-menu-item  (click)="addBadge(element.id, badge)">
+              <mat-chip>
+                <img matChipAvatar [src]="badge.picture?.url" alt="badge img"/>
+                {{ badge.name }}
+              </mat-chip>
+            </button>
           </ng-container>
         </mat-menu>
       </td>

@@ -8,6 +8,8 @@ import {WarnInterface} from "../../-interface/warn.interface";
 import {MatTableDataSource} from "@angular/material/table";
 import {ApicallInterface} from "../../-interface/apicall.interface";
 import Swal from "sweetalert2";
+import {BadgeInterface} from "../../-interface/badge.interface";
+import {BadgeService} from "../../-service/badge.service";
 
 @Component({
   selector: 'app-user-search',
@@ -28,9 +30,11 @@ export class UserSearchComponent implements OnInit, OnDestroy{
   searchValue: string = '';
   users: UserInterface[] = [];
   dataSource = new MatTableDataSource<UserInterface>(this.users);
+  badgeAll:BadgeInterface[] = [];
 
   constructor(protected app:AppComponent,
-              private administrationService:AdministrationService,) {}
+              private administrationService:AdministrationService,
+              private badgeService:BadgeService) {}
 
   ngOnInit() {
 
@@ -64,6 +68,10 @@ export class UserSearchComponent implements OnInit, OnDestroy{
 
 
     this.searchUser()
+
+    if (this.profilRequest){
+      this.getBadges()
+    }
   }
 
   ngOnDestroy() {
@@ -195,7 +203,25 @@ export class UserSearchComponent implements OnInit, OnDestroy{
 
   }
 
+  getBadges() {
+
+    this.badgeService.getBadgeAll(this.app.setURL(), this.app.createCorsToken()).subscribe((response:ApicallInterface) => {
+
+      if (response.message === "good") {
+        this.badgeAll = response.result;
+      } else {
+        console.error(response);
+      }
+
+    });
+
+  }
+
   removeBadge(id_user:number, badge: {id:number, name:string, pictureUrl:string}) {
+    console.log(id_user, badge);
+  }
+
+  addBadge(id_user:number, badge: BadgeInterface) {
     console.log(id_user, badge);
   }
 }
