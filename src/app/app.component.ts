@@ -412,4 +412,21 @@ export class AppComponent {
     })
   }
 
+  canModerated():boolean{
+
+    if(this.userConnected.userRole.includes('ROLE_OWNER') ||
+      this.userConnected.userRole.includes('ROLE_ADMIN') ||
+      this.userConnected.userRole.includes('ROLE_MODO_RESPONSABLE') ||
+      this.userConnected.userRole.includes('ROLE_MODO_SUPER') ||
+      this.userConnected.userRole.includes('ROLE_MODO')) {
+      return true
+    }
+
+    return false;
+
+  }
+
+
+
+
 }
