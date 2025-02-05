@@ -35,7 +35,7 @@
             <div class="d-flex mb-12">
               <p class="w-128">Edition :</p>
               <ng-container *ngIf="copy.edition">
-                <p id="edition">{{copy.edition}}</p>
+                <p>{{copy.edition}}</p>
                 <div>
                   <mat-icon fontIcon="delete" (click)="OnClickDelete('edition', copy.id)"></mat-icon>
                 </div>
@@ -57,7 +57,7 @@
             <div class="d-flex mb-12">
               <p class="w-128">Description :</p>
               <ng-container *ngIf="copy.content">
-                <p id="content">{{copy.content}}</p>
+                <p>{{copy.content}}</p>
                 <mat-icon fontIcon="delete" (click)="OnClickDelete('content', copy.id)"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.content">
@@ -67,7 +67,7 @@
             <div class="d-flex mb-12">
               <p class="w-128">Lieu d'achat :</p>
               <ng-container *ngIf="copy.purchase.buy_where?.name">
-                <mat-chip id="buy_where">
+                <mat-chip>
                   {{copy.purchase.buy_where?.name}}
                 </mat-chip>
                 <mat-icon fontIcon="delete" (click)="OnClickDelete('buy_where', copy.id)"></mat-icon>
@@ -79,7 +79,7 @@
             <div class="d-flex mb-12">
               <p class="w-128">Descrition de l'achat :</p>
               <ng-container *ngIf="copy.purchase.content">
-                <p id="purchase_content">{{copy.purchase.content}}</p>
+                <p>{{copy.purchase.content}}</p>
                 <mat-icon fontIcon="delete" (click)="OnClickDelete('purchase_content', copy.id)"></mat-icon>
               </ng-container>
               <ng-container *ngIf="!copy.purchase.content">

@@ -96,8 +96,20 @@ MyPlatform : HistoryMyPlatformInterface | undefined;
       if(response.message === "good"){
         console.log('champ modéré');
         Swal.fire("Champ modéré", "", "success");
-          const elem = document.getElementById(champ) as HTMLElement;
-          elem.innerText = "Non renseigné";
+
+        this.MyPlatform?.copyPlateform.forEach(copy => {
+          if (copy.id === prebody.copyPlateform_id) {
+            if (champ === 'buy_where') {
+              copy.purchase.buy_where = null;
+            } else if (champ === 'purchase_content') {
+              copy.purchase.content = null;
+            }
+            else {
+              (copy as any)[champ] = "";
+            }
+          }
+        });
+
       } else {
         console.log('erreur modération');
         Swal.fire("Erreur de nos services", "", "error");
