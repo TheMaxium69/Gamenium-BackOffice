@@ -10,27 +10,27 @@ export class ModerationService {
 
   constructor(private http: HttpClient) { }
 
-  moderateDeleteComment(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
-    return this.http.post<ApicallInterface>(url + 'modo-comment', options);
+  moderateDeleteComment(body: string, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.post<ApicallInterface>(url + '/modo-comment', body, options);
   }
 
-  moderateDeleteCommentReply(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
-    return this.http.post<ApicallInterface>(url + 'modo-comment-reply', options);
+  moderateDeleteCommentReply(body: string, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.post<ApicallInterface>(url + '/modo-comment-reply', body, options);
   }
 
-  moderateDeleteActu(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
-    return this.http.post<ApicallInterface>(url + 'modo-actu', options);
+  moderateDeleteActu(body: string, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.post<ApicallInterface>(url + '/modo-actu', body, options);
   }
 
-  moderateDeletePP(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
-    return this.http.post<ApicallInterface>(url + 'modo-pp', options);
+  moderateDeletePP(body: string, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.post<ApicallInterface>(url + '/modo-pp', body, options);
   }
-  moderateHmp(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
-    return this.http.put<ApicallInterface>(url + 'modo-hmp', options);
+  moderateHmp(body: string, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.put<ApicallInterface>(url + '/modo-hmp', body, options);
   }
 
-  moderateHmg(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
-    return this.http.put<ApicallInterface>(url + 'modo-hmg', options);
+  moderateHmg(body: string, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.put<ApicallInterface>(url + '/modo-hmg', body, options);
   }
 
 }
