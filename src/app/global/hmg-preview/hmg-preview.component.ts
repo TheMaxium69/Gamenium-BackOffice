@@ -19,9 +19,6 @@ export interface preBodyHmg {
   category:boolean
   chrono:boolean
   link:boolean
-  screenshot: boolean,
-  rate: boolean,
-  tag: boolean
 }
 
 @Component({
@@ -45,9 +42,6 @@ export class HmgPreviewComponent implements OnInit, OnChanges{
     category: false,
     chrono: false,
     link: false,
-    screenshot: false,
-    rate: false,
-    tag: false,
     copyGame_id: null,
     speedrun_id : null,
     screenshot_id: null,
@@ -113,13 +107,29 @@ export class HmgPreviewComponent implements OnInit, OnChanges{
       cancelButtonText: "Annuler"
     }).then((result) => {
       if (result.isDenied) {
-        this.updateHmg(this.moderationState, champ)
+        this.updateHmg(this.moderationState, champ, object)
+      } else {
+
+        // remise à zéro
+        if (object == "speedrun"){
+          (this.moderationState as any)[champ] = false
+          this.moderationState.speedrun_id = null
+        } else if (object == "screenshot"){
+          this.moderationState.screenshot_id = null
+        } else if (object == "rate"){
+          this.moderationState.rate_id = null
+        } else if (object == "tag"){
+          this.moderationState.tag_id = null
+        } else {
+          (this.moderationState as any)[champ] = false
+          this.moderationState.copyGame_id = null
+        }
       }})
 
 
   }
 
-  updateHmg(prebody:preBodyHmg, champ:string){
+  updateHmg(prebody:preBodyHmg, champ:string, object: string|undefined){
 
     let body = JSON.stringify(prebody);
 
@@ -128,13 +138,54 @@ export class HmgPreviewComponent implements OnInit, OnChanges{
             console.log('champ modéré');
             Swal.fire("Champ modéré", "", "success");
   
-
-
+            if (object == "speedrun") {
+              (this.MyGame?.speedrun as any)[champ] = "";
+            } else if (object == "rate") {
+              // tu fais un autre truc
+            } else if (object == "tag") {
+              // tu fasi un autre truc
+            } else if (object == "screenshot") {
             
+            }else {
+              (this.MyGame?.copyGame as any)[champ] = "";
+            }
+
+
+
+
+             
+            /*this.MyGame?.copyPlateform.forEach(copy => {
+              if (copy.id === prebody.copyPlateform_id) {
+                if (champ === 'buy_where') {
+                  copy.purchase.buy_where = null;
+                } else if (champ === 'purchase_content') {
+                  copy.purchase.content = null;
+                } else {
+                  (copy as any)[champ] = "";
+                }
+              }
+            });*/
+
+
     
           } else {
             console.log('erreur modération');
             Swal.fire("Erreur de nos services", "", "error");
+          }
+
+          // remise à zéro
+          if (object == "speedrun"){
+            (this.moderationState as any)[champ] = false
+            this.moderationState.speedrun_id = null
+          } else if (object == "screenshot"){
+            this.moderationState.screenshot_id = null
+          } else if (object == "rate"){
+            this.moderationState.rate_id = null
+          } else if (object == "tag"){
+            this.moderationState.tag_id = null
+          } else {
+            (this.moderationState as any)[champ] = false
+            this.moderationState.copyGame_id = null
           }
         })
 
