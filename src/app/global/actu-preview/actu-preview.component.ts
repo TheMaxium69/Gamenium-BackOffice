@@ -4,6 +4,8 @@ import { PostActuInterface } from 'src/app/-interface/post-actu.interface';
 import { ActualityService } from 'src/app/-service/actuality.service';
 import { AppComponent } from 'src/app/app.component';
 import {ViewService} from "../../-service/view.service";
+import Swal from 'sweetalert2';
+import { ModerationService } from 'src/app/-service/moderation.service';
 
 @Component({
   selector: 'app-actu-preview',
@@ -21,6 +23,7 @@ export class ActuPreviewComponent implements OnInit, OnChanges {
   constructor(
     protected app: AppComponent,
     private actualityServcice: ActualityService,
+    private moderationService: ModerationService,
     private viewService: ViewService,
   ) {}
 
@@ -49,5 +52,36 @@ export class ActuPreviewComponent implements OnInit, OnChanges {
         }
       })
 
+  }
+
+  deleteActu() {
+        Swal.fire({
+          icon: "question",
+          title: "Demande de confirmation",
+          text: "Etes vous sur de vouloir supprimer l'actualité '?",
+          showConfirmButton: false,
+          showDenyButton: true,
+          showCancelButton: true,
+          denyButtonText: `Supprimer`,
+          cancelButtonText: "Annuler"
+        }).then((result) => {
+          if (result.isDenied) {
+    
+            if (this.actuSelected) {
+              const bodyJSON = JSON.stringify({
+                'actu_id': this.actuSelected.id
+              });
+              
+              this.moderationService.moderateDeleteActu(bodyJSON, this.app.setURL(), this.app.createCorsToken()).subscribe((response: ApicallInterface) => {
+                console.log(response);
+                if (response.message == 'good') {
+                  Swal.fire("Actu supprimée", "", "success");
+                } else {
+                  Swal.fire("Erreur de nos services", "", "error");
+                }
+              })
+            }
+          }
+        });
   }
 }
