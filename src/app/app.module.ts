@@ -67,7 +67,7 @@ import { ModoProfilComponent } from './moderation/modo-profil/modo-profil.compon
 import { ModoCommentComponent } from './moderation/modo-comment/modo-comment.component';
 import { ModoCopyComponent } from './moderation/modo-copy/modo-copy.component';
 import { LogActuComponent } from './log/log-actu/log-actu.component';
-import { AddBadgeComponent } from './admin/add-badge/add-badge.component';
+import { AddBadgeComponent } from './administration/add-badge/add-badge.component';
 import { GameSearchComponent } from './global/game-search/game-search.component';
 import { ShowArticleComponent } from './provider/show-article/show-article.component';
 import { ProviderCreateArticleComponent } from './provider/provider-create-article/provider-create-article.component';
