@@ -69,6 +69,9 @@ export class ProfilPreviewComponent implements OnChanges {
           this.moderationService.moderateDeletePP(bodyJSON, this.app.setURL(), this.app.createCorsToken()).subscribe((response: ApicallInterface) => {
             console.log(response);
             if (response.message == 'good') {
+              if (this.profilSelected) {
+                this.profilSelected.picture = undefined;
+              }
               Swal.fire("Photo supprimée", "", "success");
             } else {
               Swal.fire("Erreur de nos services", "", "error");
