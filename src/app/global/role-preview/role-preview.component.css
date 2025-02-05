@@ -1,0 +1,82 @@
+#pp{
+  box-shadow: 1px 3px 12px #a6a6a6;
+}
+
+
+.m-0 {
+  margin: 0;
+}
+
+.mb-12 {
+  margin-bottom: 12px;
+}
+
+.mb-38 {
+  margin-bottom: 38px;
+}
+
+.g-10 {
+  gap: 10px;
+}
+
+.w-128 {
+  width: 128px;
+}
+
+.shadow {
+  box-shadow: 1px 2px 11px rgba(0, 0, 0, 0.45);
+}
+
+.flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-content-center {
+  align-content: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.center-auto {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.color-preview {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.45);
+}
+
+.img {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 150px;
+  border: none;
+  border-radius: 50%;
+}
+
+.ban-btn {
+  background-color: rgba(0, 0, 0, 0.45);
+  color: white;
+}

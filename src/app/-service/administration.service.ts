@@ -38,4 +38,13 @@ export class AdministrationService {
     return this.http.post<ApicallInterface>(url + '/admin-remove-role', {id_user, remove_role}, options);
   }
 
+  getRoleOne(ROLE_NAME: string, limit: number, url: string, options: { headers: HttpHeaders }): Observable<ApicallInterface>{
+    return this.http.post<ApicallInterface>(url + '/admin-role-one', {ROLE_NAME, limit}, options);
+  }
+
+
+
+
+
+
 }
