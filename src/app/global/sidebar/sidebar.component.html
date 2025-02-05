@@ -9,7 +9,7 @@
 
 
     <mat-list>
-      <div mat-subheader>Action</div>
+<!--      <div mat-subheader>Action</div>-->
 
       <!-- HOME / DASHBOARD -->
       <mat-list-item routerLink="/">
@@ -276,18 +276,20 @@
             <div matListItemTitle>Log des actualitées</div>
           </mat-list-item>
 
+          <mat-divider></mat-divider>
+
         </ng-container>
 
       </ng-container>
 
-      <!-- OTHER -->
-      <mat-divider></mat-divider>
-      <div mat-subheader>Personnel</div>
+<!--      &lt;!&ndash; OTHER &ndash;&gt;-->
+<!--      <mat-divider></mat-divider>-->
+<!--      <div mat-subheader>Personnel</div>-->
 
-      <mat-list-item routerLink="/settings">
-        <mat-icon matListItemIcon>settings</mat-icon>
-        <div matListItemTitle>Paramètre</div>
-      </mat-list-item>
+<!--      <mat-list-item routerLink="/settings">-->
+<!--        <mat-icon matListItemIcon>settings</mat-icon>-->
+<!--        <div matListItemTitle>Paramètre</div>-->
+<!--      </mat-list-item>-->
 
       <mat-list-item (click)="this.app.logout()">
         <mat-icon matListItemIcon>logout</mat-icon>
