@@ -1,1 +1,40 @@
-<p>create-badge works!</p>
+<!-- Badge Creation Page -->
+<h1 class="page-title">Créer un Badge</h1>
+
+<form (ngSubmit)="submitBadge()" class="badge-form mat-elevation-z3">
+
+  <!-- IMAGE UPLOAD -->
+  <div class="drop-area mat-elevation-z2"
+       (dragover)="$event.preventDefault()"
+       (drop)="onFileDropped($event)"
+       (click)="triggerFileSelect()">
+    <mat-icon class="upload-icon">cloud_upload</mat-icon>
+    <p>Glissez et déposez votre image ici ou <span class="click-text">Cliquez ici</span></p>
+    <input #fileInput type="file" (change)="onFileSelected($event)" hidden>
+    <small> Taille recommandée: 336 / 189</small>
+  </div>
+
+  <!-- Preview Image -->
+  <img *ngIf="imagePreview" [src]="imagePreview" [class]="imageClass" alt="Image Preview" class="image-preview">
+
+  <!-- Badge Name -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Nom du Badge</mat-label>
+    <input matInput type="text" id="name" [(ngModel)]="name" name="name" required>
+  </mat-form-field>
+
+  <!-- Unlock Description -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Description de déblocage</mat-label>
+    <textarea matInput id="unlockDescription" [(ngModel)]="unlockDescription" name="unlockDescription" rows="3"></textarea>
+  </mat-form-field>
+
+  <!-- Picture ID (Hidden) -->
+  <mat-form-field appearance="outline" class="full-width hidden">
+    <mat-label>Picture ID</mat-label>
+    <input matInput type="number" id="picture" [(ngModel)]="picture_id" name="picture_id" required>
+  </mat-form-field>
+
+  <!-- Submit Button -->
+  <button mat-raised-button color="primary" type="submit" class="submit-button">Créer Badge</button>
+</form>
