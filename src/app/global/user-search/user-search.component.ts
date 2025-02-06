@@ -23,6 +23,8 @@ export class UserSearchComponent implements OnInit, OnDestroy{
   public displayedColumns: string[] = ['id'];
   @Input()
   public profilRequest!: boolean;
+  @Input()
+  public statRequest!: boolean;
 
   private unsubscribe$ = new Subject<void>();
   private searchProfilSubject = new Subject<string>();
@@ -44,19 +46,32 @@ export class UserSearchComponent implements OnInit, OnDestroy{
       // distinctUntilChanged(),
       switchMap((searchValue) => {
         if (this.profilRequest){
+
           return this.administrationService.searchProfilsAdmin(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
             catchError((error) => {
               console.error('Une erreur s\'est produite lors de la recherche : ', error);
               return of([]);
             })
           );
+
+        } else if (this.statRequest) {
+
+          return this.administrationService.searchProfilViewAdmin(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
+            catchError((error) => {
+              console.error('Une erreur s\'est produite lors de la recherche : ', error);
+              return of([]);
+            })
+          );
+
         } else {
+
           return this.administrationService.searchUsersAdmin(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
             catchError((error) => {
               console.error('Une erreur s\'est produite lors de la recherche : ', error);
               return of([]);
             })
           );
+
         }
       }),
       takeUntil(this.unsubscribe$)

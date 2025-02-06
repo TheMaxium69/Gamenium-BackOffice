@@ -18,6 +18,10 @@ export class AdministrationService {
     return this.http.post<ApicallInterface>(url + '/admin-profils-search',  { searchValue, limit}, options);
   }
 
+  searchProfilViewAdmin(searchValue: string, limit:number, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
+    return this.http.post<ApicallInterface>(url + '/admin-profilview-search',  { searchValue, limit}, options);
+  }
+
   searchProviderAdmin(searchValue: string, limit:number, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
     return this.http.post<ApicallInterface>(url + '/admin-provider-search',  { searchValue, limit}, options);
   }
