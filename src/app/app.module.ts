@@ -88,6 +88,7 @@ import { HomeAdminComponent } from './home/home-admin/home-admin.component';
 import { HomeModoComponent } from './home/home-modo/home-modo.component';
 import { HomeWriteComponent } from './home/home-write/home-write.component';
 import { HomeTestComponent } from './home/home-test/home-test.component';
+import { ProviderSearchComponent } from './global/provider-search/provider-search.component';
 
 @NgModule({
   declarations: [
@@ -158,6 +159,7 @@ import { HomeTestComponent } from './home/home-test/home-test.component';
     HomeModoComponent,
     HomeWriteComponent,
     HomeTestComponent,
+    ProviderSearchComponent,
   ],
   imports: [
     BrowserModule,
