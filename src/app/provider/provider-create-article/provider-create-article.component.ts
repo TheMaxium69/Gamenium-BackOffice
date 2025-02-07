@@ -1,8 +1,10 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { GameService } from 'src/app/-service/game.service';
 import { UploadService } from 'src/app/-service/upload.service';
 import { UserProviderService } from 'src/app/-service/user-provider.service';
 import { AppComponent } from 'src/app/app.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-provider-create-article',
@@ -26,7 +28,8 @@ export class ProviderCreateArticleComponent {
     protected app:AppComponent,
     private uploadService: UploadService,
     private gameService: GameService,
-    private userProviderService: UserProviderService
+    private userProviderService: UserProviderService,
+    private router: Router
   ) {
 
   }
@@ -147,4 +150,33 @@ export class ProviderCreateArticleComponent {
       console.log("Article created:", response);
     });
   }
+
+  confirmSubmitArticle() {
+    if (!this.picture_id) {
+          Swal.fire({
+            title: "Image requise",
+            text: "Veuillez ajouter une image avant de publier l'article.",
+            icon: "warning",
+            confirmButtonText: "OK"
+          });
+          return;
+        }
+    Swal.fire({
+      title: "Confirmer la création",
+      text: "Êtes-vous sûr de vouloir publier cet article ?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Oui, publier",
+      cancelButtonText: "Annuler"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.submitArticle();
+        this.router.navigate(['/provider/show-articles']);
+        Swal.fire("Crée!", "L'article a été crée avec succès.", "success");
+      }
+    });
+  }
+  
 }

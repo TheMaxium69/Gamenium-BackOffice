@@ -1,10 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProviderInterface } from 'src/app/-interface/provider.interface';
 import { ActualityService } from 'src/app/-service/actuality.service';
 import { GameService } from 'src/app/-service/game.service';
 import { ProviderService } from 'src/app/-service/provider.service';
 import { UploadService } from 'src/app/-service/upload.service';
 import { AppComponent } from 'src/app/app.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-article',
@@ -36,7 +38,8 @@ imageClass: string = '';
     private actualityService:ActualityService,
     private gameService:GameService,
     private providerService: ProviderService,
-    private uploadService:UploadService
+    private uploadService:UploadService,
+    private router: Router
   ) {
 
   }
@@ -139,6 +142,33 @@ imageClass: string = '';
     this.provider_id = provider.id;
     this.providerSearch = provider.displayName;
     this.providerResults = []; //cache la liste après
+  }
+
+  confirmSubmitArticle() {
+    if (!this.picture_id) {
+      Swal.fire({
+        title: "Image requise",
+        text: "Veuillez ajouter une image avant de publier l'article.",
+        icon: "warning",
+        confirmButtonText: "OK"
+      });
+      return;
+    }
+
+    Swal.fire({
+      title: "Confirmer la publication",
+      text: "Êtes-vous sûr de vouloir publier cet article ?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Oui, publier",
+      cancelButtonText: "Annuler"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.submitArticle();
+        this.router.navigate(['/writter/show-articles']);
+        Swal.fire("Crée!", "L'article a été crée avec succès.", "success");
+      }
+    });
   }
 
   submitArticle(){

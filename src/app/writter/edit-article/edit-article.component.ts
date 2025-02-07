@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GameInterface } from 'src/app/-interface/game.interface';
 import { PostActuInterface } from 'src/app/-interface/post-actu.interface';
 import { ProviderInterface } from 'src/app/-interface/provider.interface';
@@ -37,6 +37,7 @@ export class EditArticleComponent implements OnInit {
     private providerService: ProviderService,
     private uploadService: UploadService,
     private selectedArticleService: SelectedArticleService,
+    private router: Router,
     protected app: AppComponent
   ) {}
 
@@ -268,6 +269,7 @@ export class EditArticleComponent implements OnInit {
       }).then((result) => {
         if (result.isConfirmed) {
           this.deleteArticle();
+          this.router.navigate(['/writter/show-articles']);
         }
       });
     }
@@ -284,8 +286,9 @@ export class EditArticleComponent implements OnInit {
       this.actualityService.deletePostActuIsDelete(this.selectedArticle.id, url, option)
         .subscribe(
           () => {
+            this.router.navigate(['/writter/show-articles']);
             Swal.fire("Supprimé!", "L'article a été supprimé avec succès.", "success");
-            this.selectedArticle = null; // vide l'article une fois supprimé côté vue
+            // this.selectedArticle = null; // vide l'article une fois supprimé côté vue
           },
           (error) => {
             Swal.fire("Erreur", "Impossible de supprimer l'article.", "error");
@@ -293,4 +296,23 @@ export class EditArticleComponent implements OnInit {
           }
         );
     }
+
+    confirmUpdateArticle() {
+      Swal.fire({
+        title: "Confirmer la modification",
+        text: "Êtes-vous sûr de vouloir enregistrer ces modifications ?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Oui, modifier",
+        cancelButtonText: "Annuler"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.updateArticle();
+          this.router.navigate(['/writter/show-articles']);
+        }
+      });
+    }
+    
 }

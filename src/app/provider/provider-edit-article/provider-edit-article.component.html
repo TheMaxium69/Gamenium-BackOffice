@@ -78,7 +78,7 @@
           <!-- Update Button -->
           <div class="form-field button-container">
             <!-- Update Button -->
-            <button mat-raised-button color="primary" (click)="updateArticle()">Modifier</button>
+            <button mat-raised-button color="primary" (click)="confirmUpdateArticle()">Modifier</button>
 
             <button mat-raised-button color="warn"
               *ngIf="app.userConnected.userRole.includes('ROLE_OWNER') ||

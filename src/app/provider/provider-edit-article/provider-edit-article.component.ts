@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { GameInterface } from 'src/app/-interface/game.interface';
 import { PostActuInterface } from 'src/app/-interface/post-actu.interface';
 import { ProviderInterface } from 'src/app/-interface/provider.interface';
@@ -37,6 +38,7 @@ export class ProviderEditArticleComponent implements OnInit{
     private providerService: ProviderService,
     private uploadService: UploadService,
     private selectedArticleService: SelectedArticleService,
+    private router: Router,
     protected app: AppComponent
   ) {}
 
@@ -265,7 +267,8 @@ export class ProviderEditArticleComponent implements OnInit{
       .subscribe(
         () => {
           Swal.fire("Supprimé!", "L'article a été supprimé avec succès.", "success");
-          this.selectedArticle = null; // vide l'article une fois supprimé côté vue
+          this.router.navigate(['/provider/show-articles']);
+          // this.selectedArticle = null; 
         },
         (error) => {
           Swal.fire("Erreur", "Impossible de supprimer l'article.", "error");
@@ -273,6 +276,25 @@ export class ProviderEditArticleComponent implements OnInit{
         }
       );
   }
+
+  confirmUpdateArticle() {
+        Swal.fire({
+          title: "Confirmer la modification",
+          text: "Êtes-vous sûr de vouloir enregistrer ces modifications ?",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Oui, modifier",
+          cancelButtonText: "Annuler"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.updateArticle();
+            this.router.navigate(['/provider/show-articles']);
+            Swal.fire("Modifié!", "L'article a été modifié avec succès.", "success");
+          }
+        });
+      }
   
   
 
