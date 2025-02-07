@@ -1,1 +1,56 @@
-<p>modo-copy-platform works!</p>
+<div style="display: flex;justify-content: space-between;">
+    <h1>Modération des plateformes</h1>
+  
+    <div>
+      <button mat-raised-button routerLink="/modo/copy" style="margin-right: 10px">
+        <mat-icon>list</mat-icon>
+        Jeux
+      </button>
+  
+      <button mat-raised-button color="primary" (click)="getRandomHmp()">
+        <mat-icon>refresh</mat-icon>
+        Recharger
+      </button>
+    </div>
+    
+  </div>
+  
+  <div class="flex">
+      <mat-card class="mb-38">
+          <mat-card-content>
+              <div class="d-flex mb-12 justify-end">
+              <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront())"></mat-icon>
+              </div>
+              <div class="banner-image d-flex mb-12 justify-center">
+              <div class="banner" style="background-image: url({{hmpRandom1?.myPlateform?.plateform?.image?.small_url}});"></div>
+              <div class="blur"></div>
+              <img class="back" src="{{ hmpRandom1?.myPlateform?.plateform?.image?.small_url }}" alt="blur">
+              </div>
+              <h2 class="d-flex mb-12 justify-center m-15">{{hmpRandom1?.myPlateform?.plateform?.name}}</h2>
+              <mat-chip class="displayname" *ngIf="hmpRandom1?.myPlateform?.user" routerLink="/user/{{hmpRandom1?.myPlateform?.user?.id}}">
+                  <img matChipAvatar [src]="app.generatePPUseritium(hmpRandom1?.myPlateform?.user?.pp?.url, hmpRandom1?.myPlateform?.user?.displayname_useritium	 || hmpRandom1?.myPlateform?.user?.username,hmpRandom1?.myPlateform?.user?.color || this.app.colorDefault)" alt="user pp"/>
+                  {{hmpRandom1?.myPlateform?.user?.displayname_useritium	 ?? hmpRandom1?.myPlateform?.user?.username }}
+              </mat-chip>
+          </mat-card-content>
+      </mat-card>
+  
+      <mat-card class="mb-38">
+          <mat-card-content>
+              <div class="d-flex mb-12 justify-end">
+              <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront())"></mat-icon>
+              </div>
+              <div class="banner-image d-flex mb-12 justify-center">
+              <div class="banner" style="background-image: url({{hmpRandom2?.myPlateform?.plateform?.image?.small_url}});"></div>
+              <div class="blur"></div>
+              <img class="back" src="{{ hmpRandom2?.myPlateform?.plateform?.image?.small_url }}" alt="blur">
+              </div>
+              <h2 class="d-flex mb-12 justify-center m-15">{{hmpRandom2?.myPlateform?.plateform?.name}}</h2>
+              <mat-chip class="displayname" *ngIf="hmpRandom2?.myPlateform?.user" routerLink="/user/{{hmpRandom2?.myPlateform?.user?.id}}">
+                  <img matChipAvatar [src]="app.generatePPUseritium(hmpRandom2?.myPlateform?.user?.pp?.url, hmpRandom2?.myPlateform?.user?.displayname_useritium	 || hmpRandom2?.myPlateform?.user?.username,hmpRandom2?.myPlateform?.user?.color || this.app.colorDefault)" alt="user pp"/>
+                  {{hmpRandom2?.myPlateform?.user?.displayname_useritium	 ?? hmpRandom2?.myPlateform?.user?.username }}
+              </mat-chip>
+          </mat-card-content>
+      </mat-card>
+  </div>
+  
+  <hr style="margin: 25px 0">
