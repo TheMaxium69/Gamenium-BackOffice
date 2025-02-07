@@ -1,1 +1,61 @@
-<p>modo-copy works!</p>
+<div *ngIf="">
+    <div style="display: flex;justify-content: space-between;">
+        <h1> Modération des Hmg </h1>
+        <div class="d-flex" style="font-size: 15px">
+            <p>Hmg</p>
+            <mat-icon fontIcon="toggle_on" *ngIf="displayHmg" [style.color]="'#6363ff'" (click)="toggleManage()"></mat-icon>
+            <mat-icon fontIcon="toggle_off" *ngIf="displayHmp" (click)="toggleManage()"></mat-icon>
+            <p>Hmp</p>
+          </div>
+        <div>
+            <button mat-raised-button color="primary" (click)="getRandomHmg()">
+                <mat-icon>refresh</mat-icon>
+                Recharger
+              </button>
+        </div>
+    </div>
+      
+    <div class="flex">
+        <mat-card class="mb-38">
+            <mat-card-content>
+                <div class="d-flex mb-12 justify-end">
+                <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront())"></mat-icon>
+                </div>
+                <div class="banner-image d-flex mb-12 justify-center">
+                <div class="banner" style="background-image: url({{hmgRandom1?.myGame?.game?.image?.small_url}});"></div>
+                <div class="blur"></div>
+                <img class="back" src="{{ hmgRandom1?.myGame?.game?.image?.small_url }}" alt="blur">
+                </div>
+                <h2 class="d-flex mb-12 justify-center m-15">{{hmgRandom1?.myGame?.game?.name}}</h2>
+                <mat-chip class="displayname" *ngIf="hmgRandom1?.myGame?.user" routerLink="/user/{{hmgRandom1?.myGame?.user?.id}}">
+                    <img matChipAvatar [src]="app.generatePPUseritium(hmgRandom1?.myGame?.user?.pp?.url, hmgRandom1?.myGame?.user?.displayname_useritium	 || hmgRandom1?.myGame?.user?.username,hmgRandom1?.myGame?.user?.color || this.app.colorDefault)" alt="user pp"/>
+                    {{hmgRandom1?.myGame?.user?.displayname_useritium	 ?? hmgRandom1?.myGame?.user?.username }}
+                </mat-chip>
+            </mat-card-content>
+        </mat-card>
+    
+        <mat-card class="mb-38">
+            <mat-card-content>
+                <div class="d-flex mb-12 justify-end">
+                <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront())"></mat-icon>
+                </div>
+                <div class="banner-image d-flex mb-12 justify-center">
+                <div class="banner" style="background-image: url({{hmgRandom2?.myGame?.game?.image?.small_url}});"></div>
+                <div class="blur"></div>
+                <img class="back" src="{{ hmgRandom2?.myGame?.game?.image?.small_url }}" alt="blur">
+                </div>
+                <h2 class="d-flex mb-12 justify-center m-15">{{hmgRandom2?.myGame?.game?.name}}</h2>
+                <mat-chip class="displayname" *ngIf="hmgRandom2?.myGame?.user" routerLink="/user/{{hmgRandom2?.myGame?.user?.id}}">
+                    <img matChipAvatar [src]="app.generatePPUseritium(hmgRandom2?.myGame?.user?.pp?.url, hmgRandom2?.myGame?.user?.displayname_useritium	 || hmgRandom2?.myGame?.user?.username,hmgRandom2?.myGame?.user?.color || this.app.colorDefault)" alt="user pp"/>
+                    {{hmgRandom2?.myGame?.user?.displayname_useritium	 ?? hmgRandom2?.myGame?.user?.username }}
+                </mat-chip>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<hr style="margin: 25px 0">
+
+
+
+
