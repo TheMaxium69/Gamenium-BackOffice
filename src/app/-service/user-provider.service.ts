@@ -37,6 +37,16 @@ export class UserProviderService {
   linkUserToProvider(user_id: number, provider_id: number, url: string, options: { headers: HttpHeaders }): Observable<ApicallInterface> {
     return this.http.post<ApicallInterface>(url + '/user-provider/link', { user_id, provider_id }, options);
   }
+
+  // Récupère toutes les relations User-Provider
+  getUserProviders(url: string, options: { headers: HttpHeaders }): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(url + '/admin/user-providers', options);
+  }
+
+  // Supprime une relation User-Provider spécifique
+  deleteUserProvider(userId: number, providerId: number, url: string, options: { headers: HttpHeaders }): Observable<ApicallInterface> {
+    return this.http.delete<ApicallInterface>(`${url}/admin/user-provider/${userId}/${providerId}`, options);
+  }
   
 
 }
