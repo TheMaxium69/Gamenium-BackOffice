@@ -103,7 +103,7 @@
           <div *ngFor="let social of profilSelected?.reseau">
             <div class="flex g-10 align-items-center mb-12">
               <i class="{{ social.socialnetwork.icon_class }}"></i>
-              <p class="m-0">{{social.url}}</p>
+              <a class="m-0" target="_blank" href="{{social.socialnetwork.url_user}}{{social.url}}">{{social.socialnetwork.url_user}}{{social.url}}</a>
             </div>
           </div>
         </div>
