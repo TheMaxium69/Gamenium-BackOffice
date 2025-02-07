@@ -29,8 +29,7 @@ export class UserProviderListComponent implements OnInit {
 
     this.userProviderService.getUserProviders(url, options).subscribe(
       response => {
-        console.log(response)
-        // this.userProviders = response
+        this.userProviders = response.result
       },
       error => {
         console.error("❌ Error fetching user-provider associations:", error);

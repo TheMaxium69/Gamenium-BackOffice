@@ -6,6 +6,8 @@ import { UserInterface } from 'src/app/-interface/user.interface';
 import { ProviderInterface } from 'src/app/-interface/provider.interface';
 import { AppComponent } from 'src/app/app.component';
 import { UserProviderService } from 'src/app/-service/user-provider.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-user-provider',
@@ -96,23 +98,44 @@ export class UserProviderComponent implements OnInit, OnDestroy {
     this.providerResults = []; // Cache la liste après sélection
   }
 
-  /* Fonction de liaison User <-> Provider */
-  linkUserToProvider() {
-    if (!this.selectedUser || !this.selectedProvider) {
-      console.error("Impossible de lier : utilisateur ou provider manquant.");
-      return;
-    }
-
-    const url = this.app.setURL();
-    const options = this.app.createCorsToken();
-
-    this.userProviderService.linkUserToProvider(this.selectedUser.id, this.selectedProvider.id, url, options)
-      .subscribe(response => {
-        console.log("réussi:", response);
-      }, error => {
-        console.error("Erreur lors de la liaison:", error);
-      });
+  /* Fonction de liaison User <-> Provider avec confirmation */
+linkUserToProvider() {
+  if (!this.selectedUser || !this.selectedProvider) {
+    console.error("Impossible de lier : utilisateur ou provider manquant.");
+    return;
   }
+
+  const url = this.app.setURL();
+  const options = this.app.createCorsToken();
+
+  this.userProviderService.linkUserToProvider(this.selectedUser.id, this.selectedProvider.id, url, options)
+    .subscribe(response => {
+      console.log("✅ Liaison réussie:", response);
+
+      Swal.fire({
+        title: "Succès!",
+        text: `${this.selectedUser?.displayname || this.selectedUser?.username} a été associé à ${this?.selectedProvider?.display_name}.`,
+        icon: "success",
+        confirmButtonText: "OK"
+      });
+
+      // Réinitialisation des sélections
+      this.selectedUser = null;
+      this.selectedProvider = null;
+      this.userSearch = "";
+      this.providerSearch = "";
+
+    }, error => {
+      console.error("❌ Erreur lors de la liaison:", error);
+      Swal.fire({
+        title: "Erreur!",
+        text: "Impossible d'associer l'utilisateur au provider.",
+        icon: "error",
+        confirmButtonText: "OK"
+      });
+    });
+}
+
 
   ngOnDestroy() {
     this.unsubscribe$.next();

@@ -1,4 +1,14 @@
-<h1 class="page-title">Liste des Utilisateurs liés aux Providers</h1>
+<div style="display: flex;justify-content: space-between;">
+    <h1>Liste des Utilisateurs liés aux Providers</h1>
+  
+    <div>
+      <button mat-raised-button color="primary" routerLink="/admin/provider/">
+        <mat-icon>add</mat-icon>
+        Relier un Utilisateur à un Éditeur
+      </button>
+    </div>
+  
+  </div>
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="userProviders">
