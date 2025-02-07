@@ -40,28 +40,9 @@
     }
 }
 
-.d-inline{
-    display: inline;
-}
 
-.mb-0{
-    margin-bottom: 0px;
-}
-
-.mb-40{
-    margin-bottom: 40px;
-}
-
-.m-15{
-    margin: 15px;
-}
-
-.mb-12{
-    margin-bottom: 12px;
-}
-
-p {
-    margin: 0px;
+.mb-10{
+    margin-bottom: 10px;
 }
 
 .d-flex {
@@ -69,13 +50,8 @@ p {
     align-items: center;
 }
 
-.w-128{
-    width:128px;
-}
-
 mat-card{
     text-align: center;
-    padding: 50px;
   }
   .flex {
     display: flex;
@@ -93,3 +69,12 @@ mat-card{
     }
   }
   
+  mat-card-content{
+    padding: 0px 50px 30px 50px !important;
+  }
+
+  .head-card{
+    text-align: end;
+    padding-top: 10px;
+    padding-right: 10px;
+  }
