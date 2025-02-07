@@ -33,4 +33,35 @@ export class ModerationService {
     return this.http.put<ApicallInterface>(url + '/modo-hmg', body, options);
   }
 
+
+
+
+  getProfilRandom(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(url + '/modo-profil-random', options);
+  }
+
+  getCommentRandom(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(url + '/modo-comment-random', options);
+  }
+
+  getCommentReplyRandom(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(url + '/modo-comment-reply-random', options);
+  }
+
+  getActuRandom(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(url + '/modo-actu-random', options);
+  }
+
+  getHmpRandom(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(url + '/modo-hmp-random', options);
+  }
+
+  getHmgRandom(url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(url + '/modo-hmg-random', options);
+  }
+
+
+
+
+
 }
