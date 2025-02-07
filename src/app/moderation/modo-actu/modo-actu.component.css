@@ -10,7 +10,7 @@ mat-card{
   }
 
   mat-card-content{
-    padding: 0px 50px 50px 50px !important;
+    padding: 0px 50px 30px 50px !important;
   }
 }
 .flex {
