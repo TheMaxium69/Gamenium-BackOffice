@@ -1,11 +1,9 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { catchError, debounceTime, of, Subject, switchMap, takeUntil } from 'rxjs';
 import { CommentInterface } from 'src/app/-interface/comment.interface';
 import { AdministrationService } from 'src/app/-service/administration.service';
-import { UserProviderService } from 'src/app/-service/user-provider.service';
 import { AppComponent } from 'src/app/app.component';
 
 @Component({
@@ -13,7 +11,7 @@ import { AppComponent } from 'src/app/app.component';
   templateUrl: './comment-search.component.html',
   styleUrls: ['./comment-search.component.css']
 })
-export class CommentSearchComponent implements OnInit, OnDestroy{
+export class CommentSearchComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   @Input() displayedColumns: string[] = ['id'];

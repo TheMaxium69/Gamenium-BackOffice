@@ -1,1 +1,55 @@
-<p>modo-comment-reply works!</p>
+<div style="display: flex;justify-content: space-between;">
+    <h1>Modération des commentaire Réponse</h1>
+
+    <div>
+      <button mat-raised-button routerLink="/modo/comment/" style="margin-right: 10px">
+        <mat-icon>list</mat-icon>
+        Commentaire
+      </button>
+      <button mat-raised-button color="primary" (click)="getRandomCommentReply()">
+        <mat-icon>refresh</mat-icon>
+        Recharger
+      </button>
+    </div>
+
+  </div>
+
+  <div class="flex">
+    <mat-card class="mb-38">
+      <mat-card-content>
+        <div> commentReplyRandom1.content</div>
+        <!-- <mat-chip routerLink="/user/{{commentReplyRandom1.user.id}}" class="clickable-chip">
+          <img matChipAvatar
+              [src]="app.generatePPUseritium(
+                commentReplyRandom1.user.pp?.url,
+                commentReplyRandom1.user.displayname_useritium || commentReplyRandom1.user.username,
+                commentReplyRandom1.user.color || app.colorDefault
+              )"
+              alt="User Profile Picture" />
+          {{ commentReplyRandom1.user.displayname_useritium ?? commentReplyRandom1.user.username }}
+        </mat-chip> -->
+        <button>un user</button>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="mb-38">
+      <mat-card-content>
+        <div> commentReplyRandom2.content</div>
+        <!-- <mat-chip routerLink="/user/{{commentReplyRandom2.user.id}}" class="clickable-chip">
+          <img matChipAvatar
+              [src]="app.generatePPUseritium(
+                commentReplyRandom2.user.pp?.url,
+                commentReplyRandom2.user.displayname_useritium || commentReplyRandom2.user.username,
+                commentReplyRandom2.user.color || app.colorDefault
+              )"
+                alt="User Profile Picture" />
+          {{ commentReplyRandom2.user.displayname_useritium ?? commentReplyRandom2.user.username }}
+        </mat-chip> -->
+        <button>un user</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <hr style="margin: 25px 0">
+
+<app-comment-reply-search [displayedColumns]="['id', 'user_id', 'content', 'created_at', 'actu_id', 'actionmodo']"></app-comment-reply-search>

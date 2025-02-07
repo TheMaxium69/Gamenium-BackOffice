@@ -17,19 +17,39 @@
   <div class="flex">
     <mat-card class="mb-38">
       <mat-card-content>
-        
+        <div> commentRandom1.content</div>
+        <!-- <mat-chip routerLink="/user/{{commentRandom1.user.id}}" class="clickable-chip">
+          <img matChipAvatar
+              [src]="app.generatePPUseritium(
+                commentRandom1.user.pp?.url,
+                commentRandom1.user.displayname_useritium || commentRandom1.user.username,
+                commentRandom1.user.color || app.colorDefault
+              )"
+              alt="User Profile Picture" />
+          {{ commentRandom1.user.displayname_useritium ?? commentRandom1.user.username }}
+        </mat-chip> -->
+        <button>un user</button>
       </mat-card-content>
     </mat-card>
 
     <mat-card class="mb-38">
       <mat-card-content>
-
+        <div> commentRandom2.content</div>
+        <!-- <mat-chip routerLink="/user/{{commentRandom2.user.id}}" class="clickable-chip">
+          <img matChipAvatar
+              [src]="app.generatePPUseritium(
+                commentRandom2.user.pp?.url,
+                commentRandom2.user.displayname_useritium || commentRandom2.user.username,
+                commentRandom2.user.color || app.colorDefault
+              )"
+                alt="User Profile Picture" />
+          {{ commentRandom2.user.displayname_useritium ?? commentRandom2.user.username }}
+        </mat-chip> -->
+        <button>un user</button>
       </mat-card-content>
     </mat-card>
   </div>
 
   <hr style="margin: 25px 0">
-
-<!-- <app-post-search [displayedColumns]="['id', 'picture_id', 'title', 'user_id', 'created_at', 'last_edit', 'nb_edit', 'actionmodo']"></app-post-search> -->
 
 <app-comment-search [displayedColumns]="['id', 'user_id', 'content', 'created_at', 'actu_id', 'actionmodo']"></app-comment-search>
