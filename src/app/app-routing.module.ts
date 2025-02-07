@@ -46,6 +46,8 @@ import {RoleOneComponent} from "./other/role-one/role-one.component";
 import { UserProviderListComponent } from './administration/user-provider-list/user-provider-list.component';
 import {HmgOneComponent} from "./other/hmg-one/hmg-one.component";
 import {HmpOneComponent} from "./other/hmp-one/hmp-one.component";
+import {ModoCopyPlatformComponent} from "./moderation/modo-copy-platform/modo-copy-platform.component";
+import {ModoCommentReplyComponent} from "./moderation/modo-comment-reply/modo-comment-reply.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -66,7 +68,9 @@ const routes: Routes = [
   {path: 'modo/warn', component: WarnComponent},
   {path: 'modo/profil', component: ModoProfilComponent},
   {path: 'modo/comment', component: ModoCommentComponent},
+  {path: 'modo/comment/reply', component: ModoCommentReplyComponent},
   {path: 'modo/copy', component: ModoCopyComponent},
+  {path: 'modo/copy/platform', component: ModoCopyPlatformComponent},
   {path: 'modo/actu', component: ModoActuComponent},
 
   /*REDAC*/

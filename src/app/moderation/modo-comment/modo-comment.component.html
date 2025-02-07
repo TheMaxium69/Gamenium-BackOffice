@@ -1,34 +1,35 @@
-
-
 <div style="display: flex;justify-content: space-between;">
-    <h1> Modération des commentaire </h1>
-  
+    <h1>Modération des commentaire </h1>
+
     <div>
+      <button mat-raised-button routerLink="/modo/comment/reply" style="margin-right: 10px">
+        <mat-icon>list</mat-icon>
+        Commentaire Réponse
+      </button>
       <button mat-raised-button color="primary" (click)="getRandomComment()">
         <mat-icon>refresh</mat-icon>
         Recharger
       </button>
     </div>
-  
+
   </div>
-  
+
   <div class="flex">
     <mat-card class="mb-38">
       <mat-card-content>
-  
+
       </mat-card-content>
     </mat-card>
-  
+
     <mat-card class="mb-38">
       <mat-card-content>
-  
+
       </mat-card-content>
     </mat-card>
   </div>
-  
+
   <hr style="margin: 25px 0">
-  
+
 <app-post-search [displayedColumns]="['id', 'picture_id', 'title', 'user_id', 'created_at', 'last_edit', 'nb_edit', 'actionmodo']"></app-post-search>
 
 <!-- <app-comment-search [displayedColumns]="['id', 'user_id', 'title', 'created_at', 'actu', 'actionmodo']"></app-comment-search> -->
-  

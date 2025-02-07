@@ -94,6 +94,8 @@ import {HmpOneComponent} from "./other/hmp-one/hmp-one.component";
 import {HmgOneComponent} from "./other/hmg-one/hmg-one.component";
 import { CommentSearchComponent } from './global/comment-search/comment-search.component';
 import { CommentReplySearchComponent } from './global/comment-reply-search/comment-reply-search.component';
+import { ModoCommentReplyComponent } from './moderation/modo-comment-reply/modo-comment-reply.component';
+import { ModoCopyPlatformComponent } from './moderation/modo-copy-platform/modo-copy-platform.component';
 
 @NgModule({
   declarations: [
@@ -169,7 +171,9 @@ import { CommentReplySearchComponent } from './global/comment-reply-search/comme
     HmpOneComponent,
     HmgOneComponent,
     CommentSearchComponent,
-    CommentReplySearchComponent
+    CommentReplySearchComponent,
+    ModoCommentReplyComponent,
+    ModoCopyPlatformComponent
   ],
   imports: [
     BrowserModule,
