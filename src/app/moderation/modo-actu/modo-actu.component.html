@@ -30,7 +30,7 @@
 
         <br>
 
-        <mat-chip routerLink="/user/{{actuRandom1.user.id}}" class="clickable-chip">
+        <mat-chip routerLink="/user/{{actuRandom1.user.id}}" class="clickable-chip displayname">
           <img matChipAvatar
                [src]="app.generatePPUseritium(
                  actuRandom1.user.pp?.url,
@@ -64,7 +64,7 @@
 
         <br>
 
-        <mat-chip routerLink="/user/{{actuRandom2.user.id}}" class="clickable-chip">
+        <mat-chip routerLink="/user/{{actuRandom2.user.id}}" class="clickable-chip displayname">
           <img matChipAvatar
                [src]="app.generatePPUseritium(
                  actuRandom2.user.pp?.url,
