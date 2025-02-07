@@ -16,7 +16,7 @@
       <ng-container matColumnDef="user_id">
         <th mat-header-cell *matHeaderCellDef>Créer par </th>
         <td mat-cell *matCellDef="let element">
-          <mat-chip routerLink="/user/{{element.user.id}}" class="clickable-chip">
+          <mat-chip routerLink="/user/{{element.user.id}}" class="clickable-chip displayname">
             <img matChipAvatar
                  [src]="app.generatePPUseritium(
                    element.user.pp?.url,
@@ -32,7 +32,7 @@
       <!-- Content Column -->
       <ng-container matColumnDef="content">
         <th mat-header-cell *matHeaderCellDef>Commentaire</th>
-        <td mat-cell *matCellDef="let element"> {{ element.content }} </td>
+        <td mat-cell *matCellDef="let element"> <p class="content-lock" >{{ element.content }} </p></td>
       </ng-container>
 
       <!-- Created At Column -->
@@ -45,11 +45,11 @@
       <ng-container matColumnDef="actu_id">
         <th mat-header-cell *matHeaderCellDef>Acutalité</th>
         <td mat-cell *matCellDef="let element"> 
-            <mat-chip routerLink="/actu/{{element.actu.id}}" class="clickable-chip">
-                <img matChipAvatar
-                        [src]="element.actu.picture.url"
+            <mat-chip routerLink="/actu/{{element.post.id}}" class="clickable-chip">
+                <img matChipAvatar 
+                        [src]="element.post.picture.url"
                         alt="Actu Picture" />
-                {{ element.actu.title }}
+                {{ element.post.title }}
             </mat-chip>
         </td>
       </ng-container>
@@ -69,7 +69,7 @@
       </tr>
     </table>
   
-    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Pagination des articles">
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Pagination des commentaires">
     </mat-paginator>
   </div>
   

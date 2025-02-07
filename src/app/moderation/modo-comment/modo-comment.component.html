@@ -1,5 +1,5 @@
 <div style="display: flex;justify-content: space-between;">
-    <h1>Modération des commentaire </h1>
+    <h1>Modération des Commentaire </h1>
 
     <div>
       <button mat-raised-button routerLink="/modo/comment/reply" style="margin-right: 10px">
@@ -17,35 +17,33 @@
   <div class="flex">
     <mat-card class="mb-38">
       <mat-card-content>
-        <div> commentRandom1.content</div>
-        <!-- <mat-chip routerLink="/user/{{commentRandom1.user.id}}" class="clickable-chip">
+         <div> <p class="content-lock"> {{commentRandom1?.content}}</p></div>
+        <mat-chip routerLink="/user/{{commentRandom1?.user?.id}}" class="clickable-chip displayname">
           <img matChipAvatar
               [src]="app.generatePPUseritium(
-                commentRandom1.user.pp?.url,
-                commentRandom1.user.displayname_useritium || commentRandom1.user.username,
-                commentRandom1.user.color || app.colorDefault
+                commentRandom1?.user?.pp?.url,
+                commentRandom1?.user?.displayname_useritium || commentRandom1?.user?.username,
+                commentRandom1?.user?.color || app.colorDefault
               )"
               alt="User Profile Picture" />
-          {{ commentRandom1.user.displayname_useritium ?? commentRandom1.user.username }}
-        </mat-chip> -->
-        <button>un user</button>
-      </mat-card-content>
+          {{ commentRandom1?.user?.displayname_useritium ?? commentRandom1?.user?.username }}
+        </mat-chip>
+      </mat-card-content> 
     </mat-card>
 
     <mat-card class="mb-38">
       <mat-card-content>
-        <div> commentRandom2.content</div>
-        <!-- <mat-chip routerLink="/user/{{commentRandom2.user.id}}" class="clickable-chip">
+        <div> <p class="content-lock"> {{commentRandom2?.content}}</p></div>
+        <mat-chip routerLink="/user/{{commentRandom2?.user?.id}}" class="clickable-chip displayname">
           <img matChipAvatar
               [src]="app.generatePPUseritium(
-                commentRandom2.user.pp?.url,
-                commentRandom2.user.displayname_useritium || commentRandom2.user.username,
-                commentRandom2.user.color || app.colorDefault
+                commentRandom2?.user?.pp?.url,
+                commentRandom2?.user?.displayname_useritium || commentRandom2?.user?.username,
+                commentRandom2?.user?.color || app.colorDefault
               )"
-                alt="User Profile Picture" />
-          {{ commentRandom2.user.displayname_useritium ?? commentRandom2.user.username }}
-        </mat-chip> -->
-        <button>un user</button>
+              alt="User Profile Picture" />
+          {{ commentRandom2?.user?.displayname_useritium ?? commentRandom2?.user?.username }}
+        </mat-chip>
       </mat-card-content>
     </mat-card>
   </div>

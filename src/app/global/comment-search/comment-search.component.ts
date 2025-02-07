@@ -44,6 +44,7 @@ export class CommentSearchComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$)
     ).subscribe((results: any) => {
       this.comments = results;
+      console.log(this.comments);
       this.dataSource = new MatTableDataSource<CommentInterface>(this.comments);
       this.dataSource.paginator = this.paginator;
     });

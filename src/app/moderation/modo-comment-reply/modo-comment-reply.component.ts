@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from "../../app.component";
 import { ModerationService } from "../../-service/moderation.service";
-import { CommentInterface } from 'src/app/-interface/comment.interface';
 import { CommentReplyInterface } from 'src/app/-interface/comment-reply.interface';
 
 @Component({

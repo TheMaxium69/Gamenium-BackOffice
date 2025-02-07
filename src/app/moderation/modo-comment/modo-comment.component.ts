@@ -30,6 +30,9 @@ export class ModoCommentComponent implements OnInit{
       if (response.message === "good"){
         this.commentRandom1 = response.result;
         this.commentRandom2 = response.result2;
+        console.log(this.commentRandom1);
+        console.log(this.commentRandom2);
+
       }
     });
 

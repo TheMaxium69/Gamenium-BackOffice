@@ -1,5 +1,5 @@
 <div style="display: flex;justify-content: space-between;">
-    <h1>Modération des commentaire Réponse</h1>
+    <h1>Modération des Commentaire Réponse</h1>
 
     <div>
       <button mat-raised-button routerLink="/modo/comment/" style="margin-right: 10px">
@@ -17,35 +17,33 @@
   <div class="flex">
     <mat-card class="mb-38">
       <mat-card-content>
-        <div> commentReplyRandom1.content</div>
-        <!-- <mat-chip routerLink="/user/{{commentReplyRandom1.user.id}}" class="clickable-chip">
+        <div> <p class="content-lock"> {{commentReplyRandom1?.content}}</p></div>
+        <mat-chip routerLink="/user/{{commentReplyRandom1?.user?.id}}" class="clickable-chip displayname">
           <img matChipAvatar
               [src]="app.generatePPUseritium(
-                commentReplyRandom1.user.pp?.url,
-                commentReplyRandom1.user.displayname_useritium || commentReplyRandom1.user.username,
-                commentReplyRandom1.user.color || app.colorDefault
+                commentReplyRandom1?.user?.pp?.url,
+                commentReplyRandom1?.user?.displayname_useritium || commentReplyRandom1?.user?.username,
+                commentReplyRandom1?.user?.color || app.colorDefault
               )"
               alt="User Profile Picture" />
-          {{ commentReplyRandom1.user.displayname_useritium ?? commentReplyRandom1.user.username }}
-        </mat-chip> -->
-        <button>un user</button>
+          {{ commentReplyRandom1?.user?.displayname_useritium ?? commentReplyRandom1?.user?.username }}
+        </mat-chip>
       </mat-card-content>
     </mat-card>
 
     <mat-card class="mb-38">
       <mat-card-content>
-        <div> commentReplyRandom2.content</div>
-        <!-- <mat-chip routerLink="/user/{{commentReplyRandom2.user.id}}" class="clickable-chip">
+        <div> <p class="content-lock"> {{commentReplyRandom1?.content}}</p></div>
+        <mat-chip routerLink="/user/{{commentReplyRandom1?.user?.id}}" class="clickable-chip displayname">
           <img matChipAvatar
               [src]="app.generatePPUseritium(
-                commentReplyRandom2.user.pp?.url,
-                commentReplyRandom2.user.displayname_useritium || commentReplyRandom2.user.username,
-                commentReplyRandom2.user.color || app.colorDefault
+                commentReplyRandom1?.user?.pp?.url,
+                commentReplyRandom1?.user?.displayname_useritium || commentReplyRandom1?.user?.username,
+                commentReplyRandom1?.user?.color || app.colorDefault
               )"
-                alt="User Profile Picture" />
-          {{ commentReplyRandom2.user.displayname_useritium ?? commentReplyRandom2.user.username }}
-        </mat-chip> -->
-        <button>un user</button>
+              alt="User Profile Picture" />
+          {{ commentReplyRandom1?.user?.displayname_useritium ?? commentReplyRandom1?.user?.username }}
+        </mat-chip>
       </mat-card-content>
     </mat-card>
   </div>
