@@ -44,6 +44,8 @@ import {CreateBadgeComponent} from "./administration/create-badge/create-badge.c
 import {ListBadgeComponent} from "./administration/list-badge/list-badge.component";
 import {RoleOneComponent} from "./other/role-one/role-one.component";
 import { UserProviderListComponent } from './administration/user-provider-list/user-provider-list.component';
+import {HmgOneComponent} from "./other/hmg-one/hmg-one.component";
+import {HmpOneComponent} from "./other/hmp-one/hmp-one.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -106,6 +108,8 @@ const routes: Routes = [
   {path: 'comment-reply/:id', component: CommentReplyOneComponent},
   {path: 'badge/:id', component: BadgeOneComponent},
   {path: 'role/:name', component: RoleOneComponent},
+  {path: 'hmg/:id', component: HmgOneComponent},
+  {path: 'hmp/:id', component: HmpOneComponent},
 
   {path: 'settings', component: SettingComponent},
   {path: 'err', component: ErrComponent},
