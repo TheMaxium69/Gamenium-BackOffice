@@ -1,7 +1,37 @@
-<div>User random</div>
-<div *ngFor="let user of userTest">
-    <div>Card</div>
+<div style="display: flex;justify-content: space-between;">
+  <h1> Modération des profils </h1>
+
+  <div>
+    <button mat-raised-button color="primary" (click)="getRandom()">
+      <mat-icon>refresh</mat-icon>
+      Recharger
+    </button>
+  </div>
+
 </div>
+
+<ng-container *ngIf="profilRandom1 && profilRandom2">
+  <div class="flex">
+    <mat-card class="mb-38">
+      <mat-card-content>
+
+
+        <h2>{{ profilRandom1.username }}</h2>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="mb-38">
+      <mat-card-content>
+
+        <h2>{{ profilRandom2.username }}</h2>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <hr style="margin: 25px 0">
+</ng-container>
+
 
 
 <app-user-search [displayedColumns]="['id', 'displayname', 'username', 'email', 'roles']"></app-user-search>
