@@ -89,6 +89,7 @@ import { HomeModoComponent } from './home/home-modo/home-modo.component';
 import { HomeWriteComponent } from './home/home-write/home-write.component';
 import { HomeTestComponent } from './home/home-test/home-test.component';
 import { ProviderSearchComponent } from './global/provider-search/provider-search.component';
+import { UserProviderListComponent } from './administration/user-provider-list/user-provider-list.component';
 
 @NgModule({
   declarations: [
@@ -160,6 +161,7 @@ import { ProviderSearchComponent } from './global/provider-search/provider-searc
     HomeWriteComponent,
     HomeTestComponent,
     ProviderSearchComponent,
+    UserProviderListComponent,
   ],
   imports: [
     BrowserModule,

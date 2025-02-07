@@ -43,6 +43,7 @@ import {BadgeOneComponent} from "./other/badge-one/badge-one.component";
 import {CreateBadgeComponent} from "./administration/create-badge/create-badge.component";
 import {ListBadgeComponent} from "./administration/list-badge/list-badge.component";
 import {RoleOneComponent} from "./other/role-one/role-one.component";
+import { UserProviderListComponent } from './administration/user-provider-list/user-provider-list.component';
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -52,6 +53,7 @@ const routes: Routes = [
   /* ADMIN */
   {path: 'admin/perms', component: PermsComponent},
   {path: 'admin/provider', component: UserProviderComponent},
+  {path: 'admin/provider-list', component: UserProviderListComponent},
   {path: 'admin/add-badge', component: AddBadgeComponent},
   {path: 'admin/warn', component: WarnAdminComponent},
   {path: 'admin/create-badge', component: CreateBadgeComponent},
