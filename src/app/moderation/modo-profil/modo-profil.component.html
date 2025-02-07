@@ -14,16 +14,54 @@
   <div class="flex">
     <mat-card class="mb-38">
       <mat-card-content>
+        <div class="d-flex justify-end">
+            <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/profil/' + profilRandom1?.id)"></mat-icon>
+        </div>
 
+        <div class="d-flex justify-center center-auto column">
+            <div id="pp" class="img mb-12" style= "background-image: url({{app.generatePPUseritium(profilRandom1?.pp?.url, profilRandom1?.displaynameUseritium || profilRandom1?.username,profilRandom1?.themeColor || app.colorDefault)}});"></div>
+        </div>
 
         <h2>{{ profilRandom1.username }}</h2>
+
+        <div class="d-flex justify-center">
+            <div *ngFor="let role of profilRandom1?.roles">
+                <mat-chip
+                  style="margin-right: 10px; margin-bottom: 12px; width: fit-content;"
+                  *ngIf="role !== 'ROLE_USER'"
+                  [style.background-color]="app.AllRole[role]"
+                  routerLink="/role/{{role}}">
+                  {{ role.substring(5) }}
+                </mat-chip>
+            </div>
+        </div>
+
       </mat-card-content>
     </mat-card>
 
     <mat-card class="mb-38">
       <mat-card-content>
+        <div class="d-flex justify-end">
+            <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/profil/' + profilRandom2?.id)"></mat-icon>
+        </div>
+        
+        <div class="d-flex justify-center center-auto column">
+            <div id="pp" class="img mb-12" style= "background-image: url({{app.generatePPUseritium(profilRandom2?.pp?.url, profilRandom2?.displaynameUseritium || profilRandom2?.username,profilRandom2?.themeColor || app.colorDefault)}});"></div>
+        </div>
 
         <h2>{{ profilRandom2.username }}</h2>
+
+        <div class="d-flex justify-center">
+            <div *ngFor="let role of profilRandom2?.roles">
+                <mat-chip
+                  style="margin-right: 10px; margin-bottom: 12px; width: fit-content;"
+                  *ngIf="role !== 'ROLE_USER'"
+                  [style.background-color]="app.AllRole[role]"
+                  routerLink="/role/{{role}}">
+                  {{ role.substring(5) }}
+                </mat-chip>
+            </div>
+        </div>
 
       </mat-card-content>
     </mat-card>

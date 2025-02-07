@@ -13,6 +13,40 @@ mat-card{
   }
 }
 
+.d-flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.center-auto {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.mb-12 {
+  margin-bottom: 12px;
+}
+
+#pp{
+  box-shadow: 1px 3px 12px #a6a6a6;
+}
+
+.img {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 150px;
+  border: none;
+  border-radius: 50%;
+}
+
 @media (max-width: 768px) {
   mat-card{
     padding: unset;
