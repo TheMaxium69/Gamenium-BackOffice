@@ -25,6 +25,13 @@
             </mat-chip>
           </div>
           <div class="d-flex mb-12">
+            <p class="w-128">Ajoutée par :</p>
+            <mat-chip class="displayname" *ngIf="MyGame?.myGame?.user" routerLink="/user/{{MyGame?.myGame?.user?.id}}">
+            <img matChipAvatar [src]="app.generatePPUseritium(MyGame?.myGame?.user?.pp?.url, MyGame?.myGame?.user?.displayname_useritium	 || MyGame?.myGame?.user?.username,MyGame?.myGame?.user?.color || this.app.colorDefault)" alt="user pp"/>
+            {{MyGame?.myGame?.user?.displayname_useritium	 ?? MyGame?.myGame?.user?.username }}
+            </mat-chip>
+          </div>
+          <div class="d-flex mb-12">
             <p class="w-128">Ajoutée le :</p>
             <p>{{ MyGame?.myGame?.added_at | date:'dd/MM/yyyy, HH:mm' }}</p>
           </div>
