@@ -1,1 +1,7 @@
-<p>modo-profil works!</p>
+<div>User random</div>
+<div *ngFor="let user of userTest">
+    <div>Card</div>
+</div>
+
+
+<app-user-search [displayedColumns]="['id', 'displayname', 'username', 'email', 'roles']"></app-user-search>
