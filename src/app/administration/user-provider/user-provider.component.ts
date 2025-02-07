@@ -39,7 +39,7 @@ export class UserProviderComponent implements OnInit, OnDestroy {
       switchMap((searchValue) => {
         return this.administrationService.searchUsersAdmin(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
           catchError((error) => {
-            console.error('❌ Erreur recherche utilisateur:', error);
+            console.error('Erreur recherche utilisateur:', error);
             return of([]);
           })
         );
@@ -56,7 +56,7 @@ export class UserProviderComponent implements OnInit, OnDestroy {
       switchMap((searchValue) => {
         return this.administrationService.searchProviderAdmin(searchValue, this.app.fetchLimit, this.app.setURL(), this.app.createCorsToken()).pipe(
           catchError((error) => {
-            console.error('❌ Erreur recherche provider:', error);
+            console.error('Erreur recherche provider:', error);
             return of([]);
           })
         );
@@ -77,7 +77,6 @@ export class UserProviderComponent implements OnInit, OnDestroy {
 
   /* Sélection d'un utilisateur */
   selectUser(user: UserInterface) {
-    console.log("✅ Utilisateur sélectionné:", user);
     this.selectedUser = user;
     this.userSearch = user.displayname || user.username;
     this.userResults = []; // Cache la liste après sélection
@@ -92,7 +91,6 @@ export class UserProviderComponent implements OnInit, OnDestroy {
 
   /* Sélection d'un provider */
   selectProvider(provider: ProviderInterface) {
-    console.log("✅ Provider sélectionné:", provider);
     this.selectedProvider = provider;
     this.providerSearch = provider.displayName;
     this.providerResults = []; // Cache la liste après sélection
@@ -101,7 +99,7 @@ export class UserProviderComponent implements OnInit, OnDestroy {
   /* Fonction de liaison User <-> Provider */
   linkUserToProvider() {
     if (!this.selectedUser || !this.selectedProvider) {
-      console.error("❌ Impossible de lier : utilisateur ou provider manquant.");
+      console.error("Impossible de lier : utilisateur ou provider manquant.");
       return;
     }
 
@@ -110,9 +108,9 @@ export class UserProviderComponent implements OnInit, OnDestroy {
 
     this.userProviderService.linkUserToProvider(this.selectedUser.id, this.selectedProvider.id, url, options)
       .subscribe(response => {
-        console.log("✅ Lien User-Provider réussi:", response);
+        console.log("réussi:", response);
       }, error => {
-        console.error("❌ Erreur lors de la liaison:", error);
+        console.error("Erreur lors de la liaison:", error);
       });
   }
 

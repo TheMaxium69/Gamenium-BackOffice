@@ -14,6 +14,8 @@ export interface ProviderInterface {
   picture: PictureInterface|undefined,
   color:string,
   founded_at:string|undefined,
+  //display_name à ne pas supprimer sert pour UserProvider
+  display_name:string|null
 
 }
 
