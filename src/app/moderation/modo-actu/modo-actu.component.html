@@ -13,11 +13,22 @@
 <ng-container *ngIf="actuRandom1 && actuRandom2">
   <div class="flex">
     <mat-card class="mb-38">
+      <div class="head-card">
+        <mat-icon routerLink="/actu/{{actuRandom1.id}}">open_in_new</mat-icon>
+      </div>
+
       <mat-card-content>
 
         <img src="{{ actuRandom1.picture?.url }}" class="actu-img" alt="..." />
 
         <h2>{{ actuRandom1.title }}</h2>
+
+        <mat-chip class="provider-chip" routerLink="/provider/{{ actuRandom1.Provider?.id }}" style="margin-bottom: 10px">
+          <img matChipAvatar [src]="actuRandom1.Provider?.picture?.url">
+          {{ actuRandom1.Provider?.displayName }}
+        </mat-chip>
+
+        <br>
 
         <mat-chip routerLink="/user/{{actuRandom1.user.id}}" class="clickable-chip">
           <img matChipAvatar
@@ -34,12 +45,24 @@
     </mat-card>
 
     <mat-card class="mb-38">
+
+      <div class="head-card">
+        <mat-icon routerLink="/actu/{{actuRandom2.id}}">open_in_new</mat-icon>
+      </div>
+
       <mat-card-content>
 
         <img src="{{ actuRandom2.picture?.url }}" class="actu-img" alt="..." />
 
 
         <h2>{{ actuRandom2.title }}</h2>
+
+        <mat-chip class="provider-chip" routerLink="/provider/{{ actuRandom2.Provider?.id }}" style="margin-bottom: 10px">
+          <img matChipAvatar [src]="actuRandom2.Provider?.picture?.url">
+          {{ actuRandom2.Provider?.displayName }}
+        </mat-chip>
+
+        <br>
 
         <mat-chip routerLink="/user/{{actuRandom2.user.id}}" class="clickable-chip">
           <img matChipAvatar
@@ -61,4 +84,4 @@
 
 
 
-<app-post-search [displayedColumns]="['id', 'picture_id', 'title', 'user_id', 'created_at', 'last_edit', 'nb_edit', 'actionmodo']"></app-post-search>
+<app-post-search [displayedColumns]="['id', 'picture_id', 'title', 'provider_id', 'user_id', 'created_at', 'last_edit', 'nb_edit', 'actionmodo']"></app-post-search>

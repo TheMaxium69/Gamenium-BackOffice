@@ -1,5 +1,6 @@
 import {UserInterface} from "./user.interface";
 import {PictureInterface} from "./picture.interface";
+import {ProviderInterface} from "./provider.interface";
 
 export interface PostActuInterface {
     id: number,
@@ -11,4 +12,5 @@ export interface PostActuInterface {
     user: UserInterface,
     game_id: number,
     created_at: Date,
+    Provider:ProviderInterface|undefined,
 }
