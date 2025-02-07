@@ -180,31 +180,6 @@ export class ProviderEditArticleComponent implements OnInit{
     );
   }
 
-  /* MAJ article */
-  updateArticle() {
-    if (!this.selectedArticle) {
-      console.error("Aucun article sélectionné");
-      return;
-    }
-
-    const url = this.app.setURL();
-    const option = this.app.createCorsToken();
-
-    const body = {
-      title: this.selectedArticle.title,
-      content: this.selectedArticle.content,
-      game_id: this.selectedArticle.Game?.id,
-      provider_id: this.selectedArticle.Provider?.id,
-      picture_id: this.selectedArticle.picture?.id,
-      last_edit: new Date(),
-      nb_edit: (this.selectedArticle.nb_edit ?? 0) + 1,
-    };
-
-    this.userProviderService.updatePostActuByProvider(this.selectedArticle.id, body, url, option).subscribe(response => {
-      console.log("Article mis à jour", response);
-    });
-  }
-
   /* Selectionne l'article dynamiquement */
   onArticleSelected(article: PostActuInterface) {
     this.selectedArticle = article;
@@ -237,6 +212,61 @@ export class ProviderEditArticleComponent implements OnInit{
     this.gameResults = [];
   }
 
+  confirmUpdateArticle() {
+    Swal.fire({
+      title: "Confirmer la modification",
+      text: "Êtes-vous sûr de vouloir enregistrer ces modifications ?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Oui, modifier",
+      cancelButtonText: "Annuler"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.updateArticle();
+      }
+    });
+  }
+  
+  updateArticle() {
+    if (!this.selectedArticle) {
+      Swal.fire("Erreur", "Aucun article sélectionné.", "error");
+      return;
+    }
+  
+    const url = this.app.setURL();
+    const option = this.app.createCorsToken();
+  
+    const body = {
+      title: this.selectedArticle.title,
+      content: this.selectedArticle.content,
+      game_id: this.selectedArticle.Game?.id,
+      provider_id: this.selectedArticle.Provider?.id,
+      picture_id: this.selectedArticle.picture?.id,
+      last_edit: new Date(),
+      nb_edit: (this.selectedArticle.nb_edit ?? 0) + 1,
+    };
+  
+    this.userProviderService.updatePostActuByProvider(this.selectedArticle.id, body, url, option)
+      .subscribe(
+        response => {
+          Swal.fire("Succès!", "L'article a été modifié avec succès.", "success")
+            .then(() => this.router.navigate(['/provider/show-articles']));
+        },
+        error => {
+          console.error("❌ Erreur mise à jour :", error);
+  
+          let errorMessage = "Une erreur s'est produite.";
+          if (error.error?.message) {
+            errorMessage = error.error.message;
+          }
+  
+          Swal.fire("Erreur", errorMessage, "error");
+        }
+      );
+  }
+
   confirmDeleteArticle() {
     Swal.fire({
       title: "Êtes-vous sûr?",
@@ -253,10 +283,10 @@ export class ProviderEditArticleComponent implements OnInit{
       }
     });
   }
-
+  
   deleteArticle() {
     if (!this.selectedArticle) {
-      console.error("❌ Aucun article sélectionné");
+      Swal.fire("Erreur", "Aucun article sélectionné.", "error");
       return;
     }
   
@@ -266,36 +296,22 @@ export class ProviderEditArticleComponent implements OnInit{
     this.userProviderService.deletePostActuByProvider(this.selectedArticle.id, url, option)
       .subscribe(
         () => {
-          Swal.fire("Supprimé!", "L'article a été supprimé avec succès.", "success");
-          this.router.navigate(['/provider/show-articles']);
-          // this.selectedArticle = null; 
+          Swal.fire("Supprimé!", "L'article a été supprimé avec succès.", "success")
+            .then(() => this.router.navigate(['/provider/show-articles']));
         },
-        (error) => {
-          Swal.fire("Erreur", "Impossible de supprimer l'article.", "error");
-          console.error("❌ Erreur lors de la suppression de l'article :", error);
+        error => {
+          console.error("❌ Erreur suppression :", error);
+  
+          let errorMessage = "Impossible de supprimer l'article.";
+          if (error.error?.message) {
+            errorMessage = error.error.message;
+          }
+  
+          Swal.fire("Erreur", errorMessage, "error");
         }
       );
   }
-
-  confirmUpdateArticle() {
-        Swal.fire({
-          title: "Confirmer la modification",
-          text: "Êtes-vous sûr de vouloir enregistrer ces modifications ?",
-          icon: "question",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Oui, modifier",
-          cancelButtonText: "Annuler"
-        }).then((result) => {
-          if (result.isConfirmed) {
-            this.updateArticle();
-            this.router.navigate(['/provider/show-articles']);
-            Swal.fire("Modifié!", "L'article a été modifié avec succès.", "success");
-          }
-        });
-      }
   
   
-
+  
 }
