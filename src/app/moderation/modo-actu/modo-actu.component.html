@@ -10,20 +10,55 @@
 
 </div>
 
-<div class="flex">
-  <mat-card class="mb-38">
-    <mat-card-content>
+<ng-container *ngIf="actuRandom1 && actuRandom2">
+  <div class="flex">
+    <mat-card class="mb-38">
+      <mat-card-content>
 
-    </mat-card-content>
-  </mat-card>
+        <img src="{{ actuRandom1.picture?.url }}" class="actu-img" alt="..." />
 
-  <mat-card class="mb-38">
-    <mat-card-content>
+        <h2>{{ actuRandom1.title }}</h2>
 
-    </mat-card-content>
-  </mat-card>
-</div>
+        <mat-chip routerLink="/user/{{actuRandom1.user.id}}" class="clickable-chip">
+          <img matChipAvatar
+               [src]="app.generatePPUseritium(
+                 actuRandom1.user.pp?.url,
+                 actuRandom1.user.displayname_useritium || actuRandom1.user.username,
+                 actuRandom1.user.color || app.colorDefault
+               )"
+               alt="User Profile Picture" />
+          {{ actuRandom1.user.displayname_useritium ?? actuRandom1.user.username }}
+        </mat-chip>
 
-<hr style="margin: 25px 0">
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="mb-38">
+      <mat-card-content>
+
+        <img src="{{ actuRandom2.picture?.url }}" class="actu-img" alt="..." />
+
+
+        <h2>{{ actuRandom2.title }}</h2>
+
+        <mat-chip routerLink="/user/{{actuRandom2.user.id}}" class="clickable-chip">
+          <img matChipAvatar
+               [src]="app.generatePPUseritium(
+                 actuRandom2.user.pp?.url,
+                 actuRandom2.user.displayname_useritium || actuRandom2.user.username,
+                 actuRandom2.user.color || app.colorDefault
+               )"
+               alt="User Profile Picture" />
+          {{ actuRandom2.user.displayname_useritium ?? actuRandom2.user.username }}
+        </mat-chip>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <hr style="margin: 25px 0">
+</ng-container>
+
+
 
 <app-post-search [displayedColumns]="['id', 'picture_id', 'title', 'user_id', 'created_at', 'last_edit', 'nb_edit', 'actionmodo']"></app-post-search>
