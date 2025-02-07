@@ -92,6 +92,8 @@ import { ProviderSearchComponent } from './global/provider-search/provider-searc
 import { UserProviderListComponent } from './administration/user-provider-list/user-provider-list.component';
 import {HmpOneComponent} from "./other/hmp-one/hmp-one.component";
 import {HmgOneComponent} from "./other/hmg-one/hmg-one.component";
+import { CommentSearchComponent } from './global/comment-search/comment-search.component';
+import { CommentReplySearchComponent } from './global/comment-reply-search/comment-reply-search.component';
 
 @NgModule({
   declarations: [
@@ -165,7 +167,9 @@ import {HmgOneComponent} from "./other/hmg-one/hmg-one.component";
     ProviderSearchComponent,
     UserProviderListComponent,
     HmpOneComponent,
-    HmgOneComponent
+    HmgOneComponent,
+    CommentSearchComponent,
+    CommentReplySearchComponent
   ],
   imports: [
     BrowserModule,
