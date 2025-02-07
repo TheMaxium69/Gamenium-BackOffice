@@ -16,8 +16,13 @@
 
   <div class="flex">
     <mat-card class="mb-38">
+
+      <div class="head-card">
+        <mat-icon fontIcon="open_in_new" routerLink="/comment/{{commentRandom1?.id}}"></mat-icon>
+      </div>
+
       <mat-card-content>
-         <div> <p class="content-lock"> {{commentRandom1?.content}}</p></div>
+        <div class="content-lock mb-10">{{commentRandom1?.content}}</div>
         <mat-chip routerLink="/user/{{commentRandom1?.user?.id}}" class="clickable-chip displayname">
           <img matChipAvatar
               [src]="app.generatePPUseritium(
@@ -32,8 +37,13 @@
     </mat-card>
 
     <mat-card class="mb-38">
+
+      <div class="head-card">
+        <mat-icon fontIcon="open_in_new" routerLink="/comment/{{commentRandom2?.id}}"></mat-icon>
+      </div>
+
       <mat-card-content>
-        <div> <p class="content-lock"> {{commentRandom2?.content}}</p></div>
+        <div class="content-lock mb-10">{{commentRandom2?.content}}</div>
         <mat-chip routerLink="/user/{{commentRandom2?.user?.id}}" class="clickable-chip displayname">
           <img matChipAvatar
               [src]="app.generatePPUseritium(

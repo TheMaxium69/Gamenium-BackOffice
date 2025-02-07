@@ -1,6 +1,9 @@
 mat-card{
     text-align: center;
-    padding: 50px;
+}
+
+mat-card-content{
+    padding: 50px !important;
 }
 
 .flex {
@@ -26,9 +29,18 @@ mat-card{
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 40vh;
 }
 
 .m-5 {
     margin: 5px;
+}
+
+.head-card{
+    text-align: end;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.mb-10{
+    margin-bottom: 10px;
 }
