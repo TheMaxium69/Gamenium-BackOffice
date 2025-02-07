@@ -19,10 +19,10 @@
         </div>
 
         <div class="d-flex justify-center center-auto column">
-            <div id="pp" class="img mb-12" style= "background-image: url({{app.generatePPUseritium(profilRandom1?.pp?.url, profilRandom1?.displaynameUseritium || profilRandom1?.username,profilRandom1?.color || app.colorDefault)}});"></div>
+            <div id="pp" class="img mb-12" style= "background-image: url({{app.generatePPUseritium(profilRandom1?.pp?.url, profilRandom1?.displayname_useritium || profilRandom1?.username, profilRandom1?.color || app.colorDefault)}});"></div>
         </div>
 
-        <h2>{{ profilRandom1.username }}</h2>
+        <h2>{{ profilRandom1.displayname_useritium || profilRandom1.username }}</h2>
 
         <div class="d-flex justify-center">
             <div *ngFor="let role of profilRandom1?.roles">
@@ -46,10 +46,10 @@
         </div>
         
         <div class="d-flex justify-center center-auto column">
-            <div id="pp" class="img mb-12" style= "background-image: url({{app.generatePPUseritium(profilRandom2?.pp?.url, profilRandom2?.displaynameUseritium || profilRandom2?.username, profilRandom2?.color || app.colorDefault)}});"></div>
+            <div id="pp" class="img mb-12" style= "background-image: url({{app.generatePPUseritium(profilRandom2?.pp?.url, profilRandom2?.displayname_useritium || profilRandom2?.username, profilRandom2?.color || app.colorDefault)}});"></div>
         </div>
 
-        <h2>{{ profilRandom2.username }}</h2>
+        <h2>{{ profilRandom2.displayname_useritium || profilRandom2.username}}</h2>
 
         <div class="d-flex justify-center">
             <div *ngFor="let role of profilRandom2?.roles">
