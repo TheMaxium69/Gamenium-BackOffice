@@ -99,6 +99,10 @@ export class UserSearchComponent implements OnInit, OnDestroy{
     this.searchProfilSubject.next(this.searchValue);
   }
 
+
+  // FONCTIONNALITER DE BUTTOM
+
+
   addRole(id_user:number, role:string){
 
     this.administrationService.addRoleAdmin(id_user, role, this.app.setURL(), this.app.createCorsToken()).subscribe((response:ApicallInterface) => {
