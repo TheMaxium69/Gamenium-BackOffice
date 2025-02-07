@@ -1,1 +1,55 @@
-<p>user-provider works!</p>
+<!-- Page Title -->
+<h1 class="page-title">Associer un Utilisateur à un Provider</h1>
+
+<div class="search-container">
+
+  <!-- 🔍 Recherche Utilisateur -->
+  <div class="search-section">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Rechercher un Utilisateur</mat-label>
+      <input matInput (input)="searchUsers()" [(ngModel)]="userSearch" name="userSearch" autocomplete="off">
+    </mat-form-field>
+
+    <!-- Liste des Utilisateurs -->
+    <mat-list *ngIf="userResults.length > 0" class="results-list">
+      <mat-list-item *ngFor="let user of userResults" (click)="selectUser(user)">
+        <img matListItemAvatar *ngIf="user.pp?.url" [src]="user.pp?.url" alt="{{ user.displayname }}">
+        <span matListItemTitle>{{ user.displayname || user.username }}</span>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <!-- 🔍 Recherche Provider -->
+  <div class="search-section">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Rechercher un Provider</mat-label>
+      <input matInput (input)="searchProviders()" [(ngModel)]="providerSearch" name="providerSearch" autocomplete="off">
+    </mat-form-field>
+
+    <!-- Liste des Providers -->
+    <mat-list *ngIf="providerResults.length > 0" class="results-list">
+      <mat-list-item *ngFor="let provider of providerResults" (click)="selectProvider(provider)">
+        <img matListItemAvatar *ngIf="provider.picture?.url" [src]="provider.picture?.url" alt="{{ provider.displayName }}">
+        <span matListItemTitle>{{ provider.displayName }}</span>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
+
+<!-- Affichage des Sélections -->
+<div class="selected-container">
+  <div *ngIf="selectedUser" class="selected-card">
+    <p><strong>Utilisateur :</strong> {{ selectedUser.displayname || selectedUser.username }}</p>
+    <img *ngIf="selectedUser.pp?.url" [src]="selectedUser.pp?.url" class="selected-image">
+  </div>
+
+  <div *ngIf="selectedProvider" class="selected-card">
+    <p><strong>Provider :</strong> {{ selectedProvider.displayName }}</p>
+    <img *ngIf="selectedProvider.picture?.url" [src]="selectedProvider.picture?.url" class="selected-image">
+  </div>
+</div>
+
+<!-- Bouton de Confirmation -->
+<button mat-raised-button color="primary" (click)="linkUserToProvider()" [disabled]="!selectedUser || !selectedProvider">
+  Associer l'Utilisateur au Provider
+</button>
