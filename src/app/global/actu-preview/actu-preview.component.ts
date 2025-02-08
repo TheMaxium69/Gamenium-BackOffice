@@ -7,6 +7,7 @@ import {ViewService} from "../../-service/view.service";
 import Swal from 'sweetalert2';
 import { ModerationService } from 'src/app/-service/moderation.service';
 import { Router} from "@angular/router";
+import {AdministrationService} from "../../-service/administration.service";
 
 @Component({
   selector: 'app-actu-preview',
@@ -23,7 +24,7 @@ export class ActuPreviewComponent implements OnInit, OnChanges {
 
   constructor(
     protected app: AppComponent,
-    private actualityServcice: ActualityService,
+    private administrationService: AdministrationService,
     private moderationService: ModerationService,
     private viewService: ViewService,
     private router: Router,
@@ -41,7 +42,7 @@ export class ActuPreviewComponent implements OnInit, OnChanges {
   }
 
   getActu(id: number) {
-      this.actualityServcice.getPostActu(this.app.setURL(), id, this.app.createCorsToken()).subscribe((response: ApicallInterface) => {
+      this.administrationService.getPostActu(this.app.setURL(), id, this.app.createCorsToken()).subscribe((response: ApicallInterface) => {
         if (response.message === 'good') {
           console.log("Actu preview");
           console.table(response.result);

@@ -10,4 +10,5 @@ export interface CommentReplyInterface {
   content: string,
   comment: CommentInterface,
   user: UserInterface,
+  is_deleted: boolean|undefined;
 }

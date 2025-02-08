@@ -55,6 +55,11 @@
         <div class="w-128">Le :</div>
         <div>{{commentReplySelected?.created_at| date:'dd/MM/yyyy, HH:mm'}} </div>
       </div>
+
+      <div class="flex align-center mx-20" *ngIf="commentReplySelected?.is_deleted" style="color: red">
+        <div class="w-128">Supprimé :</div>
+        <div>Oui</div>
+      </div>
     </mat-card-content>
   </mat-card>
 
@@ -87,6 +92,11 @@
       <div class="flex align-center mx-20">
         <div class="w-128">Le :</div>
         <div>{{commentReplySelected?.comment?.created_at| date:'dd/MM/yyyy, HH:mm'}} </div>
+      </div>
+
+      <div class="flex align-center mx-20" *ngIf="commentReplySelected?.comment?.is_deleted" style="color: red">
+        <div class="w-128">Supprimé :</div>
+        <div>Oui</div>
       </div>
     </mat-card-content>
   </mat-card>

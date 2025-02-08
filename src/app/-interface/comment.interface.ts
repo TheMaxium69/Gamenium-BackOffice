@@ -10,6 +10,7 @@ export interface CommentInterface {
   content: string,
   post: PostActuInterface,
   user: UserInterface,
+  is_deleted: boolean|undefined;
 }
 
 

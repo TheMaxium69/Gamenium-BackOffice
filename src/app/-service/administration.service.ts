@@ -66,9 +66,7 @@ export class AdministrationService {
     return this.http.post<ApicallInterface>(url + '/admin-role-one', {ROLE_NAME, limit}, options);
   }
 
-
-
-
-
-
+  getPostActu(url: string, id: number, option: { headers: HttpHeaders}): Observable<ApicallInterface> {
+    return this.http.get<ApicallInterface>(url + "/admin-postactu/" + id, option);
+  }
 }
