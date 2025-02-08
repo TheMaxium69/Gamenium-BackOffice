@@ -48,6 +48,7 @@ import {HmgOneComponent} from "./other/hmg-one/hmg-one.component";
 import {HmpOneComponent} from "./other/hmp-one/hmp-one.component";
 import {ModoCopyPlatformComponent} from "./moderation/modo-copy-platform/modo-copy-platform.component";
 import {ModoCommentReplyComponent} from "./moderation/modo-comment-reply/modo-comment-reply.component";
+import {LogCommentComponent} from "./log/log-comment/log-comment.component";
 
 const routes: Routes = [
   /* HOME / DASHBOARD */
@@ -101,6 +102,7 @@ const routes: Routes = [
   {path: 'log/role', component: LogRoleComponent},
   {path: 'log/sanction', component: LogComponent},
   {path: 'log/actu', component: LogActuComponent},
+  {path: 'log/comment', component: LogCommentComponent},
 
   /* OTHER*/
   {path: 'user/:id', component: UserOneComponent},

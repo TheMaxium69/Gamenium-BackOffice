@@ -98,6 +98,7 @@ import { ModoCommentReplyComponent } from './moderation/modo-comment-reply/modo-
 import { ModoCopyPlatformComponent } from './moderation/modo-copy-platform/modo-copy-platform.component';
 import { HmgSearchComponent } from './global/hmg-search/hmg-search.component';
 import { HmpSearchComponent } from './global/hmp-search/hmp-search.component';
+import { LogCommentComponent } from './log/log-comment/log-comment.component';
 
 @NgModule({
   declarations: [
@@ -177,7 +178,8 @@ import { HmpSearchComponent } from './global/hmp-search/hmp-search.component';
     ModoCommentReplyComponent,
     ModoCopyPlatformComponent,
     HmgSearchComponent,
-    HmpSearchComponent
+    HmpSearchComponent,
+    LogCommentComponent
   ],
   imports: [
     BrowserModule,
