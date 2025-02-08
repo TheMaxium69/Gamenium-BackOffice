@@ -42,6 +42,14 @@ export class AdministrationService {
     return this.http.post<ApicallInterface>(url + '/admin-comment-reply-search',  { searchValue, limit}, options);
   }
 
+  searchHmg(searchValue: string, limit:number, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
+    return this.http.post<ApicallInterface>(url + '/admin-hmg-search',  { searchValue, limit}, options);
+  }
+
+  searchHmp(searchValue: string, limit:number, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
+    return this.http.post<ApicallInterface>(url + '/admin-hmp-search',  { searchValue, limit}, options);
+  }
+
   toggleBanAdmin(id_user:number, url:string, options: {headers: HttpHeaders}): Observable<ApicallInterface>{
     return this.http.get<ApicallInterface>(url + '/admin-ban/' + id_user, options);
   }

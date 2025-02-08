@@ -12,7 +12,7 @@
       Recharger
     </button>
   </div>
-  
+
 </div>
 
 <div class="flex">
@@ -52,7 +52,7 @@
         <div class="head-card">
             <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/profil/' + hmgRandom2?.myGame?.user?.id + '/hmg/' + hmgRandom2?.id)"></mat-icon>
         </div>
-        
+
         <mat-card-content>
 
             <div class="banner-image d-flex mb-10 justify-center">
@@ -80,6 +80,9 @@
 </div>
 
 <hr style="margin: 25px 0">
+
+
+<app-hmg-search [displayedColumns]="['id', 'game', 'plateform', 'user', 'added_at', 'action']"></app-hmg-search>
 
 
 
