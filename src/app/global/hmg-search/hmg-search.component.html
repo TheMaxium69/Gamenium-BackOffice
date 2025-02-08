@@ -36,7 +36,7 @@
       <td mat-cell *matCellDef="let element">
 
         <mat-chip routerLink="/platform/{{element.plateform.id}}" *ngIf="element">
-          <img matChipAvatar [src]="element.plateform.image.icon_url" alt="plateform pp"/>
+          <img matChipAvatar  *ngIf="element.plateform.image" [src]="element.plateform.image.icon_url" alt="plateform pp"/>
           {{ element.plateform.name }}
         </mat-chip>
 
