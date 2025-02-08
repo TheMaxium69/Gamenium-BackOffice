@@ -1,7 +1,7 @@
 <h1> Dashboard </h1>
 
 
-<mat-card class="mb-38">
+<mat-card class="mb-38 first">
   <mat-card-content>
     <h1>Bonjour,</h1>
     <h2>{{ this.app.userConnected.displaynameUseritium || this.app.userConnected.username }}</h2>
@@ -11,7 +11,9 @@
 
 
 <div class="flex">
-  <mat-card class="mb-38">
+  <mat-card class="mb-38" style="
+    display: flex;
+    justify-content: center;">
     <mat-card-content>
       <h2>Rôles</h2>
       <h3>
@@ -31,9 +33,16 @@
   </mat-card>
 
   <mat-card class="mb-38">
+
+    <div class="head-card">
+      <mat-icon (click)="randomPlateform()">refresh</mat-icon>
+    </div>
+
     <mat-card-content>
-      <h2>Soon</h2>
-      <h3>Soon</h3>
+      <h2 style="margin: 0; padding: 0">Découvrire une plateforme</h2>
+      <img [src]="plateformRandom?.image?.small_url" alt="logo-plateform" style="max-height: 100px;width: auto;">
+      <h3 style="margin: 0; padding: 0;">{{ plateformRandom?.name }}</h3>
+      <p style="margin: 0; padding: 0">{{ plateformRandom?.release_date | date:'yyyy' }}</p>
     </mat-card-content>
   </mat-card>
 </div>
