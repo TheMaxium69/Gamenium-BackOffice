@@ -3,7 +3,7 @@
   <mat-card>
     <mat-card-content>
       <div class="d-flex justify-end">
-        <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront())"></mat-icon>
+        <mat-icon fontIcon="open_in_new" (click)="app.redirectUrl(app.setURLFront() + '/profil/' + MyPlatform.myPlateform.user.id + '/hmp/' + MyPlatform.id)"></mat-icon>
       </div>
       <div class="banner-image d-flex justify-center mb-12">
         <div class="banner" style="background-image: url({{MyPlatform.myPlateform.plateform.image?.small_url}});"></div>
