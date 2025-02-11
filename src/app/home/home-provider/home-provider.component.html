@@ -1,9 +1,0 @@
-<div style="display: flex;justify-content: center; gap: 15px; margin-bottom: 25px;">
-
-  <button mat-raised-button color="primary" routerLink="/provider/show-articles">Voir les articles</button>
-  <button mat-raised-button color="accent" routerLink="/provider/create-article">Créer un article</button>
-  <button mat-raised-button color="warn" *ngIf="app.userConnected.userRole.includes('ROLE_PROVIDER_ADMIN')" routerLink="/provider/profil">Gérez votre éditeur</button>
-
-</div>
-
-<app-provider [id]="this.app.userConnected.providerGestionId"></app-provider>

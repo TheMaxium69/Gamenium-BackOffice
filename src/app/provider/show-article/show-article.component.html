@@ -1,9 +1,0 @@
-<h1> Liste des Actualités </h1>
-
-<ng-container *ngIf="app.userConnected.userRole.includes('ROLE_ADMIN') || app.userConnected.userRole.includes('ROLE_OWNER')">
-  <app-post-search [displayedColumns]="['id', 'picture_id', 'title', 'provider_id', 'game_id', 'created_at', 'user_id', 'last_edit', 'nb_edit', 'action']" [haveProvider]="true"></app-post-search>
-</ng-container>
-
-<ng-container *ngIf="!app.userConnected.userRole.includes('ROLE_ADMIN') && !app.userConnected.userRole.includes('ROLE_OWNER')">
-  <app-post-search [displayedColumns]="['id', 'picture_id', 'title', 'provider_id', 'game_id', 'created_at', 'user_id', 'action']" [haveProvider]="true"></app-post-search>
-</ng-container>
