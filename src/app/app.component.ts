@@ -39,17 +39,18 @@ export class AppComponent {
    * ******************************************************************************************************************/
 
   //%     API - GAMENIUM      %//
-    AppEnv: string = "PROD"; // DEV or PROD or PRODMAX or DEVMAX or V1
+    AppEnv: string = "V2"; // DEV or PROD or PRODMAX or DEVMAX or V1
     urlApiDev: string = "http://127.0.0.1:8000";
     urlApiDevMax: string = "https://127.0.0.1:8000";
     urlApiProd: string = "http://vps216.tyrolium.fr:8000";
     urlApiProdMax: string = "http://home.vps216.tyrolium.fr:8000";
     urlApiV1: string = "https://vps209.tyrolium.fr";
+    urlApiV2: string = "https://vps216.tyrolium.fr";
   //%     API - GAMENIUM      %//
 
 
   //%     FRONT - GAMENIUM      %//
-    AppEnvFront: string = "DEV"; // DEV or V1
+    AppEnvFront: string = "V1"; // DEV or V1
     urlFrontDev: string = "http://localhost:4201";
     urlFrontV1: string = "https://gamenium.fr";
   //%     FRONT - GAMENIUM      %//
@@ -212,8 +213,10 @@ export class AppComponent {
       return this.urlApiProdMax;
     } else if (this.AppEnv == "V1") {
       return this.urlApiV1;
+    } else if (this.AppEnv == "V2") {
+      return this.urlApiV2;
     } else {
-      return this.urlApiV1;
+      return this.urlApiV2;
     }
 
   }
